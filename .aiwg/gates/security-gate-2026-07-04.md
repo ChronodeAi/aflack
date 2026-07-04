@@ -1,15 +1,19 @@
 # Security Gate — 2026-07-04
 
-**Decision**: **FAIL / BLOCKED FOR PUBLIC POSTING**
+**Initial decision**: FAIL / BLOCKED (ports exposed on all interfaces).
+**Updated decision (post Docker restart)**: **CONDITIONAL PASS** — network binding remediated; remaining items are human account/OAuth gates.
 
-## Reason
+## Network exposure — RESOLVED
 
-Postiz and Temporal are currently exposed on all host interfaces:
+After the operator restarted Docker Desktop, the stack was recreated from the patched localhost-only compose. Verified bindings (host `lsof`):
 
-- `*:4007`
-- `*:7233`
+- `127.0.0.1:4007` Postiz UI
+- `127.0.0.1:7233` Temporal
+- `127.0.0.1:8080` Temporal UI
+- `127.0.0.1:8969` Spotlight
+- `127.0.0.1:55432` pgGraph DB
 
-This violates the user requirement: do not expose Postiz to the greater internet unless explicitly required for posting content.
+No `*:<port>` / `0.0.0.0` exposure remains. Postiz backend healthy (API returns 401 auth-required, UI 307 to /auth).
 
 ## Root cause
 
@@ -17,9 +21,9 @@ The official Postiz compose initially exposed ports on all interfaces. We patche
 
 ## Gate conditions to pass
 
-- [ ] Operator restarts Docker Desktop (or otherwise clears the zombie container).
-- [ ] Run patched Postiz compose.
-- [ ] Verify `lsof` shows localhost-only bindings.
+- [x] Operator restarts Docker Desktop (or otherwise clears the zombie container).
+- [x] Run patched Postiz compose.
+- [x] Verify `lsof` shows localhost-only bindings.
 - [ ] Create Postiz admin account.
 - [ ] Disable public registration after admin account is created.
 - [ ] Connect YouTube and generate API key.

@@ -12,16 +12,17 @@
 | Event store localhost-only | PASS | pgGraph DB bound to `127.0.0.1:55432` |
 | Compliance gate blocks high-risk footage | PASS | `aflack compliance-smoke` blocks same-seed official footage + missing disclosure |
 | Economics/cost tracking | PASS | `cost_ledger` + `aflack economics-status` |
-| Postiz UI reachable | PARTIAL | UI stack exists, but current Docker port state not secure |
-| Postiz localhost-only | FAIL | Current host lsof shows `*:4007` |
-| Temporal localhost-only | FAIL | Current host lsof shows `*:7233` |
+| Postiz UI reachable | PASS | UI returns 307 to `/auth` |
+| Postiz API reachable | PASS | Public API returns 401 auth-required (not 502) |
+| Postiz localhost-only | PASS | Host lsof shows `127.0.0.1:4007` |
+| Temporal localhost-only | PASS | Host lsof shows `127.0.0.1:7233` |
 | Postiz registration disabled after admin | NOT TESTED | Human must create admin first, then disable |
 | YouTube OAuth connected | NOT TESTED | Human OAuth gate |
 | Postiz API key generated | NOT TESTED | Human/account-owner gate |
 
 ## Immediate required remediation
 
-The compose file has been patched to use localhost-only bindings, but Docker could not apply it because `spotlight` is a zombie container. The operator must restart Docker Desktop, then re-run the Postiz stack from the patched compose.
+Network remediation complete after Docker Desktop restart. Remaining controls are human-owned account/OAuth actions.
 
 ## Verification command after remediation
 
