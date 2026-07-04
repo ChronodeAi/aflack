@@ -101,7 +101,10 @@ class PostizPublisher:
             self._mark(queue_id, "failed", str(exc))
             raise
 
-        postiz_id = str(response.get("id") or response.get("group") or response.get("postId") or "")
+        first = response[0] if isinstance(response, list) and response else response
+        if not isinstance(first, dict):
+            first = {}
+        postiz_id = str(first.get("id") or first.get("group") or first.get("postId") or "")
         with connect() as conn, conn.cursor() as cur:
             cur.execute(
                 """
@@ -122,6 +125,20 @@ class PostizPublisher:
             conn.commit()
         return response
 
+    @staticmethod
+    def _platform_settings(platform: str | None, title: str | None) -> dict:
+        """Per-platform Postiz settings required by its validation layer.
+
+        YouTube uploads stay private until a human flips visibility.
+        """
+
+        if platform == "youtube":
+            safe_title = (title or "Untitled")[:100]
+            if len(safe_title) < 2:
+                safe_title = "Untitled"
+            return {"title": safe_title, "type": "private"}
+        return {}
+
     def build_queue_payload(self, queue_id: int, integration_id: str, *, as_draft: bool = True) -> dict:
         """Build the Postiz payload for a queued item without submitting it.
 
@@ -131,7 +148,7 @@ class PostizPublisher:
         with connect() as conn, conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT id, title, description, hashtags, disclosure_text, scheduled_at
+                SELECT id, title, description, hashtags, disclosure_text, scheduled_at, platform
                 FROM publish_queue
                 WHERE id = %s
                 """,
@@ -141,7 +158,7 @@ class PostizPublisher:
         if not row:
             raise ValueError(f"publish_queue id={queue_id} not found")
 
-        _, title, description, hashtags, disclosure, scheduled_at = row
+        _, title, description, hashtags, disclosure, scheduled_at, platform = row
         content = "\n\n".join(part for part in [title, description, disclosure] if part)
         if hashtags:
             content += "\n\n" + " ".join(f"#{tag.lstrip('#')}" for tag in hashtags)
@@ -156,7 +173,7 @@ class PostizPublisher:
                 {
                     "integration": {"id": integration_id},
                     "value": [{"content": content, "image": []}],
-                    "settings": {},
+                    "settings": self._platform_settings(platform, title),
                 }
             ],
         }

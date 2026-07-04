@@ -74,6 +74,7 @@ class PostizPublisherTests(unittest.TestCase):
             ["GTA6", "YouTubeShorts"],
             "Disclosure: affiliate links may earn commission. AI-assisted visuals.",
             None,
+            "youtube",
         )
 
         @contextmanager
@@ -93,6 +94,9 @@ class PostizPublisherTests(unittest.TestCase):
         self.assertIn("GTA 6 countdown", content)
         self.assertIn("#GTA6 #YouTubeShorts", content)
         self.assertIn("Disclosure:", content)
+        settings = payload["posts"][0]["settings"]
+        self.assertEqual(settings["title"], "GTA 6 countdown")
+        self.assertEqual(settings["type"], "private")
 
 
 if __name__ == "__main__":
