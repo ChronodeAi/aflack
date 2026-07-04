@@ -37,11 +37,12 @@
 ## Day-by-day plan
 
 ### Day 1 — Foundations + economics schema
-- Create repo structure: `src/`, `src/pipeline/`, `src/adapters/`, `src/memory/`, `data/`, `artifacts/` (gitignored media).
-- Stand up local Postgres; define the data model (below).
-- Implement the **economics ledger** table first — every generation/publish writes cost rows.
-- Wire config/secrets loading (`.env`, gitignored).
-- Smoke-test Higgsfield CLI auth (`higgsfield account status`).
+- [x] Create repo structure: `src/`, `db/migrations/`, `docker/pggraph-pgvector/`, `artifacts/` (gitignored media).
+- [x] Stand up local Postgres with pgGraph + pgvector; define the data model (below).
+- [x] Implement the **economics ledger** table first — every generation/publish writes cost rows.
+- [x] Wire config/secrets loading (`.env`, gitignored).
+- [ ] Smoke-test Higgsfield CLI auth (`higgsfield account status`).
+- [x] Validate graph traversal on the real v1 schema (Product → Script → Creative → Result).
 
 ### Day 2 — Research + niche diagnostic
 - Build `research_ingest` adapter: Firecrawl + TikTok Creative Center; Aside fallback for logged-in.

@@ -80,3 +80,18 @@ Caveats found:
 - API is function-based in the `graph` schema (`add_table`, `add_edge`, `auto_discover`, `build`, `expand`, `find`, `find_related`, sync-policy funcs) — usable directly from SQL, no new query language.
 
 Verdict: **validated for Week-1 local use** as the graph layer over our own tables. Pair with a separate vector approach (custom image with pgvector, or external) until/unless pgvector is added to the image.
+
+## Custom pgGraph + pgvector image validation (2026-07-04)
+
+Built local image `aflack/pggraph-pgvector:0.1.8-pgvector0.8.4` from `ghcr.io/evokoa/pggraph:0.1.8` by installing `postgresql-17-pgvector`.
+
+Confirmed on a fresh persistent volume:
+
+- `graph` 0.1.8
+- `pg_cron` 1.6
+- `vector` 0.8.4
+- v1 migration applied successfully.
+- v1 tables created: `niches`, `products`, `personas`, `hooks`, `scripts`, `creatives`, `creative_variants`, `channels`, `disclosures`, `claims`, `results`, `lessons`, `cost_ledger`.
+- Domain smoke seed passed: Product → Script → Creative → Result traversal works over the real v1 schema, and graph traversal also connects Product→Niche→Hook and Script→Persona.
+
+Verdict update: **all-in-Postgres substrate validated locally** (relational + graph + vector). Continue to keep pgGraph behind the swappable memory/query interface because it is alpha.
