@@ -5,6 +5,12 @@
 **UI**: http://localhost:4007  (redirects to /auth)
 **Temporal UI**: http://localhost:8080
 
+## Security binding requirement
+
+All published ports must be bound to `127.0.0.1`, not `0.0.0.0` / `*`.
+
+The local compose in `.aiwg/working/postiz/docker-compose.yaml` has been patched to use localhost-only bindings. This file is gitignored because it contains the generated JWT secret.
+
 ## Lifecycle
 
 ```bash
@@ -14,6 +20,36 @@ docker compose ps          # status
 docker compose logs -f postiz   # logs
 docker compose down        # stop (keeps volumes)
 ```
+
+## Known local issue: zombie Spotlight container
+
+During hardening, Docker reported:
+
+```text
+cannot stop container ... spotlight ... PID ... is zombie and can not be killed
+```
+
+Because of that, Docker could not recreate the stack with the patched localhost-only port bindings. Do **not** force-kill arbitrary raw PIDs. Recovery is an operator action:
+
+1. Restart Docker Desktop from the macOS menu bar.
+2. Return to this project directory.
+3. Run:
+
+```bash
+cd .aiwg/working/postiz
+docker compose up -d
+```
+
+4. Verify:
+
+```bash
+for p in 4007 7233 8080 8969; do
+  echo --$p
+  lsof -nP -iTCP:$p -sTCP:LISTEN
+done
+```
+
+Expected: localhost-only listeners (`127.0.0.1:<port>`) and no `*:<port>` exposure.
 
 ## First-run setup (HUMAN GATE)
 
