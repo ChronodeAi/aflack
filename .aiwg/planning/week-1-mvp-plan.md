@@ -46,9 +46,10 @@
 - [x] Validate graph traversal on the real v1 schema (Product → Script → Creative → Result).
 
 ### Day 2 — Research + niche diagnostic
-- Build `research_ingest` adapter: Firecrawl + TikTok Creative Center; Aside fallback for logged-in.
-- Run the niche-diagnostic scorecard (`.aiwg/marketing/strategy/niche-diagnostic-plan.md`) on candidate niches.
-- Select the ONE beachhead niche. Record decision + rationale to memory.
+- [x] Select the ONE beachhead niche. Decision: **GTA6 AI-persona gaming, YouTube-first**.
+- Build `research_ingest` adapter: Firecrawl + YouTube/GTA6 research surfaces + Creative Center where relevant; Aside fallback for logged-in.
+- Run a niche-specific scorecard and define the first benchmark/source list.
+- Record decision + rationale to memory.
 
 ### Day 3 — Benchmark gold set + product shortlist
 - Build `benchmarking` module: pull + tag 15–50 top videos/products for the niche (hook, retention proxy, format, duration, persona, proof, CTA, disclosure, claim-risk).

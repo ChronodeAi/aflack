@@ -7,6 +7,7 @@ from pathlib import Path
 import typer
 
 from .db import connect, exec_sql
+from .publishing import PostizPublisher, PublishIntent
 
 app = typer.Typer(help="aflack local affiliate content pipeline")
 
@@ -155,6 +156,57 @@ def seed_smoke() -> None:
         typer.echo(f"  depth={depth} table={table} id={node_id} path={path}")
 
 
+@app.command()
+def set_beachhead() -> None:
+    """Lock the chosen beachhead niche: GTA6 AI-persona gaming, YouTube-first."""
+
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute(
+            """
+            INSERT INTO niches (name, status, scorecard, notes)
+            VALUES (
+              'gta6-ai-persona-gaming',
+              'active',
+              '{"intent":"audience-building","primary_platform":"youtube","format_strategy":"shorts_to_longform","affiliate_targets":["controllers","headsets","capture_cards","monitors","gift_cards","vpn"]}'::jsonb,
+              'Beachhead A selected: GTA6 AI-persona gaming. YouTube-first funnel: Shorts for attention, long-form for RPM, gaming-adjacent affiliate/brand deals.'
+            )
+            ON CONFLICT (name) DO UPDATE
+              SET status = EXCLUDED.status,
+                  scorecard = EXCLUDED.scorecard,
+                  notes = EXCLUDED.notes,
+                  updated_at = now()
+            RETURNING id
+            """
+        )
+        niche_id = cur.fetchone()[0]
+        conn.commit()
+    typer.echo(f"Beachhead locked: gta6-ai-persona-gaming (niche_id={niche_id})")
+
+
+@app.command()
+def publish_smoke() -> None:
+    """Create a safe YouTube/Postiz publish intent for the latest creative."""
+
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT id FROM creatives ORDER BY created_at DESC LIMIT 1")
+        row = cur.fetchone()
+        if not row:
+            raise typer.BadParameter("No creatives found. Run `aflack seed-smoke` first.")
+        creative_id = int(row[0])
+
+    queue_id = PostizPublisher().enqueue(
+        PublishIntent(
+            creative_id=creative_id,
+            platform="youtube",
+            target_format="short",
+            title="GTA 6 countdown: what we know so far",
+            description="Synthetic persona content test. Affiliate disclosures and source provenance required before publish.",
+            hashtags=["GTA6", "Gaming", "YouTubeShorts"],
+            disclosure_text="Disclosure: synthetic/AI-assisted content; affiliate links may earn commission.",
+        )
+    )
+    typer.echo(f"Created Postiz publish intent queue_id={queue_id} status=needs_auth")
+
+
 if __name__ == "__main__":
     app()
-
