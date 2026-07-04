@@ -1,0 +1,30 @@
+=== S1 ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_185037_758c3da5-9f84-41ca-9094-34bf510a98d9.mp4
+
+=== S2 ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_185345_f20002ad-feca-4284-a5f7-dc2a6205a7fd.mp4
+
+=== S3 ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_185724_ee199a4b-4477-4808-926e-0ab00fd36f56.mp4
+
+=== S4 ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_190043_c3aaf5b8-b5ed-4a5b-8abc-e53c71ac3da5.mp4
+
+=== S5 ===
+fe65c81b-011d-4744-961c-8187389a1e57 ended with status "nsfw"
+Error: job fe65c81b-011d-4744-961c-8187389a1e57 ended with status "nsfw"
+
+=== S6 ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_190534_157ff1dc-67f1-45be-bd06-b62574fec1cb.mp4
+
+=== VO-TAKE-1 (pirate radio) ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_190729_1d0882a8-6500-467e-a245-04c58bb936c6.wav
+=== VO-TAKE-2 (trailer voice) ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_190758_d734e583-1ced-4505-9895-4a2177d34efe.wav
+=== VO-TAKE-3 (street commentator) ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_190835_9ad84e14-4a0e-48cf-87fd-387a2e1fb447.wav
+=== MUSIC-BED ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_190907_64024ec2-fdf6-4439-9daf-5d890e4ee22d.wav
+=== SFX-CROWD-THUNDER ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_190953_df4d149f-c48f-4b02-829c-deb814c83118.wav
+ALL_DONE_SHOTS

@@ -1,44 +1,40 @@
 # Security Gate — 2026-07-04
 
-**Initial decision**: FAIL / BLOCKED (ports exposed on all interfaces).
-**Updated decision (post Docker restart)**: **CONDITIONAL PASS** — network binding remediated; remaining items are human account/OAuth gates.
+**Current decision**: **PASS FOR CONSTRUCTION ITERATION 1**
 
-## Network exposure — RESOLVED
+## Summary
 
-After the operator restarted Docker Desktop, the stack was recreated from the patched localhost-only compose. Verified bindings (host `lsof`):
+The earlier local Postiz network exposure was remediated by binding local services to `127.0.0.1`. The operator has now switched the active publisher to paid cloud Postiz, configured a cloud API key, and connected YouTube/TikTok integrations.
 
-- `127.0.0.1:4007` Postiz UI
-- `127.0.0.1:7233` Temporal
-- `127.0.0.1:8080` Temporal UI
-- `127.0.0.1:8969` Spotlight
-- `127.0.0.1:55432` pgGraph DB
+## Verified controls
 
-No `*:<port>` / `0.0.0.0` exposure remains. Postiz backend healthy (API returns 401 auth-required, UI 307 to /auth).
+| Gate item | Status | Evidence |
+|---|---|---|
+| Local network exposure remediated | PASS | Host `lsof` shows Postiz/Temporal/Spotlight/DB ports on `127.0.0.1` only. |
+| Cloud Postiz API configured | PASS | `.env` uses `POSTIZ_BASE_URL=https://api.postiz.com`. |
+| Cloud integrations connected | PASS | `aflack postiz-integrations` returns YouTube `Memetics Sa` and TikTok `memetics365`. |
+| Secrets not committed | PASS | `.env` remains untracked/gitignored; `.env.example` has no secret. |
+| Public publishing blocked | PASS | Draft mode is default; public publish remains human-gated. |
+| High-risk GTA6 footage blocked | PASS | Compliance smoke blocks same-seed official footage and missing disclosures. |
 
-## Root cause
+## Conditions that remain active
 
-The official Postiz compose initially exposed ports on all interfaces. We patched the local ignored compose to bind ports to `127.0.0.1`, but Docker could not recreate the stack because the optional `spotlight` container became a zombie and cannot be stopped by Docker.
+- Public publishing requires explicit operator approval.
+- Paid Higgsfield generation requires explicit operator approval or an approved cap.
+- Comment/DM automation requires explicit operator approval.
+- Official Rockstar/GTA6 footage cannot be downloaded, clipped, reuploaded, or same-seed remixed.
+- If local Postiz is not needed, prefer stopping it later to reduce local attack surface; do not expose it beyond localhost.
 
-## Gate conditions to pass
+## Allowed now
 
-- [x] Operator restarts Docker Desktop (or otherwise clears the zombie container).
-- [x] Run patched Postiz compose.
-- [x] Verify `lsof` shows localhost-only bindings.
-- [ ] Create Postiz admin account.
-- [ ] Disable public registration after admin account is created.
-- [ ] Connect YouTube and generate API key.
-- [ ] Store API key outside git.
+- Local Construction Iteration 1 coding.
+- Cloud Postiz integration listing.
+- Creating a Postiz **draft** after confirming the queue item and integration target.
+- Research, scripting, prompt-writing, and compliance checks.
 
-## Allowed while gate is failed
+## Not allowed without a fresh human approval
 
-- Local code development.
-- Research.
-- Script generation without paid video creation.
-- No public posting.
-- No public tunnels.
-
-## Not allowed while gate is failed
-
-- Connecting real social accounts through an exposed Postiz instance.
-- Public publishing.
-- Sharing/forwarding the Postiz URL outside localhost.
+- Public posts.
+- Paid Higgsfield jobs.
+- OAuth/channel setting changes.
+- DM/comment automation.

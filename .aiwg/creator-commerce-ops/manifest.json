@@ -1,0 +1,22 @@
+{
+  "id": "creator-commerce-ops",
+  "version": "0.1.0-local",
+  "status": "project-local-framework-50pct",
+  "purpose": "Continuously improve an AI-assisted content creation pipeline by scanning proven creators, distilling insights, and evolving reproducible skills/rules/workflows/agents.",
+  "phase_model": ["discover", "distill", "codify", "produce", "validate", "distribute", "measure", "learn"],
+  "hard_gates": [
+    "no paid generation without operator approval",
+    "no public publish without operator approval",
+    "no Rockstar/GTA source media reuse",
+    "proof-of-real-success required before learning from a creator",
+    "agentmemory/semantic memory are indexes; Postgres is source of truth"
+  ],
+  "implemented_components": {
+    "rules": 5,
+    "skills": 6,
+    "workflows": 4,
+    "agents": 5,
+    "behaviors": 1,
+    "runtime_modules": ["aflack.aside_scan", "aflack.learning", "aflack.daemon", "aflack.tracing"]
+  }
+}

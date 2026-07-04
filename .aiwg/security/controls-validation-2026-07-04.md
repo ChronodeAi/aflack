@@ -1,36 +1,41 @@
 # Security Controls Validation
 
-**Date**: 2026-07-04
-**Scope**: Local MVP infrastructure and posting pipeline
+**Date**: 2026-07-04  
+**Scope**: MVP infrastructure and posting pipeline after cloud Postiz pivot
 
 ## Controls
 
 | Control | Status | Evidence / Notes |
 |---|---|---|
-| Secrets excluded from git | PASS | `.env` ignored; `.aiwg/working/` ignored; Postiz JWT compose not committed |
-| Postiz separate service / AGPL boundary | PASS | ADR-0001; Postiz stack in `.aiwg/working/postiz`, not vendored |
+| Secrets excluded from git | PASS | `.env` ignored; `.aiwg/working/` ignored; API key redacted from outputs |
+| Postiz separate service / AGPL boundary | PASS | ADR-0001; integration via public API only |
+| Cloud Postiz API key configured outside git | PASS | `.env` contains the active key; `.env.example` contains no secret |
+| Cloud Postiz integrations reachable | PASS | `aflack postiz-integrations` returns YouTube and TikTok integrations |
 | Event store localhost-only | PASS | pgGraph DB bound to `127.0.0.1:55432` |
+| Local Postiz localhost-only if running | PASS | Host `lsof` shows Postiz/Temporal ports bound to `127.0.0.1` |
 | Compliance gate blocks high-risk footage | PASS | `aflack compliance-smoke` blocks same-seed official footage + missing disclosure |
 | Economics/cost tracking | PASS | `cost_ledger` + `aflack economics-status` |
-| Postiz UI reachable | PASS | UI returns 307 to `/auth` |
-| Postiz API reachable | PASS | Public API returns 401 auth-required (not 502) |
-| Postiz localhost-only | PASS | Host lsof shows `127.0.0.1:4007` |
-| Temporal localhost-only | PASS | Host lsof shows `127.0.0.1:7233` |
-| Postiz registration disabled after admin | NOT TESTED | Human must create admin first, then disable |
-| YouTube OAuth connected | NOT TESTED | Human OAuth gate |
-| Postiz API key generated | NOT TESTED | Human/account-owner gate |
+| Public publishing blocked by process | PASS | `postiz-submit` defaults to draft; public publish requires operator approval |
+| Paid generation blocked by process | PASS | Higgsfield spend remains human-gated |
+| Postiz local registration disabled | N/A FOR ACTIVE PATH | Active publishing is cloud Postiz. If local Postiz remains running for testing, keep it localhost-only or stop it when not needed. |
 
-## Immediate required remediation
+## Current risk posture
 
-Network remediation complete after Docker Desktop restart. Remaining controls are human-owned account/OAuth actions.
+**PASS for Construction Iteration 1** with these constraints:
 
-## Verification command after remediation
+- no public publish without explicit operator approval,
+- no paid generation without explicit operator approval,
+- no use of official Rockstar/GTA6 footage as source media,
+- no exposure of local Postiz/DB to LAN or internet,
+- no secrets printed or committed.
+
+## Standard verification
 
 ```bash
-for p in 4007 7233 8080 8969; do
-  echo --$p
-  lsof -nP -iTCP:$p -sTCP:LISTEN
-done
+source .venv/bin/activate
+python3 -m compileall -q src
+aflack db-status
+aflack compliance-smoke
+aflack economics-status
+aflack postiz-integrations
 ```
-
-Expected: `127.0.0.1:4007`, `127.0.0.1:7233` if Temporal is published, `127.0.0.1:8080` if UI is published, no `*:<port>`.

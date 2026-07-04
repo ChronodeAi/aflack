@@ -51,10 +51,12 @@
 - ADR-0002 Own the raw event store; engines are derived indexes.
 - ADR-0003 Local Postgres + pgGraph + pgvector v1 memory substrate.
 - ADR-0004 Claude Code CLI (`claude-fable-5`) as director runtime.
+- ADR-0005 Human-gated Jarvis content-agent orchestration.
+- ADR-0006 Virality-first lane selection and persona-optional form.
 
 ## 5. Data architecture
 
-Core entities: niches, products, personas, hooks, scripts, creatives, creative_variants, channels, disclosures, claims, results, lessons, cost_ledger, publish_queue, platform_credentials. Graph derived via `graph.auto_discover`. Embeddings on hooks/scripts/lessons (`vector(384)`).
+Core entities: niches, products, personas, hooks, scripts, creatives, creative_variants, channels, disclosures, claims, results, lessons, cost_ledger, publish_queue, platform_credentials. The Jarvis/content-factory data products are hook library, source/reference library, asset library, funnel map, performance log, compliance/provenance record, and memory lessons. Graph derived via `graph.auto_discover`. Embeddings on hooks/scripts/lessons (`vector(384)`).
 
 ## 6. Runtime flows
 
@@ -65,6 +67,10 @@ Core entities: niches, products, personas, hooks, scripts, creatives, creative_v
 5. Compliance gate (auto checklist + human approve).
 6. Publisher enqueues → Postiz schedules/posts (YouTube-first).
 7. Results captured → memory lessons → economics rollup → scale/kill.
+
+### Jarvis/director loop
+
+The director loop is human-gated: Trend Scout → Source/Reference → Hook Author → Creative Producer → Editor/Packager → Compliance Reviewer → Publisher → Analytics/Memory Curator. These roles start as thin commands/runbooks over the event store and may become agents or daemons only after the manual loop proves repeatable economics.
 
 ## 7. Cross-cutting concerns
 
@@ -91,3 +97,4 @@ Core entities: niches, products, personas, hooks, scripts, creatives, creative_v
 - YouTube channel connection + API audit path.
 - Real paid Higgsfield generation batches (credit spend).
 - Actual public publishing.
+- Comment, DM, follow, channel setting, account setting, paid promotion, or ad-spend actions.

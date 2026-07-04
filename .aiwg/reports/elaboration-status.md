@@ -1,19 +1,24 @@
 # Elaboration Status Report
 
-**Date**: 2026-07-04
-**Status**: Elaboration substantially complete; blocked only on explicit human operator gates
+**Date**: 2026-07-04  
+**Status**: Elaboration complete; ready for Construction Iteration 1 / 2 handoff
 
 ## Phase assessment
 
-We moved from Intake/Inception into a compressed MVP construction sprint, but have now produced the core Elaboration baseline:
+We moved from Intake/Inception through a compressed Elaboration baseline and are now ready for MVP Construction.
 
-- architecture baseline (SAD + ADRs),
-- requirements/NFRs,
+The validated baseline includes:
+
+- architecture baseline: SAD + ADRs,
+- requirements and NFRs,
 - risk register,
 - test strategy,
-- deployment/runbook for Postiz,
-- validated local infrastructure,
-- clear human gates.
+- security/compliance gates,
+- local Postgres + pgGraph + pgvector event store,
+- cloud Postiz API integration,
+- lean GTA6 YouTube-first content strategy,
+- human gates for public publishing and paid generation.
+- transcript-mined operating doctrine from Codex, Aside/Fugu, and Claude Code.
 
 ## Completed artifacts
 
@@ -27,42 +32,51 @@ We moved from Intake/Inception into a compressed MVP construction sprint, but ha
 | ADR-0002 Own event store | Complete |
 | ADR-0003 Postgres+pgGraph+pgvector memory | Complete |
 | ADR-0004 Claude Fable director CLI | Complete |
+| ADR-0005 Human-gated Jarvis orchestration | Complete |
+| ADR-0006 Virality-first/persona-optional doctrine | Complete |
+| Transcript mining synthesis | Complete |
 | Requirements/NFRs | Complete |
 | Risk register | Complete |
 | Test strategy | Complete |
-| Postiz local runbook | Complete |
+| Postiz local runbook | Complete, now secondary to cloud Postiz |
 | GTA6 reference pack | Complete |
-| GTA6 personas | Complete (lean v1 scope) |
+| GTA6 personas | Complete for lean v1 scope |
 | Compliance footage rule | Complete |
+| ABM validation report | Complete |
+| Iteration 0 completion report | Complete |
+| Construction readiness report | Complete |
+| Iteration 1 and 2 plans | Complete |
 
 ## Validated infrastructure
 
+- AIWG probe: engaged/ready/healthy.
 - pgGraph+pgvector local DB: running at `127.0.0.1:55432`.
 - DB schema/migrations: pass.
-- Graph traversal: pass.
-- Higgsfield CLI auth: pass (`tech@chronode.ai`, ultra plan, 5010 credits at check).
-- Postiz stack: running; UI responds at `http://localhost:4007` with auth redirect.
-- Aside CLI: works; Aside MCP in this Codex session still has transport issue, but Claude Code config is correct.
+- Graph traversal: pass from previous smoke.
+- Higgsfield CLI auth: previously validated; paid generation remains gated.
+- Cloud Postiz API: `POSTIZ_BASE_URL=https://api.postiz.com` works.
+- Cloud Postiz integrations visible via CLI: YouTube `Memetics Sa`, TikTok `memetics365`.
+- Local Postiz stack may still be running but remains localhost-only; cloud Postiz is the active configured publisher.
 
-## Remaining human gates
+## Human gates remaining
 
-These cannot be responsibly completed without the operator:
+1. Approve any paid Higgsfield generation beyond auth/smoke.
+2. Approve the exact Postiz queue item before draft submission if there is ambiguity.
+3. Approve any public publish.
+4. Approve any comment/DM automation or channel/account setting changes.
 
-1. Create first Postiz admin account in UI.
-2. Configure YouTube OAuth credentials / connect YouTube channel in Postiz.
-3. Generate Postiz Public API key.
-4. Approve any real paid Higgsfield generation beyond auth/smoke.
-5. Approve any public publishing.
+## Construction entry decision
 
-## Recommended next after human gates
+**GO** for Construction Iteration 1.
 
-1. Store Postiz API key in `.env` (gitignored).
-2. Upgrade `PostizPublisher` from `needs_auth` stub to real API submit.
-3. Launch Claude Fable director session:
-   `claude --model claude-fable-5 --effort high --name gta6-director`
-4. Generate first Vice Signal + Loadout Lab scripts and prompt pack.
-5. Create one original Higgsfield test creative and run Virality Predictor.
+Immediate focus:
 
-## Gate conclusion
+1. Add tests for Postiz cloud/local URL normalization.
+2. Add a payload preview/dry-run path.
+3. Create first safe YouTube draft package.
+4. Generate original Higgsfield creative only after explicit spend approval.
+5. Capture results and economics once published.
 
-Elaboration is complete enough for MVP construction. The only blockers are human-owned OAuth/account/publishing/credit-spend approvals.
+## Construction handoff decision
+
+**GO** for controlled Construction. The next build should implement the ADR-0005 loop as thin, human-gated commands/runbooks first; preserve ADR-0006's virality-first lane selection; and stop before paid generation, public publish, DM/comment/follow actions, account settings, or ad spend without explicit approval.

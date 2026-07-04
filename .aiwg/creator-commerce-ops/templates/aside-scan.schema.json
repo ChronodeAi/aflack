@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["source", "niche", "observations"],
+  "properties": {
+    "source": {"type": "string"},
+    "niche": {"type": "string"},
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["platform", "handle", "url"],
+        "properties": {
+          "platform": {"enum": ["instagram", "tiktok", "youtube", "x", "other"]},
+          "handle": {"type": "string"},
+          "display_name": {"type": "string"},
+          "profile_url": {"type": "string"},
+          "followers": {"type": ["string", "number", "integer"]},
+          "url": {"type": "string"},
+          "title": {"type": "string"},
+          "hook_text": {"type": "string"},
+          "format": {"type": "string"},
+          "views": {"type": ["string", "number", "integer"]},
+          "likes": {"type": ["string", "number", "integer"]},
+          "comments": {"type": ["string", "number", "integer"]},
+          "saves": {"type": ["string", "number", "integer"]},
+          "shares": {"type": ["string", "number", "integer"]},
+          "cta_pattern": {"type": "string"},
+          "structure": {"type": "object"},
+          "proof_monetization": {"type": "string"},
+          "proof_consistency_days": {"type": ["string", "number", "integer"]},
+          "proof_notes": {"type": "string"}
+        }
+      }
+    }
+  }
+}

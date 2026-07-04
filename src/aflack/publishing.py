@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
 import json
 from typing import Literal
+from urllib.parse import urlparse
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
@@ -38,7 +39,9 @@ class PostizPublisher:
 
     Public API facts verified from the running Postiz container:
     - Auth header is raw API key in `Authorization` (no `Bearer` prefix).
-    - `POST /api/public/v1/posts` accepts `type`, `shortLink`, `date`, `tags`,
+    - Local self-host Docker accepted `/api/public/v1/...`.
+    - Postiz Cloud documents `https://api.postiz.com/public/v1/...`.
+    - `POST /public/v1/posts` accepts `type`, `shortLink`, `date`, `tags`,
       and `posts[].integration.id` + `posts[].value[].content/image`.
     """
 
@@ -90,6 +93,41 @@ class PostizPublisher:
             self._mark(queue_id, "needs_auth", "POSTIZ_API_KEY is not set")
             raise RuntimeError("POSTIZ_API_KEY is not set")
 
+        payload = self.build_queue_payload(queue_id, integration_id, as_draft=as_draft)
+
+        try:
+            response = self._request("POST", "/api/public/v1/posts", payload)
+        except Exception as exc:
+            self._mark(queue_id, "failed", str(exc))
+            raise
+
+        postiz_id = str(response.get("id") or response.get("group") or response.get("postId") or "")
+        with connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                """
+                UPDATE publish_queue
+                SET status = %s,
+                    postiz_post_id = NULLIF(%s, ''),
+                    metadata = metadata || %s::jsonb,
+                    updated_at = now()
+                WHERE id = %s
+                """,
+                (
+                    "submitted_to_postiz",
+                    postiz_id,
+                    json.dumps({"postiz_response": response}),
+                    queue_id,
+                ),
+            )
+            conn.commit()
+        return response
+
+    def build_queue_payload(self, queue_id: int, integration_id: str, *, as_draft: bool = True) -> dict:
+        """Build the Postiz payload for a queued item without submitting it.
+
+        This supports a human-reviewable preview before mutating cloud Postiz.
+        """
+
         with connect() as conn, conn.cursor() as cur:
             cur.execute(
                 """
@@ -122,33 +160,7 @@ class PostizPublisher:
                 }
             ],
         }
-
-        try:
-            response = self._request("POST", "/api/public/v1/posts", payload)
-        except Exception as exc:
-            self._mark(queue_id, "failed", str(exc))
-            raise
-
-        postiz_id = str(response.get("id") or response.get("group") or response.get("postId") or "")
-        with connect() as conn, conn.cursor() as cur:
-            cur.execute(
-                """
-                UPDATE publish_queue
-                SET status = %s,
-                    postiz_post_id = NULLIF(%s, ''),
-                    metadata = metadata || %s::jsonb,
-                    updated_at = now()
-                WHERE id = %s
-                """,
-                (
-                    "submitted_to_postiz",
-                    postiz_id,
-                    json.dumps({"postiz_response": response}),
-                    queue_id,
-                ),
-            )
-            conn.commit()
-        return response
+        return payload
 
     def _request(self, method: str, path: str, payload: dict | None = None):
         settings = load_settings()
@@ -156,7 +168,7 @@ class PostizPublisher:
             raise RuntimeError("POSTIZ_API_KEY is not set")
         body = json.dumps(payload).encode("utf-8") if payload is not None else None
         req = Request(
-            f"{settings.postiz_base_url}{path}",
+            self._url(path),
             data=body,
             method=method,
             headers={
@@ -171,6 +183,34 @@ class PostizPublisher:
         except HTTPError as exc:
             raw = exc.read().decode("utf-8", errors="replace")
             raise RuntimeError(f"Postiz API {exc.code}: {raw}") from exc
+
+    def _url(self, path: str) -> str:
+        """Build a Postiz API URL for either local self-hosted or cloud Postiz.
+
+        Accepted `POSTIZ_BASE_URL` shapes:
+        - `http://localhost:4007` -> `http://localhost:4007/api/public/v1/...`
+        - `http://localhost:4007/api/public/v1` -> unchanged API base
+        - `https://api.postiz.com` -> `https://api.postiz.com/public/v1/...`
+        - `https://api.postiz.com/public/v1` -> unchanged API base
+        """
+
+        base = load_settings().postiz_base_url.rstrip("/")
+        resource_path = path
+        for prefix in ("/api/public/v1", "/public/v1"):
+            if resource_path.startswith(prefix):
+                resource_path = resource_path[len(prefix) :]
+                break
+        if not resource_path.startswith("/"):
+            resource_path = f"/{resource_path}"
+
+        if base.endswith("/api/public/v1") or base.endswith("/public/v1"):
+            return f"{base}{resource_path}"
+
+        host = urlparse(base).netloc.lower()
+        if host == "api.postiz.com":
+            return f"{base}/public/v1{resource_path}"
+
+        return f"{base}/api/public/v1{resource_path}"
 
     def _mark(self, queue_id: int, status: str, error: str | None = None) -> None:
         with connect() as conn, conn.cursor() as cur:

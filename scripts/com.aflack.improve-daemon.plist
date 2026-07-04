@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  launchd agent for the aflack autonomous improvement daemon.
+  Install (operator-run, not auto-installed by the agent):
+    cp scripts/com.aflack.improve-daemon.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.aflack.improve-daemon.plist
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.aflack.improve-daemon.plist
+  Runs every 6 hours (21600s). Safe loop only: distill + propose, no spend/publish.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.aflack.improve-daemon</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/ace/aflack/scripts/aflack-improve-daemon.sh</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>21600</integer>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/Users/ace/aflack/.aiwg/working/daemon-logs/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/ace/aflack/.aiwg/working/daemon-logs/launchd.err.log</string>
+    <key>WorkingDirectory</key>
+    <string>/Users/ace/aflack</string>
+</dict>
+</plist>

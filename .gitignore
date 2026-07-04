@@ -32,3 +32,12 @@ npm-debug.log*
 
 # AIWG scratch
 .aiwg/working/
+
+# Reference footage (large, re-downloadable; keep manifest only)
+.aiwg/marketing/**/reference-footage/**
+!.aiwg/marketing/**/reference-footage/manifest.md
+*.webm
+*.part
+
+# Codebase-memory MCP index (regenerable)
+.codebase-memory/

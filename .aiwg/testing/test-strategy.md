@@ -18,7 +18,7 @@
 - Migrations apply on fresh pgGraph+pgvector DB.
 - Graph traversal: Product → Script → Creative → Result.
 - `publish_smoke` creates YouTube/Postiz `needs_auth` queue row.
-- Postiz UI health (`http://localhost:4007` returns auth redirect).
+- Postiz cloud API health (`aflack postiz-integrations` returns connected channels).
 - Higgsfield CLI auth status.
 
 ### Compliance tests
@@ -50,13 +50,25 @@
 - [x] Graph traversal passes.
 - [x] Higgsfield auth passes.
 - [x] Postiz images pulled.
-- [x] Postiz stack starts.
-- [x] Postiz UI reachable (307 auth redirect).
-- [ ] Postiz admin account created (human gate).
-- [ ] YouTube connected in Postiz (human/OAuth gate).
-- [ ] Real Postiz API submit verified.
+- [x] Postiz stack starts locally when needed, bound to localhost.
+- [x] Cloud Postiz API key configured.
+- [x] YouTube connected in cloud Postiz.
+- [x] TikTok connected in cloud Postiz.
+- [x] `aflack postiz-integrations` verified against cloud Postiz.
+- [ ] Real Postiz draft submit verified.
+- [x] Postiz payload preview verified for queue `2` without submitting.
 - [ ] First generated creative scored by Virality Predictor.
 
 ## CI posture
 
 No remote CI required for solo direct-to-main MVP. Use local test commands and committed reports.
+
+
+## Construction Iteration 1 test additions
+
+- [x] Unit-test Postiz URL normalization for:
+  - `http://localhost:4007`,
+  - `http://localhost:4007/api/public/v1`,
+  - `https://api.postiz.com`,
+  - `https://api.postiz.com/public/v1`.
+- [x] Add payload preview/dry-run coverage before cloud draft submission.

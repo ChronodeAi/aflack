@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "higgsfield"
+  ],
+  "enableAllProjectMcpServers": true
+}

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import typer
@@ -10,6 +11,18 @@ from .db import connect, exec_sql
 from .compliance import check_publish_item
 from .economics import current_rollup
 from .publishing import PostizPublisher, PublishIntent
+from .learning import (
+    active_insights,
+    dedupe_open_proposals,
+    distill_insight,
+    open_proposals,
+    propose_improvement,
+    set_creator_proof,
+    upsert_creator,
+)
+from .daemon import run_improvement_cycle
+from .tracing import trace_events
+from .aside_scan import import_aside_scan
 
 app = typer.Typer(help="aflack local affiliate content pipeline")
 
@@ -236,6 +249,18 @@ def postiz_submit(queue_id: int, integration_id: str, draft: bool = True) -> Non
 
 
 @app.command()
+def postiz_preview(queue_id: int, integration_id: str, draft: bool = True) -> None:
+    """Preview the Postiz payload for a queued item without submitting it."""
+
+    try:
+        payload = PostizPublisher().build_queue_payload(queue_id, integration_id, as_draft=draft)
+    except RuntimeError as exc:
+        typer.echo(str(exc))
+        raise typer.Exit(code=2) from exc
+    typer.echo(json.dumps(payload, indent=2, sort_keys=True))
+
+
+@app.command()
 def compliance_smoke() -> None:
     """Run deterministic compliance smoke checks."""
 
@@ -265,6 +290,125 @@ def economics_status() -> None:
     typer.echo(f"contribution_margin={r.contribution_margin}")
     typer.echo(f"generated_creatives={r.generated_creatives}")
     typer.echo(f"cost_per_generated={r.cost_per_generated}")
+
+
+@app.command()
+def improve_cycle(niche: str = "gta6-ai-persona-gaming") -> None:
+    """Run one autonomous improvement cycle (scan orchestration -> distill -> propose).
+
+    Safe by design: never generates paid media, never publishes, never edits
+    skill/rule files. It records insights + proposals and a full event trace.
+    """
+
+    result = run_improvement_cycle(niche=niche)
+    typer.echo(f"trace_id={result.trace_id} run_id={result.run_id}")
+    typer.echo(f"summary={result.summary}")
+    typer.echo(f"blocked_actions={result.blocked_actions}")
+
+
+@app.command()
+def insights_list(scope: str = "", limit: int = 20, min_confidence: float = 0.0) -> None:
+    """List active, deduped insights (highest-confidence first)."""
+
+    rows = active_insights(scope or None, limit=limit, min_confidence=min_confidence)
+    for i in rows:
+        typer.echo(f"[{i.id}] {i.scope} conf={i.confidence:.2f} support={i.support_count} :: {i.statement}")
+    if not rows:
+        typer.echo("(no active insights)")
+
+
+@app.command()
+def insight_add(scope: str, statement: str, confidence: float = 0.5) -> None:
+    """Manually distill one insight (dedup-aware)."""
+
+    insight_id, created = distill_insight(scope=scope, statement=statement, confidence=confidence)
+    typer.echo(f"insight_id={insight_id} created={created}")
+
+
+@app.command()
+def proposals_list(limit: int = 50) -> None:
+    """List open improvement proposals awaiting human decision."""
+
+    rows = open_proposals(limit=limit)
+    for p in rows:
+        typer.echo(f"[{p['id']}] {p['target_type']}:{p['target_name']} ({p['status']}) :: {p['change_summary']}")
+    if not rows:
+        typer.echo("(no open proposals)")
+
+
+@app.command()
+def proposals_dedupe() -> None:
+    """Supersede duplicate open improvement proposals, keeping one live copy."""
+
+    count = dedupe_open_proposals()
+    typer.echo(f"superseded={count}")
+
+
+@app.command()
+def creator_add(
+    platform: str,
+    handle: str,
+    niche: str = "",
+    followers: int = 0,
+    display_name: str = "",
+    source_url: str = "",
+) -> None:
+    """Register a benchmark creator candidate (proof of success added separately)."""
+
+    creator_id = upsert_creator(
+        platform=platform,
+        handle=handle,
+        display_name=display_name or None,
+        niche=niche or None,
+        followers=followers or None,
+        source_url=source_url or None,
+    )
+    typer.echo(f"creator_id={creator_id}")
+
+
+@app.command()
+def creator_proof(
+    creator_id: int,
+    engagement_rate: float = 0.0,
+    monetization: str = "",
+    consistency_days: int = 0,
+    notes: str = "",
+) -> None:
+    """Attach proof-of-real-success and compute credibility (not vanity metrics)."""
+
+    credibility = set_creator_proof(
+        creator_id,
+        proof_engagement_rate=engagement_rate or None,
+        proof_monetization=monetization or None,
+        proof_consistency_days=consistency_days or None,
+        proof_notes=notes or None,
+    )
+    typer.echo(f"creator_id={creator_id} credibility={credibility}")
+
+
+@app.command()
+def aside_scan_import(path: Path) -> None:
+    """Import logged-in Aside Instagram/TikTok scan JSON into benchmark tables."""
+
+    try:
+        summary = import_aside_scan(path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        typer.echo(f"scan import failed: {exc}")
+        raise typer.Exit(code=2) from exc
+    typer.echo(f"trace_id={summary.trace_id}")
+    typer.echo(f"observations_seen={summary.observations_seen}")
+    typer.echo(f"creators_upserted={summary.creators_upserted}")
+    typer.echo(f"videos_inserted={summary.videos_inserted}")
+    typer.echo(f"videos_duplicate={summary.videos_duplicate}")
+    typer.echo(f"creators_verified_or_plausible={summary.creators_verified_or_plausible}")
+
+
+@app.command()
+def trace_show(trace_id: str) -> None:
+    """Replay a full event trace ('every bullet tracer') for one run."""
+
+    for e in trace_events(trace_id):
+        typer.echo(f"{e['created_at']} | {e['stage']:8} | {e['actor']:18} | {e['event_type']:8} | {e['payload']}")
 
 
 if __name__ == "__main__":
