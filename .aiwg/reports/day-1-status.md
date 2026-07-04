@@ -43,6 +43,10 @@
   - Product → Script → Creative → Result
   - Product → Niche → Hook
   - Script → Persona
+- Verified Higgsfield CLI authentication:
+  - account: `tech@chronode.ai`
+  - plan: ultra
+  - credits at check: 5010
 
 ## Notes
 
@@ -54,6 +58,6 @@
 
 1. Add migration history table (optional but recommended before many migrations).
 2. Add economics rollup query/command.
-3. Verify Higgsfield CLI authentication.
-4. Run niche-diagnostic scorecard and pick the first beachhead niche.
-5. Build first research ingestion adapter.
+3. Run niche-diagnostic scorecard and pick the first beachhead niche.
+4. Build first research ingestion adapter.
+5. Define daily credit/token/operator-time caps in the economics ledger.

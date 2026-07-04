@@ -41,7 +41,7 @@
 - [x] Stand up local Postgres with pgGraph + pgvector; define the data model (below).
 - [x] Implement the **economics ledger** table first — every generation/publish writes cost rows.
 - [x] Wire config/secrets loading (`.env`, gitignored).
-- [ ] Smoke-test Higgsfield CLI auth (`higgsfield account status`).
+- [x] Smoke-test Higgsfield CLI auth (`higgsfield account status`) — authenticated as `tech@chronode.ai`, ultra plan, 5010 credits.
 - [x] Validate graph traversal on the real v1 schema (Product → Script → Creative → Result).
 
 ### Day 2 — Research + niche diagnostic
