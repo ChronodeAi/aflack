@@ -1,3 +1,15 @@
+---
+ref_id: "REF-001"
+title: "Long-Term Memory System — Research & Architecture Direction"
+year: 2026
+source_type: technical_report
+authors:
+  - name: "aflack project (internal research)"
+quality_assessment:
+  grade: moderate
+  note: "Internal web-research synthesis; third-party figures directional"
+---
+
 # Long-Term Memory System — Research & Architecture Direction
 
 **Created**: 2026-07-03

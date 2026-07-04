@@ -1,0 +1,7 @@
+=== SEED-C-FIX (nano_banana_pro logo removal) ===
+Error: No model with job_type "nano_banana_pro".
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_163934_c7bd78bb-4f1b-4c32-aa51-f93a146c5692.png
+
+=== SEED-D-FIX (gpt_image_2 text replacement) ===
+https://d8j0ntlcm91z4.cloudfront.net/user_3FyXA3vFFBsvIVcZRnZbXPIjkxz/hf_20260704_164018_cddc07c5-16f0-4a97-8704-5e6a52961425.png
+ALL_DONE_FIXES

@@ -1,3 +1,15 @@
+---
+ref_id: "REF-003"
+title: "Data Sources, Indexers & Benchmarking Layer"
+year: 2026
+source_type: technical_report
+authors:
+  - name: "aflack project (internal research)"
+quality_assessment:
+  grade: moderate
+  note: "Internal web-research synthesis; third-party figures directional"
+---
+
 # Data Sources, Indexers & Benchmarking Layer — Affiliate Content Pipeline
 
 **Created**: 2026-07-03
