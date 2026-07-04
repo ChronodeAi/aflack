@@ -23,6 +23,7 @@ Cutting long-form content (streams, podcasts, trailers, gameplay) into many shor
 2. **Reused-content demonetization.** YouTube 2025 "inauthentic content" rule demonetizes mass-produced/repetitive/reused clips; TikTok Creator Rewards excludes copied or slightly-modified content; Facebook 2026 demotes duplicates. Clip farming sits in the penalty zone.
 3. **IP exposure.** GTA 6 footage is Take-Two/Rockstar IP; they are highly litigious. Commercial, at-scale farming of their footage is the risky end of fan content.
 4. **Weak affiliate fit.** Our thesis is affiliate revenue. A pre-release console-exclusive has little to affiliate-sell (no product demo, thin pre-order affiliate). Clip payouts are low: TikTok ~$20-40/M views (60s+ only), YouTube Shorts ~$50-150/M views.
+5. **Misses the best YouTube money surface.** YouTube long-form generally pays far more than Shorts/TikTok (gaming long-form commonly ~$2,000-5,000+ per million views, varying by geography/audience/ad inventory). Pure clip farming optimizes short reposts, not the long-form channel asset where RPM is strongest.
 5. **Compliance/labeling.** Realistic AI-generated media requires disclosure/labeling on TikTok; combined with reused footage this compounds risk.
 
 ## Where GTA 6 fits well: AI-persona gaming/hype channel
@@ -32,7 +33,7 @@ Instead of reposting Rockstar footage, generate ORIGINAL content that rides the 
 - AI-persona commentary/hype/countdown, "what we know," Vice City lore, reaction-style takes, predictions.
 - Uses Higgsfield generation (original) → avoids reused-content demonetization.
 - Builds a gaming audience during the biggest hype window of the year.
-- Monetizes via: creator payouts + gaming-adjacent AFFILIATE (capture cards, controllers, gaming chairs, monitors, headsets, GTA+/gift cards, VPNs, game marketplaces) + brand deals.
+- Monetizes via: YouTube Shorts as attention funnel -> YouTube long-form as high-RPM revenue surface -> gaming-adjacent AFFILIATE (capture cards, controllers, gaming chairs, monitors, headsets, GTA+/gift cards, VPNs, game marketplaces) + brand deals.
 - Rights-safer: commentary + original visuals rather than wholesale republishing of protected footage.
 
 ## Scorecard comparison (1-5)
@@ -54,7 +55,7 @@ Dimensions: content velocity, visual demo strength, affiliate availability, comp
 ## Recommendation
 
 1. Do NOT make pure clip farming the core (mode mismatch + IP + monetization risk).
-2. If we want GTA 6, run the **AI-persona gaming channel** variant so our Higgsfield engine stays central and content is original.
+2. If we want GTA 6, run the **AI-persona gaming channel** variant so our Higgsfield engine stays central and content is original. Make YouTube first-class: Shorts for discovery, long-form for RPM, affiliate/brand deals for stacked monetization.
 3. Decide the beachhead by INTENT:
    - If the near-term goal is measurable affiliate revenue fast → beauty/wellness.
    - If the near-term goal is audience/brand building on a huge wave (monetize later) → GTA6 AI-persona gaming.

@@ -41,6 +41,7 @@ Track at minimum:
 - Affiliate clicks, conversions, commission revenue, refunds/chargebacks where visible.
 - Contribution margin after credits/tokens/tool spend.
 - MMR/MRR and trend by niche.
+- Per-platform RPM/revenue: YouTube long-form (highest RPM), YouTube Shorts, TikTok Creator Rewards, affiliate commission, brand deals. Track revenue per platform per million views so distribution effort follows the money (YouTube long-form is the strongest monetization surface).
 
 **Scale gate**: a niche can move from diagnostic to repeatable production only when contribution margin is positive and the creative loop produces repeatable winners without uncontrolled credit/token burn.
 
