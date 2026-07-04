@@ -1,0 +1,32 @@
+# Secrets / credentials
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# Local raw event store / generated media (keep out of git; large + regenerable)
+artifacts/
+media/
+data/raw/
+*.mp4
+*.mov
+*.wav
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# AIWG scratch
+.aiwg/working/

@@ -1,0 +1,121 @@
+# Solution Profile
+
+**Project**: Automated Affiliate Content Pipeline
+**Generated**: 2026-07-03
+**Profile recommendation**: **Prototype / MVP**
+
+## Recommended Profile
+
+**Selected profile**: MVP (local-first, fast validation)
+
+**Why**:
+- Target is operational within **1 week**, not enterprise rollout.
+- Single operator, local machine, no team coordination overhead.
+- High uncertainty around niche/product/content fit; the system must learn quickly.
+- Long-term architecture should remain clean enough to evolve into an owned e-commerce content engine.
+
+## Priority Weights
+
+| Dimension | Weight | Rationale |
+|---|---:|---|
+| Speed | 0.40 | One-week operational target; learn from real outputs quickly. |
+| Quality | 0.25 | Generated personas/videos must be realistic enough to benchmark against top creators. |
+| Compliance/Risk | 0.20 | Beauty/health content can easily cross into medical/FTC issues; publish gate is mandatory. |
+| Cost | 0.15 | Local-first reduces infra cost, but Higgsfield/API usage will be variable. |
+
+Total: 1.00
+
+## Scale Assumptions
+
+- **Operators**: 1
+- **Video generation target**: ~20 videos/day
+- **Niches at MVP**: 1 narrow beachhead niche
+- **Products under active test**: 3–10 at a time
+- **Personas**: 3–5 reusable AI personas initially
+- **Benchmark set**: 15–50 winning videos/products per niche
+- **Memory/event volume**: low-to-moderate, but must be structured from day one to prevent context rot.
+
+## Recommended Technical Shape
+
+### Local modular pipeline
+
+Run as local scripts/services with clearly separated modules:
+
+- `research_ingest`: Firecrawl, Creative Center, third-party tools, Aside workflows
+- `benchmarking`: gold-set builder + video/product tagging
+- `persona`: persona briefs + Higgsfield identity/reference workflow
+- `script`: hook/template/script generation + claim-safety hints
+- `generation`: Higgsfield image/video/Marketing Studio integration
+- `validation`: Virality Predictor + benchmark comparison
+- `compliance`: FTC/TikTok/AI-persona checks + human approval
+- `publishing`: manual/semi-automated posting path
+- `memory`: capture hooks + retrieval over event store
+
+### Source of truth
+
+- **Local Postgres** for structured events/results.
+- **Local object storage / filesystem** for videos, screenshots, transcripts, product pages, and generated assets.
+- **Memory engines as indexes**, not the source of truth.
+
+### Memory profile
+
+- **Coding/build memory**: agentmemory remains active for engineering session memory.
+- **Marketing-domain memory**: evaluate Mem0, Zep/Graphiti, and Cognee.
+- **Minimum v1 requirement**: capture episodic events, semantic facts, and procedural rules without dumping full history into context.
+
+## Security / Compliance Posture
+
+**Selected posture**: Baseline + marketing/compliance hard gates.
+
+### Required controls
+
+- Store credentials/tokens outside committed files.
+- Separate raw evidence (screenshots/pages/videos) from distilled memory.
+- Maintain source links/provenance for market research and claims.
+- Apply a pre-publish compliance checklist to every video:
+  - Affiliate disclosure present and clear.
+  - No prohibited medical/weight-loss/diagnostic claims.
+  - No false firsthand claims by AI personas.
+  - No impersonation of real people.
+  - Product claims align with source/label.
+
+## Operational Profile
+
+**MVP cadence**:
+
+- Daily: generate and validate ~20 videos.
+- Daily: record results and learnings.
+- Weekly: kill/iterate/scale the current niche.
+- Per niche: maintain a benchmark gold set and a niche scorecard.
+
+**Human gates**:
+
+- Product shortlist approval.
+- Persona approval.
+- Compliance approval before publishing.
+- Niche pivot / scale decision.
+
+## Key Risks and Mitigations
+
+| Risk | Likelihood | Impact | Mitigation |
+|---|---|---:|---|
+| AI content looks generic / not competitive | High | High | Benchmark against top creators + Virality Predictor gate before publish. |
+| Health/beauty claims violate platform/FTC rules | Medium | High | Claim classifier + human compliance gate. |
+| Third-party intelligence source breaks | High | Medium | Swappable adapters + Aside logged-in fallback. |
+| Context/memory rot from too much experiment data | Medium | High | Own raw event store; dedup-on-write; relevance-gated retrieval; temporal invalidation. |
+| One-week scope creep | High | High | MVP = one niche, 3–5 personas, one generation path, one validation path. |
+
+## Profile Overrides
+
+- Although MVP profile normally minimizes architecture, the memory/event-store decision is intentionally stronger because the project depends on compounding learning.
+- Direct-to-main delivery is acceptable because this is a solo local project.
+
+## Recommended Phase Entry
+
+Proceed to **Inception** after intake review, but keep the first week as an MVP construction sprint:
+
+1. Confirm beachhead niche.
+2. Define MVP schema + capture hooks.
+3. Build first pipeline loop.
+4. Generate and validate first batch.
+5. Retrospective into memory.
