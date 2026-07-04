@@ -29,6 +29,7 @@ The field has converged on three scopes — our schema must cover each:
 | **Mem0** | Vector + optional graph + key-value; user/session/agent scopes; auto extraction + dedup; multi-signal retrieval | Fastest to integrate; product-ready personalization; largest community (~47k stars); free tier | Graph ("Mem0g") gated behind paid Pro (~$249/mo); mid-pack on temporal benchmark (~49% LongMemEval) | Strong default memory *API* for persona/user-facing memory; weak if we need heavy temporal reasoning |
 | **Zep / Graphiti** | Temporal knowledge graph; facts stored with `valid_at`/`invalid_at` validity windows; hybrid semantic+BM25+graph retrieval | "What was true as of last Tuesday" — temporal correctness + clean invalidation (kills stale-fact rot) | Higher per-retrieval latency; graph adds ops; some features gated to Zep Cloud (Graphiti core is OSS, self-hostable) | Best for our benchmark/performance facts that change over time; strong anti-rot invalidation |
 | **Cognee** | Graph+vector+relational hybrid; ECL (Extract→Cognify→Load) pipeline; 14 retrieval modes; self-improving "memify"; MCP + LangGraph native | Most complete graph-native "control plane"; 100% local (SQLite/LanceDB/KuzuDB) incl. Ollama; production proof (Bayer, etc.) | Heaviest/most complex; no SOC2/HIPAA certs (fine for us early) | Best if we want ONE self-hosted engine to remember + reason + improve; steeper setup |
+| **pgGraph** | PostgreSQL extension (Rust/`pgrx`) that adds graph traversal, shortest-path, relationship, and cross-table node search over ordinary Postgres tables; graph is a derived index | Perfect fit for "own Postgres as source of truth"; no separate graph DB; works in local Docker/Homebrew; Postgres 14–18; pairs naturally with `pgvector` for all-in-Postgres relational+graph+vector memory | Early alpha (v0.1.8 as of 2026-07); maintainers recommend Docker/dev DB only and avoiding production use | Strong Week-1 local candidate for a lightweight marketing memory graph; evaluate before heavier engines |
 | **Letta (MemGPT)** | OS-style tiered memory: small self-edited core + large archival/recall; agent curates its own working set via tool calls | Long-running stateful agents that own their memory | Opinionated runtime (a second orchestration layer); trades determinism for emergence — less control over exact capture/forget | Interesting for an autonomous "content operator" agent later; not the base memory store |
 | **LangMem** | LangGraph-native hot-path + background memory | Teams already on LangGraph | Lock-in; limited value outside LangGraph | Only if we standardize on LangGraph |
 | **Supermemory** | Universal memory + RAG, MCP integrations (Claude Code/OpenCode) | Coding-agent + cross-tool memory | Closed source; self-host needs enterprise deal | Not for an OSS "never forgets" build |
@@ -68,7 +69,7 @@ A layered design that mirrors agentmemory's principles but is domain-fit and swa
                  inject ONLY relevant memory into agent context
 ```
 
-- **Engine choice (leaning):** start with **Mem0** (fastest to working memory, dedup + scopes) for persona/user + general memory, and **evaluate Zep/Graphiti** in parallel for the temporal performance-facts layer (product/hook/creative win-rates with validity windows). If we want a single self-hosted brain later, **Cognee** is the consolidation candidate. Keep **agentmemory** for the coding side of the build.
+- **Engine choice (leaning):** for Week 1, start with **Postgres + pgGraph + pgvector** as the local default because it aligns exactly with "own the raw event store" and keeps graph/vector retrieval in the same database. Evaluate **Mem0**, **Zep/Graphiti**, and **Cognee** in week 2 against our own data. If pgGraph is too immature, fall back to Mem0 for fast general/persona memory and Zep/Graphiti for temporal performance facts. Keep **agentmemory** for the coding side of the build.
 - **Capture policy (the "what/when/why/how"):** codify hooks like agentmemory —
   - *When*: end of each content experiment, each publish, each performance pull, each niche decision, each compliance ruling.
   - *What*: distilled facts, not raw logs ("hook A held 58% at 3s on beauty-tool X" not the whole transcript).
@@ -79,7 +80,7 @@ A layered design that mirrors agentmemory's principles but is domain-fit and swa
 
 ## Open questions to resolve with deeper research + a bake-off
 
-- [ ] Run a 2-3 engine bake-off (Mem0 vs Zep/Graphiti vs Cognee) on OUR data: store real experiment results, re-run the generation agent, measure whether creative quality/hit-rate improves over time.
+- [ ] Run a 3-4 engine bake-off (Postgres+pgGraph+pgvector vs Mem0 vs Zep/Graphiti vs Cognee) on OUR data: store real experiment results, re-run the generation agent, measure whether creative quality/hit-rate improves over time.
 - [ ] Confirm current OSS vs paid boundaries live (Mem0 graph tier, Zep Cloud gates, Cognee local stack) — pricing/limits change.
 - [ ] Decide self-host vs managed for v1 (favor self-host + local embeddings for "never forgets" + cost control; Cognee/Graphiti both run local).
 - [ ] Define the marketing-domain schema (entities: Product, Niche, Persona, Hook, Script, Creative, Variant, Channel, Disclosure, Claim, Result, Lesson) and the capture-hook triggers.
@@ -88,5 +89,6 @@ A layered design that mirrors agentmemory's principles but is domain-fit and swa
 ## Immediate next actions
 
 - [ ] Draft the marketing-domain memory schema + capture-hook trigger list as a spec artifact.
-- [ ] Stand up a throwaway Mem0 local instance and a Graphiti local instance; ingest 20 sample results; compare retrieval quality + invalidation behavior.
+- [ ] Stand up a local pgGraph Postgres container and verify table registration + 2-hop traversal over sample Product→Creative→Result data.
+- [ ] Stand up throwaway Mem0, Graphiti, and/or Cognee local instances; ingest 20 sample results; compare retrieval quality + invalidation behavior.
 - [ ] Document the "own the raw event store" decision as an ADR (avoids lock-in).

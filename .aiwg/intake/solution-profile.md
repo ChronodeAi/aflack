@@ -74,7 +74,7 @@ Run as local scripts/services with clearly separated modules:
 
 ### Source of truth
 
-- **Local Postgres** for structured events/results.
+- **Local Postgres** for structured events/results; confirmed local-first. Evaluate **pgGraph** as the in-Postgres graph layer and **pgvector** for embeddings so the v1 memory substrate can be relational + graph + vector without a separate graph DB.
 - **Local object storage / filesystem** for videos, screenshots, transcripts, product pages, and generated assets.
 - **Memory engines as indexes**, not the source of truth.
 

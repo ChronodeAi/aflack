@@ -29,9 +29,10 @@
 ## Tech decisions to lock on Day 1
 
 - **Language**: Python for pipeline + data; reuse existing Node CLIs (Higgsfield, aiwg, aside) via subprocess.
-- **Event store**: local Postgres (source of truth) + local filesystem/object storage for media/evidence.
+- **Event store**: local **Postgres (source of truth)** + local filesystem/object storage for media/evidence. Decision confirmed: run locally.
+- **Graph/memory-in-DB (candidate)**: **pgGraph** (Postgres extension) to get graph traversal/shortest-path/relationship queries over our own tables without a separate graph DB — "tables stay source of truth, graph is a derived index." Plus **pgvector** for embeddings. This makes memory potentially all-in-Postgres (relational + graph + vector). pgGraph is early alpha, so run it via its Docker image (`ghcr.io/evokoa/pggraph`) or Homebrew in a dev/local DB only — not production.
 - **Coding memory**: agentmemory (already running).
-- **Marketing memory**: defer engine choice; write a thin `memory` interface now, run the Mem0/Zep-Graphiti/Cognee bake-off in week 2. Do not block week-1 on it.
+- **Marketing memory**: write a thin `memory` interface now (swappable). Week-1 leaning: Postgres + pgGraph + pgvector as the local default. Keep the Mem0 / Zep-Graphiti / Cognee bake-off for week 2 as comparison, but the all-in-Postgres path may remove the need for a separate graph engine. Do not block week-1 on the bake-off.
 
 ## Day-by-day plan
 
@@ -121,7 +122,8 @@ Every generation and publish writes to `CostLedger`. Daily rollup computes:
 
 ## Immediate next actions (Day 1 kickoff)
 
-1. Confirm Postgres availability locally (or choose SQLite fallback for week 1).
+1. Local DB confirmed. Stand up Postgres locally via the pgGraph Docker image (`docker run ... ghcr.io/evokoa/pggraph:0.1.8`) or Homebrew tap; enable `CREATE EXTENSION graph;` and `pgvector`.
 2. Create `src/` skeleton + `CostLedger` + data model migrations.
 3. Verify Higgsfield auth + a 1-credit smoke generation.
 4. Confirm which niches to run through the scorecard on Day 2.
+5. Smoke-test pgGraph: register two related tables, build the graph, run a 2-hop traversal to validate the extension before committing to the all-in-Postgres memory path.
