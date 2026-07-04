@@ -13,6 +13,7 @@ data/raw/
 *.mp4
 *.mov
 *.wav
+.aiwg/marketing/**/assets/*.png
 
 # Python
 __pycache__/

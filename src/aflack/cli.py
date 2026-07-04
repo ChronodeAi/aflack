@@ -211,6 +211,31 @@ def publish_smoke() -> None:
 
 
 @app.command()
+def postiz_integrations() -> None:
+    """List connected Postiz integrations (requires POSTIZ_API_KEY)."""
+
+    try:
+        integrations = PostizPublisher().list_integrations()
+    except RuntimeError as exc:
+        typer.echo(str(exc))
+        raise typer.Exit(code=2) from exc
+    for item in integrations:
+        typer.echo(f"{item.get('id')} | {item.get('identifier')} | {item.get('name')}")
+
+
+@app.command()
+def postiz_submit(queue_id: int, integration_id: str, draft: bool = True) -> None:
+    """Submit a queued item to Postiz (draft by default)."""
+
+    try:
+        response = PostizPublisher().submit_queue_item(queue_id, integration_id, as_draft=draft)
+    except RuntimeError as exc:
+        typer.echo(str(exc))
+        raise typer.Exit(code=2) from exc
+    typer.echo(response)
+
+
+@app.command()
 def compliance_smoke() -> None:
     """Run deterministic compliance smoke checks."""
 
