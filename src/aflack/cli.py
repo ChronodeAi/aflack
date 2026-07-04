@@ -7,6 +7,8 @@ from pathlib import Path
 import typer
 
 from .db import connect, exec_sql
+from .compliance import check_publish_item
+from .economics import current_rollup
 from .publishing import PostizPublisher, PublishIntent
 
 app = typer.Typer(help="aflack local affiliate content pipeline")
@@ -206,6 +208,38 @@ def publish_smoke() -> None:
         )
     )
     typer.echo(f"Created Postiz publish intent queue_id={queue_id} status=needs_auth")
+
+
+@app.command()
+def compliance_smoke() -> None:
+    """Run deterministic compliance smoke checks."""
+
+    ok = check_publish_item(
+        source_provenance="original_ai_visuals",
+        disclosure_text="Disclosure: AI-assisted content; affiliate links may earn commission.",
+        script_body="GTA6 countdown commentary with original visuals.",
+    )
+    blocked = check_publish_item(
+        source_provenance="same_seed_regeneration_of_official_footage",
+        disclosure_text="",
+        script_body="I played the leaked build and this will cure your boredom.",
+    )
+    typer.echo(f"allowed_sample passed={ok.passed} blocks={ok.blocks} warnings={ok.warnings}")
+    typer.echo(f"blocked_sample passed={blocked.passed} blocks={blocked.blocks} warnings={blocked.warnings}")
+    if ok.passed is not True or blocked.passed is not False:
+        raise typer.Exit(code=1)
+
+
+@app.command()
+def economics_status() -> None:
+    """Print the current all-time economics rollup."""
+
+    r = current_rollup()
+    typer.echo(f"total_cost={r.total_cost}")
+    typer.echo(f"revenue={r.revenue}")
+    typer.echo(f"contribution_margin={r.contribution_margin}")
+    typer.echo(f"generated_creatives={r.generated_creatives}")
+    typer.echo(f"cost_per_generated={r.cost_per_generated}")
 
 
 if __name__ == "__main__":
