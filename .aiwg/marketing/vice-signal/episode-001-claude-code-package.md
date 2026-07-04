@@ -10,10 +10,10 @@
 | Format | YouTube Short, vertical 9:16, 30–45 seconds |
 | CTA keyword | JARVIS |
 | Lead magnet | GTA6 AI Content Workflow |
-| Status | PRE-GENERATION — awaiting human approval |
-| Generation performed | NO |
+| Status | GENERATED — awaiting final-render approval (see episode-001-generation-2026-07-04.md) |
+| Generation performed | YES — 2026-07-04, 7 Seedance 2.0 jobs |
 | Postiz submission | NO |
-| Higgsfield credits spent | 0 |
+| Higgsfield credits spent | 360 |
 | Date prepared | 2026-07-04 |
 
 ## 2. One-Line Premise
