@@ -15,6 +15,9 @@
 | R-008 | Postiz AGPL boundary misunderstood | Low | High | API-only separate service; no vendoring/modifying Postiz | Architecture |
 | R-009 | Claude director over-produces non-actionable ideas | Medium | Medium | Fixed prompt, cost/time limits, output schema, event capture | Operator |
 | R-010 | No direct affiliate fit in GTA6 | Medium | Medium | Loadout Lab focuses gaming-adjacent affiliate; YouTube long-form RPM | Strategy |
+| R-011 | Over-reliance on Higgsfield (bans/throttling/payment issues per Forbes/Reddit/X-suspension) | Medium | High | Keep generation behind swappable interface; evaluate alt generators; own audience/lead magnet/posting infra | Architecture |
+| R-012 | Scaling volume before funnel works burns credits | High | High | Prove one hook->CTA->lead-magnet->conversion loop before 20/day; gate on cost-per-winning-video | Operator |
+| R-013 | Comment-to-DM automation compliance (opt-in, disclosure, no scraping) | Medium | High | YouTube-native funnel (pinned comment + description) first; opt-in + disclosure if DM automation later | Compliance |
 
 ## Top show-stoppers
 

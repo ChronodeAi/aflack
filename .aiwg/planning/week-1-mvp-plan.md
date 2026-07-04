@@ -14,6 +14,7 @@
 - Every stage writes to the local event store so nothing is forgotten.
 - Track economics from the first generated video (credits, tokens, tool spend, operator minutes).
 - Swappable adapters: research source, memory engine, generation model, publish target.
+- Funnel-first: post's job is to trigger a keyword/pinned-link action; lead magnet is the conversion asset. Do not scale volume until the funnel works.
 
 ## Success criteria (end of week 1)
 
@@ -98,6 +99,8 @@ Core entities (each also links back to raw evidence in the event store):
 | Result | id, creative_id, channel_id, views, retention, ctr, conversions, revenue |
 | Lesson | id, scope (episodic/semantic/procedural), content, links |
 | CostLedger | id, ref_type, ref_id, cost_type (higgsfield/token/tool/operator), amount, ts |
+| LeadMagnet | id, title, description, url, status |
+| FunnelKeyword | id, keyword, lead_magnet_id, platform, delivery_mode, dm_copy, disclosure_text, status |
 
 ## Economics tracking (from Day 1)
 

@@ -20,6 +20,8 @@
 | FR-011 | Score generated videos before publishing. | Pending Virality Predictor wrapper |
 | FR-012 | Publish via Postiz after compliance approval. | Postiz UI up; API adapter pending |
 | FR-013 | Capture post-publish metrics into results table. | Pending |
+| FR-014 | Maintain lead magnets + one-word funnel keywords. | Implemented v1 schema |
+| FR-015 | Use YouTube-native funnel delivery (pinned comment + description) before IG/DM automation. | Accepted |
 
 ## Non-functional requirements
 
@@ -42,6 +44,8 @@
 - US-004: As the compliance gate, I can reject footage derived from Rockstar pre-release material.
 - US-005: As the memory system, I can store a lesson and later retrieve only relevant context.
 - US-006: As the operator, I can see whether the system is profitable per video/platform.
+- US-007: As the operator, I can map a one-word CTA keyword to a lead magnet without relying on Instagram DM automation.
+- US-008: As the director, I can run a lean weekly/daily routine without spawning a large agent org chart.
 
 ## Acceptance criteria for Elaboration complete
 
