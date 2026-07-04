@@ -70,7 +70,7 @@ Run as local scripts/services with clearly separated modules:
 - `generation`: Higgsfield image/video/Marketing Studio integration
 - `validation`: Virality Predictor + benchmark comparison
 - `compliance`: FTC/TikTok/AI-persona checks + human approval
-- `publishing`: manual/semi-automated posting path
+- `publishing`: submit compliance-approved creatives to **Postiz** (`gitroomhq/postiz-app`) for scheduling/posting via its Public API / SDK / agent CLI; Aside fallback for blocked flows
 - `memory`: capture hooks + retrieval over event store
 
 ### Source of truth
@@ -78,6 +78,12 @@ Run as local scripts/services with clearly separated modules:
 - **Local Postgres** for structured events/results; confirmed local-first. Evaluate **pgGraph** as the in-Postgres graph layer and **pgvector** for embeddings so the v1 memory substrate can be relational + graph + vector without a separate graph DB.
 - **Local object storage / filesystem** for videos, screenshots, transcripts, product pages, and generated assets.
 - **Memory engines as indexes**, not the source of truth.
+
+### Posting / scheduling profile
+
+Use **Postiz** (`gitroomhq/postiz-app`) as the open-source social scheduling/posting layer. Keep Postiz as a separate self-hosted service and integrate over its Public API / Node SDK / `postiz-agent` CLI. This prevents the MVP from spending a week hand-rolling YouTube/TikTok/Instagram/X posting adapters.
+
+License boundary: Postiz is **AGPL-3.0**. Internal self-hosted use is fine for this MVP. If/when this project becomes an AIWG framework, Postiz should be documented as an external optional dependency; do not vendor or modify/distribute Postiz source unless we accept AGPL obligations.
 
 ### Memory profile
 

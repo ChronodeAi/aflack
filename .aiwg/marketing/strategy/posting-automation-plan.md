@@ -1,88 +1,56 @@
-# Posting Automation Plan — Cross-Platform Distribution
+# Posting Automation Plan — Postiz-backed Distribution
 
 **Created**: 2026-07-04
-**Context**: User noted that if we test clip-farming / GTA6 / gaming content, we need automated posting to platforms, including YouTube.
-**Assumption**: "conforms" in the note means "platforms."
+**Updated**: 2026-07-04
+**Decision**: Use Postiz (`gitroomhq/postiz-app`) as the open-source scheduling/posting app.
+**ADR**: `.aiwg/architecture/adr-0001-postiz-posting-scheduler.md`
 
 ## Strategy
 
-Build a **publishing adapter layer** rather than hard-coding one platform:
+Use **Postiz** as the publishing/scheduling backbone instead of hand-rolling platform adapters.
 
 ```
-Creative → Compliance Gate → Platform Render Profile → Publish Queue → Platform Adapter → Result Capture
+Creative → Compliance Gate → Platform Render Profile → Publish Queue → Postiz API/SDK/agent → Platforms → Result Capture
 ```
 
-Each platform adapter should support:
+Our pipeline owns:
 
-- draft/private upload first,
-- metadata/caption/hashtag templating,
-- compliance/disclosure injection,
-- scheduled/manual approval mode,
-- post URL/status capture,
-- analytics pullback into `results`,
-- economics ledger entries for operator time and platform-specific costs.
+- research,
+- generation,
+- validation,
+- compliance approval,
+- economics ledger,
+- memory/event store.
 
-## Platform priority
+Postiz owns:
 
-### 1. YouTube Shorts
+- calendar/scheduling,
+- platform OAuth/connection management,
+- posting execution,
+- multi-platform support,
+- retries/platform-specific mechanics where available.
 
-Why first-class:
+## Why Postiz
 
-- Stronger long-term channel asset than pure TikTok.
-- Better archive/search/discovery surface.
-- Shorts can compound into long-form gaming channel strategy later.
-- GTA6/gaming hype is naturally YouTube-native.
+Verified 2026-07-04:
 
-Monetization economics (why YouTube-first):
+- OSS, active, mature: `gitroomhq/postiz-app`, ~32.7k stars, TypeScript/Next.js, pushed 2026-07-03.
+- License: **AGPL-3.0**.
+- Native platforms include YouTube, TikTok, Instagram, Facebook, X, Reddit, LinkedIn, Pinterest, Threads, Bluesky, Mastodon, Discord, Slack.
+- Has Public API, Node SDK (`@postiz/node`), n8n node, Make integration, and a new `postiz-agent` CLI for agents.
 
-- YouTube long-form ad revenue (55% creator share) pays far more per view than TikTok — commonly ~$2,000-5,000+ per million views for gaming long-form, and much higher in premium niches. This is the primary money surface.
-- YouTube Shorts pays from the Shorts ad pool — modest (~$50-150 per million views) but still generally beats TikTok and funnels viewers into long-form + affiliate.
-- TikTok Creator Rewards pays ~$20-40 per million and only on 60s+ videos; sub-minute clips earn nothing directly.
-- Strategic implication: the highest-paying surface is long-form, which pure clip farming does NOT produce. Use Shorts as top-of-funnel attention, long-form as the revenue capture, affiliate + brand deals stacked on top.
-- Funnel shape for GTA6/gaming: AI-persona Shorts (attention) -> long-form GTA6 content (high RPM) -> gaming-adjacent affiliate + brand deals.
+## Licensing boundary
 
-Official automation notes:
+For our use:
 
-- YouTube Data API supports uploading videos via `videos.insert` and setting metadata.
-- The upload guide uses OAuth 2.0 (`client_secrets.json`) for authorized channel access.
-- Current YouTube docs note that API projects created after July 28, 2020 that are not verified/audited have videos uploaded via `videos.insert` restricted to private viewing mode until the project passes a YouTube API Services audit.
-- Default quota is enough for our target scale in theory (100 `videos.insert` calls/day), but quota and hidden daily upload limits should be treated as operational constraints.
+- Solo self-hosted internal use is fine.
+- Integrate over Postiz's Public API / SDK / CLI as a separate service.
+- Do **not** vendor, fork, or modify Postiz inside our AIWG framework unless we accept AGPL obligations.
+- When/if this becomes an AIWG framework, Postiz should be documented as an external optional dependency, not bundled source.
 
-Recommended v1:
+## Data model impact
 
-1. Build a YouTube adapter that can upload as **private/draft** first.
-2. Keep human approval/publish step until API verification/audit is resolved.
-3. Use Aside browser automation as a fallback for logged-in composer flows if official API gating blocks public posts.
-4. Store YouTube video ID, privacy state, publish URL, title, description, tags, thumbnail, and analytics pulls.
-
-### 2. TikTok
-
-Official automation notes:
-
-- TikTok Content Posting API Direct Post initializes a video export, returns an `upload_url`, and requires uploading the file to TikTok for processing.
-- Direct posting requires app/creator authorization and platform constraints; real-world direct public posting can require review/audit.
-
-Recommended v1:
-
-1. Prefer official Content Posting API if feasible.
-2. Otherwise use Aside for logged-in manual/composer automation.
-3. Keep manual review before public publish.
-
-### 3. Instagram Reels / Facebook Reels / X
-
-Treat as adapters after YouTube/TikTok. Do not block week 1 on them.
-
-## GTA6 / clip farming-specific rule
-
-If we run a GTA6 content branch, the publishing layer should default to **original AI-persona gaming content** and avoid pure reused clip farming as the core. If any third-party footage is used:
-
-- Use only short, transformed, commentary-led excerpts.
-- Keep original voice/persona commentary central.
-- Track source provenance.
-- Avoid mass duplicate templates.
-- Expect monetization and IP risk.
-
-## Data model additions
+We still keep a local `publish_queue`, but it becomes a queue of **Postiz scheduling intents**, not direct platform API calls.
 
 Add/extend:
 
@@ -90,34 +58,66 @@ Add/extend:
   - creative_id
   - channel_id
   - platform
-  - target_format
+  - target_format (`short`, `longform`, `reel`, etc.)
   - title
   - description
   - hashtags
   - disclosure_text
-  - status (`draft`, `queued`, `uploaded_private`, `needs_manual_publish`, `published`, `failed`)
+  - status (`draft`, `queued`, `submitted_to_postiz`, `scheduled`, `published`, `failed`, `needs_manual_review`)
   - scheduled_at
   - published_at
+  - postiz_post_id
   - platform_post_id
   - platform_url
   - error
 
 - `platform_credentials`
   - platform
-  - auth_mode (`oauth`, `aside_session`, `manual`)
+  - auth_mode (`postiz_oauth`, `postiz_api_key`, `aside_session`, `manual`)
   - status
   - notes
 
-Credentials/tokens must stay outside git (`.env`, OS keychain, or platform credential store).
+Credentials/tokens stay in Postiz / `.env` / secure store, never git.
 
-## Safety defaults
+## YouTube-first economics
 
-- Never publish public automatically until the compliance gate passes.
-- For YouTube, prefer private upload + human publish until API verification/audit is known.
-- For TikTok, prefer draft/inbox/manual approval where possible.
-- Record all disclosures in `disclosures`.
-- Record all source/provenance for clips in the event store.
+YouTube should be first-class:
 
-## Recommended next build step
+- YouTube long-form = primary RPM/revenue surface (~$2,000-5,000+ per million views for gaming long-form, varies by geography/audience/ad inventory).
+- YouTube Shorts = top-of-funnel (~$50-150 per million views).
+- TikTok = reach, trend discovery, lower direct payout (~$20-40 per million, 60s+ only).
 
-Add the `publish_queue` schema and a no-op `YouTubePublisher` adapter that can prepare metadata and mark an item as `needs_auth` / `needs_manual_publish`. Wire actual OAuth/API upload only after we create a Google Cloud project and confirm verification/audit path.
+For GTA6/gaming:
+
+```
+AI-persona Shorts → YouTube long-form → gaming-adjacent affiliate + brand deals
+```
+
+## Safe publishing defaults
+
+- Compliance gate must pass before submitting anything to Postiz.
+- Use draft/private/manual-review modes where possible.
+- For YouTube, expect API audit/private-upload constraints under the hood; Postiz may make the UI flow easier but cannot bypass YouTube policy.
+- For TikTok, expect posting authorization/review constraints; use Aside fallback if needed.
+- Store all disclosures and source provenance.
+
+## Immediate implementation plan
+
+1. Read Postiz self-host + Public API docs.
+2. Decide local deployment strategy:
+   - separate `docker compose` stack for Postiz,
+   - keep our pgGraph DB separate from Postiz's internal Postgres unless docs prove sharing is safe.
+3. Add `publish_queue` and `platform_credentials` migration.
+4. Add `PostizPublisher` adapter:
+   - create/schedule post via API/SDK/CLI,
+   - record `postiz_post_id`,
+   - poll/status update,
+   - record final platform URL.
+5. Keep Aside fallback for platform login/composer work.
+
+## Open verification items
+
+- Public API endpoints and auth for self-hosted deployments.
+- Media upload/schedule support per platform, especially YouTube video and TikTok video.
+- Whether Node SDK or `postiz-agent` CLI is better for our Python pipeline.
+- Required env vars and resource footprint for local Postiz.

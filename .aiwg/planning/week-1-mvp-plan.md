@@ -33,6 +33,7 @@
 - **Graph/memory-in-DB (candidate)**: **pgGraph** (Postgres extension) to get graph traversal/shortest-path/relationship queries over our own tables without a separate graph DB — "tables stay source of truth, graph is a derived index." The pinned pgGraph image has `graph` + `pg_cron` but **does not include `pgvector`**, so embeddings require a custom image later or a separate vector store. pgGraph is early alpha, so run it via its Docker image (`ghcr.io/evokoa/pggraph`) in a dev/local DB only — not production.
 - **Coding memory**: agentmemory (already running).
 - **Marketing memory**: write a thin `memory` interface now (swappable). Week-1 leaning: Postgres + pgGraph + pgvector as the local default. Keep the Mem0 / Zep-Graphiti / Cognee bake-off for week 2 as comparison, but the all-in-Postgres path may remove the need for a separate graph engine. Do not block week-1 on the bake-off.
+- **Posting/scheduling**: Postiz (`gitroomhq/postiz-app`) as the open-source scheduler/posting app. Integrate via Public API / Node SDK / `postiz-agent` CLI as a separate self-hosted service. Do not hand-roll platform adapters unless Postiz cannot cover a required flow.
 
 ## Day-by-day plan
 
@@ -64,10 +65,10 @@
 - Build `validation` module: Higgsfield Virality Predictor (`brain_activity`) scoring + benchmark comparison; set a pass/fail threshold.
 - Iterate creatives until they clear the gate; log all costs.
 
-### Day 6 — Compliance + publish/test
+### Day 6 — Compliance + Postiz publish/test
 - Build `compliance` module: automated checklist (disclosure present, no medical/weight-loss claims, no false firsthand claims, no impersonation, claims match source) + human approval gate.
-- Publish/test the first approved batch (manual/semi-automated).
-- Capture publish metadata + disclosures used.
+- Submit approved creatives to Postiz for scheduling/posting (or to draft/manual review first).
+- Capture Postiz post IDs, final platform URLs, publish metadata, and disclosures used.
 
 ### Day 7 — Results, memory, retrospective
 - Build `results` capture: pull post-publish metrics; write to event store.
@@ -110,7 +111,7 @@ Every generation and publish writes to `CostLedger`. Daily rollup computes:
 | Higgsfield credit burn during iteration | Set a daily credit cap; validate cheaply (lower res) before final renders; log every job cost. |
 | Compliance slip on health/beauty | Hard gate + human approval; claim classifier before generation, not just after. |
 | Scope creep past 7 days | One niche, 3–5 personas, one generation path, one publish path. Defer memory bake-off to week 2. |
-| Logged-in source blocked | Prompt operator to sign into Aside; build a reusable Aside skill for that site. |
+| Logged-in source or posting flow blocked | Prompt operator to sign into Aside; build a reusable Aside skill for that site. Use Postiz first for posting, Aside as fallback. |
 | Data source breaks mid-week | Adapter interface + Aside fallback. |
 
 ## Out of scope this week

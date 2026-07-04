@@ -144,7 +144,7 @@ Do **not** choose a full AIWG framework scaffold yet. The framework is the inten
    - Virality Predictor
    - benchmark comparison
    - compliance checklist
-7. Publish/test manually at first.
+7. Publish/test via Postiz at first (draft/manual-review if needed); keep Aside as fallback for blocked flows.
 8. Capture results into event store and memory.
 9. Add economics tracking before scale: Higgsfield credits/video, token spend/video, tool spend, operator time, affiliate revenue, contribution margin, and MMR/MRR.
 10. Revisit frameworkization only after the ROI/MMR gate is met; see `.aiwg/planning/frameworkization-roadmap.md`.
