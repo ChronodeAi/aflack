@@ -115,6 +115,8 @@ Scoring: 1 = poor, 5 = excellent.
 
 Choose **Option A: Local MVP modular pipeline + owned event store + memory bake-off**.
 
+Do **not** choose a full AIWG framework scaffold yet. The framework is the intended end state, but it should be gated on economics: positive return on Higgsfield credits, LLM/token spend, data-source subscriptions, and operator time, plus repeatable MMR/MRR from at least one narrow niche. The correct sequence is local MVP → project-local bundle/pilot → framework in the AIWG fork.
+
 ## Immediate Build Sequence
 
 1. Initialize repo and delivery policy (done: direct to `main`).
@@ -144,6 +146,8 @@ Choose **Option A: Local MVP modular pipeline + owned event store + memory bake-
    - compliance checklist
 7. Publish/test manually at first.
 8. Capture results into event store and memory.
+9. Add economics tracking before scale: Higgsfield credits/video, token spend/video, tool spend, operator time, affiliate revenue, contribution margin, and MMR/MRR.
+10. Revisit frameworkization only after the ROI/MMR gate is met; see `.aiwg/planning/frameworkization-roadmap.md`.
 
 ## Decision Notes
 

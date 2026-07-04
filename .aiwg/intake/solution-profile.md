@@ -25,6 +25,27 @@
 
 Total: 1.00
 
+## Economics / MMR Gate
+
+The system should not scale — and should not be promoted into a formal AIWG framework — until it demonstrates real economics. For this project, **MMR/MRR** is a working shorthand for monetized monthly revenue until a formal accounting model is chosen.
+
+Track at minimum:
+
+- Higgsfield credits spent per generated video.
+- LLM/token spend per generated script, persona, review, and research run.
+- Market-intelligence/tool subscription spend.
+- Operator time per publishable video.
+- Cost per generated video.
+- Cost per publishable/compliance-approved video.
+- Cost per validated/winning video.
+- Affiliate clicks, conversions, commission revenue, refunds/chargebacks where visible.
+- Contribution margin after credits/tokens/tool spend.
+- MMR/MRR and trend by niche.
+
+**Scale gate**: a niche can move from diagnostic to repeatable production only when contribution margin is positive and the creative loop produces repeatable winners without uncontrolled credit/token burn.
+
+**Frameworkization gate**: graduate into an AIWG framework only after at least one niche shows repeatable positive economics and the pipeline has reusable rules, skills, workflows, behaviors, and agent roles that are stable enough to package.
+
 ## Scale Assumptions
 
 - **Operators**: 1
@@ -119,3 +140,15 @@ Proceed to **Inception** after intake review, but keep the first week as an MVP 
 3. Build first pipeline loop.
 4. Generate and validate first batch.
 5. Retrospective into memory.
+
+## Long-Term AIWG Framework Direction
+
+The local MVP is the proving ground. The desired end state is an AIWG framework inside the user's AIWG fork with:
+
+- **Rules**: compliance, disclosure, no-medical-claims, ROI gating, memory capture, benchmark-before-publish.
+- **Skills**: niche diagnostics, product research, benchmark gold-set creation, persona design, Higgsfield generation, Virality Predictor scoring, compliance review, performance digest.
+- **Workflows/flows**: discover → select → generate → validate → publish → analyze → learn → scale/kill.
+- **Behaviors**: background monitoring of trends, daily generation loop, result capture, memory consolidation, and alerting when a niche crosses a scale/kill gate.
+- **Agents/daemon-like roles**: market researcher, product scout, persona director, scriptwriter, creative producer, compliance reviewer, benchmark analyst, performance analyst, memory curator, orchestration daemon.
+
+Do not scaffold the full framework prematurely. Pilot the pieces as local project artifacts first; promote only proven, repeatable components.

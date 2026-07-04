@@ -42,6 +42,8 @@
 - **Quality/validation**: ≥X% of generated videos clear the Virality Predictor pre-publish threshold (threshold to be calibrated) and match benchmark structure of top niche creators.
 - **Compliance**: 100% of published videos pass the affiliate-disclosure + claim-safety gate before publishing.
 - **Business (leading)**: measurable affiliate clicks/conversions per niche; a niche is "proven" when it clears a defined ROI/hit-rate bar, at which point the system is cloned to the next niche.
+- **Economics gate**: content production must show positive return on Higgsfield credits, LLM/token spend, tool subscriptions, and operator time before scaling. Track cost per generated video, cost per publishable video, cost per validated/winning video, gross affiliate revenue, contribution margin, and MMR/MRR (working definition: monetized monthly revenue until formal accounting is chosen).
+- **Frameworkization gate**: do not graduate this into an AIWG framework until the local MVP has repeatable economics, a proven niche loop, and reusable rules/skills/workflows worth formalizing.
 
 ## Current Scope and Features
 
@@ -68,6 +70,7 @@
 - Repurpose pipeline for an owned e-commerce store.
 - Broader platform coverage beyond TikTok (Instagram, YouTube Shorts).
 - Autonomous operator agent (Letta/MemGPT-style) once guardrails are proven.
+- Graduate into an AIWG framework inside the AIWG fork, carrying its own rules, skills, workflows, behaviors, and specialist/daemon-like agents once the pipeline proves sustained return on credits/tokens and monetized monthly revenue.
 
 ## Architecture (Proposed)
 
@@ -106,3 +109,4 @@
 3. Run the memory-engine bake-off (Mem0 / Zep-Graphiti / Cognee) on sample data.
 4. Choose the week-1 beachhead niche via the niche-diagnostic scorecard.
 5. Stand up the local event store + first pipeline stages.
+6. Define the economics dashboard and scale/frameworkization gates: credit spend, token spend, tool spend, operator time, affiliate revenue, margin, MMR/MRR, and per-video ROI.
