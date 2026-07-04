@@ -95,6 +95,8 @@ Candidate phases:
 
 ## Candidate Agents
 
+**Scope warning**: do not implement this whole roster during MVP. These are frameworkization candidates only. V1 should stay at one director runtime + one operator + two active public personas.
+
 - **Market Researcher** — identifies niches/products/trends.
 - **Product Scout** — scores affiliate offers and product-market fit.
 - **Benchmark Analyst** — maintains the gold-set of top videos/products.
@@ -107,6 +109,8 @@ Candidate phases:
 - **Pipeline Orchestrator** — coordinates daily loop.
 
 ## Candidate Behaviors / Daemons
+
+**Scope warning**: these are long-term daemon candidates. Do not create daemons until the manual/local loop shows positive economics and a repeated process worth automating.
 
 - **Trend Watcher**: monitors product/niche signals daily.
 - **Gold-Set Refresher**: refreshes benchmark examples and detects shifts.

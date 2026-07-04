@@ -8,6 +8,7 @@
 ## Guiding constraints
 
 - Local-first, solo, no cloud dependency for the core loop.
+- Keep roles lean: V1 has one director runtime (`claude-fable-5` via Claude Code CLI), one operator, and two active public personas (Vice Signal + Loadout Lab). Everything else is backlog until metrics prove it.
 - Research-first: Firecrawl for broad web, Aside for logged-in surfaces; prompt operator to log in when needed.
 - Compliance is a hard pre-publish gate (FTC disclosure, no medical/weight-loss claims, AI-persona honesty, no impersonation).
 - Every stage writes to the local event store so nothing is forgotten.
@@ -34,6 +35,7 @@
 - **Coding memory**: agentmemory (already running).
 - **Marketing memory**: write a thin `memory` interface now (swappable). Week-1 leaning: Postgres + pgGraph + pgvector as the local default. Keep the Mem0 / Zep-Graphiti / Cognee bake-off for week 2 as comparison, but the all-in-Postgres path may remove the need for a separate graph engine. Do not block week-1 on the bake-off.
 - **Posting/scheduling**: Postiz (`gitroomhq/postiz-app`) as the open-source scheduler/posting app. Integrate via Public API / Node SDK / `postiz-agent` CLI as a separate self-hosted service. Do not hand-roll platform adapters unless Postiz cannot cover a required flow.
+- **Video director runtime**: Claude Code CLI from this project, model `claude-fable-5` (or alias `fable`) per ADR-0004. The director orchestrates scripts/shot direction/generation prompts and must obey compliance + economics gates.
 
 ## Day-by-day plan
 

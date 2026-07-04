@@ -12,6 +12,17 @@
 - Commentary is transformative: original scripts, original or licensed visuals, minimal defensible third-party excerpts only.
 - No medical/financial/again-illegal claims; gaming context only.
 
+## Role/persona scope rule
+
+Do not overbuild roles. V1 uses:
+
+- **One internal director runtime**: Claude Code CLI `claude-fable-5` (ADR-0004)
+- **Two active public personas**:
+  - Vice Signal (attention/news/Shorts)
+  - Loadout Lab (affiliate/gear/monetization)
+
+Everything else is backlog until metrics prove the need.
+
 ## Personas
 
 | Handle | Archetype | Voice | Content lane |
@@ -29,3 +40,13 @@
 - Lore Vault anchors long-form YouTube (high RPM).
 - Rng Goblin farms shareability/comments.
 - Higgsfield reference/identity assets to be generated per persona; store `higgsfield_ref` in `personas`.
+
+## V1 activation
+
+| Persona | V1 status | Why |
+|---|---|---|
+| Vice Signal | Active | Fastest path to GTA6 Shorts/news/commentary velocity. |
+| Loadout Lab | Active | Direct monetization lane: gaming-adjacent affiliate. |
+| Lore Vault | Backlog | Useful for long-form later, but not needed for first batch. |
+| Patch Notes | Backlog | Can merge into Vice Signal initially. |
+| Rng Goblin | Backlog | Fun, but avoid persona sprawl until we see traction. |
