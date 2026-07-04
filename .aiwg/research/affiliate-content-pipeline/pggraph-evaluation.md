@@ -61,3 +61,22 @@ Use pgGraph in local/dev only:
 ## Decision
 
 Add pgGraph to the week-1 local database plan as the preferred first graph candidate, with the explicit caveat that it is alpha and must be kept behind a swappable memory/query interface.
+
+## Hands-on validation (2026-07-04, local Docker)
+
+Ran the pinned image `ghcr.io/evokoa/pggraph:0.1.8` locally via Docker Desktop, bound to `127.0.0.1:55432`, persistent volume `aflack_pggraph_data`.
+
+Confirmed:
+
+- Extensions in image: `graph` 0.1.8 + `pg_cron` 1.6 on PostgreSQL 17.10.
+- **pgvector is NOT in this image** — `vector` is not in `pg_available_extensions`. All-in-Postgres embeddings would need a custom image (add `pgvector`) or a separate vector store.
+- `graph.auto_discover('public')` auto-registered 3 tables + 2 FK edges and built the graph (5 nodes / 8 edges) in one call — matches the README's FK-discovery claim.
+- Domain-shaped 2-hop traversal validated: `graph.expand(product, id, 2)` returned Product → Creative → Result with readable paths; `graph.find_related(...)` returned results ranked by `revenue`. This is exactly our Product→Creative→Result / Persona→Creative→Result access pattern.
+- Default `sync_mode=trigger`: pgGraph installs INSERT/UPDATE/DELETE/TRUNCATE triggers on registered tables to keep the derived graph fresh (can opt out with `graph.sync_mode='manual'`). Good for a live pipeline; note the trigger overhead on high-write tables.
+
+Caveats found:
+
+- **Alpha rough edge**: dropping a registered table leaves dangling graph registration — a subsequent `graph.build()` errors with `relation not found`. Deregister/clean graph state before dropping tables. Reinforces keeping pgGraph behind a swappable interface and treating schema changes carefully.
+- API is function-based in the `graph` schema (`add_table`, `add_edge`, `auto_discover`, `build`, `expand`, `find`, `find_related`, sync-policy funcs) — usable directly from SQL, no new query language.
+
+Verdict: **validated for Week-1 local use** as the graph layer over our own tables. Pair with a separate vector approach (custom image with pgvector, or external) until/unless pgvector is added to the image.
