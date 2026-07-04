@@ -6,9 +6,9 @@ Every pipeline stage, daemon tick, and agent input/output is appended to
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import json
 import secrets
+from dataclasses import dataclass
 from typing import Any
 
 from .db import connect

@@ -20,14 +20,14 @@ repeatedly and we retain a full audit trail.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
 import json
-from typing import Any, Callable
+from collections.abc import Callable
+from dataclasses import dataclass, field
+from typing import Any
 
 from .db import connect
-from .learning import distill_insight, propose_improvement, active_insights
+from .learning import active_insights, distill_insight, propose_improvement
 from .tracing import new_trace_id, record_event
-
 
 ScanFn = Callable[[str], list[dict[str, Any]]]
 
@@ -42,6 +42,89 @@ class CycleResult:
     proposed: int = 0
     blocked_actions: list[str] = field(default_factory=list)
     summary: str = ""
+
+
+@dataclass(frozen=True)
+class DaemonStatus:
+    daemon: str
+    latest_run: dict[str, Any] | None
+    active_insights: int
+    open_proposals: int
+    recent_events: int
+    blocked_actions: list[str]
+
+
+BLOCKED_DAEMON_ACTIONS = [
+    "higgsfield_generation",
+    "public_publish",
+    "account_settings_change",
+    "dm_or_comment_automation",
+    "auto_edit_skill_or_rule_files",
+]
+
+
+def get_daemon_status(daemon: str = "improvement-daemon") -> DaemonStatus:
+    """Return read-only daemon health and backlog status."""
+
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT id, daemon, trace_id, status, started_at, finished_at, summary, counts, error
+            FROM daemon_runs
+            WHERE daemon = %s
+            ORDER BY started_at DESC, id DESC
+            LIMIT 1
+            """,
+            (daemon,),
+        )
+        run_row = cur.fetchone()
+
+        cur.execute("SELECT COUNT(*) FROM insights WHERE status = 'active'")
+        active_insights = int(cur.fetchone()[0])
+
+        cur.execute("SELECT COUNT(*) FROM improvement_proposals WHERE status = 'proposed'")
+        open_proposals = int(cur.fetchone()[0])
+
+        cur.execute(
+            """
+            SELECT COUNT(*)
+            FROM pipeline_events
+            WHERE actor = %s OR trace_id = COALESCE(%s, trace_id)
+            """,
+            (daemon, run_row[2] if run_row else None),
+        )
+        recent_events = int(cur.fetchone()[0])
+
+    latest_run = None
+    if run_row:
+        latest_run = {
+            "id": int(run_row[0]),
+            "daemon": run_row[1],
+            "trace_id": run_row[2],
+            "status": run_row[3],
+            "started_at": _iso(run_row[4]),
+            "finished_at": _iso(run_row[5]),
+            "summary": run_row[6],
+            "counts": run_row[7] or {},
+            "error": run_row[8],
+        }
+
+    return DaemonStatus(
+        daemon=daemon,
+        latest_run=latest_run,
+        active_insights=active_insights,
+        open_proposals=open_proposals,
+        recent_events=recent_events,
+        blocked_actions=BLOCKED_DAEMON_ACTIONS.copy(),
+    )
+
+
+def _iso(value: Any) -> str | None:
+    if value is None:
+        return None
+    if hasattr(value, "isoformat"):
+        return value.isoformat()
+    return str(value)
 
 
 def _start_run(daemon: str, trace_id: str) -> int:
@@ -129,15 +212,14 @@ def run_improvement_cycle(
     result = CycleResult(trace_id=trace_id, run_id=run_id)
 
     # Hard safety declaration recorded in the trace every run.
-    result.blocked_actions = [
-        "higgsfield_generation",
-        "public_publish",
-        "account_settings_change",
-        "dm_or_comment_automation",
-        "auto_edit_skill_or_rule_files",
-    ]
-    record_event(trace_id, "start", daemon, "start",
-                 {"niche": niche, "blocked_actions": result.blocked_actions})
+    result.blocked_actions = BLOCKED_DAEMON_ACTIONS.copy()
+    record_event(
+        trace_id,
+        "start",
+        daemon,
+        "start",
+        {"niche": niche, "blocked_actions": result.blocked_actions},
+    )
 
     try:
         # Stage 1: scan (delegated) --------------------------------------------
@@ -146,20 +228,34 @@ def run_improvement_cycle(
             scanned_items = scan_fn(niche)
             result.scanned = _ingest_scanned(scanned_items, trace_id)
         else:
-            record_event(trace_id, "scan", daemon, "decision",
-                         {"mode": "orchestration_only", "reason": "no scan_fn injected"})
+            record_event(
+                trace_id,
+                "scan",
+                daemon,
+                "decision",
+                {"mode": "orchestration_only", "reason": "no scan_fn injected"},
+            )
 
         # Stage 2: distill insights from ingested benchmark videos --------------
         record_event(trace_id, "distill", daemon, "start", {})
         for scope, statement, conf in _candidate_insights(niche):
-            _, created = distill_insight(scope=scope, statement=statement, confidence=conf,
-                                         evidence=[{"niche": niche, "trace_id": trace_id}])
+            _, created = distill_insight(
+                scope=scope,
+                statement=statement,
+                confidence=conf,
+                evidence=[{"niche": niche, "trace_id": trace_id}],
+            )
             if created:
                 result.distilled += 1
             else:
                 result.reinforced += 1
-        record_event(trace_id, "distill", daemon, "output",
-                     {"distilled": result.distilled, "reinforced": result.reinforced})
+        record_event(
+            trace_id,
+            "distill",
+            daemon,
+            "output",
+            {"distilled": result.distilled, "reinforced": result.reinforced},
+        )
 
         # Stage 3: propose reproducible improvements ---------------------------
         record_event(trace_id, "propose", daemon, "start", {})
@@ -175,20 +271,30 @@ def run_improvement_cycle(
             result.proposed += 1
             record_event(trace_id, "propose", daemon, "output", {"proposal_id": pid, "sources": len(top)})
         else:
-            record_event(trace_id, "propose", daemon, "decision",
-                         {"reason": "no insights >=0.5 confidence yet"})
+            record_event(
+                trace_id,
+                "propose",
+                daemon,
+                "decision",
+                {"reason": "no insights >=0.5 confidence yet"},
+            )
 
         result.summary = (
             f"scanned={result.scanned} distilled={result.distilled} "
             f"reinforced={result.reinforced} proposed={result.proposed}"
         )
         record_event(trace_id, "learn", daemon, "end", {"summary": result.summary})
-        _finish_run(run_id, "succeeded", result.summary, {
-            "scanned": result.scanned,
-            "distilled": result.distilled,
-            "reinforced": result.reinforced,
-            "proposed": result.proposed,
-        })
+        _finish_run(
+            run_id,
+            "succeeded",
+            result.summary,
+            {
+                "scanned": result.scanned,
+                "distilled": result.distilled,
+                "reinforced": result.reinforced,
+                "proposed": result.proposed,
+            },
+        )
         return result
     except Exception as exc:  # pragma: no cover - defensive
         record_event(trace_id, "learn", daemon, "error", {"error": str(exc)})
@@ -254,14 +360,28 @@ def _candidate_insights(niche: str) -> list[tuple[str, str, float]]:
         monetization = cur.fetchone()
 
     # Evidence-bounded baseline (from prior teardown), low-to-mid confidence.
-    insights.append(("cta",
-        "A single one-word comment CTA outperforms multi-step CTAs for lead capture.", 0.5))
-    insights.append(("hook",
-        "Open on a concrete personal claim within the first 3 seconds, no logo intro.", 0.5))
-    insights.append(("structure",
-        "Hard cut on every voiceover clause; hold no shot longer than ~3s except the end card.", 0.5))
-    insights.append(("funnel",
-        "The post's job is to trigger the keyword; the lead magnet is the real conversion asset.", 0.5))
+    insights.append(("cta", "A single one-word comment CTA outperforms multi-step CTAs for lead capture.", 0.5))
+    insights.append(
+        (
+            "hook",
+            "Open on a concrete personal claim within the first 3 seconds, no logo intro.",
+            0.5,
+        )
+    )
+    insights.append(
+        (
+            "structure",
+            "Hard cut on every voiceover clause; hold no shot longer than ~3s except the end card.",
+            0.5,
+        )
+    )
+    insights.append(
+        (
+            "funnel",
+            "The post's job is to trigger the keyword; the lead magnet is the real conversion asset.",
+            0.5,
+        )
+    )
 
     # Data-driven reinforcement when we actually have observations.
     for cta, count in cta_rows:
@@ -272,23 +392,44 @@ def _candidate_insights(niche: str) -> list[tuple[str, str, float]]:
             int(x or 0) for x in monetization
         ]
         if total >= 3 and affiliate_or_tool >= 3:
-            insights.append(("funnel",
-                "AI-video educators repeatedly monetize attention with tool referrals, affiliate links, or owned software before asking for a direct sale.",
-                min(0.85, 0.5 + 0.05 * affiliate_or_tool)))
+            insights.append(
+                (
+                    "funnel",
+                    "AI-video educators repeatedly monetize attention with tool referrals, affiliate links, or owned software before asking for a direct sale.",
+                    min(0.85, 0.5 + 0.05 * affiliate_or_tool),
+                )
+            )
         if total >= 3 and course_or_community >= 3:
-            insights.append(("funnel",
-                "The strongest AI-video funnels pair free workflow education with a paid course, academy, or community for deeper implementation help.",
-                min(0.85, 0.5 + 0.05 * course_or_community)))
+            insights.append(
+                (
+                    "funnel",
+                    "The strongest AI-video funnels pair free workflow education with a paid course, academy, or community for deeper implementation help.",
+                    min(0.85, 0.5 + 0.05 * course_or_community),
+                )
+            )
         if total >= 3 and templates_or_assets >= 2:
-            insights.append(("funnel",
-                "Prompt packs, templates, and reusable production assets are a credible bridge between free content and paid community or software conversion.",
-                min(0.8, 0.5 + 0.05 * templates_or_assets)))
+            insights.append(
+                (
+                    "funnel",
+                    "Prompt packs, templates, and reusable production assets are a credible bridge between free content and paid community or software conversion.",
+                    min(0.8, 0.5 + 0.05 * templates_or_assets),
+                )
+            )
         if total >= 3 and sponsor_or_service >= 2:
-            insights.append(("funnel",
-                "Sponsorship contact, service offers, or agency-style help should be visible in the creator funnel once the content demonstrates repeatable workflow expertise.",
-                min(0.8, 0.5 + 0.05 * sponsor_or_service)))
+            insights.append(
+                (
+                    "funnel",
+                    "Sponsorship contact, service offers, or agency-style help should be visible in the creator funnel once the content demonstrates repeatable workflow expertise.",
+                    min(0.8, 0.5 + 0.05 * sponsor_or_service),
+                )
+            )
     if n >= 15:
-        insights.append(("niche",
-            f"Benchmark gold set for '{niche}' has >=15 dissected videos; patterns are now data-backed.", 0.7))
+        insights.append(
+            (
+                "niche",
+                f"Benchmark gold set for '{niche}' has >=15 dissected videos; patterns are now data-backed.",
+                0.7,
+            )
+        )
 
     return insights

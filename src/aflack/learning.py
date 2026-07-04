@@ -15,10 +15,10 @@ Anti-rot principles:
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import hashlib
 import json
 import re
+from dataclasses import dataclass
 from typing import Any
 
 from .db import connect
@@ -43,6 +43,7 @@ class Insight:
 
 
 # --- Benchmark creators -------------------------------------------------------
+
 
 def upsert_creator(
     *,
@@ -70,7 +71,15 @@ def upsert_creator(
               updated_at = now()
             RETURNING id
             """,
-            (platform, handle, display_name, niche, followers, source_url, json.dumps(metadata or {})),
+            (
+                platform,
+                handle,
+                display_name,
+                niche,
+                followers,
+                source_url,
+                json.dumps(metadata or {}),
+            ),
         )
         creator_id = cur.fetchone()[0]
         conn.commit()
@@ -134,14 +143,21 @@ def set_creator_proof(
               updated_at = now()
             WHERE id = %s
             """,
-            (proof_engagement_rate, proof_monetization, proof_consistency_days,
-             proof_notes, credibility, creator_id),
+            (
+                proof_engagement_rate,
+                proof_monetization,
+                proof_consistency_days,
+                proof_notes,
+                credibility,
+                creator_id,
+            ),
         )
         conn.commit()
     return credibility
 
 
 # --- Insights (deduped, temporally valid) ------------------------------------
+
 
 def distill_insight(
     *,
@@ -233,6 +249,7 @@ def active_insights(scope: str | None = None, limit: int = 20, min_confidence: f
 
 # --- Improvement proposals ---------------------------------------------------
 
+
 def propose_improvement(
     *,
     target_type: str,
@@ -317,8 +334,13 @@ def open_proposals(limit: int = 50) -> list[dict[str, Any]]:
             (limit,),
         )
         return [
-            {"id": r[0], "target_type": r[1], "target_name": r[2],
-             "change_summary": r[3], "status": r[4]}
+            {
+                "id": r[0],
+                "target_type": r[1],
+                "target_name": r[2],
+                "change_summary": r[3],
+                "status": r[4],
+            }
             for r in cur.fetchall()
         ]
 

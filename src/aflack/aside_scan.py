@@ -36,9 +36,9 @@ Contract:
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import hashlib
 import json
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -139,7 +139,13 @@ def import_aside_scan(path: str | Path, *, actor: str = "aside-scan-import") -> 
     niche = data.get("niche") or "unknown"
     observations: list[dict[str, Any]] = data["observations"]
     trace_id = new_trace_id("aside-scan")
-    record_event(trace_id, "scan", actor, "input", {"path": str(path), "niche": niche, "count": len(observations)})
+    record_event(
+        trace_id,
+        "scan",
+        actor,
+        "input",
+        {"path": str(path), "niche": niche, "count": len(observations)},
+    )
 
     creators_seen: set[int] = set()
     videos_inserted = 0

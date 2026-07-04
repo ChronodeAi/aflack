@@ -22,12 +22,18 @@ BLOCKED_SOURCES = {
 
 # Phrases that indicate a prohibited medical/health claim for gaming-adjacent copy.
 MEDICAL_CLAIM_MARKERS = (
-    "cure", "treat", "diagnose", "clinically proven", "weight loss guaranteed",
+    "cure",
+    "treat",
+    "diagnose",
+    "clinically proven",
+    "weight loss guaranteed",
 )
 
 # Phrases indicating false firsthand access.
 FALSE_FIRSTHAND_MARKERS = (
-    "i played the leaked", "i have the leaked build", "leaked copy i got",
+    "i played the leaked",
+    "i have the leaked build",
+    "leaked copy i got",
 )
 
 
@@ -70,4 +76,3 @@ def check_publish_item(
         warnings.append("AI/synthetic persona: consider explicit AI disclosure per platform/FTC")
 
     return ComplianceResult(passed=len(blocks) == 0, blocks=blocks, warnings=warnings)
-

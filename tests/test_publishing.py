@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from contextlib import contextmanager
 import unittest
+from contextlib import contextmanager
 from unittest.mock import patch
 
 from aflack.config import Settings
@@ -97,6 +97,24 @@ class PostizPublisherTests(unittest.TestCase):
         settings = payload["posts"][0]["settings"]
         self.assertEqual(settings["title"], "GTA 6 countdown")
         self.assertEqual(settings["type"], "private")
+
+    def test_get_post_analytics_uses_public_endpoint(self):
+        calls = []
+
+        def fake_request(method, path, payload=None):
+            calls.append((method, path, payload))
+            return {"views": 10}
+
+        publisher = PostizPublisher()
+        with patch.object(publisher, "_request", side_effect=fake_request):
+            response = publisher.get_post_analytics("post-123", days=30)
+
+        self.assertEqual(response, {"views": 10})
+        self.assertEqual(calls[0], ("GET", "/api/public/v1/analytics/post/post-123?days=30", None))
+
+    def test_get_platform_analytics_requires_positive_days(self):
+        with self.assertRaises(ValueError):
+            PostizPublisher().get_platform_analytics("integration-123", days=0)
 
 
 if __name__ == "__main__":

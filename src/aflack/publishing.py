@@ -8,12 +8,12 @@ through Postiz's public API.
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
-import json
 from typing import Literal
-from urllib.parse import urlparse
 from urllib.error import HTTPError
+from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 from .config import load_settings
@@ -81,6 +81,22 @@ class PostizPublisher:
         if not settings.postiz_api_key:
             raise RuntimeError("POSTIZ_API_KEY is not set")
         return self._request("GET", "/api/public/v1/integrations")
+
+    def get_platform_analytics(self, integration_id: str, *, days: int = 7) -> dict:
+        """Fetch Postiz platform analytics for one integration."""
+
+        if days <= 0:
+            raise ValueError("days must be positive")
+        response = self._request("GET", f"/api/public/v1/analytics/{integration_id}?days={days}")
+        return response if isinstance(response, dict) else {"data": response}
+
+    def get_post_analytics(self, post_id: str, *, days: int = 7) -> dict:
+        """Fetch Postiz analytics for one post."""
+
+        if days <= 0:
+            raise ValueError("days must be positive")
+        response = self._request("GET", f"/api/public/v1/analytics/post/{post_id}?days={days}")
+        return response if isinstance(response, dict) else {"data": response}
 
     def submit_queue_item(self, queue_id: int, integration_id: str, *, as_draft: bool = True) -> dict:
         """Submit one queued item to Postiz and persist the returned id/status.

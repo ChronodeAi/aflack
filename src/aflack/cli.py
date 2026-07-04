@@ -7,22 +7,29 @@ from pathlib import Path
 
 import typer
 
-from .db import connect, exec_sql
+from .analytics import (
+    AnalyticsSnapshot,
+    current_analytics_rollup,
+    record_snapshot,
+    snapshot_from_postiz_payload,
+)
+from .aside_scan import import_aside_scan
 from .compliance import check_publish_item
+from .daemon import get_daemon_status, run_improvement_cycle
+from .db import connect, exec_sql
 from .economics import current_rollup
-from .publishing import PostizPublisher, PublishIntent
 from .learning import (
     active_insights,
     dedupe_open_proposals,
     distill_insight,
     open_proposals,
-    propose_improvement,
     set_creator_proof,
     upsert_creator,
 )
-from .daemon import run_improvement_cycle
+from .memory import consolidate_insights_to_lessons
+from .prompt_quality import check_short_asset_prompt
+from .publishing import PostizPublisher, PublishIntent
 from .tracing import trace_events
-from .aside_scan import import_aside_scan
 
 app = typer.Typer(help="aflack local affiliate content pipeline")
 
@@ -293,6 +300,236 @@ def economics_status() -> None:
 
 
 @app.command()
+def cost_record(
+    ref_type: str,
+    ref_id: int,
+    cost_type: str,
+    amount: str,
+    unit: str,
+    metadata: str = "{}",
+) -> None:
+    """Record a generation/tool/operator cost in the local ledger."""
+
+    try:
+        parsed_metadata = json.loads(metadata)
+    except json.JSONDecodeError as exc:
+        typer.echo(f"metadata must be valid JSON: {exc}")
+        raise typer.Exit(code=2) from exc
+    if not isinstance(parsed_metadata, dict):
+        raise typer.BadParameter("metadata must be a JSON object")
+
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute(
+            """
+            INSERT INTO cost_ledger (ref_type, ref_id, cost_type, amount, unit, metadata)
+            VALUES (%s, %s, %s, %s, %s, %s::jsonb)
+            RETURNING id
+            """,
+            (ref_type, ref_id, cost_type, amount, unit, json.dumps(parsed_metadata)),
+        )
+        cost_id = int(cur.fetchone()[0])
+        conn.commit()
+
+    typer.echo(f"cost_ledger_id={cost_id}")
+
+
+@app.command()
+def publish_queue_status(limit: int = 20) -> None:
+    """List recent publish queue items and external IDs."""
+
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute(
+            """
+            SELECT id, creative_id, platform, target_format, status,
+                   COALESCE(postiz_post_id, ''), COALESCE(platform_post_id, ''),
+                   COALESCE(platform_url, '')
+            FROM publish_queue
+            ORDER BY id DESC
+            LIMIT %s
+            """,
+            (limit,),
+        )
+        rows = cur.fetchall()
+
+    if not rows:
+        typer.echo("(no publish queue items)")
+        return
+    for row in rows:
+        queue_id, creative_id, platform, target_format, status, postiz_id, platform_id, url = row
+        typer.echo(
+            " | ".join(
+                [
+                    f"id={queue_id}",
+                    f"creative_id={creative_id}",
+                    f"platform={platform}",
+                    f"format={target_format}",
+                    f"status={status}",
+                    f"postiz_post_id={postiz_id or '-'}",
+                    f"platform_post_id={platform_id or '-'}",
+                    f"url={url or '-'}",
+                ]
+            )
+        )
+
+
+@app.command()
+def analytics_record_manual(
+    platform: str,
+    source_post_id: str = "",
+    publish_queue_id: int = 0,
+    creative_id: int = 0,
+    channel_id: int = 0,
+    platform_url: str = "",
+    views: int = 0,
+    likes: int = 0,
+    comments: int = 0,
+    shares: int = 0,
+    saves: int = 0,
+    clicks: int = 0,
+    conversions: int = 0,
+    ctr: str = "",
+    revenue: str = "0",
+) -> None:
+    """Record a manual analytics snapshot from any video platform."""
+
+    try:
+        snapshot = AnalyticsSnapshot.normalized(
+            platform=platform,
+            source="manual",
+            publish_queue_id=publish_queue_id or None,
+            creative_id=creative_id or None,
+            channel_id=channel_id or None,
+            source_post_id=source_post_id or None,
+            platform_url=platform_url or None,
+            views=views,
+            likes=likes,
+            comments=comments,
+            shares=shares,
+            saves=saves,
+            clicks=clicks,
+            conversions=conversions,
+            ctr=ctr or None,
+            revenue=revenue,
+            raw={"entry": "manual_cli"},
+        )
+        snapshot_id = record_snapshot(snapshot)
+    except ValueError as exc:
+        typer.echo(f"analytics snapshot rejected: {exc}")
+        raise typer.Exit(code=2) from exc
+
+    typer.echo(f"analytics_snapshot_id={snapshot_id}")
+    typer.echo(f"platform={snapshot.platform}")
+    typer.echo(f"views={snapshot.views}")
+    typer.echo(f"conversions={snapshot.conversions}")
+    typer.echo(f"revenue={snapshot.revenue}")
+
+
+@app.command()
+def analytics_status(platform: str = "") -> None:
+    """Print aggregate analytics captured in the local event store."""
+
+    rollup = current_analytics_rollup(platform or None)
+    typer.echo(f"snapshots={rollup.snapshots}")
+    typer.echo(f"total_views={rollup.total_views}")
+    typer.echo(f"total_likes={rollup.total_likes}")
+    typer.echo(f"total_comments={rollup.total_comments}")
+    typer.echo(f"total_shares={rollup.total_shares}")
+    typer.echo(f"total_saves={rollup.total_saves}")
+    typer.echo(f"total_clicks={rollup.total_clicks}")
+    typer.echo(f"total_conversions={rollup.total_conversions}")
+    typer.echo(f"total_revenue={rollup.total_revenue}")
+
+
+@app.command()
+def prompt_quality(path: Path | None = None, text: str = "") -> None:
+    """Check whether a short-form asset prompt is generation-worthy."""
+
+    if path:
+        prompt = path.read_text()
+    else:
+        prompt = text
+    if not prompt.strip():
+        raise typer.BadParameter("provide --text or a prompt file path")
+
+    result = check_short_asset_prompt(prompt)
+    typer.echo(f"passed={result.passed}")
+    typer.echo(f"blocks={result.blocks}")
+    typer.echo(f"warnings={result.warnings}")
+    if not result.passed:
+        raise typer.Exit(code=1)
+
+
+@app.command()
+def postiz_analytics_post(queue_id: int = 0, post_id: str = "", platform: str = "youtube", days: int = 7) -> None:
+    """Fetch Postiz post analytics and store a local analytics snapshot."""
+
+    creative_id = None
+    channel_id = None
+    platform_url = None
+    if queue_id:
+        with connect() as conn, conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT creative_id, channel_id, platform, postiz_post_id, platform_url
+                FROM publish_queue
+                WHERE id = %s
+                """,
+                (queue_id,),
+            )
+            row = cur.fetchone()
+        if not row:
+            raise typer.BadParameter(f"publish_queue id={queue_id} not found")
+        creative_id, channel_id, queue_platform, queue_postiz_id, platform_url = row
+        platform = queue_platform or platform
+        post_id = post_id or queue_postiz_id or ""
+
+    if not post_id:
+        raise typer.BadParameter("post_id is required when queue_id has no postiz_post_id")
+
+    try:
+        payload = PostizPublisher().get_post_analytics(post_id, days=days)
+        snapshot = snapshot_from_postiz_payload(
+            payload,
+            platform=platform,
+            publish_queue_id=queue_id or None,
+            creative_id=creative_id,
+            channel_id=channel_id,
+            postiz_post_id=post_id,
+            platform_url=platform_url,
+        )
+        snapshot_id = record_snapshot(snapshot)
+    except (RuntimeError, ValueError) as exc:
+        typer.echo(f"postiz analytics ingest failed: {exc}")
+        raise typer.Exit(code=2) from exc
+
+    typer.echo(f"analytics_snapshot_id={snapshot_id}")
+    typer.echo(f"platform={snapshot.platform}")
+    typer.echo(f"source_post_id={snapshot.source_post_id}")
+    typer.echo(f"views={snapshot.views}")
+    typer.echo(f"conversions={snapshot.conversions}")
+    typer.echo(f"revenue={snapshot.revenue}")
+
+
+@app.command()
+def postiz_analytics_platform(integration_id: str, platform: str = "youtube", days: int = 7) -> None:
+    """Fetch Postiz platform analytics and store a local analytics snapshot."""
+
+    try:
+        payload = PostizPublisher().get_platform_analytics(integration_id, days=days)
+        snapshot = snapshot_from_postiz_payload(payload, platform=platform)
+        snapshot_id = record_snapshot(snapshot)
+    except (RuntimeError, ValueError) as exc:
+        typer.echo(f"postiz platform analytics ingest failed: {exc}")
+        raise typer.Exit(code=2) from exc
+
+    typer.echo(f"analytics_snapshot_id={snapshot_id}")
+    typer.echo(f"platform={snapshot.platform}")
+    typer.echo(f"views={snapshot.views}")
+    typer.echo(f"conversions={snapshot.conversions}")
+    typer.echo(f"revenue={snapshot.revenue}")
+
+
+@app.command()
 def improve_cycle(niche: str = "gta6-ai-persona-gaming") -> None:
     """Run one autonomous improvement cycle (scan orchestration -> distill -> propose).
 
@@ -304,6 +541,43 @@ def improve_cycle(niche: str = "gta6-ai-persona-gaming") -> None:
     typer.echo(f"trace_id={result.trace_id} run_id={result.run_id}")
     typer.echo(f"summary={result.summary}")
     typer.echo(f"blocked_actions={result.blocked_actions}")
+
+
+@app.command()
+def daemon_status(daemon: str = "improvement-daemon") -> None:
+    """Show read-only daemon status, backlog, and blocked actions."""
+
+    status = get_daemon_status(daemon)
+    typer.echo(f"daemon={status.daemon}")
+    if status.latest_run:
+        run = status.latest_run
+        typer.echo(f"latest_run_id={run['id']}")
+        typer.echo(f"latest_trace_id={run['trace_id']}")
+        typer.echo(f"latest_status={run['status']}")
+        typer.echo(f"started_at={run['started_at']}")
+        typer.echo(f"finished_at={run['finished_at']}")
+        typer.echo(f"summary={run['summary']}")
+        typer.echo(f"counts={json.dumps(run['counts'], sort_keys=True)}")
+        if run["error"]:
+            typer.echo(f"error={run['error']}")
+    else:
+        typer.echo("latest_run_id=None")
+        typer.echo("latest_status=never_run")
+    typer.echo(f"active_insights={status.active_insights}")
+    typer.echo(f"open_proposals={status.open_proposals}")
+    typer.echo(f"recent_events={status.recent_events}")
+    typer.echo(f"blocked_actions={status.blocked_actions}")
+
+
+@app.command()
+def memory_consolidate(min_confidence: float = 0.6, limit: int = 20) -> None:
+    """Promote high-confidence active insights into deduped procedural lessons."""
+
+    result = consolidate_insights_to_lessons(min_confidence=min_confidence, limit=limit)
+    typer.echo(f"scanned={result.scanned}")
+    typer.echo(f"created={result.created}")
+    typer.echo(f"skipped_existing={result.skipped_existing}")
+    typer.echo(f"lesson_ids={result.lesson_ids}")
 
 
 @app.command()

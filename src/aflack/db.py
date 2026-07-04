@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from contextlib import contextmanager
-from typing import Iterator
 
 import psycopg
 from psycopg import Connection
@@ -27,4 +27,3 @@ def exec_sql(sql: str) -> None:
         with conn.cursor() as cur:
             cur.execute(sql)
         conn.commit()
-

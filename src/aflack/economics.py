@@ -37,4 +37,3 @@ def current_rollup() -> EconomicsRollup:
         generated_creatives=generated,
         cost_per_generated=cpg,
     )
-

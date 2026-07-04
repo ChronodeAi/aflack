@@ -1,0 +1,18 @@
+{
+  "name": "aflack",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && uv sync --extra dev",
+  "remoteEnv": {
+    "DATABASE_URL": "${localEnv:DATABASE_URL}",
+    "POSTIZ_BASE_URL": "${localEnv:POSTIZ_BASE_URL}",
+    "POSTIZ_API_KEY": "${localEnv:POSTIZ_API_KEY}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["charliermarsh.ruff", "ms-python.mypy-type-checker", "ms-python.python"]
+    }
+  }
+}
