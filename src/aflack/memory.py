@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from typing import Literal
+from typing import Any, Literal
 
-from .db import connect
+from .db import connect, fetchone_required
 
 MemoryScope = Literal["episodic", "semantic", "procedural"]
 
@@ -26,7 +26,7 @@ class Lesson:
 class MemoryStore:
     """Minimal memory API; keep callers decoupled from the backing engine."""
 
-    def capture_lesson(self, scope: MemoryScope, content: str, links: list[dict] | None = None) -> int:
+    def capture_lesson(self, scope: MemoryScope, content: str, links: list[dict[str, Any]] | None = None) -> int:
         """Persist a distilled lesson and return its id."""
 
         with connect() as conn, conn.cursor() as cur:
@@ -38,7 +38,7 @@ class MemoryStore:
                 """,
                 (scope, content, links or []),
             )
-            lesson_id = cur.fetchone()[0]
+            lesson_id = fetchone_required(cur)[0]
             conn.commit()
             return int(lesson_id)
 
@@ -133,7 +133,7 @@ def consolidate_insights_to_lessons(
                 """,
                 (scope, content, json.dumps(links)),
             )
-            lesson_ids.append(int(cur.fetchone()[0]))
+            lesson_ids.append(int(fetchone_required(cur)[0]))
 
         conn.commit()
 

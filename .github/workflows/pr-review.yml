@@ -1,0 +1,45 @@
+name: PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+      - name: Set up Python
+        run: uv python install 3.11
+      - name: Install dependencies
+        run: uv sync --extra dev
+      - name: Lint check
+        run: uv run ruff check src tests
+      - name: Format check
+        run: uv run ruff format --check src tests
+      - name: Type check
+        run: uv run mypy src
+      - name: Tests
+        run: uv run python -m pytest tests/ --tb=short -q
+      - name: Dead code check
+        run: uv run vulture src --min-confidence 80 || true
+      - name: Unused dependencies
+        run: uv run deptry . || true
+      - name: Comment results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Automated checks completed. See workflow run for details.'
+            })

@@ -21,7 +21,7 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
-from .db import connect
+from .db import connect, fetchone_required
 
 
 def _normalize(text: str) -> str:
@@ -81,7 +81,7 @@ def upsert_creator(
                 json.dumps(metadata or {}),
             ),
         )
-        creator_id = cur.fetchone()[0]
+        creator_id = fetchone_required(cur)[0]
         conn.commit()
         return int(creator_id)
 
@@ -203,7 +203,7 @@ def distill_insight(
             """,
             (scope, statement, json.dumps(evidence or []), confidence, h),
         )
-        insight_id = cur.fetchone()[0]
+        insight_id = fetchone_required(cur)[0]
         conn.commit()
         return int(insight_id), True
 
@@ -314,7 +314,7 @@ def propose_improvement(
             """,
             (target_type, target_name, change_summary, rationale, source_insight_ids or []),
         )
-        proposal_id = cur.fetchone()[0]
+        proposal_id = fetchone_required(cur)[0]
         conn.commit()
         return int(proposal_id)
 

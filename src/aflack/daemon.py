@@ -25,7 +25,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
 
-from .db import connect
+from .db import connect, fetchone_required
 from .learning import active_insights, distill_insight, propose_improvement
 from .tracing import new_trace_id, record_event
 
@@ -80,10 +80,10 @@ def get_daemon_status(daemon: str = "improvement-daemon") -> DaemonStatus:
         run_row = cur.fetchone()
 
         cur.execute("SELECT COUNT(*) FROM insights WHERE status = 'active'")
-        active_insights = int(cur.fetchone()[0])
+        active_insights = int(fetchone_required(cur)[0])
 
         cur.execute("SELECT COUNT(*) FROM improvement_proposals WHERE status = 'proposed'")
-        open_proposals = int(cur.fetchone()[0])
+        open_proposals = int(fetchone_required(cur)[0])
 
         cur.execute(
             """
@@ -93,7 +93,7 @@ def get_daemon_status(daemon: str = "improvement-daemon") -> DaemonStatus:
             """,
             (daemon, run_row[2] if run_row else None),
         )
-        recent_events = int(cur.fetchone()[0])
+        recent_events = int(fetchone_required(cur)[0])
 
     latest_run = None
     if run_row:
@@ -123,7 +123,7 @@ def _iso(value: Any) -> str | None:
     if value is None:
         return None
     if hasattr(value, "isoformat"):
-        return value.isoformat()
+        return str(value.isoformat())
     return str(value)
 
 
@@ -137,7 +137,7 @@ def _start_run(daemon: str, trace_id: str) -> int:
             """,
             (daemon, trace_id),
         )
-        run_id = cur.fetchone()[0]
+        run_id = fetchone_required(cur)[0]
         conn.commit()
         return int(run_id)
 
@@ -323,7 +323,7 @@ def _candidate_insights(niche: str) -> list[tuple[str, str, float]]:
             """,
             (niche, niche),
         )
-        n = int(cur.fetchone()[0])
+        n = int(fetchone_required(cur)[0])
         cur.execute(
             """
             SELECT cta_pattern, COUNT(*)

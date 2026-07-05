@@ -93,6 +93,28 @@ The pipeline enforces human gates for: public publishing, paid generation spend,
 account/channel changes, comment/DM/follow automation, and ad spend. All
 generation and publishing actions require explicit operator approval.
 
+## Observability
+
+- **Structured logging**: `src/aflack/logging.py` (structlog with JSON output and log scrubbing)
+- **Distributed tracing**: `aflack trace-show <trace_id>` replays full event traces
+- **Metrics collection**: `src/aflack/metrics.py` (counters, gauges, timing)
+- **Error tracking**: `src/aflack/error_tracking.py` (breadcrumbs, stack traces, context)
+- **Product analytics**: `src/aflack/product_analytics.py` (funnel events, export hooks)
+- **Monitoring guide**: `docs/monitoring.md`
+- **Incident runbooks**: `docs/runbooks/incident-response.md`
+
+## Profiling
+
+```bash
+python -m cProfile -o profile.out -m aflack.cli improve-cycle
+python -m pstats profile.out
+```
+
+## Dependency Updates
+
+Dependabot is configured for weekly updates. See `docs/dependency-update-policy.md`
+for the minimum release age policy (7 days before merge).
+
 ## License
 
 Proprietary. All rights reserved.

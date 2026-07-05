@@ -40,7 +40,7 @@ import hashlib
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from .db import connect
 from .learning import set_creator_proof, upsert_creator
@@ -126,10 +126,12 @@ def load_scan_file(path: str | Path) -> dict[str, Any]:
     """Read and minimally validate an Aside scan JSON file."""
 
     data = json.loads(Path(path).read_text())
+    if not isinstance(data, dict):
+        raise ValueError("scan JSON must be a JSON object")
     observations = data.get("observations")
     if not isinstance(observations, list):
         raise ValueError("scan JSON must contain an observations array")
-    return data
+    return cast(dict[str, Any], data)
 
 
 def import_aside_scan(path: str | Path, *, actor: str = "aside-scan-import") -> ImportSummary:

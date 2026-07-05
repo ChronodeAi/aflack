@@ -1,0 +1,68 @@
+name: Doc Generation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'README.md'
+      - 'AGENTS.md'
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+      - name: Set up Python
+        run: uv python install 3.11
+      - name: Install dependencies
+        run: uv sync --extra dev
+      - name: Generate API documentation
+        run: |
+          uv run python -c "
+          import pydoc
+          import aflack
+          import aflack.cli
+          import aflack.analytics
+          import aflack.publishing
+          import aflack.compliance
+          import aflack.economics
+          import aflack.learning
+          import aflack.daemon
+          import aflack.memory
+          import aflack.tracing
+          import aflack.logging
+          import aflack.feature_flags
+          import aflack.metrics
+          import aflack.error_tracking
+          import aflack.pii
+          import aflack.resilience
+          modules = [aflack, aflack.cli, aflack.analytics, aflack.publishing,
+                     aflack.compliance, aflack.economics, aflack.learning,
+                     aflack.daemon, aflack.memory, aflack.tracing,
+                     aflack.logging, aflack.feature_flags, aflack.metrics,
+                     aflack.error_tracking, aflack.pii, aflack.resilience]
+          with open('docs/api-reference.md', 'w') as f:
+              for mod in modules:
+                  f.write(pydoc.render_doc(mod, renderer=pydoc.plaintext))
+                  f.write('\n\n')
+          "
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --exit-code docs/api-reference.md || echo "changed=true" >> $GITHUB_OUTPUT
+      - name: Commit docs
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/api-reference.md
+          git commit -m "Update API documentation"
+          git push

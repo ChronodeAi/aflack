@@ -10,4 +10,31 @@ repos:
     hooks:
       - id: mypy
         files: ^src/
-        additional_dependencies: [types-psycopg2, typer]
+        additional_dependencies: [types-psycopg2, typer, structlog, tenacity]
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: v2.16
+    hooks:
+      - id: vulture
+        args: [--min-confidence, "80", src]
+  - repo: local
+    hooks:
+      - id: radon-cc
+        name: radon cyclomatic complexity
+        entry: radon cc -nc -s
+        language: system
+        files: ^src/.*\.py$
+      - id: deptry
+        name: deptry unused dependencies
+        entry: deptry .
+        language: system
+        pass_filenames: false
+      - id: check-large-files
+        name: check file sizes (max 500KB)
+        entry: bash -c 'find src tests --type f -size +500k -exec echo "Large file: {}" \; -quit | grep . && exit 1 || exit 0'
+        language: system
+        pass_filenames: false
+      - id: todo-scanner
+        name: scan for TODO/FIXME without issue reference
+        entry: bash -c 'grep -rnE "TODO|FIXME" src/ --include="*.py" | grep -vE "TODO\([A-Z]+-[0-9]+\)|FIXME\([A-Z]+-[0-9]+\)" | head -5 && grep -rnE "TODO|FIXME" src/ --include="*.py" | grep -vE "TODO\([A-Z]+-[0-9]+\)|FIXME\([A-Z]+-[0-9]+\)" | head -1 > /dev/null && echo "Found TODO/FIXME without issue reference" && exit 1 || exit 0'
+        language: system
+        pass_filenames: false

@@ -11,7 +11,7 @@ import secrets
 from dataclasses import dataclass
 from typing import Any
 
-from .db import connect
+from .db import connect, fetchone_required
 
 
 def new_trace_id(prefix: str = "trace") -> str:
@@ -50,7 +50,7 @@ def record_event(
             """,
             (trace_id, stage, actor, event_type, json.dumps(payload or {}), ref_type, ref_id),
         )
-        event_id = cur.fetchone()[0]
+        event_id = fetchone_required(cur)[0]
         conn.commit()
         return int(event_id)
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from decimal import Decimal
 
-from .db import connect
+from .db import connect, fetchone_required
 
 
 @dataclass(frozen=True)
@@ -22,11 +22,11 @@ def current_rollup() -> EconomicsRollup:
 
     with connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT COALESCE(SUM(amount), 0) FROM cost_ledger")
-        total_cost = cur.fetchone()[0]
+        total_cost = fetchone_required(cur)[0]
         cur.execute("SELECT COALESCE(SUM(revenue), 0) FROM results")
-        revenue = cur.fetchone()[0]
+        revenue = fetchone_required(cur)[0]
         cur.execute("SELECT COUNT(*) FROM creatives")
-        generated = int(cur.fetchone()[0])
+        generated = int(fetchone_required(cur)[0])
 
     margin = revenue - total_cost
     cpg = (total_cost / generated) if generated else None

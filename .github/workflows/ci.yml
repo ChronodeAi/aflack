@@ -36,5 +36,23 @@ jobs:
       - name: Type check (mypy)
         run: uv run mypy src
 
-      - name: Unit tests
-        run: uv run python -m unittest discover -s tests -v
+      - name: Tests with coverage
+        run: uv run python -m pytest tests/ --tb=short -q
+
+      - name: Dead code detection (vulture)
+        run: uv run vulture src --min-confidence 80 || true
+
+      - name: Complexity check (radon)
+        run: uv run radon cc -nc -s src/ || true
+
+      - name: Unused dependencies (deptry)
+        run: uv run deptry . || true
+
+      - name: Duplicate code detection (jscpd)
+        run: npx --yes jscpd src/ --min-lines 5 --format json --reporters json || true
+
+      - name: TODO/FIXME scanner
+        run: |
+          if grep -rnE 'TODO|FIXME' src/ --include='*.py' | grep -vE 'TODO\([A-Z]+-[0-9]+\)|FIXME\([A-Z]+-[0-9]+\)' | head -1; then
+            echo "::warning::Found TODO/FIXME without issue reference"
+          fi

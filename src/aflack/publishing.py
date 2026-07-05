@@ -11,13 +11,13 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
-from typing import Literal
+from typing import Any, Literal, cast
 from urllib.error import HTTPError
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
 from .config import load_settings
-from .db import connect
+from .db import connect, fetchone_required
 
 TargetFormat = Literal["short", "longform", "reel", "post", "story", "other"]
 
@@ -70,19 +70,19 @@ class PostizPublisher:
                     intent.scheduled_at,
                 ),
             )
-            queue_id = cur.fetchone()[0]
+            queue_id = fetchone_required(cur)[0]
             conn.commit()
             return int(queue_id)
 
-    def list_integrations(self) -> list[dict]:
+    def list_integrations(self) -> list[dict[str, Any]]:
         """List connected Postiz integrations using the public API."""
 
         settings = load_settings()
         if not settings.postiz_api_key:
             raise RuntimeError("POSTIZ_API_KEY is not set")
-        return self._request("GET", "/api/public/v1/integrations")
+        return cast(list[dict[str, Any]], self._request("GET", "/api/public/v1/integrations"))
 
-    def get_platform_analytics(self, integration_id: str, *, days: int = 7) -> dict:
+    def get_platform_analytics(self, integration_id: str, *, days: int = 7) -> dict[str, Any]:
         """Fetch Postiz platform analytics for one integration."""
 
         if days <= 0:
@@ -90,7 +90,7 @@ class PostizPublisher:
         response = self._request("GET", f"/api/public/v1/analytics/{integration_id}?days={days}")
         return response if isinstance(response, dict) else {"data": response}
 
-    def get_post_analytics(self, post_id: str, *, days: int = 7) -> dict:
+    def get_post_analytics(self, post_id: str, *, days: int = 7) -> dict[str, Any]:
         """Fetch Postiz analytics for one post."""
 
         if days <= 0:
@@ -98,7 +98,7 @@ class PostizPublisher:
         response = self._request("GET", f"/api/public/v1/analytics/post/{post_id}?days={days}")
         return response if isinstance(response, dict) else {"data": response}
 
-    def submit_queue_item(self, queue_id: int, integration_id: str, *, as_draft: bool = True) -> dict:
+    def submit_queue_item(self, queue_id: int, integration_id: str, *, as_draft: bool = True) -> dict[str, Any]:
         """Submit one queued item to Postiz and persist the returned id/status.
 
         Uses draft mode by default; public publishing remains a human gate.
@@ -139,10 +139,10 @@ class PostizPublisher:
                 ),
             )
             conn.commit()
-        return response
+        return cast(dict[str, Any], response)
 
     @staticmethod
-    def _platform_settings(platform: str | None, title: str | None) -> dict:
+    def _platform_settings(platform: str | None, title: str | None) -> dict[str, Any]:
         """Per-platform Postiz settings required by its validation layer.
 
         YouTube uploads stay private until a human flips visibility.
@@ -155,7 +155,7 @@ class PostizPublisher:
             return {"title": safe_title, "type": "private"}
         return {}
 
-    def build_queue_payload(self, queue_id: int, integration_id: str, *, as_draft: bool = True) -> dict:
+    def build_queue_payload(self, queue_id: int, integration_id: str, *, as_draft: bool = True) -> dict[str, Any]:
         """Build the Postiz payload for a queued item without submitting it.
 
         This supports a human-reviewable preview before mutating cloud Postiz.
@@ -195,7 +195,7 @@ class PostizPublisher:
         }
         return payload
 
-    def _request(self, method: str, path: str, payload: dict | None = None):
+    def _request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         settings = load_settings()
         if not settings.postiz_api_key:
             raise RuntimeError("POSTIZ_API_KEY is not set")

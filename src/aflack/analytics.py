@@ -8,13 +8,13 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Any, Literal
 
-from .db import connect
+from .db import connect, fetchone_required
 
 AnalyticsSource = Literal["postiz", "youtube", "tiktok", "instagram", "manual", "other"]
 
 
 def _non_negative_int(value: int | str | None) -> int:
-    if value in (None, ""):
+    if value is None or value == "":
         return 0
     parsed = int(value)
     if parsed < 0:
@@ -244,7 +244,7 @@ def record_snapshot(snapshot: AnalyticsSnapshot) -> int:
                 snapshot.captured_at,
             ),
         )
-        snapshot_id = int(cur.fetchone()[0])
+        snapshot_id = int(fetchone_required(cur)[0])
         conn.commit()
         return snapshot_id
 
@@ -276,7 +276,7 @@ def current_analytics_rollup(platform: str | None = None) -> AnalyticsRollup:
             """,
             params,
         )
-        row = cur.fetchone()
+        row = fetchone_required(cur)
 
     return AnalyticsRollup(
         snapshots=int(row[0]),

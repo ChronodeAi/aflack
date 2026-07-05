@@ -16,7 +16,7 @@ from .analytics import (
 from .aside_scan import import_aside_scan
 from .compliance import check_publish_item
 from .daemon import get_daemon_status, run_improvement_cycle
-from .db import connect, exec_sql
+from .db import connect, exec_sql, fetchone_required
 from .economics import current_rollup
 from .learning import (
     active_insights,
@@ -88,7 +88,7 @@ def seed_smoke() -> None:
     """
     with connect() as conn, conn.cursor() as cur:
         cur.execute(sql)
-        niche_id = cur.fetchone()[0]
+        niche_id = fetchone_required(cur)[0]
 
         cur.execute(
             """
@@ -98,7 +98,7 @@ def seed_smoke() -> None:
             """,
             (niche_id,),
         )
-        product_id = cur.fetchone()[0]
+        product_id = fetchone_required(cur)[0]
 
         cur.execute(
             """
@@ -108,7 +108,7 @@ def seed_smoke() -> None:
             RETURNING id
             """
         )
-        persona_id = cur.fetchone()[0]
+        persona_id = fetchone_required(cur)[0]
 
         cur.execute(
             """
@@ -118,7 +118,7 @@ def seed_smoke() -> None:
             """,
             (niche_id,),
         )
-        hook_id = cur.fetchone()[0]
+        hook_id = fetchone_required(cur)[0]
 
         cur.execute(
             """
@@ -128,7 +128,7 @@ def seed_smoke() -> None:
             """,
             (product_id, persona_id, hook_id),
         )
-        script_id = cur.fetchone()[0]
+        script_id = fetchone_required(cur)[0]
 
         cur.execute(
             """
@@ -138,7 +138,7 @@ def seed_smoke() -> None:
             """,
             (script_id,),
         )
-        creative_id = cur.fetchone()[0]
+        creative_id = fetchone_required(cur)[0]
 
         cur.execute(
             """
@@ -148,7 +148,7 @@ def seed_smoke() -> None:
             """,
             (creative_id,),
         )
-        result_id = cur.fetchone()[0]
+        result_id = fetchone_required(cur)[0]
 
         cur.execute(
             """
@@ -200,7 +200,7 @@ def set_beachhead() -> None:
             RETURNING id
             """
         )
-        niche_id = cur.fetchone()[0]
+        niche_id = fetchone_required(cur)[0]
         conn.commit()
     typer.echo(f"Beachhead locked: gta6-ai-persona-gaming (niche_id={niche_id})")
 
@@ -327,7 +327,7 @@ def cost_record(
             """,
             (ref_type, ref_id, cost_type, amount, unit, json.dumps(parsed_metadata)),
         )
-        cost_id = int(cur.fetchone()[0])
+        cost_id = int(fetchone_required(cur)[0])
         conn.commit()
 
     typer.echo(f"cost_ledger_id={cost_id}")

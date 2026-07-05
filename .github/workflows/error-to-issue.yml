@@ -1,0 +1,41 @@
+name: Error to Issue
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  create-issue-on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create issue from CI failure
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = github.event.workflow_run;
+            const issueTitle = `CI Failure: ${run.head_branch} ${run.head_sha.substring(0, 7)}`;
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: ['P1', 'bug']
+            });
+            const existing = issues.data.find(i => i.title === issueTitle);
+            if (existing) {
+              console.log('Issue already exists: ' + existing.html_url);
+              return;
+            }
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: `CI pipeline failed on commit ${run.head_sha}.\n\nWorkflow: ${run.html_url}\nBranch: ${run.head_branch}\n\nPlease investigate and fix.`,
+              labels: ['P1', 'bug', 'backend']
+            });
+            console.log('Created issue: ' + issue.data.html_url);
