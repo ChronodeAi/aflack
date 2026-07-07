@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Blockchain Developer
 description: Smart contract development, DApp architecture, and Web3 protocol specialist. Develop and audit Solidity and Solana contracts, implement DeFi integrations, optimize gas, and deploy to L2 networks. Use proactively for blockchain development, smart contract auditing, or Web3 integration tasks
 model: claude-sonnet-4-6

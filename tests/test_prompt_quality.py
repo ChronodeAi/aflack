@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
 
 from aflack.prompt_quality import check_short_asset_prompt
 
@@ -37,6 +38,19 @@ class PromptQualityTests(unittest.TestCase):
 
         self.assertTrue(result.passed)
         self.assertEqual(result.blocks, [])
+
+    def test_loadout_lab_v2_prompt_pack_passes_quality_gate(self):
+        package = Path(".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md")
+        text = package.read_text()
+        prompt_pack = text.split("### Rejected v1 Prompt Pattern", 1)[0]
+        prompts = [line[2:].strip() for line in prompt_pack.splitlines() if line.startswith("> Vertical 9:16")]
+
+        self.assertEqual(len(prompts), 6)
+        for prompt in prompts:
+            with self.subTest(prompt=prompt[:80]):
+                result = check_short_asset_prompt(prompt)
+                self.assertTrue(result.passed, result.blocks)
+                self.assertEqual(result.blocks, [])
 
 
 if __name__ == "__main__":

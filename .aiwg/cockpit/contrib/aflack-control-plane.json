@@ -1,0 +1,202 @@
+{
+  "$schema": "https://aiwg.io/cockpit/contribution/v1",
+  "id": "aflack-control-plane",
+  "version": "1.1.0",
+  "title": "Aflack Control Plane",
+  "contributes": {
+    "actions": [
+      {
+        "id": "aflack-loop-status",
+        "title": "Aflack Loop Status",
+        "icon": "pin",
+        "group": "aflack",
+        "inject": { "command": "aflack loop-status --json", "target": "focused" }
+      },
+      {
+        "id": "aflack-daemon-status",
+        "title": "Aflack Daemon Status",
+        "icon": "compass",
+        "group": "aflack",
+        "inject": { "command": "aflack daemon-status --json", "target": "focused" }
+      },
+      {
+        "id": "aflack-analytics-status",
+        "title": "Aflack Analytics Status",
+        "icon": "chart",
+        "group": "aflack",
+        "inject": { "command": "aflack analytics-status --json", "target": "focused" }
+      },
+      {
+        "id": "aflack-publish-queue",
+        "title": "Aflack Publish Queue",
+        "icon": "queue",
+        "group": "aflack",
+        "inject": { "command": "aflack publish-queue-status --json", "target": "focused" }
+      },
+      {
+        "id": "aflack-compliance-smoke",
+        "title": "Aflack Compliance Smoke",
+        "icon": "shield",
+        "group": "aflack",
+        "inject": { "command": "aflack compliance-smoke --json", "target": "focused" }
+      },
+      {
+        "id": "aflack-prompt-quality",
+        "title": "Aflack Prompt Quality",
+        "icon": "video",
+        "group": "aflack",
+        "inject": {
+          "command": "aflack prompt-quality --json --text",
+          "target": "focused",
+          "needs_args": true,
+          "args_hint": "\"<prompt text>\""
+        }
+      },
+      {
+        "id": "aflack-improve-cycle",
+        "title": "Aflack Improve Cycle",
+        "icon": "sparkles",
+        "group": "aflack",
+        "inject": { "command": "aflack improve-cycle", "target": "focused" }
+      },
+      {
+        "id": "aflack-memory-consolidate",
+        "title": "Aflack Memory Consolidate",
+        "icon": "box",
+        "group": "aflack",
+        "inject": {
+          "command": "aflack memory-consolidate --min-confidence 0.95 --limit 5",
+          "target": "focused"
+        }
+      },
+      {
+        "id": "aflack-gates-overview",
+        "title": "Aflack Gates Overview",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Run `aflack loop-status --json` and summarize the current_human_gates and current_approved_bounds. This is read-only: do not publish, spend, change accounts/channels, automate DM/comment/follow, or change daemon autonomy.",
+          "target": "focused"
+        }
+      },
+      {
+        "id": "gate-public-publish",
+        "title": "Gate: Public Publish",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Prepare a PUBLIC PUBLISH proposal for operator approval in the Cockpit Approvals inbox. Identify the queued item, show its compliance-smoke and publish-queue-status posture, and list exactly what publishing would do. DO NOT publish, set anything live, or change any external state. Request explicit operator approval before any publish action.",
+          "target": "focused",
+          "needs_args": true,
+          "args_hint": "queue item id (optional)"
+        }
+      },
+      {
+        "id": "gate-account-channel",
+        "title": "Gate: Account/Channel Change",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Prepare a proposed ACCOUNT or CHANNEL SETTING CHANGE for operator approval in the Cockpit Approvals inbox. Describe the exact setting, the target account/channel, and the reason. DO NOT apply any account or channel change. Request explicit operator approval before any change.",
+          "target": "focused"
+        }
+      },
+      {
+        "id": "gate-dm-comment-automation",
+        "title": "Gate: DM/Comment/Follow Automation",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Prepare a proposed COMMENT / DM / FOLLOW / UNFOLLOW automation for operator approval in the Cockpit Approvals inbox. Describe the exact automation, target, and scope. DO NOT send any comment, DM, follow, or unfollow. Request explicit operator approval before any automation runs.",
+          "target": "focused"
+        }
+      },
+      {
+        "id": "gate-ad-spend",
+        "title": "Gate: Paid Promotion / Ad Spend",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Prepare a proposed PAID PROMOTION or AD SPEND for operator approval in the Cockpit Approvals inbox. Show the budget, platform, targeting, and expected cost using economics-status. DO NOT spend any money or launch any paid campaign. Request explicit operator approval before any spend.",
+          "target": "focused"
+        }
+      },
+      {
+        "id": "gate-daemon-autonomy",
+        "title": "Gate: Broader Daemon Autonomy",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Prepare a proposed BROADER DAEMON AUTONOMY change for operator approval in the Cockpit Approvals inbox. Show current daemon-status and the exact bounds being proposed for expansion. DO NOT change any daemon autonomy bounds, loop gates, or approval requirements. Request explicit operator approval before any autonomy change.",
+          "target": "focused"
+        }
+      },
+      {
+        "id": "gate-higgsfield-generation",
+        "title": "Gate: Higgsfield Generation Batch",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Prepare a proposed MEASURED HIGGSFIELD GENERATION BATCH for operator approval in the Cockpit Approvals inbox. Show the package, target, asset count, and projected cost using economics-status. DO NOT generate assets, spend, or publish. Request explicit operator approval before any paid generation.",
+          "target": "focused"
+        }
+      },
+      {
+        "id": "gate-postiz-submit",
+        "title": "Gate: Postiz Submit (ambiguous target)",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Prepare a POSTIZ SUBMISSION proposal for operator approval in the Cockpit Approvals inbox when the package/target is ambiguous. Run postiz-preview for the queued item, show the payload and target, and flag any ambiguity. DO NOT submit to Postiz or publish. Request explicit operator approval before submission.",
+          "target": "focused",
+          "needs_args": true,
+          "args_hint": "queue item id"
+        }
+      },
+      {
+        "id": "gate-skill-rule-edits",
+        "title": "Gate: Daemon-Proposed Skill/Rule/Workflow Edits",
+        "icon": "lock",
+        "group": "aflack-gates",
+        "inject": {
+          "command": "Prepare daemon-proposed SKILL / RULE / WORKFLOW EDITS for operator approval in the Cockpit Approvals inbox. List proposals-list output and the exact files/diffs proposed. DO NOT apply any skill, rule, or workflow edit. Request explicit operator approval before any edit is applied.",
+          "target": "focused"
+        }
+      }
+    ],
+    "workflows": [
+      {
+        "id": "aflack-construction-check",
+        "title": "Aflack Construction Check",
+        "description": "Inspect loop, daemon, queue, analytics, and compliance posture without spending or publishing.",
+        "steps": [
+          { "action": "aflack-loop-status", "label": "Loop" },
+          { "action": "aflack-daemon-status", "label": "Daemon" },
+          { "action": "aflack-publish-queue", "label": "Queue" },
+          { "action": "aflack-analytics-status", "label": "Analytics" },
+          { "action": "aflack-compliance-smoke", "label": "Compliance" }
+        ]
+      },
+      {
+        "id": "aflack-improve-proposal",
+        "title": "Aflack Improve Proposal",
+        "description": "Run one proposal-only improvement cycle, then consolidate high-confidence memory. No spend, no publish.",
+        "steps": [
+          { "action": "aflack-improve-cycle", "label": "Improve" },
+          { "action": "aflack-memory-consolidate", "label": "Consolidate" }
+        ]
+      },
+      {
+        "id": "aflack-gate-review",
+        "title": "Aflack Gate Review",
+        "description": "Read-only review of current human gates and approved bounds, then a compliance smoke check. Surfaces what needs operator approval without executing any gated action.",
+        "steps": [
+          { "action": "aflack-gates-overview", "label": "Gates" },
+          { "action": "aflack-compliance-smoke", "label": "Compliance" }
+        ]
+      }
+    ],
+    "screens": [],
+    "hooks": []
+  }
+}

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Corporate Communications Specialist
 description: Creates executive communications, investor relations content, and corporate messaging
 model: gpt-5.5

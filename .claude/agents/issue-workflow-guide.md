@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Issue Workflow Guide
 description: Helps users choose, initialize, and operate AIWG issue workflows, including local file-system issue tracking, issue-audit, and address-issues routing
 model: claude-sonnet-4-6

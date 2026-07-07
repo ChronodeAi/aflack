@@ -1,5 +1,6 @@
 ---
 # aiwg:managed vunknown bundled
+enforcement: high
 name: prose-resolution
 level: HIGH
 scope: prose-integration

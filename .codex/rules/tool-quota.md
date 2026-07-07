@@ -1,4 +1,8 @@
-<!-- aiwg:managed vunknown bundled -->
+---
+# aiwg:managed vunknown bundled
+enforcement: high
+---
+
 # Tool Quota and Loop Detection
 
 **Enforcement Level**: HIGH

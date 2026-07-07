@@ -1,0 +1,382 @@
+{
+  "managed": {
+    "RULES-INDEX.md": {
+      "hash": "sha256:6b253b39b4e6684415fe75784dfbbb815287bd91c14e1676bc8043d7529be8bb",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "agent-deployment.md": {
+      "hash": "sha256:6763e71feaabf7541385383cbb225326ad84c26b296815a39f258140cfbd01c8",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "auto-compact-continue.md": {
+      "hash": "sha256:5176943700c1cfe1a772cc474c48b85e2eecc0670d464ba0b725ed080c15eb00",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "cli-secondary.md": {
+      "hash": "sha256:f4d57ee721a7af49220a8f2d8c838861e0fbf8c71ab5a625c1f807baff3102dd",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "debug-source-not-output.md": {
+      "hash": "sha256:7f1a3342d14c8a05c9207100ac9a367b7bbfc7d825de60aa73ea92c23bf3f539",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "delivery-policy.md": {
+      "hash": "sha256:6eb9c26e9836520075c89a281d9c08f2c6480c75236f6e7bb24fb7a393b8dd89",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "escalation-discipline.md": {
+      "hash": "sha256:fc075722a90be1bab64f9838ef5d17deee9ef7db567972d1ada3b2e7af69f810",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "god-session.md": {
+      "hash": "sha256:507456a574e64221d034e1a35aa73ff30680808648b6cb56001e19471a50bc7b",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "human-authorization.md": {
+      "hash": "sha256:87d6b47383fa66a96f45ff1142671e28d67eac558a944ee2305b54c288cb6042",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "instruction-comprehension.md": {
+      "hash": "sha256:ce701dbab0ff2ddc62e38a3d0c0f32ed7cfea109c8d89f5b63bdf8bb0084b0ae",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "native-ux-tools.md": {
+      "hash": "sha256:6f464b94b4c4998ce1e8591748a820d15c910333ed0691eb511c031326dec61a",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "quiet-mode.md": {
+      "hash": "sha256:bd6df5c2ff3c9535ca0050ed8cd700058eec857312e12d7af0d3d57c8ca211e2",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "research-before-decision.md": {
+      "hash": "sha256:29f15138adfb325dc6861275791e1640c942dfca503f4839baf705ab81872810",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "respect-repo-access-manifest.md": {
+      "hash": "sha256:72a1f42a25bb0e0c90a5c312249bcd5ba3630ceee9c722e882666e3cb89292c6",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "sdlc-right-sizing.md": {
+      "hash": "sha256:ec3ea0f1e516c107012146ebacbc9c8672c468adb14751b06a90fc3ddd85a176",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "skill-discovery.md": {
+      "hash": "sha256:2c40d8b7ce60af91c4374bd78dcf629f24f5aa58c04dae69ffc6a3864c81c8d5",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "subagent-scoping.md": {
+      "hash": "sha256:0f777f03f053b505293bc48679497d7b0cbfd5fed27f73ed7cd143c29ff7fcd1",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "tool-quota.md": {
+      "hash": "sha256:7cbeaf3873b92e244840110665a68752812d7d25d3cca496081d9788e2859e04",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "vague-discretion.md": {
+      "hash": "sha256:62262c76b25ef3986fa707fa80070e914c649cbbb915f3f5f4834b0674f66fe8",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "aiwg-utils"
+    },
+    "browser-control-safety.md": {
+      "hash": "sha256:eb9f5f03ece1a487caba06151d2e9639ace41ab74591ea5222de147e2451c964",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "browser-control"
+    },
+    "daemon-interaction.md": {
+      "hash": "sha256:9c734ceb15f07fde41e708a192e5af8161a4c54f4d9f3e2d34c7c866c7ad0f72",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "daemon"
+    },
+    "prose-resolution.md": {
+      "hash": "sha256:7e1539a55f9122532d111fffe646d4b42aec73dab7fef1492d9141e2d2708d61",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "prose-integration"
+    },
+    "evaluator-immutability.md": {
+      "hash": "sha256:9a80bf426a9954051fa0b462c8126c09338c19b79071ab01e6e7ca0547f870e8",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "ring-governance"
+    },
+    "governance-boundary.md": {
+      "hash": "sha256:624b75af32e37bbee5f5190c1eaf40996d12e4b30057612216dee2e40ecbc2ea",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "ring-governance"
+    },
+    "judge-validation-protocol.md": {
+      "hash": "sha256:977e68031fc03dd9ecdab4dd3a447502c8c53b81a58604aafe6fa9d405cd99d2",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "ring-governance"
+    },
+    "memory-is-not-proof.md": {
+      "hash": "sha256:3587bdd90a17887d54429df37c5a568f6424d1abb163fbb1fda355de912464b1",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "ring-governance"
+    },
+    "no-self-grading.md": {
+      "hash": "sha256:bb118b28b7635e9e0add5c4ccae42d949cd74ae17f5747465685dea7960ed082",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "ring-governance"
+    },
+    "rlm-context-management.md": {
+      "hash": "sha256:9eaa9423d06c8d4e83a60a2bf4884dc68188b1cbfbc0128419aa1cd233a82fbd",
+      "source": "bundled",
+      "version": "unknown",
+      "frameworkSlug": "rlm"
+    },
+    "evidence-integrity.md": {
+      "hash": "sha256:c1823ed70f462d0b6c7c7d95963a00d8f54a2224d11822b70600766411323b1e",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "forensics-complete"
+    },
+    "non-destructive.md": {
+      "hash": "sha256:25edde78e9761cb25b2c1e234cd2a000b6e194e81cb124238b3c8de5735eb7b6",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "forensics-complete"
+    },
+    "red-flag-escalation.md": {
+      "hash": "sha256:69bbd934225948a204ddabff24d8b97356fff451bd3604ebe765c21a3faaeaf8",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "forensics-complete"
+    },
+    "volatility-order.md": {
+      "hash": "sha256:64a705a4694857d83874a7ef5d1096c532f2dbdca5866f414abc2ecef6b17f63",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "forensics-complete"
+    },
+    "ops-cross-repo.md": {
+      "hash": "sha256:5ec27a372d34ff4d8803cdedc1c17a39cbd764295ef94f94b2920728fdc9c7ec",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "ops-complete"
+    },
+    "ops-documentation.md": {
+      "hash": "sha256:f007711d77b80b266609bf2dc13f4655d4308f41d2d49fe7916da4527dbc716c",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "ops-complete"
+    },
+    "ops-safety.md": {
+      "hash": "sha256:68238384ebaae8fd7c6fcc6ea99e3b5ff072cf344d01633ecef51394ea4881b5",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "ops-complete"
+    },
+    "actionable-feedback.md": {
+      "hash": "sha256:0d230803825c600c6f5f1bc6ca8058abe36d925de569c0ab2322551215494d39",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "agent-fallback.md": {
+      "hash": "sha256:534e331a50bb4a8df25106285efd7c326a3c6eadce641d7fc7545f5d264fb4f8",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "agent-friendly-code.md": {
+      "hash": "sha256:4affffd7606336caa3773b745a684f37ef0b509b92cc560efac0a913e85cae91",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "agent-generation-guardrails.md": {
+      "hash": "sha256:923b0062e64bb589d8de4a4ab8ff893eb4f32ac6ac83b4ddee8dcbfe74585fe3",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "anti-laziness.md": {
+      "hash": "sha256:dfe3f4fde4f9dbb74d4b4bc3fd2dde264dc586bf68d22e8c0c9faba680f7bfa3",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "artifact-discovery.md": {
+      "hash": "sha256:0a6cecccc5e2aa54e5ae2c099e14d54393af5caf49cfea249f5e1de26378996d",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "citation-policy.md": {
+      "hash": "sha256:dce12bb333994d25eb21fa8e4639eae5d3cacaaf1e7adfd24788c89026b12499",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "executable-feedback.md": {
+      "hash": "sha256:26d06aef598ad370ffe1709abb28ca3a4080e105addafd6d3ea54010e81ed63a",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "failure-mitigation.md": {
+      "hash": "sha256:841b425948b2363f43a9827175c71f4905590ad9b00f6b1ba445c30a641651f3",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "hitl-gates.md": {
+      "hash": "sha256:ba6a9121fb900f32efd9b763ff241f2fcd0494420932cb5c8228a3c1b3681107",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "no-attribution.md": {
+      "hash": "sha256:12dcd417e8a50822554e596bf1e2d1cc2e38fd1a59d4783eb57e6d7b751a9f0e",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "provenance-tracking.md": {
+      "hash": "sha256:87628d474ffdad4452236bcf1a5b6fca937a7034e4b4a07caa14c25061a98a22",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "reproducibility-validation.md": {
+      "hash": "sha256:0e164bb92f18b7d5f22d3f6b81764ca62190f05ccc47f02db98f526877686c43",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "research-metadata.md": {
+      "hash": "sha256:cb9a63939265f495ef78231cc7baf0696270b1da89d42a199192c4ce66859637",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "tao-loop.md": {
+      "hash": "sha256:b94f023116c06cd4abe0c3955aa8463136e797a0540014e9a8ab897f443499a0",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "token-security.md": {
+      "hash": "sha256:5b836626bee8c773ff41874bca15a154a54eeabe411f28efd7bc28e2785749e7",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "versioning.md": {
+      "hash": "sha256:ebd77188f501cac882da9e5261effcccdec718f196cb3ff1330f7a15b9c93aff",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "sdlc-complete"
+    },
+    "api-abi-stability.md": {
+      "hash": "sha256:321b108c80b46c7443fa391718ffba9c0dc716d8c68ea447e549373ea05c9b28",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "banned-apis.md": {
+      "hash": "sha256:399e6a1484dbffa8d669005d4e6c8b7ed3ddfdaf773d78c44b35aaf437f31af8",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "ci-action-pinning.md": {
+      "hash": "sha256:4ed67ce6c00a33ae030e2c8a9aeac5d2eb41ca59e4f4c48b632257dfdfe7c4aa",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "committer-2fa-required.md": {
+      "hash": "sha256:281d3d1250c6e19b6e338a7349f39f1b0b530cccd4eed27784bad4250c5a3b7f",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "crypto-flag-verification.md": {
+      "hash": "sha256:3b19023426ca1659af04c429bb2619bd9da6944d8690f1a927a776c13d2d9910",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "dependency-source-policy.md": {
+      "hash": "sha256:eed0866823b4f9c927030567d4b33258d91f8b0f604cc83ca9a5edac7c9017af",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "no-adhoc-kdf.md": {
+      "hash": "sha256:cde84924ea147cae33d0b87f8417d7d250a00301ab47d030b665936aab8263aa",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "no-confusable-unicode.md": {
+      "hash": "sha256:693c9f041f6a449823e3f0f1a46db045fef8fc279840da489b3dfad8cff70c63",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "no-key-reuse-across-purposes.md": {
+      "hash": "sha256:7eaeb4b63323e5233bdf33d09457837ee0ab33b6a78f042ec578ea51ef5e6d61",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "no-unauthenticated-encryption.md": {
+      "hash": "sha256:147987da4b86f44cfa310a8f5c1e9aad3a79552bc0632ac6e67bedae33d78a61",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    },
+    "strict-toolchain.md": {
+      "hash": "sha256:24c965606310a7ee3c16db7a0d1e23cfd9050cc833daead560bea5b697eb03fd",
+      "source": "bundled",
+      "version": "2026.7.10",
+      "frameworkSlug": "security-engineering"
+    }
+  }
+}

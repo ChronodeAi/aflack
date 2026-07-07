@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Migration Planner
 description: Technology migration planning and execution specialist. Plan framework upgrades, language transitions, and infrastructure moves with rollback strategies. Use proactively for migration planning tasks
 model: gpt-5.5

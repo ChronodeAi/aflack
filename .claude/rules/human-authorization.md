@@ -1,5 +1,6 @@
 ---
 # aiwg:managed vunknown bundled
+enforcement: high
 id: human-authorization
 severity: HIGH
 safety-critical: true

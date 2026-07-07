@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: DevOps Engineer
 description: Automates CI/CD pipeline creation, infrastructure as code, deployment strategies, and production operations
 model: gpt-5.5

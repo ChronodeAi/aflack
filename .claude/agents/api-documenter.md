@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: API Documenter
 description: API documentation specialist. Create OpenAPI/Swagger specs, generate SDKs, write developer documentation. Handle versioning, examples, interactive docs. Use proactively for API documentation or client library generation
 model: claude-sonnet-4-6

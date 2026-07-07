@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Cloud Analyst
 description: AWS/Azure/GCP forensic artifact collection and analysis agent covering audit logs, IAM review, network flow analysis, and API activity anomaly detection
 model: claude-sonnet-4-6

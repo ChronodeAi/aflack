@@ -48,7 +48,9 @@ Do **not** graduate into a framework until the system demonstrates:
 
 ## AIWG Framework Shape
 
-Candidate framework name: `affiliate-content-ops` or `creator-commerce-ops`.
+Candidate framework name: `memetics-ops`, `creator-commerce-ops`, `attention-commerce-ops`, or `viral-commerce-ops`.
+
+Working recommendation: use **`memetics-ops`** for the lifecycle framework if the scope remains engineered attention -> content -> funnel -> economics -> learning. Use **`creator-commerce-ops`** only if the framework becomes broader creator monetization infrastructure across niches/products.
 
 Candidate phases:
 
@@ -69,6 +71,7 @@ Candidate phases:
 - `ai-persona-honesty`: no impersonation or false firsthand claims.
 - `roi-before-frameworkization`: no framework graduation until positive contribution margin and repeatability.
 - `memory-without-rot`: capture facts/events/procedures with dedup, temporal validity, and relevance-gated retrieval.
+- `testable-contracts-over-prose`: important agentic instructions require deterministic checks or explicit no-check rationale.
 
 ## Candidate Skills
 
@@ -129,7 +132,7 @@ Candidate phases:
 
 ## Current Recommendation
 
-Stay in **Local MVP** until the first niche has:
+Stay in **Local MVP / project-local bundle** until the first niche has:
 
 - ≥1 full production week of data,
 - tracked generation costs,
@@ -139,3 +142,11 @@ Stay in **Local MVP** until the first niche has:
 - no unresolved compliance blockers.
 
 Then revisit project-local bundle scaffolding before full framework scaffolding.
+
+## Delivered project-local bundle status — 2026-07-04
+
+The project now has a working project-local `creator-commerce-ops` bundle plus SDLC architecture decisions, but it has not earned full AIWG framework promotion yet. ADR-0005 defines the Jarvis-style human-gated orchestration model, ADR-0006 defines the virality-first, persona-optional doctrine, and ADR-0007 defines the memory system-of-record posture. The next promotion gate is still economic proof from a complete package→draft/publish→results→economics loop.
+
+## Smithing and deterministic-contract update — 2026-07-04
+
+Future reusable skills and agents should be authored through AIWG SkillSmith and AgentSmith after `aiwg discover` / `aiwg show` confirms that an existing artifact is not a better fit. Rules remain project-local unless a canonical RuleSmith/scaffold route is discovered. The Pocket transcript and PSI project review both point to the same construction principle: agent instructions should compile down to deterministic checks, schemas, smoke tests, or explicit acceptance gates before they are trusted by daemons or publish-adjacent workflows.

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Data Analyst
 description: Collects, processes, and analyzes marketing data to support decision-making and campaign optimization
 model: claude-sonnet-4-6

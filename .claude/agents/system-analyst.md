@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: System Analyst
 description: Bridges business intent and technical delivery by refining requirements and defining system scope
 model: claude-sonnet-4-6

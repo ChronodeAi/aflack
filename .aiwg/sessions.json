@@ -1,0 +1,12 @@
+{
+  "sessions": [
+    {
+      "name": "aiwg-construction-code-lane-claude-2026-07-04",
+      "created": "2026-07-04T22:22:56.966Z",
+      "workflow": "orchestrate-project",
+      "phase": null,
+      "iteration": null,
+      "status": "active"
+    }
+  ]
+}

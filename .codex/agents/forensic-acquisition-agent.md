@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Forensic Acquisition Agent
 description: Evidence collection and chain of custody agent. Handles forensic image creation, log preservation, hash verification (SHA-256), and chain of custody documentation for all collected artifacts.
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Build Engineer
 description: Designs and maintains build automation, CI pipelines, and artifact packaging for reliable delivery
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Django Expert
 description: Django framework optimization specialist. Optimize ORM queries, design DRF APIs, implement middleware patterns, configure Celery integration. Use proactively for Django development tasks
 model: gpt-5.5

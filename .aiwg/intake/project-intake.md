@@ -110,3 +110,16 @@
 4. Choose the week-1 beachhead niche via the niche-diagnostic scorecard.
 5. Stand up the local event store + first pipeline stages.
 6. Define the economics dashboard and scale/frameworkization gates: credit spend, token spend, tool spend, operator time, affiliate revenue, margin, MMR/MRR, and per-video ROI.
+
+## Controlled Construction Addendum — 2026-07-05
+
+The original intake captured the broad affiliate content pipeline concept before the beachhead narrowed. Current Aflack construction state is:
+
+- Beachhead: GTA6-adjacent gaming content, YouTube-first.
+- Active lanes: Vice Signal and Loadout Lab.
+- Current phase: Controlled Construction through the draft-ramp boundary, not Transition or Production.
+- Current approval bounds: measured Higgsfield generation for validated packages and first-100 Postiz draft submissions with explicit targets.
+- Current hard blocks: public publishing, account/channel settings, comments/DM/follows, paid promotion/ad spend, and broader daemon autonomy.
+- Current proof target: move from locally constructed loop to IOC readiness by adding Cockpit visibility, render-review learning, analytics refresh, publish-quality policy, and stronger traceability.
+
+This addendum supersedes early beauty/TikTok examples as the active MVP scope while preserving the original intake history.

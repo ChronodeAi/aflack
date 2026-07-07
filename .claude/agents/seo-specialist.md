@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: SEO Specialist
 description: Optimizes content for search engines, conducts keyword research, and develops SEO strategies
 model: claude-sonnet-4-6

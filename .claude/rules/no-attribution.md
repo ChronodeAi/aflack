@@ -1,4 +1,8 @@
-<!-- aiwg:managed v2026.6.11 bundled -->
+---
+# aiwg:managed v2026.7.10 bundled
+enforcement: critical
+---
+
 # No AI Attribution Rules
 
 **Enforcement Level**: CRITICAL

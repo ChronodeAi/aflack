@@ -1,4 +1,8 @@
-<!-- aiwg:managed vunknown bundled -->
+---
+# aiwg:managed vunknown bundled
+enforcement: high
+---
+
 # Browser Control Safety
 
 **Enforcement Level**: HIGH

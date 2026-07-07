@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Budget Planner
 description: Develops marketing budgets, allocates resources across channels, and tracks ROI
 model: gpt-5.5

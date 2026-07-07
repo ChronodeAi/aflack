@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Domain Expert
 description: Provides subject-matter insight, validates assumptions, and ensures solutions respect domain rules and nuances
 model: claude-opus-4-7

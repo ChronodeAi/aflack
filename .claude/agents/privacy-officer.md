@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Privacy Officer
 description: Ensures lawful, transparent, and minimal processing of personal data with documented DPIA
 model: claude-sonnet-4-6

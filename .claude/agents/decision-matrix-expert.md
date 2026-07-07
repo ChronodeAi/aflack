@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Decision Matrix Expert
 description: Facilitates data-driven trade-offs using an embedded decision matrix template
 model: claude-sonnet-4-6

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Backup Verifier
 description: Test backup restore path, verify hash integrity, and confirm RPO/RTO targets are met for documented backup jobs
 model: claude-sonnet-4-6

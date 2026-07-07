@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: GCP Specialist
 description: Google Cloud Platform specialist with deep expertise in Cloud Run, GKE, BigQuery, and Vertex AI. Implement Terraform GCP modules, Cloud Functions gen2, Pub/Sub event-driven patterns, and BigQuery ML pipelines. Use proactively for GCP-specific infrastructure, data analytics, or AI/ML workload tasks
 model: gpt-5.5

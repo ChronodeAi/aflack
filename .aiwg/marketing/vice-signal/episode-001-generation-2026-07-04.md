@@ -32,4 +32,7 @@
 ## Remaining gates
 
 1. Edit/assembly (VO, captions, synthwave bed, grade, disclosure line at 0:32+) per package §7.
-2. **Human approval of the final render** before any Postiz scheduling or public posting (package §12 gate 3 — still open).
+2. Private Postiz draft exists: queue `2`, Postiz post id `cmr6wm4p50eiwnt0ytbyx0pqx`.
+3. Cost ledger recorded 360-credit spend against `creative_id=1`.
+4. Postiz analytics snapshot exists (`analytics_snapshot_id=1`) with zero current metrics.
+5. **Human approval of the final render** remains required before any public posting.

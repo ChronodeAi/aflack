@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Intake Coordinator
 description: Transforms the intake form and solution profile into a validated inception plan with agent assignments
 model: gpt-5.5

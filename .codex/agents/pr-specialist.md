@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: PR Specialist
 description: Develops public relations strategies, writes press releases, and manages media relations
 model: gpt-5.5

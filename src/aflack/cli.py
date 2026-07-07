@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 import typer
 
@@ -17,6 +18,7 @@ from .aside_scan import import_aside_scan
 from .compliance import check_publish_item
 from .daemon import get_daemon_status, run_improvement_cycle
 from .db import connect, exec_sql, fetchone_required
+from .draft_review import DraftReviewInput, draft_review_rollup, record_draft_review
 from .economics import current_rollup
 from .learning import (
     active_insights,
@@ -32,6 +34,48 @@ from .publishing import PostizPublisher, PublishIntent
 from .tracing import trace_events
 
 app = typer.Typer(help="aflack local affiliate content pipeline")
+
+
+def _echo_json(payload: dict[str, Any] | list[Any]) -> None:
+    typer.echo(json.dumps(payload, indent=2, sort_keys=True, default=str))
+
+
+def _parse_loop_state(path: Path) -> dict[str, object]:
+    data: dict[str, object] = {}
+    list_key: str | None = None
+    map_key: str | None = None
+    for raw in path.read_text().splitlines():
+        if not raw.strip() or raw.lstrip().startswith("#"):
+            continue
+        if raw.startswith("  - ") and list_key:
+            data.setdefault(list_key, [])
+            lst = data[list_key]
+            assert isinstance(lst, list)
+            lst.append(raw.strip()[2:].strip())
+            continue
+        if raw.startswith("  ") and map_key and ":" in raw:
+            key, value = raw.strip().split(":", 1)
+            data.setdefault(map_key, {})
+            dct = data[map_key]
+            assert isinstance(dct, dict)
+            dct[key.strip()] = value.strip().strip('"')
+            continue
+        list_key = None
+        map_key = None
+        if ":" not in raw:
+            continue
+        key, value = raw.split(":", 1)
+        key = key.strip()
+        value = value.strip()
+        if value:
+            data[key] = value.strip('"')
+        else:
+            data[key] = [] if key in {"current_human_gates", "current_approved_bounds", "next_safe_actions"} else {}
+            if isinstance(data[key], list):
+                list_key = key
+            else:
+                map_key = key
+    return data
 
 
 @app.command()
@@ -268,7 +312,7 @@ def postiz_preview(queue_id: int, integration_id: str, draft: bool = True) -> No
 
 
 @app.command()
-def compliance_smoke() -> None:
+def compliance_smoke(json_output: bool = typer.Option(False, "--json", help="Emit machine-readable JSON.")) -> None:
     """Run deterministic compliance smoke checks."""
 
     ok = check_publish_item(
@@ -281,8 +325,23 @@ def compliance_smoke() -> None:
         disclosure_text="",
         script_body="I played the leaked build and this will cure your boredom.",
     )
-    typer.echo(f"allowed_sample passed={ok.passed} blocks={ok.blocks} warnings={ok.warnings}")
-    typer.echo(f"blocked_sample passed={blocked.passed} blocks={blocked.blocks} warnings={blocked.warnings}")
+    payload = {
+        "allowed_sample": {
+            "passed": ok.passed,
+            "blocks": ok.blocks,
+            "warnings": ok.warnings,
+        },
+        "blocked_sample": {
+            "passed": blocked.passed,
+            "blocks": blocked.blocks,
+            "warnings": blocked.warnings,
+        },
+    }
+    if json_output:
+        _echo_json(payload)
+    else:
+        typer.echo(f"allowed_sample passed={ok.passed} blocks={ok.blocks} warnings={ok.warnings}")
+        typer.echo(f"blocked_sample passed={blocked.passed} blocks={blocked.blocks} warnings={blocked.warnings}")
     if ok.passed is not True or blocked.passed is not False:
         raise typer.Exit(code=1)
 
@@ -334,7 +393,10 @@ def cost_record(
 
 
 @app.command()
-def publish_queue_status(limit: int = 20) -> None:
+def publish_queue_status(
+    limit: int = 20,
+    json_output: bool = typer.Option(False, "--json", help="Emit machine-readable JSON."),
+) -> None:
     """List recent publish queue items and external IDs."""
 
     with connect() as conn, conn.cursor() as cur:
@@ -351,22 +413,37 @@ def publish_queue_status(limit: int = 20) -> None:
         )
         rows = cur.fetchall()
 
-    if not rows:
+    items = [
+        {
+            "id": int(row[0]),
+            "creative_id": int(row[1]),
+            "platform": row[2],
+            "target_format": row[3],
+            "status": row[4],
+            "postiz_post_id": row[5] or None,
+            "platform_post_id": row[6] or None,
+            "platform_url": row[7] or None,
+        }
+        for row in rows
+    ]
+    if json_output:
+        _echo_json({"items": items, "count": len(items)})
+        return
+    if not items:
         typer.echo("(no publish queue items)")
         return
-    for row in rows:
-        queue_id, creative_id, platform, target_format, status, postiz_id, platform_id, url = row
+    for item in items:
         typer.echo(
             " | ".join(
                 [
-                    f"id={queue_id}",
-                    f"creative_id={creative_id}",
-                    f"platform={platform}",
-                    f"format={target_format}",
-                    f"status={status}",
-                    f"postiz_post_id={postiz_id or '-'}",
-                    f"platform_post_id={platform_id or '-'}",
-                    f"url={url or '-'}",
+                    f"id={item['id']}",
+                    f"creative_id={item['creative_id']}",
+                    f"platform={item['platform']}",
+                    f"format={item['target_format']}",
+                    f"status={item['status']}",
+                    f"postiz_post_id={item['postiz_post_id'] or '-'}",
+                    f"platform_post_id={item['platform_post_id'] or '-'}",
+                    f"url={item['platform_url'] or '-'}",
                 ]
             )
         )
@@ -425,10 +502,28 @@ def analytics_record_manual(
 
 
 @app.command()
-def analytics_status(platform: str = "") -> None:
+def analytics_status(
+    platform: str = "",
+    json_output: bool = typer.Option(False, "--json", help="Emit machine-readable JSON."),
+) -> None:
     """Print aggregate analytics captured in the local event store."""
 
     rollup = current_analytics_rollup(platform or None)
+    payload = {
+        "platform": platform or None,
+        "snapshots": rollup.snapshots,
+        "total_views": rollup.total_views,
+        "total_likes": rollup.total_likes,
+        "total_comments": rollup.total_comments,
+        "total_shares": rollup.total_shares,
+        "total_saves": rollup.total_saves,
+        "total_clicks": rollup.total_clicks,
+        "total_conversions": rollup.total_conversions,
+        "total_revenue": str(rollup.total_revenue),
+    }
+    if json_output:
+        _echo_json(payload)
+        return
     typer.echo(f"snapshots={rollup.snapshots}")
     typer.echo(f"total_views={rollup.total_views}")
     typer.echo(f"total_likes={rollup.total_likes}")
@@ -441,7 +536,139 @@ def analytics_status(platform: str = "") -> None:
 
 
 @app.command()
-def prompt_quality(path: Path | None = None, text: str = "") -> None:
+def draft_review_record(
+    reviewer: str = typer.Option(..., "--reviewer", help="Reviewer/operator name."),
+    verdict: str = typer.Option(
+        ..., "--verdict", help="keep_private|revise_prompt|revise_script|publish_candidate|kill"
+    ),
+    queue_id: int | None = typer.Option(None, "--queue-id", help="Publish queue id under review."),
+    creative_id: int | None = typer.Option(None, "--creative-id", help="Creative id under review."),
+    hook: int = typer.Option(..., "--hook", help="First-frame hook score, 1-5."),
+    retention: int = typer.Option(..., "--retention", help="Retention/progression score, 1-5."),
+    payoff: int = typer.Option(..., "--payoff", help="Final payoff score, 1-5."),
+    compliance: int = typer.Option(..., "--compliance", help="Compliance score, 1-5."),
+    cta: int = typer.Option(..., "--cta", help="CTA clarity score, 1-5."),
+    asset_quality: int = typer.Option(..., "--asset-quality", help="Asset quality score, 1-5."),
+    block: list[str] = typer.Option(None, "--block", help="Blocking issue. Repeatable."),  # noqa: B008
+    warning: list[str] = typer.Option(None, "--warning", help="Warning. Repeatable."),  # noqa: B008
+    lesson: list[str] = typer.Option(None, "--lesson", help="Lesson learned. Repeatable."),  # noqa: B008
+    policy_update_candidate: str = typer.Option("", "--policy-update-candidate", help="Candidate policy update."),
+    json_output: bool = typer.Option(False, "--json", help="Emit machine-readable JSON."),
+) -> None:
+    """Record a structured draft/render review without publishing."""
+
+    try:
+        review = DraftReviewInput.normalized(
+            publish_queue_id=queue_id,
+            creative_id=creative_id,
+            reviewer=reviewer,
+            verdict=verdict,
+            hook_score=hook,
+            retention_score=retention,
+            payoff_score=payoff,
+            compliance_score=compliance,
+            cta_score=cta,
+            asset_quality_score=asset_quality,
+            blocks=block,
+            warnings=warning,
+            lessons=lesson,
+            policy_update_candidate=policy_update_candidate,
+        )
+    except ValueError as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    review_id = record_draft_review(review)
+    payload = {
+        "id": review_id,
+        "publish_queue_id": review.publish_queue_id,
+        "creative_id": review.creative_id,
+        "reviewer": review.reviewer,
+        "verdict": review.verdict,
+        "average_score": review.average_score,
+        "blocks": review.blocks,
+        "warnings": review.warnings,
+        "lessons": review.lessons,
+        "policy_update_candidate": review.policy_update_candidate,
+        "public_publish_authorized": False,
+    }
+    if json_output:
+        _echo_json(payload)
+        return
+    typer.echo(f"review_id={review_id}")
+    typer.echo(f"verdict={review.verdict}")
+    typer.echo(f"average_score={review.average_score}")
+    typer.echo("public_publish_authorized=false")
+
+
+@app.command()
+def draft_review_status(json_output: bool = typer.Option(False, "--json", help="Emit machine-readable JSON.")) -> None:
+    """Show aggregate draft-review learning status."""
+
+    rollup = draft_review_rollup()
+    payload = {
+        "reviews": rollup.reviews,
+        "publish_candidates": rollup.publish_candidates,
+        "keep_private": rollup.keep_private,
+        "revise_prompt": rollup.revise_prompt,
+        "revise_script": rollup.revise_script,
+        "killed": rollup.killed,
+        "avg_hook": rollup.avg_hook,
+        "avg_retention": rollup.avg_retention,
+        "avg_payoff": rollup.avg_payoff,
+        "avg_compliance": rollup.avg_compliance,
+        "avg_cta": rollup.avg_cta,
+        "avg_asset_quality": rollup.avg_asset_quality,
+        "public_publish_automation_ready": False,
+    }
+    if json_output:
+        _echo_json(payload)
+        return
+    typer.echo(f"reviews={rollup.reviews}")
+    typer.echo(f"publish_candidates={rollup.publish_candidates}")
+    typer.echo(f"avg_hook={rollup.avg_hook}")
+    typer.echo("public_publish_automation_ready=false")
+
+
+@app.command()
+def loop_status(
+    loop_id: str = "content-factory",
+    json_output: bool = typer.Option(False, "--json", help="Emit machine-readable JSON."),
+) -> None:
+    """Show local content-factory loop status."""
+
+    state_path = Path(".aiwg") / "loops" / loop_id / "state.yaml"
+    if not state_path.exists():
+        raise typer.BadParameter(f"loop state not found: {state_path}")
+    state = _parse_loop_state(state_path)
+    payload = {
+        "loop_id": state.get("loop_id", loop_id),
+        "status": state.get("status"),
+        "phase": state.get("phase"),
+        "updated_at": state.get("updated_at"),
+        "active_iteration": state.get("active_iteration"),
+        "active_slice": state.get("active_slice"),
+        "current_human_gates": state.get("current_human_gates", []),
+        "current_approved_bounds": state.get("current_approved_bounds", []),
+        "latest_validation": state.get("latest_validation", {}),
+        "next_safe_actions": state.get("next_safe_actions", []),
+    }
+    if json_output:
+        _echo_json(payload)
+        return
+    typer.echo(f"loop_id={payload['loop_id']}")
+    typer.echo(f"status={payload['status']}")
+    typer.echo(f"phase={payload['phase']}")
+    typer.echo(f"active_iteration={payload['active_iteration']}")
+    typer.echo(f"active_slice={payload['active_slice']}")
+    typer.echo(f"human_gates={payload['current_human_gates']}")
+    typer.echo(f"next_safe_actions={payload['next_safe_actions']}")
+
+
+@app.command()
+def prompt_quality(
+    path: Path | None = None,
+    text: str = "",
+    json_output: bool = typer.Option(False, "--json", help="Emit machine-readable JSON."),
+) -> None:
     """Check whether a short-form asset prompt is generation-worthy."""
 
     if path:
@@ -452,9 +679,13 @@ def prompt_quality(path: Path | None = None, text: str = "") -> None:
         raise typer.BadParameter("provide --text or a prompt file path")
 
     result = check_short_asset_prompt(prompt)
-    typer.echo(f"passed={result.passed}")
-    typer.echo(f"blocks={result.blocks}")
-    typer.echo(f"warnings={result.warnings}")
+    payload = {"passed": result.passed, "blocks": result.blocks, "warnings": result.warnings}
+    if json_output:
+        _echo_json(payload)
+    else:
+        typer.echo(f"passed={result.passed}")
+        typer.echo(f"blocks={result.blocks}")
+        typer.echo(f"warnings={result.warnings}")
     if not result.passed:
         raise typer.Exit(code=1)
 
@@ -544,10 +775,24 @@ def improve_cycle(niche: str = "gta6-ai-persona-gaming") -> None:
 
 
 @app.command()
-def daemon_status(daemon: str = "improvement-daemon") -> None:
+def daemon_status(
+    daemon: str = "improvement-daemon",
+    json_output: bool = typer.Option(False, "--json", help="Emit machine-readable JSON."),
+) -> None:
     """Show read-only daemon status, backlog, and blocked actions."""
 
     status = get_daemon_status(daemon)
+    payload = {
+        "daemon": status.daemon,
+        "latest_run": status.latest_run,
+        "active_insights": status.active_insights,
+        "open_proposals": status.open_proposals,
+        "recent_events": status.recent_events,
+        "blocked_actions": status.blocked_actions,
+    }
+    if json_output:
+        _echo_json(payload)
+        return
     typer.echo(f"daemon={status.daemon}")
     if status.latest_run:
         run = status.latest_run

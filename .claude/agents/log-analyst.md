@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Log Analyst
 description: Authentication, system, and application log analysis agent. Parses auth.log, syslog, journal, and application logs to detect brute force, privilege escalation, unauthorized access, and lateral movement indicators.
 model: claude-sonnet-4-6

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Cert Lifecycle Monitor
 description: Scan fleet certificates across hosts and services, flag expiry at 30/7/1 day thresholds, and trigger renewal workflows — read-only
 model: gpt-5.5

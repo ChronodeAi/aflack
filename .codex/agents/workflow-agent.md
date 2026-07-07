@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Workflow Agent
 description: Orchestrate multi-stage research pipelines, manage DAG-based task dependencies, track progress, and handle failures with recovery
 model: gpt-5.5

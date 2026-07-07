@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Data Engineer
 description: Data pipeline architecture, ETL/ELT design, and data warehouse specialist. Build Spark jobs, dbt models, Airflow DAGs, stream processing pipelines, and data quality frameworks. Use proactively for data infrastructure, pipeline design, or data warehouse modeling tasks
 model: claude-sonnet-4-6

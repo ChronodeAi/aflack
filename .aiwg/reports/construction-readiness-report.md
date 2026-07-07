@@ -11,6 +11,10 @@ The MVP has passed a compressed Architecture Baseline Milestone for solo-operato
 
 Transcript mining from Codex, Aside/Fugu, and Claude Code has been incorporated into the architecture baseline through ADR-0005, ADR-0006, and `.aiwg/reports/transcript-mining-synthesis-2026-07-04.md`.
 
+Framework deliverance for the current project-local bundle is recorded at `.aiwg/reports/framework-deliverance-handoff-2026-07-04.md`.
+
+The formal Elaboration -> Construction transition refresh is recorded at `.aiwg/reports/elaboration-to-construction-transition-2026-07-04.md`, with architecture stability, onboarding, and dual-track workflow artifacts now present.
+
 ## Current readiness
 
 | Area | Status | Notes |
@@ -25,6 +29,10 @@ Transcript mining from Codex, Aside/Fugu, and Claude Code has been incorporated 
 | Analytics capture | NOT READY | Results ingestion remains a later construction item. |
 | Jarvis orchestration | READY FOR THIN BUILD | ADR-0005 defines human-gated roles; implement as commands/runbooks first. |
 | Virality doctrine | READY | ADR-0006 defines views/shares/retention-first lane selection and persona-optional formats. |
+| Memory architecture | READY FOR MVP | ADR-0007 keeps Postgres as system of record; external memory bakeoff deferred until real result data exists. |
+| Daemon runtime | READY FOR SAFE TICKS | v1 improvement daemon can distill/propose and trace; full daemon roster deferred. |
+| Architecture stability | STABLE WITH CONDITIONS | `.aiwg/reports/architecture-stability-report.md`. |
+| Onboarding / dual-track | READY FOR SOLO CONSTRUCTION | `.aiwg/team/onboarding-guide.md` and `.aiwg/planning/dual-track-workflow.md`. |
 
 ## Immediate Construction Iteration 1 backlog
 
@@ -36,12 +44,13 @@ Transcript mining from Codex, Aside/Fugu, and Claude Code has been incorporated 
 
 ## Construction Iteration 2 handoff
 
-1. Finish Loadout Lab affiliate package with explicit affiliate disclosure and no guaranteed-results claims.
+1. Review/approve or revise the completed Loadout Lab affiliate package with explicit affiliate disclosure and no guaranteed-results claims.
 2. Implement a thin director command/runbook that loads active memory, open gates, and next backlog item before package generation.
 3. Extend persistent libraries only where needed for the next package: hooks, sources, assets, funnel map, and performance log.
 4. Submit Postiz drafts only after payload preview and operator approval where ambiguity exists.
 5. Ingest results/economics before increasing batch size or frameworkizing the system.
+6. Add daemon-status and memory-consolidation commands before expanding daemon autonomy.
 
 ## Recommended next operator-visible action
 
-Next operator-visible action: approve/revise an existing Vice Signal pre-generation package, set an explicit Higgsfield credit cap if generation is desired, or proceed to the pending Loadout Lab affiliate package before any draft submission.
+Next operator-visible action: approve/revise an existing Vice Signal or Loadout Lab pre-generation package and set an explicit Higgsfield credit cap if generation is desired. Public publishing and Postiz submission remain separately gated.

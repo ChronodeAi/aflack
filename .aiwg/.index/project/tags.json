@@ -1,0 +1,55 @@
+{
+  "memory": [
+    ".aiwg/research/findings/REF-001.md"
+  ],
+  "agentmemory": [
+    ".aiwg/research/findings/REF-001.md"
+  ],
+  "pggraph": [
+    ".aiwg/research/findings/REF-001.md",
+    ".aiwg/research/findings/REF-002.md"
+  ],
+  "postgres": [
+    ".aiwg/research/findings/REF-001.md",
+    ".aiwg/research/findings/REF-002.md"
+  ],
+  "architecture": [
+    ".aiwg/research/findings/REF-001.md"
+  ],
+  "graph-database": [
+    ".aiwg/research/findings/REF-002.md"
+  ],
+  "evaluation": [
+    ".aiwg/research/findings/REF-002.md"
+  ],
+  "data-sources": [
+    ".aiwg/research/findings/REF-003.md"
+  ],
+  "benchmarking": [
+    ".aiwg/research/findings/REF-003.md"
+  ],
+  "tiktok": [
+    ".aiwg/research/findings/REF-003.md"
+  ],
+  "analytics": [
+    ".aiwg/research/findings/REF-003.md"
+  ],
+  "indexers": [
+    ".aiwg/research/findings/REF-003.md"
+  ],
+  "virality": [
+    ".aiwg/research/findings/REF-004.md"
+  ],
+  "short-form-video": [
+    ".aiwg/research/findings/REF-004.md"
+  ],
+  "hooks": [
+    ".aiwg/research/findings/REF-004.md"
+  ],
+  "retention": [
+    ".aiwg/research/findings/REF-004.md"
+  ],
+  "creator-playbooks": [
+    ".aiwg/research/findings/REF-004.md"
+  ]
+}

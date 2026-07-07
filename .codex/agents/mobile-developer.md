@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Mobile Developer
 description: Mobile app architecture and cross-platform development specialist. Design native and cross-platform mobile architectures, implement CI/CD pipelines, optimize performance, run device farm testing. Use proactively for mobile development, app store deployment, or React Native/Flutter tasks
 model: gpt-5.5

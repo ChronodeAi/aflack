@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Network Analyst
 description: Network traffic analysis, C2 detection, and lateral movement detection agent. Analyzes connection state, DNS queries, and traffic patterns to identify beaconing, data exfiltration, and command-and-control infrastructure.
 model: claude-sonnet-4-6

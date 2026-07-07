@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Vision Owner
 description: Maintains a cohesive product vision, ensuring every artifact and decision aligns with intended outcomes
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Provenance Agent
 description: Track research operations with W3C PROV compliance, maintain lineage graphs, verify integrity, and enable reproducibility
 model: claude-sonnet-4-6

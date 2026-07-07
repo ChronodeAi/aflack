@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Database Optimizer
 description: Database performance and schema optimization specialist. Optimize queries, design indexes, handle migrations, solve N+1 problems. Use proactively for database performance issues or schema optimization
 model: gpt-5.5

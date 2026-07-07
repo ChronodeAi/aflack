@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "builtAt": "2026-07-05T02:42:09.340Z",
+  "buildTimeMs": 11,
+  "totalArtifacts": 149,
+  "byPhase": {
+    "other": 80,
+    "architecture": 9,
+    "deployment": 1,
+    "intake": 3,
+    "planning": 14,
+    "reports": 35,
+    "requirements": 1,
+    "risks": 1,
+    "security": 4,
+    "testing": 1
+  },
+  "byType": {
+    "document": 108,
+    "adr": 8,
+    "architecture": 5,
+    "agent": 5,
+    "behavior": 1,
+    "rule": 7,
+    "skill": 7,
+    "template": 1,
+    "hook": 5,
+    "risk": 1,
+    "threat-model": 1
+  },
+  "tagDistribution": {
+    "memory": 1,
+    "agentmemory": 1,
+    "pggraph": 2,
+    "postgres": 2,
+    "architecture": 1,
+    "graph-database": 1,
+    "evaluation": 1,
+    "data-sources": 1,
+    "benchmarking": 1,
+    "tiktok": 1,
+    "analytics": 1,
+    "indexers": 1,
+    "virality": 1,
+    "short-form-video": 1,
+    "hooks": 1,
+    "retention": 1,
+    "creator-playbooks": 1
+  },
+  "graphMetrics": {
+    "totalEdges": 140,
+    "orphanedArtifacts": 84,
+    "mostReferenced": {
+      "path": ".aiwg/architecture/software-architecture-document.md",
+      "count": 6
+    }
+  }
+}

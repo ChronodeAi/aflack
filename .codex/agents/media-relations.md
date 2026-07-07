@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Media Relations Specialist
 description: Manages journalist relationships, coordinates interviews, and handles media inquiries
 model: gpt-5.5

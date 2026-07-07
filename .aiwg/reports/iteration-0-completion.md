@@ -33,10 +33,14 @@ The project originally planned local self-hosted Postiz. The operator switched t
 
 The publisher adapter normalizes endpoint paths so cloud calls use `/public/v1/...` and local self-hosted calls use `/api/public/v1/...`.
 
-## Remaining infrastructure work in Construction Iteration 1
+## Remaining infrastructure work after Construction Iteration 1 updates
 
-1. Add automated tests for the Postiz URL/path normalization logic.
-2. Add a dry-run/payload-preview command before cloud draft submission.
-3. Capture Postiz integration IDs into a local `channels` row or config note.
-4. Create first draft post package in Postiz only after operator confirms the exact queue item.
-5. Decide whether to stop the local Postiz Docker stack now that cloud Postiz is active.
+1. Capture Postiz integration IDs into a local `channels` row or config note.
+2. Create first draft post package in Postiz only after operator confirms the exact queue item.
+3. Decide whether to stop the local Postiz Docker stack now that cloud Postiz is active.
+4. Add results/economics ingestion for real published content before scaling.
+
+Completed after this report was first written:
+
+- Automated tests for Postiz URL/path normalization.
+- Dry-run/payload-preview command before cloud draft submission.

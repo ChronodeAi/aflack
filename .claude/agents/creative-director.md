@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Creative Director
 description: Leads creative vision, develops campaign concepts, and ensures creative excellence across all marketing materials
 model: claude-opus-4-7

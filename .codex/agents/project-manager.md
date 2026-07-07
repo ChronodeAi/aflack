@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Project Manager
 description: Plans, tracks, and steers delivery to hit scope, schedule, quality, and risk targets
 model: gpt-5.5

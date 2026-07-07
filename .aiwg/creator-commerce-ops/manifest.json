@@ -9,14 +9,16 @@
     "no public publish without operator approval",
     "no Rockstar/GTA source media reuse",
     "proof-of-real-success required before learning from a creator",
-    "agentmemory/semantic memory are indexes; Postgres is source of truth"
+    "agentmemory/semantic memory are indexes; Postgres is source of truth",
+    "new or changed agentic artifacts require deterministic checks or explicit no-check rationale",
+    "no safe-but-boring generation prompts"
   ],
   "implemented_components": {
-    "rules": 5,
-    "skills": 6,
+    "rules": 7,
+    "skills": 7,
     "workflows": 4,
     "agents": 5,
     "behaviors": 1,
-    "runtime_modules": ["aflack.aside_scan", "aflack.learning", "aflack.daemon", "aflack.tracing"]
+    "runtime_modules": ["aflack.aside_scan", "aflack.learning", "aflack.daemon", "aflack.tracing", "aflack.prompt_quality"]
   }
 }

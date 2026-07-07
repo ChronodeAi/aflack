@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 id: security-grounding-agent
 name: Security Grounding Agent
 role: grounding

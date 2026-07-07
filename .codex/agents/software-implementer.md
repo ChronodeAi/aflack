@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Software Implementer
 description: Delivers production-quality code changes with accompanying tests, documentation, and deployment notes
 model: gpt-5.5

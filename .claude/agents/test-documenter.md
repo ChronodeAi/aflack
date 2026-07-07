@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Test Documenter
 description: Specializes in documenting test artifacts (test plans, strategies, cases) with comprehensive coverage and traceability
 model: claude-sonnet-4-6

@@ -1,0 +1,1800 @@
+{
+  ".aiwg/.milestones.json": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/AIWG.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/architecture/adr-0001-postiz-posting-scheduler.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/architecture/adr-0002-own-event-store.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/architecture/adr-0003-local-postgres-pggraph-pgvector-memory.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/architecture/adr-0004-claude-fable-director-cli.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/traceability-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/traceability-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/architecture/software-architecture-document.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/traceability-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/cockpit/contrib/aflack-control-plane.json": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/planning/cockpit-aflack-integration.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/creator-commerce-ops/agents/benchmark-scout.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/agents/compliance-gatekeeper.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/agents/insight-curator.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/agents/roi-sentinel.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/agents/video-director.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/behaviors/scheduled-improvement-daemon.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/manifest.json": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/cleanup-audit-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/creator-commerce-ops/reports/framework-50pct-status.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/rules/compliance-before-publish.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/creator-commerce-ops/rules/memory-without-rot.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/creator-commerce-ops/rules/proof-of-real-success.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/rules/research-before-generation.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/rules/roi-before-scale.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/creator-commerce-ops/skills/aside-creator-scan.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/skills/claude-video-builder.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/skills/higgsfield-asset-prompting.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/creator-commerce-ops/skills/hook-authoring.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/skills/insight-distillation.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/skills/performance-digest.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/skills/virality-review.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/templates/aside-scan-prompt.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/templates/aside-scan.schema.json": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/workflows/analytics-to-memory.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/workflows/benchmark-to-skill-update.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/workflows/claude-video-production.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/creator-commerce-ops/workflows/daemon-sdlc-loop.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/deployment/postiz-local-runbook.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/frameworks/forensics-complete/chain-of-custody.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/frameworks/knowledge-base/index.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/frameworks/registry.json": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/gates/pre-construction-gate-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/test-sync-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/cleanup-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/traceability-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-readiness-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/abm-validation-report.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/doc-sync-audit-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/reports/abm-validation-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/framework-deliverance-handoff-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/iteration-0-completion.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/testing/test-strategy.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/software-architecture-document.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/test-sync-report-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/testing/test-strategy.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/cleanup-audit-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/creator-commerce-ops/manifest.json",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/security/decision-memo-event-reference-policy.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/traceability-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/requirements/mvp-requirements.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/software-architecture-document.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/construction-readiness-report.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/abm-validation-report.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/gates/security-gate-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-readiness-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/framework-deliverance-handoff-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/iteration-plan-002.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/daemon-runtime-architecture.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/framework-deliverance-handoff-2026-07-04.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/iteration-plan-002.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/daemon-runtime-architecture.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/intake/option-matrix.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/intake/project-intake.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/intake/solution-profile.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/loops/content-factory/LOOP.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/iteration-plan-002.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/daemon-runtime-architecture.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/video-analytics-aggregation-plan.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/construction-ready-brief.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/intake/project-intake.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-status.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/abm-validation-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-readiness-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/requirements/mvp-requirements.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/software-architecture-document.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/risks/risk-register.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/security/threat-model-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/testing/test-strategy.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/test-sync-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/development-process-guide.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/iteration-plan-001.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/iteration-plan-002.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/dual-track-workflow.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/marketing/vice-signal/episode-002-claude-code-package.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/status-assessment.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/loops/content-factory/state.yaml",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-90pct-status-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/daemon-runtime-architecture.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/video-analytics-aggregation-plan.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/iteration-plan-002.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/creator-commerce-ops/skills/higgsfield-asset-prompting.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/video-analytics-aggregation-plan.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/loops/content-factory/budget.yaml": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/loops/content-factory/constraints.yaml": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/loops/content-factory/state.yaml": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/marketing/hooks/README.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/hooks/fifa-ig-field-study.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/hooks/fifa-tiktok-field-study.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/hooks/hook-batch-001.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/hooks/instagram-gaming-hooks.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/hooks/liked-content-tips.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/loadout-lab-episode-001-validation-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/marketing/research/ig-tiktok-gta6-live-scan-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/strategy/gta6-clip-farming-analysis.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/strategy/gta6-personas.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/strategy/niche-diagnostic-plan.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/strategy/posting-automation-plan.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/strategy/vice-flythrough-b2b.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/vice-final/episode-01-spec.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/vice-final/reference-footage/manifest.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/vice-final/seed-pack.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/vice-final/series-spec.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/vice-final/trend-radar-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/vice-signal/episode-001-claude-code-package.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/marketing/vice-signal/episode-001-generation-2026-07-04.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/marketing/vice-signal/episode-001-render-review-rubric.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/marketing/vice-signal/episode-002-claude-code-package.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/marketing/viral-factory-spec.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/planning/claude-code-video-builder-runbook.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/planning/cockpit-aflack-integration.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/cockpit/contrib/aflack-control-plane.json",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/continuous-improvement-architecture.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/planning/development-process-guide.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/director-routine-spec.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/planning/dual-track-workflow.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/frameworkization-roadmap.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/iteration-plan-001.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/publish-quality-policy-draft.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/planning/publish-quality-policy-schema.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/planning/week-1-mvp-plan.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/prompts/claude-code/vice-signal-ep001-builder.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/accelerate-state.json": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/marketing/vice-signal/episode-001-render-review-rubric.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/publish-quality-policy-draft.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/agentmemory-architecture-gap-review-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/traceability-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/software-architecture-document.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/requirements/mvp-requirements.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/testing/test-strategy.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/intake/project-intake.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/intake/solution-profile.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/cockpit-aflack-integration.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/accelerate-state.json",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": []
+  },
+  ".aiwg/reports/agentmemory-architecture-gap-review-2026-07-05.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/traceability-2026-07-05.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/requirements/mvp-requirements.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/traceability-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/testing/test-strategy.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/test-sync-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-90pct-status-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/traceability-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/loops/content-factory/state.yaml",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/video-analytics-aggregation-plan.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/daemon-runtime-architecture.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/architecture-stability-report.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/architecture/software-architecture-document.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0001-postiz-posting-scheduler.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0002-own-event-store.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0003-local-postgres-pggraph-pgvector-memory.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0004-claude-fable-director-cli.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/aside-mcp-triage-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/claude-code-video-builder-run-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/security/decision-memo-event-reference-policy.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/cleanup-audit-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/config-loader-hardening-2026-07-05.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/construction-90pct-status-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-90pct-status-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/construction-completion-report-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/planning/iteration-plan-001.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/marketing/vice-signal/episode-002-claude-code-package.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/marketing/vice-signal/episode-001-generation-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/loadout-lab-episode-001-validation-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/daemon-status-implementation-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/loops/content-factory/LOOP.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/loadout-lab-episode-001-validation-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/daemon-status-implementation-2026-07-04.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/elaboration-status.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/reports/abm-validation-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/iteration-0-completion.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/development-process-guide.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/iteration-plan-001.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/iteration-plan-002.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/team/onboarding-guide.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/construction-readiness-report.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/dual-track-workflow.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/status-assessment.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/risks/risk-register.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/security/threat-model-2026-07-04.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/team/onboarding-guide.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/requirements/mvp-requirements.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/software-architecture-document.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/iteration-plan-002.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/daemon-runtime-architecture.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/testing/test-strategy.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/creator-commerce-ops/rules/compliance-before-publish.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/construction-ready-brief.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/day-1-status.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/iteration-0-completion.md": {
+    "upstream": [],
+    "downstream": [
+      {
+        "path": ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      }
+    ]
+  },
+  ".aiwg/reports/draft-review-learning-implementation-2026-07-05.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/framework-independent-verification-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/loadout-lab-v2-prompt-pack-regression-2026-07-05.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/test-sync-report-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/cleanup-audit-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/traceability-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/reports/architecture-stability-report.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": []
+  },
+  ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md": {
+    "upstream": [
+      {
+        "path": ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/daemon-runtime-architecture.md",
+        "type": "depends-on"
+      },
+      {
+        "path": ".aiwg/planning/frameworkization-roadmap.md",
+        "type": "depends-on"
+      }
+    ],
+    "downstream": []
+  },
+  ".aiwg/reports/setup-command-traceability-hardening-2026-07-05.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/traceability-matrix-2026-07-05.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/reports/transcript-mining-synthesis-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/research/affiliate-content-pipeline/downey-jarvis-teardown-learnings.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/research/findings/REF-001.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/research/findings/REF-002.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/research/findings/REF-003.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/research/findings/REF-004.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/research/sources/gta6-official-reference-package-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/research/sources/gta6-reference-pack.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/research/syntheses/affiliate-content-pipeline-brief.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/security/compliance-gta6-footage.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/security/controls-validation-2026-07-04.md": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/sessions.json": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/working/aside-scans/live-ai-video-automation-money-2026-07-04.json": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/working/aside-scans/live-ig-tiktok-gta6-2026-07-04.json": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/working/aside-scans/sample-scan.json": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/working/postiz/docker-compose.yaml": {
+    "upstream": [],
+    "downstream": []
+  },
+  ".aiwg/working/postiz/dynamicconfig/development-sql.yaml": {
+    "upstream": [],
+    "downstream": []
+  }
+}

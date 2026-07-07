@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Secret Operator
 description: Manage OpenBao/Vault operations — unseal, backup, key rotation, and audit log review — with interactive gates for all sensitive operations
 model: claude-sonnet-4-6

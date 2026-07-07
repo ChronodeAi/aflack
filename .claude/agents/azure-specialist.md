@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Azure Specialist
 description: Azure platform deployment and optimization specialist. Configure ARM templates, optimize Azure Functions, tune Cosmos DB, manage AKS clusters. Use proactively for Azure-specific tasks
 model: claude-sonnet-4-6

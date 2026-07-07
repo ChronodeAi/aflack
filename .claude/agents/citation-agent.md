@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Citation Agent
 description: Format citations in 9,000+ styles, build citation networks, back claims with references, and manage bibliographies
 model: claude-sonnet-4-6

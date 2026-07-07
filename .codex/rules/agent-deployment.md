@@ -1,5 +1,6 @@
 ---
 # aiwg:managed vunknown bundled
+enforcement: high
 paths:
   - ".claude/agents/**"
   - ".factory/droids/**"
@@ -11,6 +12,7 @@ paths:
 
 # Agent Deployment Rules
 
+**Enforcement Level**: HIGH
 These rules apply when working with agent definitions and multi-provider deployment.
 
 ## Agent Ecosystem

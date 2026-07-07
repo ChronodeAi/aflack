@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Recovery Orchestrator
 description: Coordinates PAUSE→DIAGNOSE→ADAPT→RETRY→ESCALATE recovery protocol when avoidance patterns are detected, enabling agents to self-correct rather than abandon tasks
 model: claude-opus-4-7

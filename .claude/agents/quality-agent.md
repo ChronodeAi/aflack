@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Quality Agent
 description: Assess source quality using GRADE framework, validate FAIR compliance, generate quality reports, and enforce quality gates
 model: claude-sonnet-4-6

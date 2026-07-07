@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Copywriter
 description: Creates compelling marketing copy including headlines, CTAs, long-form content, and channel-specific messaging
 model: claude-sonnet-4-6

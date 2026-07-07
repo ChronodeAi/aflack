@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Mutation Analyst
 description: Analyzes mutation testing results to identify weak tests and recommend specific improvements
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Applied Cryptographer
 description: Narrow-scope reviewer for cryptographic primitive choices, key separation, KDF correctness, and CLI crypto invocation flags. Cites RFCs/NIST/CFRG sources in every finding.
 model: claude-opus-4-7

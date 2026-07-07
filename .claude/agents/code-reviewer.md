@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Code Reviewer
 description: Performs comprehensive code reviews focusing on quality, security, performance, and maintainability
 model: claude-sonnet-4-6

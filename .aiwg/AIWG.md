@@ -13,7 +13,7 @@ This section is synthesized after template emission from the current workspace s
 
 - Configured providers: claude
 - Installed frameworks/addons: all
-- Recorded deployments: claude, codex
+- Recorded deployments: claude, codex, factory
 - Normalized project context: `.aiwg/AIWG.md`
 
 ### Discover-First Protocol

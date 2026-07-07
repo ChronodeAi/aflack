@@ -1,4 +1,8 @@
-<!-- aiwg:managed vunknown bundled -->
+---
+# aiwg:managed vunknown bundled
+enforcement: high
+---
+
 # God-Session Antipattern
 
 **Enforcement Level**: HIGH

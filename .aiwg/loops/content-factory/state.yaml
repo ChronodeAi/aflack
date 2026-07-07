@@ -1,0 +1,77 @@
+schema: aiwg.loop.state.v1
+loop_id: content-factory
+status: active
+phase: controlled-construction
+updated_at: "2026-07-05T03:14:42Z"
+active_iteration: I3
+active_slice: draft-review-learning-hardening
+last_completed_slices:
+  - id: I2-003
+    title: Loadout Lab affiliate pre-generation package
+    evidence: .aiwg/marketing/loadout-lab/episode-001-affiliate-package.md
+  - id: I2-008
+    title: daemon-status command and tests
+    evidence: .aiwg/reports/daemon-status-implementation-2026-07-04.md
+  - id: I2-009
+    title: compliance tests and memory consolidation
+    evidence: .aiwg/reports/construction-completion-report-2026-07-04.md
+  - id: I2-010
+    title: economics and tracing tests
+    evidence: .aiwg/reports/construction-completion-report-2026-07-04.md
+  - id: I2-011
+    title: content-factory loop control plane
+    evidence: .aiwg/loops/content-factory/LOOP.md
+  - id: I2-012
+    title: operator approval policy for measured generation and first 100 Postiz drafts
+    evidence: .aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md
+  - id: I2-013
+    title: EP001 measured generation, private Postiz draft, cost ledger, and analytics snapshot
+    evidence: .aiwg/marketing/vice-signal/episode-001-generation-2026-07-04.md
+  - id: I2-014
+    title: Higgsfield prompt-quality hardening and Loadout Lab v2 prompt pack
+    evidence: .aiwg/reports/higgsfield-prompt-audit-2026-07-04.md
+  - id: I3-001
+    title: Cockpit-readable Aflack control-plane status and action manifest
+    evidence: .aiwg/planning/cockpit-aflack-integration.md
+  - id: I3-002
+    title: Draft-review learning data model and CLI status surface
+    evidence: .aiwg/reports/draft-review-learning-implementation-2026-07-05.md
+  - id: I3-003
+    title: Loadout Lab v2 prompt-pack regression gate
+    evidence: .aiwg/reports/loadout-lab-v2-prompt-pack-regression-2026-07-05.md
+  - id: I3-004
+    title: DB/config loader IOC hardening tests
+    evidence: .aiwg/reports/config-loader-hardening-2026-07-05.md
+  - id: I3-005
+    title: Beachhead and creator command traceability tests
+    evidence: .aiwg/reports/setup-command-traceability-hardening-2026-07-05.md
+current_human_gates:
+  - public_publish
+  - account_or_channel_settings
+  - comment_dm_follow_automation
+  - paid_promotion_or_ad_spend
+  - broader_daemon_autonomy
+current_approved_bounds:
+  - measured_higgsfield_generation_for_validated_packages
+  - first_100_postiz_drafts_for_validated_packages_with_clear_target
+latest_validation:
+  compile: pass
+  tests: pass_73
+  compliance_smoke: pass
+  daemon_status: pass
+  memory_consolidate: pass
+  economics_status: pass_total_cost_361
+  analytics_status: pass_3_snapshots_zero_metrics
+  proposals: pass_no_open_proposals
+  cockpit_contrib: pass_bridge_api_harness
+  draft_review_status: pass_zero_reviews_no_publish_automation
+  loadout_lab_v2_prompt_pack: pass_regression_gate
+  config_loader: pass_defaults_env_overrides
+  setup_creator_commands: pass_fr004_fr005
+  aiwg_index: pass_149_artifacts
+next_safe_actions:
+  - final_render_review_for_ep001
+  - record_ep001_draft_review_after_human_inspection
+  - postiz_platform_or_post_analytics_refresh_after_metrics_exist
+  - loadout_lab_generation_decision_requires_operator_credit_cap
+  - learn_publish_quality_policy_from_first_100_drafts

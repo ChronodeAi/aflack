@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Debugger
 description: Systematic debugging specialist for errors, test failures, and unexpected behavior. Use proactively when encountering build failures, runtime errors, or test failures
 model: claude-sonnet-4-6

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Incident Responder
 description: Production incident management specialist. Handle outages with urgency and precision. Use IMMEDIATELY when production issues occur. Coordinates debugging, implements fixes, documents post-mortems
 model: claude-sonnet-4-6

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Forensics Orchestrator
 description: Multi-agent workflow coordination agent that manages the full digital forensics investigation lifecycle from initial scoping through final reporting
 model: gpt-5.5

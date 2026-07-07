@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Prompt Reinforcement Agent
 description: Monitors execution context and injects anti-laziness directives at strategic decision points to prevent destructive avoidance behaviors
 model: claude-sonnet-4-6

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Spring Boot Expert
 description: Spring Boot configuration and optimization specialist. Configure Spring Security, optimize JPA/Hibernate, implement WebFlux, deploy with GraalVM native compilation. Use proactively for Spring Boot tasks
 model: gpt-5.5

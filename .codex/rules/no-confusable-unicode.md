@@ -1,5 +1,6 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
+enforcement: high
 id: no-confusable-unicode
 severity: HIGH
 applies_to: [all-agents, security-auditor, code-reviewer]

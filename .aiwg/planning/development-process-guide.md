@@ -2,7 +2,7 @@
 
 **Date**: 2026-07-04  
 **Mode**: solo operator, direct commit to `main`  
-**Phase**: Construction Iteration 1
+**Phase**: Construction handoff after Elaboration baseline
 
 ## Operating principles
 
@@ -12,6 +12,7 @@
 4. Every cost and result should land in the event store.
 5. Official GTA6/Rockstar trailers are reference/provenance only; generated content must be original and non-impersonating.
 6. Prefer Postiz cloud for scheduling/publishing; keep local Postiz isolated or stopped.
+7. Follow ADR-0005 for Jarvis-style orchestration and ADR-0006 for virality-first, persona-optional lane selection.
 
 ## Iteration cadence
 
@@ -61,6 +62,8 @@ Do not run these without explicit confirmation for the specific item:
 - paid Higgsfield generation,
 - public YouTube/TikTok/Instagram publishing,
 - comment/DM automation,
+- follow/unfollow automation,
+- paid promotion or ad spend,
 - OAuth app or channel setting changes,
 - deleting or force-stopping unknown processes.
 

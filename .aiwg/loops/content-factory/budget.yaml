@@ -1,0 +1,44 @@
+schema: aiwg.loop.budget.v1
+loop_id: content-factory
+status: active
+updated_at: "2026-07-05T00:16:02Z"
+budgets:
+  higgsfield_credits:
+    cap: adaptive_observed
+    spent: 360
+    unit: credits
+    initial_batch_cap: one_generation_batch_per_validated_package
+    policy: approved_for_measured_pre_generation_package_runs; learn_actual_short_creation_credit_cost_before_scaling
+    required_controls:
+      - record_cost_ledger_entry_per_generation
+      - stop_if_package_fails_compliance_or_asset_validation
+      - stop_if_credit_price_or_job_cost_is_unknown_after_run
+      - do_not_increase_batch_size_without_results_or_quality_signal
+  public_posts:
+    cap: 0
+    submitted: 0
+    unit: posts
+    policy: blocked_until_first_100_drafts_reviewed_and_publish_quality_policy_encoded
+  postiz_drafts:
+    cap: 100
+    submitted: 1
+    unit: drafts
+    policy: first_100_drafts_approved_for_validated_packages_with_clear_target_integration; draft_only
+  paid_promotion:
+    cap: 0
+    spent: 0
+    unit: usd
+    policy: blocked_until_explicit_operator_approval
+  autonomous_daemon_actions:
+    cap: 0
+    executed: 0
+    unit: actions
+    policy: visibility_and_proposal_only_until_control_plane_is_reviewed
+cost_tracking:
+  source_of_truth: Postgres cost_ledger
+  required_before_scale: true
+  notes: EP001 measured batch spent 360 credits for 7 Seedance clips with zero rerolls; keep public publish and ad spend blocked until draft review plus analytics criteria are encoded.
+analytics_tracking:
+  source_of_truth: Postgres analytics_snapshots
+  snapshots_captured: 3
+  latest_notes: Postiz post analytics refresh for queue 2 captured a third snapshot; all current snapshots still report zero metrics.

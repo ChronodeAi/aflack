@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Regression Analyst
 description: Detects, analyzes, and prevents regressions by comparing versions, identifying behavioral changes, and recommending guardrails
 model: gpt-5.5

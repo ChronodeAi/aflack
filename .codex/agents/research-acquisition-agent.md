@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Research Acquisition Agent
 description: Download research papers, extract metadata, validate FAIR compliance, and assign persistent identifiers
 model: gpt-5.5

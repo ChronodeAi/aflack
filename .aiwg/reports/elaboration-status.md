@@ -34,7 +34,9 @@ The validated baseline includes:
 | ADR-0004 Claude Fable director CLI | Complete |
 | ADR-0005 Human-gated Jarvis orchestration | Complete |
 | ADR-0006 Virality-first/persona-optional doctrine | Complete |
+| ADR-0007 Memory system of record and bakeoff posture | Complete |
 | Transcript mining synthesis | Complete |
+| Framework deliverance handoff | Complete |
 | Requirements/NFRs | Complete |
 | Risk register | Complete |
 | Test strategy | Complete |

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Campaign Strategist
 description: Designs comprehensive campaign architectures, channel strategies, and measurement frameworks for marketing initiatives
 model: claude-opus-4-7

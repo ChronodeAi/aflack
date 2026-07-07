@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Reporting Agent
 description: Forensic report generation agent that compiles investigation findings into structured professional forensic reports with executive summary, technical findings, timeline, and remediation plan
 model: claude-sonnet-4-6

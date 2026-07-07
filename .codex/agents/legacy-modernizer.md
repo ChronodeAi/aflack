@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Legacy Modernizer
 description: Legacy system modernization specialist. Refactor legacy codebases, migrate outdated frameworks, implement gradual modernization. Handle technical debt, dependency updates, backward compatibility. Use proactively for legacy updates or framework migrations
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Recon Agent
 description: Target reconnaissance and system profiling agent. Discovers system topology, services, users, and network baselines through SSH or cloud API enumeration to produce a target-profile artifact before investigation begins.
 model: claude-sonnet-4-6

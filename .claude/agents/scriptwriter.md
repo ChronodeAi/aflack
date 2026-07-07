@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Scriptwriter
 description: Creates video scripts, podcast outlines, webinar content, and audio/visual storytelling
 model: claude-sonnet-4-6

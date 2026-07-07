@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Configuration Manager
 description: Governs version control, baselines, and change processes to maintain traceable artifacts
 model: gpt-5.5

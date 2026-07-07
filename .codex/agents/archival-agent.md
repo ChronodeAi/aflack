@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Archival Agent
 description: Package research artifacts following OAIS standards, manage version control, verify integrity, and maintain backups
 model: gpt-5.5

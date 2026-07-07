@@ -1,0 +1,141 @@
+{
+  "schema": "sdlc.accelerate.state.v1",
+  "project": "aflack",
+  "updated_at": "2026-07-05T00:16:02Z",
+  "current_phase": "controlled-construction",
+  "entry_point": "resume-from-controlled-construction",
+  "accelerate_mode": "construction-to-ioc",
+  "decision": "continue controlled Construction; accelerate remaining evidence and integration work before IOC/Transition",
+  "phases": [
+    {
+      "name": "intake",
+      "status": "complete",
+      "evidence": [
+        ".aiwg/intake/project-intake.md",
+        ".aiwg/intake/solution-profile.md",
+        ".aiwg/intake/option-matrix.md"
+      ]
+    },
+    {
+      "name": "lom-gate",
+      "status": "waived-by-compressed-mvp",
+      "evidence": [
+        ".aiwg/reports/elaboration-status.md"
+      ]
+    },
+    {
+      "name": "elaboration",
+      "status": "complete",
+      "evidence": [
+        ".aiwg/architecture/software-architecture-document.md",
+        ".aiwg/architecture/adr-0001-postiz-posting-scheduler.md",
+        ".aiwg/architecture/adr-0002-own-event-store.md",
+        ".aiwg/architecture/adr-0003-local-postgres-pggraph-pgvector-memory.md",
+        ".aiwg/architecture/adr-0004-claude-fable-director-cli.md",
+        ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md",
+        ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md",
+        ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md"
+      ]
+    },
+    {
+      "name": "abm-gate",
+      "status": "conditional-go",
+      "evidence": [
+        ".aiwg/reports/abm-validation-report.md",
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md"
+      ]
+    },
+    {
+      "name": "elaboration-to-construction",
+      "status": "conditional-go",
+      "evidence": [
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md"
+      ]
+    },
+    {
+      "name": "construction-ready-brief",
+      "status": "complete",
+      "evidence": [
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    {
+      "name": "controlled-construction",
+      "status": "complete-through-draft-ramp-boundary",
+      "evidence": [
+        ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        ".aiwg/reports/construction-90pct-status-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/loops/content-factory/state.yaml"
+      ]
+    }
+  ],
+  "latest_construction_slice": {
+    "id": "I2-014",
+    "title": "Higgsfield prompt-quality hardening and Loadout Lab v2 prompt pack",
+    "status": "complete",
+    "evidence": [
+      ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md",
+      ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md",
+      ".aiwg/creator-commerce-ops/skills/higgsfield-asset-prompting.md",
+      "src/aflack/prompt_quality.py",
+      "tests/test_prompt_quality.py",
+      "tests/test_integration.py"
+    ]
+  },
+  "current_validation": {
+    "aiwg_workspace": "ready_healthy",
+    "aiwg_index": "pass_149_artifacts",
+    "compile": "pass",
+    "tests": "pass_73",
+    "daemon_status": "pass_latest_run_succeeded",
+    "analytics_status": "pass_3_snapshots_zero_metrics",
+    "economics_status": "pass_total_cost_361_margin_negative_180_50",
+    "publish_queue": "pass_queue_2_private_postiz_draft",
+    "compliance_smoke": "pass",
+    "memory_consolidate": "pass_idempotent",
+    "proposals": "pass_no_open_proposals"
+  },
+  "human_gates": [
+    "public publishing",
+    "account or channel setting changes",
+    "comment/DM/follow automation",
+    "paid promotion or ad spend",
+    "broader daemon autonomy"
+  ],
+  "approved_bounds": [
+    "measured Higgsfield generation for validated packages under adaptive observed credit tracking",
+    "first 100 Postiz submissions as drafts only when package and target integration are explicit"
+  ],
+  "acceleration_backlog": [
+    {
+      "id": "A3-001",
+      "title": "Cockpit-facing status/action integration",
+      "outcome": "Aflack loop can be inspected and driven from AIWG Cockpit without replacing domain services."
+    },
+    {
+      "id": "A3-002",
+      "title": "EP001 render review and draft-review rubric",
+      "outcome": "Human review is captured as structured learning before any public publish decision."
+    },
+    {
+      "id": "A3-003",
+      "title": "Postiz/platform analytics refresh after real metrics exist",
+      "outcome": "Analytics/economics loop has non-zero real observations or an explicit no-signal record."
+    },
+    {
+      "id": "A3-004",
+      "title": "First-100 draft learned publish-quality policy",
+      "outcome": "Draft review produces deterministic publish criteria; no public automation before this."
+    },
+    {
+      "id": "A3-005",
+      "title": "IOC traceability and CLI runner tests",
+      "outcome": "Requirement-code-test links and CLI execution paths are strong enough for Construction -> Transition gate evaluation."
+    }
+  ],
+  "next_report": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+}

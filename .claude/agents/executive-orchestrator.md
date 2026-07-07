@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Executive Orchestrator
 description: Directs lifecycle, resolves decision gaps, enforces gates, and keeps artifacts synchronized
 model: claude-opus-4-7

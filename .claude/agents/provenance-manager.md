@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Provenance Manager
 description: Manages W3C PROV-compliant provenance tracking, validation, and query for all AIWG artifacts
 model: claude-haiku-4-5

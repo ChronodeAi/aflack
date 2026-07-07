@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Art Director
 description: Develops visual concepts, designs layouts, and ensures visual brand consistency across creative assets
 model: gpt-5.5

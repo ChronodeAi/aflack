@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Traceability Manager
 description: Maintains end-to-end mapping from requirements to code, tests, and releases
 model: gpt-5.5

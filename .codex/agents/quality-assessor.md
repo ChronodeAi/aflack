@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Quality Assessor
 description: Assesses evidence quality using GRADE methodology and maintains research corpus quality standards
 model: gpt-5.5

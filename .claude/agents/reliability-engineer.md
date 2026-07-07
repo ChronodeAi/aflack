@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Reliability Engineer
 description: Establishes SLO/SLI, runs capacity and failure testing, and enforces ORR
 model: claude-sonnet-4-6

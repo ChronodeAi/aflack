@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Product Designer
 description: Crafts user experience flows, interface designs, and interaction specs that align with product objectives
 model: gpt-5.5

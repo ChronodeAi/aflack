@@ -31,7 +31,7 @@ Schema per entry: purpose, when to use, when not to use, curated discovery phras
 - When not to use: A direct CLI command or loaded skill already handles the work.
 - Curated discovery phrases: `aiwg discover "agent for <task>"`; `aiwg discover "<domain> specialist agent"`; `aiwg discover "review <artifact> agent"`
 - Deep-load target: `aiwg show agent <name>` after discovery selects the exact item.
-- Deployed summary: 195 recorded; examples: Accessibility Checker, Accessibility Specialist, Acquisition Manager, AgentSmith, AI/ML Engineer, +190 more.
+- Deployed summary: 199 recorded; examples: accessibility-checker, accessibility-specialist, acquisition-manager, agentsmith, ai-ml-engineer, +194 more.
 - Verification cue: Selected agent name and scope match the user request before delegation.
 
 ### Rules
@@ -41,7 +41,7 @@ Schema per entry: purpose, when to use, when not to use, curated discovery phras
 - When not to use: The user asks for broad framework discovery rather than a specific guardrail.
 - Curated discovery phrases: `aiwg discover "rule for <constraint>"`; `aiwg discover "<provider> routing rule"`; `aiwg discover "context budget rule"`
 - Deep-load target: `aiwg show rule <name>` after discovery selects the exact item.
-- Deployed summary: 63 recorded; examples: RULES-INDEX, activity-log, agent-deployment, api-abi-stability, auto-compact-continue, +58 more.
+- Deployed summary: 64 recorded; examples: RULES-INDEX, RULES-ONDEMAND, undefined, undefined, undefined, +59 more.
 - Verification cue: The applied rule is named and the action taken conforms to it.
 
 ### Skills
@@ -61,7 +61,7 @@ Schema per entry: purpose, when to use, when not to use, curated discovery phras
 - When not to use: A static rule or skill directly covers the requested action.
 - Curated discovery phrases: `aiwg discover "behavior for <interaction>"`; `aiwg discover "daemon behavior"`; `aiwg discover "session behavior"`
 - Deep-load target: `aiwg show behavior <name>` after discovery selects the exact item.
-- Deployed summary: 63 recorded; examples: RULES-INDEX, activity-log, agent-deployment, api-abi-stability, auto-compact-continue, +58 more.
+- Deployed summary: 64 recorded; examples: RULES-INDEX, RULES-ONDEMAND, undefined, undefined, undefined, +59 more.
 - Verification cue: The behavior trigger and expected effect are explicit before relying on it.
 
 
@@ -74,7 +74,7 @@ This section is synthesized after template emission from the current workspace s
 
 - Configured providers: claude
 - Installed frameworks/addons: all
-- Recorded deployments: claude, codex
+- Recorded deployments: claude, codex, factory
 - Normalized project context: `.aiwg/AIWG.md`
 
 ### Discover-First Protocol

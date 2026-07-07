@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Component Owner
 description: Maintains health, roadmap, and quality of a specific product component or service
 model: claude-sonnet-4-6

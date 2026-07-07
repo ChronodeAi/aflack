@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Toolsmith
 description: Builds and maintains automation tooling, scripts, and developer experience enhancements for the delivery pipeline
 model: claude-sonnet-4-6

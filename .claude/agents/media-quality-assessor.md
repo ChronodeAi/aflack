@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Media Quality Assessor
 description: Scores media quality across audio, video, and uniqueness dimensions with configurable accept/reject thresholds
 category: media-curator

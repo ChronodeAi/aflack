@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Brand Guardian
 description: Ensures all marketing materials adhere to brand guidelines, protecting brand integrity and consistency
 model: claude-opus-4-7

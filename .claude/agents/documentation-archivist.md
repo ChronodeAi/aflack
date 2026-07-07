@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Documentation Archivist
 description: Manages working drafts, tracks document changes, maintains version history, and ensures audit trail compliance for SDLC artifacts
 model: claude-sonnet-4-6

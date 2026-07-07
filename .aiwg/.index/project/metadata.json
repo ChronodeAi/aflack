@@ -1,0 +1,2441 @@
+{
+  "version": "1.0.0",
+  "builtAt": "2026-07-05T02:42:09.338Z",
+  "buildTimeMs": 11,
+  "entries": {
+    ".aiwg/.milestones.json": {
+      "path": ".aiwg/.milestones.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T03:45:58.185Z",
+      "updated": "2026-07-04T03:45:58.185Z",
+      "checksum": "9c7271c7e6470d99",
+      "summary": "{   \"first_deploy\": \"2026-07-04T03:45:58.184Z\" }",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/AIWG.md": {
+      "path": ".aiwg/AIWG.md",
+      "type": "document",
+      "phase": "other",
+      "title": "AIWG.md",
+      "tags": [],
+      "created": "2026-07-04T03:45:58.183Z",
+      "updated": "2026-07-04T23:53:15.589Z",
+      "checksum": "20b65c9553f34cbc",
+      "summary": "<!-- aiwg-managed --> <!-- Normalized project-local AIWG context. Operator notes may live outside AIWG-managed blocks. --> This file is the stable `.aiwg/AIWG.md` entry point for AIWG skills, rules, and generated provider context. <!-- aiwg-context-finalization:START --> This section is synthesized after template emission from the current workspace state. Preserve operator-authored content outside AIWG-managed blocks; rerun `aiwg regenerate` to refresh this section after provider, framework, or",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/architecture/adr-0001-postiz-posting-scheduler.md": {
+      "path": ".aiwg/architecture/adr-0001-postiz-posting-scheduler.md",
+      "type": "adr",
+      "phase": "architecture",
+      "title": "ADR-0001: Adopt Postiz as the scheduling + posting layer",
+      "tags": [],
+      "created": "2026-07-04T05:45:07.055Z",
+      "updated": "2026-07-04T05:45:07.056Z",
+      "checksum": "08834cf2ee44f1bc",
+      "summary": "**Status**: Accepted **Date**: 2026-07-04 **Decision owner**: Solo operator The pipeline needs cross-platform publishing + scheduling (YouTube first-class, plus TikTok, Instagram, X, Reddit, etc.). We had planned to hand-roll per-platform adapters (OAuth, upload flows, quotas, retries) — significant, brittle, per-platform work that fights platform API gating and changes constantly. Postiz (`gitroomhq/postiz-app`) is a mature open-source social scheduling tool that already solves this.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/architecture-stability-report.md"
+      ]
+    },
+    ".aiwg/architecture/adr-0002-own-event-store.md": {
+      "path": ".aiwg/architecture/adr-0002-own-event-store.md",
+      "type": "adr",
+      "phase": "architecture",
+      "title": "ADR-0002: Own the raw event store; treat memory engines as derived indexes",
+      "tags": [],
+      "created": "2026-07-04T05:55:34.074Z",
+      "updated": "2026-07-04T05:55:34.074Z",
+      "checksum": "2b9ceca73d11f0d9",
+      "summary": "**Status**: Accepted **Date**: 2026-07-04 The pipeline's long-term value is compounding learning across experiments. Memory frameworks (Mem0, Zep/Graphiti, Cognee, pgGraph) each have their own storage models; committing our source of truth to any one of them creates lock-in and makes migration a salvage job. Own the **raw event store** as the single source of truth: local **Postgres** (relational rows) + local **object storage/filesystem** (media, screenshots, transcripts, product pages, generat",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/architecture-stability-report.md"
+      ]
+    },
+    ".aiwg/architecture/adr-0003-local-postgres-pggraph-pgvector-memory.md": {
+      "path": ".aiwg/architecture/adr-0003-local-postgres-pggraph-pgvector-memory.md",
+      "type": "adr",
+      "phase": "architecture",
+      "title": "ADR-0003: Use local Postgres + pgGraph + pgvector as the v1 memory substrate",
+      "tags": [],
+      "created": "2026-07-04T05:55:48.749Z",
+      "updated": "2026-07-04T05:55:48.749Z",
+      "checksum": "d449d61d4f654879",
+      "summary": "**Status**: Accepted for local MVP; revisit after week-2 bake-off **Date**: 2026-07-04 The project needs episodic, semantic, and procedural memory without context rot. We evaluated agentmemory as the reference pattern and considered Mem0, Zep/Graphiti, Cognee, Letta/MemGPT, and pgGraph. For week 1, the system is local, solo-operated, and needs a simple, inspectable substrate. We already own Postgres as the raw event store. Use **local Postgres + pgGraph + pgvector** as the v1 memory substrate:",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/architecture-stability-report.md"
+      ]
+    },
+    ".aiwg/architecture/adr-0004-claude-fable-director-cli.md": {
+      "path": ".aiwg/architecture/adr-0004-claude-fable-director-cli.md",
+      "type": "adr",
+      "phase": "architecture",
+      "title": "ADR-0004: Use Claude Code CLI (`claude-fable-5`) as the video director runtime",
+      "tags": [],
+      "created": "2026-07-04T06:20:20.154Z",
+      "updated": "2026-07-04T06:20:20.154Z",
+      "checksum": "57a7f9d07efdfd8b",
+      "summary": "**Status**: Accepted **Date**: 2026-07-04 The project needs a \"director\" for videos: an agentic role that reads niche research, official reference packs, persona briefs, compliance rules, benchmark gold sets, and produces/coordinates shot direction, scripts, generation prompts, and quality review. The user wants this director to run from a **Claude Code CLI session inside this project**, not as an opaque hosted model call embedded in the app. Use the local `claude` CLI from this repository as th",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/architecture-stability-report.md"
+      ]
+    },
+    ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md": {
+      "path": ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+      "type": "adr",
+      "phase": "architecture",
+      "title": "ADR-0005: Human-gated Jarvis content-agent orchestration",
+      "tags": [],
+      "created": "2026-07-04T21:47:46.435Z",
+      "updated": "2026-07-04T21:47:46.435Z",
+      "checksum": "6eebfdb7929ced8f",
+      "summary": "**Status**: Accepted   **Date**: 2026-07-04   **Decision owner**: Solo operator The Codex, Aside/Fugu, and Claude Code sessions repeatedly converged on the same operating model: a Jarvis-style content factory that can research trends, synthesize hooks, generate original assets, prepare posts, and learn from results. The useful parts of that model are not full autonomy; they are repeatable orchestration, persistent memory, and disciplined gates around spending, publishing, account actions, and cl",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/traceability-2026-07-04.md",
+        ".aiwg/reports/architecture-stability-report.md",
+        ".aiwg/team/onboarding-guide.md",
+        ".aiwg/reports/status-assessment.md"
+      ]
+    },
+    ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md": {
+      "path": ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md",
+      "type": "adr",
+      "phase": "architecture",
+      "title": "ADR-0006: Virality-first lane selection and persona-optional form",
+      "tags": [],
+      "created": "2026-07-04T21:47:46.435Z",
+      "updated": "2026-07-04T21:47:46.435Z",
+      "checksum": "d5d01202dcb485a4",
+      "summary": "**Status**: Accepted   **Date**: 2026-07-04   **Decision owner**: Solo operator Across the Claude Code and Codex/Fugu transcripts, the operating doctrine evolved from \"make persona content\" into \"build Memetics as a virality engine.\" The persona system still matters for brand recognition, but forcing every post through a persona can lower trend fit, slow execution, and make the factory less responsive to high-velocity moments. The observed creator playbooks also showed that platform payouts are",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/architecture-stability-report.md"
+      ]
+    },
+    ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md": {
+      "path": ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md",
+      "type": "adr",
+      "phase": "architecture",
+      "title": "ADR-0007: Memory system of record and week-2 bakeoff",
+      "tags": [],
+      "created": "2026-07-04T22:02:14.153Z",
+      "updated": "2026-07-04T22:02:14.153Z",
+      "checksum": "8c63ace7132418d6",
+      "summary": "**Status**: Accepted for MVP; bakeoff pending after first result loop   **Date**: 2026-07-04   **Decision owner**: Solo operator The project currently uses several memory surfaces: - agentmemory for coding-agent session memory and handoff/recall,",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/traceability-2026-07-04.md",
+        ".aiwg/reports/architecture-stability-report.md"
+      ]
+    },
+    ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md": {
+      "path": ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md",
+      "type": "adr",
+      "phase": "architecture",
+      "title": "ADR-0008: Draft Ramp and Analytics Aggregation",
+      "tags": [],
+      "created": "2026-07-04T23:04:35.845Z",
+      "updated": "2026-07-04T23:04:35.845Z",
+      "checksum": "23797c71e808eb01",
+      "summary": "**Date**: 2026-07-04   **Status**: Accepted   **Decision Owner**: Operator The operator approved moving past the previous zero-cap boundary: generate Shorts under an adaptive credit-learning policy, approve the first 100 Postiz drafts, and capture all video analytics in one aggregated place. Postiz appears to expose platform/post analytics through its public/agent API surface, but the content factory needs metrics joined to packages, creatives, costs, funnels, and lessons. 1. Treat Postiz as a s",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/reports/status-assessment.md"
+      ]
+    },
+    ".aiwg/architecture/software-architecture-document.md": {
+      "path": ".aiwg/architecture/software-architecture-document.md",
+      "type": "architecture",
+      "phase": "architecture",
+      "title": "Software Architecture Document (SAD) — Affiliate Content Pipeline (MVP)",
+      "tags": [],
+      "created": "2026-07-05T02:20:04.366Z",
+      "updated": "2026-07-05T02:36:46.104Z",
+      "checksum": "f8247184a9569469",
+      "summary": "**Created**: 2026-07-04 **Status**: Elaboration baseline with Controlled Construction addendum **Scope**: Local, solo-operated GTA6 AI-persona gaming content pipeline (Beachhead A), YouTube-first. - Local-first, single operator, runs on one macOS machine. - Research-first; compounding memory without context rot.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        ".aiwg/reports/architecture-stability-report.md",
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        ".aiwg/reports/traceability-2026-07-04.md",
+        ".aiwg/team/onboarding-guide.md"
+      ]
+    },
+    ".aiwg/cockpit/contrib/aflack-control-plane.json": {
+      "path": ".aiwg/cockpit/contrib/aflack-control-plane.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-05T02:19:30.788Z",
+      "updated": "2026-07-05T02:19:30.789Z",
+      "checksum": "5da87f8c3f9df8d0",
+      "summary": "{   \"$schema\": \"https://aiwg.io/cockpit/contribution/v1\",   \"id\": \"aflack-control-plane\",   \"version\": \"1.1.0\",   \"title\": \"Aflack Control Plane\",",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/planning/cockpit-aflack-integration.md"
+      ]
+    },
+    ".aiwg/creator-commerce-ops/agents/benchmark-scout.md": {
+      "path": ".aiwg/creator-commerce-ops/agents/benchmark-scout.md",
+      "type": "agent",
+      "phase": "other",
+      "title": "Agent: benchmark-scout",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.095Z",
+      "updated": "2026-07-04T19:55:28.101Z",
+      "checksum": "d553ed23401805c3",
+      "summary": "Role: uses Aside Browser to read logged-in Instagram/TikTok/YouTube surfaces and produce structured benchmark observations. Never likes, comments, follows, DMs, or scrapes private APIs.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "benchmark-scout",
+      "capability": "Role: uses Aside Browser to read logged-in Instagram/TikTok/YouTube surfaces and produce structured benchmark observations."
+    },
+    ".aiwg/creator-commerce-ops/agents/compliance-gatekeeper.md": {
+      "path": ".aiwg/creator-commerce-ops/agents/compliance-gatekeeper.md",
+      "type": "agent",
+      "phase": "other",
+      "title": "Agent: compliance-gatekeeper",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.115Z",
+      "updated": "2026-07-04T19:55:28.120Z",
+      "checksum": "3af4de67cd6376a2",
+      "summary": "Role: blocks risky content before spend and before publish. Primary command: `aflack compliance-smoke`; content-specific checks must include source provenance and disclosure review.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "compliance-gatekeeper",
+      "capability": "Role: blocks risky content before spend and before publish."
+    },
+    ".aiwg/creator-commerce-ops/agents/insight-curator.md": {
+      "path": ".aiwg/creator-commerce-ops/agents/insight-curator.md",
+      "type": "agent",
+      "phase": "other",
+      "title": "Agent: insight-curator",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.102Z",
+      "updated": "2026-07-04T19:55:28.107Z",
+      "checksum": "08e9919d62fbfa9b",
+      "summary": "Role: dedupes observations, strengthens or retires insights, and prevents context rot. Primary tools: `aflack improve-cycle`, `aflack insights-list`, `aflack trace-show`.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "insight-curator",
+      "capability": "Role: dedupes observations, strengthens or retires insights, and prevents context rot."
+    },
+    ".aiwg/creator-commerce-ops/agents/roi-sentinel.md": {
+      "path": ".aiwg/creator-commerce-ops/agents/roi-sentinel.md",
+      "type": "agent",
+      "phase": "other",
+      "title": "Agent: roi-sentinel",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.121Z",
+      "updated": "2026-07-04T19:55:28.125Z",
+      "checksum": "567b8f1b221eda11",
+      "summary": "Role: prevents scaling when contribution margin is negative or unmeasured. Primary command: `aflack economics-status` plus per-video cost ledger review.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "roi-sentinel",
+      "capability": "Role: prevents scaling when contribution margin is negative or unmeasured."
+    },
+    ".aiwg/creator-commerce-ops/agents/video-director.md": {
+      "path": ".aiwg/creator-commerce-ops/agents/video-director.md",
+      "type": "agent",
+      "phase": "other",
+      "title": "Agent: video-director",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.108Z",
+      "updated": "2026-07-04T19:55:28.113Z",
+      "checksum": "24bc698f3e8d10e8",
+      "summary": "Role: Claude Code session that turns active insights into pre-generation video packages. Hard stop before paid generation and publishing.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "video-director",
+      "capability": "Role: Claude Code session that turns active insights into pre-generation video packages."
+    },
+    ".aiwg/creator-commerce-ops/behaviors/scheduled-improvement-daemon.md": {
+      "path": ".aiwg/creator-commerce-ops/behaviors/scheduled-improvement-daemon.md",
+      "type": "behavior",
+      "phase": "other",
+      "title": "Behavior: scheduled-improvement-daemon",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.127Z",
+      "updated": "2026-07-04T19:55:28.135Z",
+      "checksum": "e5a2bc04f1079f93",
+      "summary": "The daemon periodically runs the safe learning loop. It may create insights/proposals and traces. It may not generate, publish, edit account settings, automate DMs/comments, or silently modify skills/rules.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/creator-commerce-ops/manifest.json": {
+      "path": ".aiwg/creator-commerce-ops/manifest.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T19:55:27.988Z",
+      "updated": "2026-07-04T23:25:17.902Z",
+      "checksum": "3b18ac8171ed61f3",
+      "summary": "{   \"id\": \"creator-commerce-ops\",   \"version\": \"0.1.0-local\",   \"status\": \"project-local-framework-50pct\",   \"purpose\": \"Continuously improve an AI-assisted content creation pipeline by scanning proven creators, distilling insights, and evolving reproducible skills/rules/workflows/agents.\",",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/cleanup-audit-2026-07-04.md"
+      ]
+    },
+    ".aiwg/creator-commerce-ops/reports/framework-50pct-status.md": {
+      "path": ".aiwg/creator-commerce-ops/reports/framework-50pct-status.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Creator Commerce Ops — 50% Framework Status",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.149Z",
+      "updated": "2026-07-04T19:55:28.154Z",
+      "checksum": "7fc0f922baf35552",
+      "summary": "This is now a project-local framework, not yet promoted into the AIWG fork. Implemented: - rules: proof, research, compliance, memory, ROI, - skills: Aside scan, insight distillation, Claude video builder, virality review, performance digest, - workflows: daemon loop, benchmark→skill update, Claude video production, analytics→memory,",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/creator-commerce-ops/rules/compliance-before-publish.md": {
+      "path": ".aiwg/creator-commerce-ops/rules/compliance-before-publish.md",
+      "type": "rule",
+      "phase": "other",
+      "title": "Rule: compliance-before-publish",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.006Z",
+      "updated": "2026-07-04T21:33:16.864Z",
+      "checksum": "c9e83268f70055d8",
+      "summary": "No content may be submitted for public publishing unless it passes: - source provenance check, - AI/synthetic disclosure check, - affiliate disclosure check, - no false firsthand/access/leak claims,",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/team/onboarding-guide.md"
+      ],
+      "name": "compliance-before-publish",
+      "capability": "No content may be submitted for public publishing unless it passes:"
+    },
+    ".aiwg/creator-commerce-ops/rules/memory-without-rot.md": {
+      "path": ".aiwg/creator-commerce-ops/rules/memory-without-rot.md",
+      "type": "rule",
+      "phase": "other",
+      "title": "Rule: memory-without-rot",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.015Z",
+      "updated": "2026-07-04T19:55:28.021Z",
+      "checksum": "a831cf06a8fe3455",
+      "summary": "All learned content patterns must be deduped, evidence-bound, and temporally valid. - Dedup by stable content hash. - Reinforce existing insights instead of duplicating them. - Retire stale insights with `invalid_at` rather than deleting history. - Retrieve only active, relevant, high-confidence insights into working context.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "memory-without-rot",
+      "capability": "All learned content patterns must be deduped, evidence-bound, and temporally valid."
+    },
+    ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md": {
+      "path": ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md",
+      "type": "rule",
+      "phase": "other",
+      "title": "Rule: no-safe-boring-generation",
+      "tags": [],
+      "created": "2026-07-04T23:25:17.899Z",
+      "updated": "2026-07-04T23:25:17.899Z",
+      "checksum": "5bd01ff3727eb781",
+      "summary": "Compliance is necessary but not sufficient. Do not spend generation credits on asset prompts that are merely clean, generic, or product-adjacent. Before a prompt reaches spend review, it must prove: - why the target audience cares in the first frame, - how the asset relates positively to the current story window,",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ],
+      "name": "no-safe-boring-generation",
+      "capability": "Compliance is necessary but not sufficient. Do not spend generation credits on asset prompts that are merely clean, generic, or product-adjacent."
+    },
+    ".aiwg/creator-commerce-ops/rules/proof-of-real-success.md": {
+      "path": ".aiwg/creator-commerce-ops/rules/proof-of-real-success.md",
+      "type": "rule",
+      "phase": "other",
+      "title": "Rule: proof-of-real-success",
+      "tags": [],
+      "created": "2026-07-04T19:55:27.993Z",
+      "updated": "2026-07-04T19:55:27.996Z",
+      "checksum": "ddda7585a87cb335",
+      "summary": "Do not treat a creator as a model to learn from merely because they show large numbers, luxury flexing, or claimed revenue. A creator becomes `verified` only when at least three evidence signals are present: 1. observable engagement rate >= 2%, 2. observable monetization path (affiliate, own product, course, sponsor, platform payout, etc.), 3. sustained cadence >= 14 days.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "proof-of-real-success",
+      "capability": "Do not treat a creator as a model to learn from merely because they show large numbers, luxury flexing, or claimed revenue."
+    },
+    ".aiwg/creator-commerce-ops/rules/research-before-generation.md": {
+      "path": ".aiwg/creator-commerce-ops/rules/research-before-generation.md",
+      "type": "rule",
+      "phase": "other",
+      "title": "Rule: research-before-generation",
+      "tags": [],
+      "created": "2026-07-04T19:55:27.998Z",
+      "updated": "2026-07-04T19:55:28.004Z",
+      "checksum": "11658845ad9f48e4",
+      "summary": "Before any paid Higgsfield generation, a video package must cite either: - an existing benchmark pattern from `benchmark_videos` / `insights`, or - a human-approved creative hypothesis explicitly marked as experimental. No credit spend is allowed for vague, unsupported ideas.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "research-before-generation",
+      "capability": "Before any paid Higgsfield generation, a video package must cite either:"
+    },
+    ".aiwg/creator-commerce-ops/rules/roi-before-scale.md": {
+      "path": ".aiwg/creator-commerce-ops/rules/roi-before-scale.md",
+      "type": "rule",
+      "phase": "other",
+      "title": "Rule: roi-before-scale",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.023Z",
+      "updated": "2026-07-04T19:55:28.029Z",
+      "checksum": "ed31ab7af1b6e5a1",
+      "summary": "Do not scale toward 20 videos/day until the loop has positive contribution margin or an explicit experimental budget. Track: - Higgsfield credits/video, - token cost/video, - operator minutes/video,",
+      "dependencies": [],
+      "dependents": [],
+      "name": "roi-before-scale",
+      "capability": "Do not scale toward 20 videos/day until the loop has positive contribution margin or an explicit experimental budget."
+    },
+    ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md": {
+      "path": ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+      "type": "rule",
+      "phase": "other",
+      "title": "Testable Contracts over Prose",
+      "tags": [],
+      "created": "2026-07-04T22:15:30.722Z",
+      "updated": "2026-07-04T22:15:30.722Z",
+      "checksum": "29e3dae838f82564",
+      "summary": "**Status**: active   **Applies to**: skills, rules, workflows, agents, daemon behaviors, content package generators, and validation gates Agentic instructions must be written as testable contracts whenever the behavior affects pipeline quality, safety, money, public publishing, or memory promotion. Markdown guidance can explain intent, but the enforcing boundary should be a deterministic check the agent can run and repair against. Every new or materially changed skill, rule, workflow, agent, or",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/team/onboarding-guide.md",
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ],
+      "name": "testable-contracts-over-prose",
+      "capability": "**Status**: active **Applies to**: skills, rules, workflows, agents, daemon behaviors, content package generators, and validation gates"
+    },
+    ".aiwg/creator-commerce-ops/skills/aside-creator-scan.md": {
+      "path": ".aiwg/creator-commerce-ops/skills/aside-creator-scan.md",
+      "type": "skill",
+      "phase": "other",
+      "title": "Skill: aside-creator-scan",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.031Z",
+      "updated": "2026-07-04T19:55:28.036Z",
+      "checksum": "6eac998eb547f643",
+      "summary": "Purpose: use logged-in Aside Browser sessions to observe Instagram/TikTok/YouTube creators and export structured benchmark observations. Inputs: - niche query, - target platforms, - number of creators/videos,",
+      "dependencies": [],
+      "dependents": [],
+      "name": "aside-creator-scan",
+      "capability": "Purpose: use logged-in Aside Browser sessions to observe Instagram/TikTok/YouTube creators and export structured benchmark observations."
+    },
+    ".aiwg/creator-commerce-ops/skills/claude-video-builder.md": {
+      "path": ".aiwg/creator-commerce-ops/skills/claude-video-builder.md",
+      "type": "skill",
+      "phase": "other",
+      "title": "Skill: claude-video-builder",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.049Z",
+      "updated": "2026-07-04T21:33:16.862Z",
+      "checksum": "6c4dba8a5107851b",
+      "summary": "Purpose: use Claude Code as the pre-generation video director. Required package sections: 1. active benchmark insight citations, 2. hook options, 3. selected hook rationale,",
+      "dependencies": [],
+      "dependents": [],
+      "name": "claude-video-builder",
+      "capability": "Purpose: use Claude Code as the pre-generation video director."
+    },
+    ".aiwg/creator-commerce-ops/skills/higgsfield-asset-prompting.md": {
+      "path": ".aiwg/creator-commerce-ops/skills/higgsfield-asset-prompting.md",
+      "type": "skill",
+      "phase": "other",
+      "title": "Skill: higgsfield-asset-prompting",
+      "tags": [],
+      "created": "2026-07-04T23:25:17.897Z",
+      "updated": "2026-07-04T23:25:17.897Z",
+      "checksum": "8fba65849f192acd",
+      "summary": "Purpose: turn a short-form script/shot list into generation-ready Higgsfield, Seedance, Soul, or image/video prompt packs that are both compliant and attention-native. - niche and target platform, - script with timestamps,",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/status-assessment.md"
+      ],
+      "name": "higgsfield-asset-prompting",
+      "capability": "Purpose: turn a short-form script/shot list into generation-ready Higgsfield, Seedance, Soul, or image/video prompt packs that are both compliant and attention-native."
+    },
+    ".aiwg/creator-commerce-ops/skills/hook-authoring.md": {
+      "path": ".aiwg/creator-commerce-ops/skills/hook-authoring.md",
+      "type": "skill",
+      "phase": "other",
+      "title": "Skill: hook-authoring",
+      "tags": [],
+      "created": "2026-07-04T21:33:16.863Z",
+      "updated": "2026-07-04T21:33:16.863Z",
+      "checksum": "f0bdb9dbe767b63d",
+      "summary": "Purpose: create short-form hooks that are evidence-bound, compliant, and built to route attention into the funnel. Inputs: - niche, - target platform,",
+      "dependencies": [],
+      "dependents": [],
+      "name": "hook-authoring",
+      "capability": "Purpose: create short-form hooks that are evidence-bound, compliant, and built to route attention into the funnel."
+    },
+    ".aiwg/creator-commerce-ops/skills/insight-distillation.md": {
+      "path": ".aiwg/creator-commerce-ops/skills/insight-distillation.md",
+      "type": "skill",
+      "phase": "other",
+      "title": "Skill: insight-distillation",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.039Z",
+      "updated": "2026-07-04T19:55:28.048Z",
+      "checksum": "a34c7d5c2503e2f0",
+      "summary": "Purpose: convert benchmark observations into deduped, active insights with evidence and confidence. Implementation: - `aflack improve-cycle` - `aflack insights-list --min-confidence 0.5` - `aflack trace-show <trace_id>`",
+      "dependencies": [],
+      "dependents": [],
+      "name": "insight-distillation",
+      "capability": "Purpose: convert benchmark observations into deduped, active insights with evidence and confidence."
+    },
+    ".aiwg/creator-commerce-ops/skills/performance-digest.md": {
+      "path": ".aiwg/creator-commerce-ops/skills/performance-digest.md",
+      "type": "skill",
+      "phase": "other",
+      "title": "Skill: performance-digest",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.062Z",
+      "updated": "2026-07-04T19:55:28.066Z",
+      "checksum": "5a845c024898c7b3",
+      "summary": "Purpose: after publishing, ingest platform metrics, update results/economics, and distill lessons. Required metrics: - views, - retention proxy, - likes/comments/saves/shares,",
+      "dependencies": [],
+      "dependents": [],
+      "name": "performance-digest",
+      "capability": "Purpose: after publishing, ingest platform metrics, update results/economics, and distill lessons."
+    },
+    ".aiwg/creator-commerce-ops/skills/virality-review.md": {
+      "path": ".aiwg/creator-commerce-ops/skills/virality-review.md",
+      "type": "skill",
+      "phase": "other",
+      "title": "Skill: virality-review",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.056Z",
+      "updated": "2026-07-04T21:33:16.864Z",
+      "checksum": "9604d3874f7b31c6",
+      "summary": "Purpose: compare a draft video package against active insights and benchmark videos before spend. Gate outcome: - PASS: package references at least one active insight and has a measurable hypothesis. - REVISE: hook/structure/CTA weak or untraceable. - BLOCK: compliance or source-rights issue.",
+      "dependencies": [],
+      "dependents": [],
+      "name": "virality-review",
+      "capability": "Purpose: compare a draft video package against active insights and benchmark videos before spend."
+    },
+    ".aiwg/creator-commerce-ops/templates/aside-scan-prompt.md": {
+      "path": ".aiwg/creator-commerce-ops/templates/aside-scan-prompt.md",
+      "type": "template",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.143Z",
+      "updated": "2026-07-04T19:55:28.149Z",
+      "checksum": "691dae69e1a33924",
+      "summary": "Use Aside Browser in read-only mode. Inspect logged-in Instagram/TikTok/YouTube surfaces for the niche: {{niche}}. Find creators/videos that appear genuinely successful. Do not rely on follower count or wealth flexing alone. For each candidate, capture observable engagement, monetization path, cadence proof, hook, CTA, and structure. Do not like, comment, follow, DM, post, change settings, or call private APIs. Return only JSON matching `.aiwg/creator-commerce-ops/templates/aside-scan.schema.jso",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/creator-commerce-ops/templates/aside-scan.schema.json": {
+      "path": ".aiwg/creator-commerce-ops/templates/aside-scan.schema.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.136Z",
+      "updated": "2026-07-04T19:55:28.141Z",
+      "checksum": "f72204655a2af7ce",
+      "summary": "{   \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",   \"type\": \"object\",   \"required\": [\"source\", \"niche\", \"observations\"],   \"properties\": {",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/creator-commerce-ops/workflows/analytics-to-memory.md": {
+      "path": ".aiwg/creator-commerce-ops/workflows/analytics-to-memory.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Workflow: analytics-to-memory",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.088Z",
+      "updated": "2026-07-04T19:55:28.093Z",
+      "checksum": "2da009023af6f948",
+      "summary": "1. Ingest results from platform/Postiz. 2. Update `results` and `cost_ledger`. 3. Compare against benchmark expectations. 4. Distill episodic lessons. 5. Promote repeated lessons into semantic/procedural insights.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/creator-commerce-ops/workflows/benchmark-to-skill-update.md": {
+      "path": ".aiwg/creator-commerce-ops/workflows/benchmark-to-skill-update.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Workflow: benchmark-to-skill-update",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.072Z",
+      "updated": "2026-07-04T19:55:28.078Z",
+      "checksum": "19516ec55abf98dc",
+      "summary": "1. `aflack aside-scan-import <scan.json>` 2. `aflack improve-cycle` 3. `aflack insights-list --min-confidence 0.5` 4. `aflack proposals-list` 5. human reviews proposal",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/creator-commerce-ops/workflows/claude-video-production.md": {
+      "path": ".aiwg/creator-commerce-ops/workflows/claude-video-production.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Workflow: claude-video-production",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.080Z",
+      "updated": "2026-07-04T23:25:17.901Z",
+      "checksum": "0864c6d38f4363fd",
+      "summary": "1. Retrieve active insights. 2. Create hook options using `hook-authoring`. 3. Create Claude Code video builder prompt. 4. Generate pre-generation package only. 5. Convert storyboard into a beat-level prompt pack using `higgsfield-asset-prompting`.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/creator-commerce-ops/workflows/daemon-sdlc-loop.md": {
+      "path": ".aiwg/creator-commerce-ops/workflows/daemon-sdlc-loop.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Workflow: daemon-sdlc-loop",
+      "tags": [],
+      "created": "2026-07-04T19:55:28.067Z",
+      "updated": "2026-07-04T19:55:28.071Z",
+      "checksum": "93c585f411b717e0",
+      "summary": "Cadence: every 6 hours by launchd/cron. Steps: 1. scan or wait for Aside scan exports, 2. import benchmark observations, 3. distill/reinforce insights,",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/deployment/postiz-local-runbook.md": {
+      "path": ".aiwg/deployment/postiz-local-runbook.md",
+      "type": "document",
+      "phase": "deployment",
+      "title": "Postiz Local Runbook",
+      "tags": [],
+      "created": "2026-07-04T06:29:19.922Z",
+      "updated": "2026-07-04T06:55:58.439Z",
+      "checksum": "03b4ee25c6e00b53",
+      "summary": "**Created**: 2026-07-04 **Location**: `.aiwg/working/postiz/docker-compose.yaml` (gitignored — contains generated JWT secret) **UI**: http://localhost:4007  (redirects to /auth) **Temporal UI**: http://localhost:8080 All published ports must be bound to `127.0.0.1`, not `0.0.0.0` / `*`.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/frameworks/forensics-complete/chain-of-custody.md": {
+      "path": ".aiwg/frameworks/forensics-complete/chain-of-custody.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Chain of Custody Log",
+      "tags": [],
+      "created": "2026-07-04T03:45:52.545Z",
+      "updated": "2026-07-04T03:45:52.545Z",
+      "checksum": "a5b333337ae3400f",
+      "summary": "> This document records the collection, transfer, and storage of all evidence for the referenced case. > Every person who handles evidence MUST log a transfer entry. Gaps in custody chain may compromise > the admissibility of evidence. Complete all fields — do not leave entries blank. --- | Field | Value |",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/frameworks/knowledge-base/index.md": {
+      "path": ".aiwg/frameworks/knowledge-base/index.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Index",
+      "tags": [],
+      "created": "2026-07-04T03:45:52.545Z",
+      "updated": "2026-07-04T03:45:52.545Z",
+      "checksum": "0a3745f5a0c5c39e",
+      "summary": "",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/frameworks/registry.json": {
+      "path": ".aiwg/frameworks/registry.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T03:45:52.549Z",
+      "updated": "2026-07-04T03:45:52.549Z",
+      "checksum": "c7721d5720dc3cf1",
+      "summary": "{   \"version\": \"1.0.0\",   \"created\": \"2026-07-04T03:45:52.547Z\",   \"frameworks\": [     {",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/gates/pre-construction-gate-2026-07-04.md": {
+      "path": ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Pre-Construction Gate Check — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T22:08:40.599Z",
+      "updated": "2026-07-04T22:09:32.561Z",
+      "checksum": "eabf962c78788429",
+      "summary": "**Skill**: `flow-gate-check`   **Gate**: Elaboration → controlled Construction   **Decision**: CONDITIONAL GO | Gate area | Result | Evidence | |---|---|---|",
+      "dependencies": [
+        ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        ".aiwg/reports/test-sync-report-2026-07-04.md",
+        ".aiwg/reports/cleanup-audit-2026-07-04.md",
+        ".aiwg/reports/traceability-2026-07-04.md",
+        ".aiwg/reports/construction-readiness-report.md",
+        ".aiwg/reports/abm-validation-report.md"
+      ],
+      "dependents": [
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/gates/security-gate-2026-07-04.md": {
+      "path": ".aiwg/gates/security-gate-2026-07-04.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Security Gate — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T06:55:36.205Z",
+      "updated": "2026-07-04T18:32:09.890Z",
+      "checksum": "aeb8a231dfcda562",
+      "summary": "**Current decision**: **PASS FOR CONSTRUCTION ITERATION 1** The earlier local Postiz network exposure was remediated by binding local services to `127.0.0.1`. The operator has now switched the active publisher to paid cloud Postiz, configured a cloud API key, and connected YouTube/TikTok integrations. | Gate item | Status | Evidence | |---|---|---| | Local network exposure remediated | PASS | Host `lsof` shows Postiz/Temporal/Spotlight/DB ports on `127.0.0.1` only. |",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md": {
+      "path": ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Handoff Report — Elaboration to Construction",
+      "tags": [],
+      "created": "2026-07-04T22:08:40.599Z",
+      "updated": "2026-07-04T22:09:32.561Z",
+      "checksum": "8574d321e05d539e",
+      "summary": "**Skill**: `flow-handoff-checklist`   **Date**: 2026-07-04   **Decision**: APPROVED WITH CONDITIONS | Artifact | Status | |---|---|",
+      "dependencies": [
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/reports/construction-readiness-report.md",
+        ".aiwg/reports/framework-deliverance-handoff-2026-07-04.md",
+        ".aiwg/planning/iteration-plan-002.md",
+        ".aiwg/planning/daemon-runtime-architecture.md",
+        ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md",
+        ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/intake/option-matrix.md": {
+      "path": ".aiwg/intake/option-matrix.md",
+      "type": "document",
+      "phase": "intake",
+      "title": "Option Matrix",
+      "tags": [],
+      "created": "2026-07-04T04:11:55.921Z",
+      "updated": "2026-07-04T05:46:47.963Z",
+      "checksum": "fc1fee7c3017a850",
+      "summary": "**Project**: Automated Affiliate Content Pipeline **Generated**: 2026-07-03 **Decision**: Week-1 architecture + memory strategy + market-intelligence approach | Criterion | Weight | Notes | |---|---:|---|",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/intake/project-intake.md": {
+      "path": ".aiwg/intake/project-intake.md",
+      "type": "document",
+      "phase": "intake",
+      "title": "Project Intake Form",
+      "tags": [],
+      "created": "2026-07-04T04:11:12.411Z",
+      "updated": "2026-07-05T00:40:57.454Z",
+      "checksum": "b3838f695938ed39",
+      "summary": "**Document Type**: Greenfield Project **Generated**: 2026-07-03 **Source**: User description + interactive intake responses + research briefs under `.aiwg/research/affiliate-content-pipeline/` - **Project name**: Automated Affiliate Content Pipeline (working name: \"aflack\") - **Requestor/owner**: Solo operator (project owner)",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/intake/solution-profile.md": {
+      "path": ".aiwg/intake/solution-profile.md",
+      "type": "document",
+      "phase": "intake",
+      "title": "Solution Profile",
+      "tags": [],
+      "created": "2026-07-04T04:11:35.743Z",
+      "updated": "2026-07-05T00:40:57.455Z",
+      "checksum": "d2df8ad6d02faddf",
+      "summary": "**Project**: Automated Affiliate Content Pipeline **Generated**: 2026-07-03 **Profile recommendation**: **Prototype / MVP** **Selected profile**: MVP (local-first, fast validation) **Why**:",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/loops/content-factory/LOOP.md": {
+      "path": ".aiwg/loops/content-factory/LOOP.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Content Factory Loop",
+      "tags": [],
+      "created": "2026-07-04T22:48:34.448Z",
+      "updated": "2026-07-04T23:04:35.845Z",
+      "checksum": "32c45799ca09cd86",
+      "summary": "**Status**: active for controlled Construction   **Owner**: solo operator   **Runtime**: local CLI + human-gated agent direction   **Purpose**: make content production, validation, draft preparation, results capture, and learning inspectable before any broader daemon autonomy. The loop may perform safe local work:",
+      "dependencies": [
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/planning/iteration-plan-002.md",
+        ".aiwg/planning/daemon-runtime-architecture.md",
+        ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+        ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md",
+        ".aiwg/planning/video-analytics-aggregation-plan.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ]
+    },
+    ".aiwg/loops/content-factory/budget.yaml": {
+      "path": ".aiwg/loops/content-factory/budget.yaml",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T22:48:34.448Z",
+      "updated": "2026-07-05T00:42:08.049Z",
+      "checksum": "ef555337def90513",
+      "summary": "schema: aiwg.loop.budget.v1 loop_id: content-factory status: active updated_at: \"2026-07-05T00:16:02Z\" budgets:",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/loops/content-factory/constraints.yaml": {
+      "path": ".aiwg/loops/content-factory/constraints.yaml",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T22:48:34.448Z",
+      "updated": "2026-07-04T23:04:07.818Z",
+      "checksum": "0b64d7dc272b44a4",
+      "summary": "schema: aiwg.loop.constraints.v1 loop_id: content-factory status: active updated_at: \"2026-07-04T23:30:00Z\" hard_blocks:",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/loops/content-factory/state.yaml": {
+      "path": ".aiwg/loops/content-factory/state.yaml",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-05T02:20:04.381Z",
+      "updated": "2026-07-05T02:41:07.860Z",
+      "checksum": "f1e37d240ec8809f",
+      "summary": "schema: aiwg.loop.state.v1 loop_id: content-factory status: active phase: controlled-construction updated_at: \"2026-07-05T03:14:42Z\"",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        ".aiwg/reports/status-assessment.md"
+      ]
+    },
+    ".aiwg/marketing/hooks/README.md": {
+      "path": ".aiwg/marketing/hooks/README.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Hook Library — Gaming Niche (GTA6 beachhead)",
+      "tags": [],
+      "created": "2026-07-04T06:24:13.722Z",
+      "updated": "2026-07-04T06:55:42.686Z",
+      "checksum": "baa54d368f07e0ff",
+      "summary": "Mined + curated hooks feeding script generation for personas (Vice Signal: hype/news; Loadout Lab: gear/affiliate). - `instagram-gaming-hooks.md` — 30 cold-mined IG hooks, 8 patterns, persona hook templates (the working template tables live here) - `liked-content-tips.md` — hook craft from the operator's own IG likes: playbook, retention skeleton, CTA formulas, and REQUIRED compliance adaptation notes Rule: adapt hook STRUCTURE, never copy wording verbatim. Fake scarcity /",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/hooks/fifa-ig-field-study.md": {
+      "path": ".aiwg/marketing/hooks/fifa-ig-field-study.md",
+      "type": "hook",
+      "phase": "other",
+      "title": "FIFA IG Field Study — mined 2026-07-04 (Aside, logged-in, read-only)",
+      "tags": [],
+      "created": "2026-07-04T19:48:40.855Z",
+      "updated": "2026-07-04T19:48:40.860Z",
+      "checksum": "36aea3e7503f1f81",
+      "summary": "I used the logged-in Instagram session read-only. No likes, comments, follows, saves, or interactions beyond search/navigation. Instagram desktop consistently surfaced view counts on grids and like counts in reel modals, but usually did not surface total comment counts, so I marked those as “not surfaced” where unavailable. - **URL:** https://www.instagram.com/433/reel/DaU5dAcR7U0/ - **Counts:** 40M views, 2.9M likes, comments not surfaced - **Hook:** Immediate surreal celebrity/football visual:",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/hooks/fifa-tiktok-field-study.md": {
+      "path": ".aiwg/marketing/hooks/fifa-tiktok-field-study.md",
+      "type": "hook",
+      "phase": "other",
+      "title": "FIFA TikTok Field Study — mined 2026-07-04 (Aside, read-only)",
+      "tags": [],
+      "created": "2026-07-04T19:48:40.860Z",
+      "updated": "2026-07-04T19:48:40.864Z",
+      "checksum": "667dba9f367b6fde",
+      "summary": "Scope note: I used the logged-in TikTok web session read-only. TikTok web exposed likes/comments/shares/favorites on individual video pages, but not view counts. So below I report views as “not exposed” and use TikTok’s visible like counts, exact where the video page loaded and approximate where taken from the search grid. 1. **@fifaworldcup**      URL: https://www.tiktok.com/@fifaworldcup/video/7658141867128737027      Metrics: views not exposed; **4M likes**, 33.9K comments, 154.2K favorites,",
+      "dependencies": [
+        "neyo.ftbll7",
+        "barca4ever.36",
+        "peters.footyyy",
+        "zaki.tactical7",
+        "mr.chettrii777"
+      ],
+      "dependents": []
+    },
+    ".aiwg/marketing/hooks/hook-batch-001.md": {
+      "path": ".aiwg/marketing/hooks/hook-batch-001.md",
+      "type": "hook",
+      "phase": "other",
+      "title": "Hook Batch 001 — Vice Signal + Loadout Lab (20 each)",
+      "tags": [],
+      "created": "2026-07-04T07:04:14.635Z",
+      "updated": "2026-07-04T07:04:14.653Z",
+      "checksum": "eb9018624ae5b8a9",
+      "summary": "**Generated**: 2026-07-04 · **Grounding**: launch 2026-11-19 (138 days out today), pre-orders open, no PC date, no Trailer 3 yet, 60fps unconfirmed, physical-edition-requires-download controversy. **Rules applied**: no fake scarcity, no fake results, no fake insider/gameplay claims (persona ethics policy + footage compliance gate). Every hook's curiosity debt must be repayable with real, verifiable content in the clip body. **Countdown note**: \"138 days\" hooks must be recomputed at render time —",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/hooks/instagram-gaming-hooks.md": {
+      "path": ".aiwg/marketing/hooks/instagram-gaming-hooks.md",
+      "type": "hook",
+      "phase": "other",
+      "title": "Instagram Gaming Hooks — Mined Library v1",
+      "tags": [],
+      "created": "2026-07-04T06:55:01.255Z",
+      "updated": "2026-07-04T06:55:01.260Z",
+      "checksum": "c9461c8e065d1896",
+      "summary": "**Mined**: 2026-07-04 via Aside browser agent (logged-in Instagram session, read-only) **Buckets**: (A) GTA6 / gaming news & hype — feeds **Vice Signal** · (B) Gaming gear/setup — feeds **Loadout Lab** **Method caveat**: Entries marked `[in-app]` were verified inside Instagram with visible engagement. Entries marked `[excerpt]` were sourced from profile/search excerpts where engagement was not visible — treat their numbers as absent, not zero. Third-party engagement figures are point-in-time obs",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/hooks/liked-content-tips.md": {
+      "path": ".aiwg/marketing/hooks/liked-content-tips.md",
+      "type": "hook",
+      "phase": "other",
+      "title": "Liked-Content Tips — Curated Hook Craft (from user's Instagram likes)",
+      "tags": [],
+      "created": "2026-07-04T06:53:39.098Z",
+      "updated": "2026-07-04T06:53:39.182Z",
+      "checksum": "e84a2c8d21c50d01",
+      "summary": "**Mined**: 2026-07-04 via Aside browser agent from the account's Your Activity → Likes (read-only) **Why this file matters**: These are posts the operator personally liked — a taste signal for which hook frameworks the content engine should inherit. **Sourcing caveat**: Instagram's likes viewer did not expose canonical reel IDs for most entries; handles and captions were captured from the viewer. Entries 7-10 were adjacent/contextual (same viewer session), not confirmed from the Likes grid. | #",
+      "dependencies": [
+        "seanpurvis.ai"
+      ],
+      "dependents": []
+    },
+    ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md": {
+      "path": ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Loadout Lab - Episode 001 Affiliate Pre-Generation Package",
+      "tags": [],
+      "created": "2026-07-05T02:20:04.381Z",
+      "updated": "2026-07-05T02:20:18.398Z",
+      "checksum": "8bb16cc72261ef23",
+      "summary": "| Field | Value | |---|---| | Package ID | LL-EP001-PREGEN | | Persona | Loadout Lab | | Beachhead | GTA6 gaming-adjacent affiliate, YouTube-first |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/loadout-lab-episode-001-validation-2026-07-04.md"
+      ]
+    },
+    ".aiwg/marketing/research/ig-tiktok-gta6-live-scan-2026-07-04.md": {
+      "path": ".aiwg/marketing/research/ig-tiktok-gta6-live-scan-2026-07-04.md",
+      "type": "document",
+      "phase": "other",
+      "title": "IG/TikTok Live Scan — GTA6 Creator-Commerce Patterns",
+      "tags": [],
+      "created": "2026-07-04T21:00:04.138Z",
+      "updated": "2026-07-04T21:00:04.148Z",
+      "checksum": "c8e1ac63ac2bd0dc",
+      "summary": "**Date**: 2026-07-04   **Surface**: Aside Browser CLI fallback after MCP wrapper triage   **Mode**: read-only logged-in browser research   **Imported JSON**: `.aiwg/working/aside-scans/live-ig-tiktok-gta6-2026-07-04.json` No account-state-changing actions were taken. The scan did not like, comment, follow, DM, save, upload, post, or change account settings.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/strategy/gta6-clip-farming-analysis.md": {
+      "path": ".aiwg/marketing/strategy/gta6-clip-farming-analysis.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Strategy Note — GTA 6 as a Beachhead: Clip Farming vs AI-Persona Gaming Channel",
+      "tags": [],
+      "created": "2026-07-04T05:28:39.390Z",
+      "updated": "2026-07-04T05:31:12.800Z",
+      "checksum": "e6a628f5fcc9e9a5",
+      "summary": "**Created**: 2026-07-04 **Context**: User proposed \"clip farming for GTA 6\" as an alternative starting niche instead of beauty/health affiliate. **Verdict (recommendation)**: Ride the GTA 6 attention wave, but NOT via pure clip farming. Use an AI-persona gaming/hype channel that generates original content. Keep clip farming as an optional, secondary, rights-safe input — never the core. - GTA 6 confirmed launch: **November 19, 2026** (PS5 / Xbox Series X|S; no PC date). ~4.5 months out. - Pre-ord",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/strategy/gta6-personas.md": {
+      "path": ".aiwg/marketing/strategy/gta6-personas.md",
+      "type": "document",
+      "phase": "other",
+      "title": "GTA6 Gaming Channel — AI Persona Roster (v1)",
+      "tags": [],
+      "created": "2026-07-04T06:01:38.138Z",
+      "updated": "2026-07-04T06:22:35.443Z",
+      "checksum": "54cffd349f73036f",
+      "summary": "**Created**: 2026-07-04 **Niche**: gta6-ai-persona-gaming (Beachhead A) **Rule**: Personas are synthetic, non-impersonating, and disclosed. They present ORIGINAL commentary/analysis over ORIGINAL or clearly-licensed visuals — never wholesale reposts of Rockstar pre-release footage. - Synthetic/AI-assisted persona; not a real person; no impersonation of any real individual. - No false firsthand claims (\"I played the leaked build\"), no leaked/pre-release footage.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/strategy/niche-diagnostic-plan.md": {
+      "path": ".aiwg/marketing/strategy/niche-diagnostic-plan.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Niche Diagnostic Plan — Affiliate Content Pipeline",
+      "tags": [],
+      "created": "2026-07-04T03:54:44.676Z",
+      "updated": "2026-07-04T03:54:44.678Z",
+      "checksum": "e1d67d6651cd08d2",
+      "summary": "**Created**: 2026-07-03 Start with a narrow niche, prove the repeatable pipeline, then clone the system into adjacent niches. Score each candidate niche 1–5: 1. **Content velocity** — enough daily examples/trends to learn from. 2. **Visual demo strength** — product benefit can be shown in short-form video.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/strategy/posting-automation-plan.md": {
+      "path": ".aiwg/marketing/strategy/posting-automation-plan.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Posting Automation Plan — Postiz-backed Distribution",
+      "tags": [],
+      "created": "2026-07-04T05:45:37.259Z",
+      "updated": "2026-07-04T05:45:37.259Z",
+      "checksum": "d3abc9e16bf372ec",
+      "summary": "**Created**: 2026-07-04 **Updated**: 2026-07-04 **Decision**: Use Postiz (`gitroomhq/postiz-app`) as the open-source scheduling/posting app. **ADR**: `.aiwg/architecture/adr-0001-postiz-posting-scheduler.md` Use **Postiz** as the publishing/scheduling backbone instead of hand-rolling platform adapters.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/strategy/vice-flythrough-b2b.md": {
+      "path": ".aiwg/marketing/strategy/vice-flythrough-b2b.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Backlog Lane — \"Vice Fly-Through\" B2B Product (Miami Local Businesses)",
+      "tags": [],
+      "created": "2026-07-04T18:57:25.082Z",
+      "updated": "2026-07-04T18:57:25.083Z",
+      "checksum": "478e7ed28f3b18a2",
+      "summary": "**Created**: 2026-07-04 · **Status**: BACKLOG — activate after FIFA content sprint (operator directive: FIFA first) **One-liner**: Turn any physical Miami business into a cinematic game-world fly-through — GTA6-style neon Miami aesthetic — delivered free as the cold-outreach hook, converting to paid promo content + ongoing services. 1. **Input**: public imagery of the business — Google Maps/Street View, their own Instagram photo library, website photos. 2. **Build**: Higgsfield image-reference p",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/vice-final/episode-01-spec.md": {
+      "path": ".aiwg/marketing/vice-final/episode-01-spec.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Episode 01 — \"The Final Everyone Wants Doesn't Exist Yet\"",
+      "tags": [],
+      "created": "2026-07-04T16:19:26.518Z",
+      "updated": "2026-07-04T16:19:26.519Z",
+      "checksum": "07ec29791c5f5e5d",
+      "summary": "**Ship by**: 2026-07-05 night (must land before Portugal–Spain, Mon Jul 6 Dallas) **Runtime**: 28s vertical (9:16) · **Persona**: Vice Signal (VO only — no face needed, no soul-training dependency) **Transmission #**: 001 | t | Shot | VO (Vice Signal — fast, low, confident) | On-screen text | |---|------|------|------|",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/vice-final/reference-footage/manifest.md": {
+      "path": ".aiwg/marketing/vice-final/reference-footage/manifest.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Reference Footage Manifest (Tier 3 — operator override 2026-07-04)",
+      "tags": [],
+      "created": "2026-07-04T21:00:57.515Z",
+      "updated": "2026-07-04T21:03:07.797Z",
+      "checksum": "cdee9963d6136e21",
+      "summary": "Provenance log. Reference/seed use only; never republished as-is. - **pt-croatia-r32**: Highlights | Portugal 2-1 Croatia | FIFA World Cup 2026™ | FIFA | https://www.youtube.com/watch?v=jxU1VT5YXXE | 130 s - **arg-capeverde-r32**: Argentina vs Cape Verde Highlights 🌎🏆 2026 FIFA World Cup™ | Round of 32 | FOX Sports | https://www.youtube.com/watch?v=EC2jOKluGRI | 1573 s - **ronaldo-wc26-moments**: Portugal advance past Croatia in World Cup 🚨 + Ronaldo scores first-ever KO stage goal | ESPN FC",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/vice-final/seed-pack.md": {
+      "path": ".aiwg/marketing/vice-final/seed-pack.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Seed Pack — \"Vice Hosts the Final\" (Episode 01+)",
+      "tags": [],
+      "created": "2026-07-04T16:53:25.149Z",
+      "updated": "2026-07-04T16:53:25.154Z",
+      "checksum": "3d7fad98320eea53",
+      "summary": "**Purpose**: everything needed to seed the scene — verified facts for the commentary layer, aesthetic references for the world, and the asset manifest. Reference links are cite/inspiration ONLY — we never ingest or regenerate third-party footage (compliance gate). | Fact | Detail | Source | |---|---|---| | Portugal R32 | Beat Croatia 2-1 (Jul 2); Ronaldo scored the equalizer, Gonçalo Ramos winner | ESPN MD16 recap | | Portugal R16 | vs Spain, Monday Jul 6, Dallas | ESPN |",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/vice-final/series-spec.md": {
+      "path": ".aiwg/marketing/vice-final/series-spec.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Series Spec — \"Vice Hosts the Final\"",
+      "tags": [],
+      "created": "2026-07-04T16:18:44.481Z",
+      "updated": "2026-07-04T16:18:44.493Z",
+      "checksum": "699c53ac8b616a2c",
+      "summary": "**Created**: 2026-07-04 · **Persona**: Vice Signal · **Window**: NOW → 2026-07-19 (real WC final) + 1 epilogue week **Premise**: The real 2026 World Cup final is at MetLife, New Jersey. In our original neon-Miami world (\"the city\"), Vice built its own stadium for the final everyone actually wants — The 7 vs The 10. Each side is 3 real wins away. Every real matchday advances or breaks our story. Trend-stack of the two biggest 2026 attention waves (WC now, GTA6 Nov 19) on territory only we can occ",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/vice-final/trend-radar-2026-07-04.md": {
+      "path": ".aiwg/marketing/vice-final/trend-radar-2026-07-04.md",
+      "type": "document",
+      "phase": "other",
+      "title": "WC Trend Radar — 2026-07-04 (Track D sweep 1)",
+      "tags": [],
+      "created": "2026-07-04T18:53:41.600Z",
+      "updated": "2026-07-04T18:53:41.600Z",
+      "checksum": "f7b71fa6f764bcd1",
+      "summary": "**Sources**: Firecrawl news+web sweep (URLs inline). Re-sweep daily during knockouts. | Moment | Signal | Source | |---|---|---| | **Haaland's viral run** — 86' winner vs Ivory Coast, Norway→R16 vs BRAZIL; \"can't stop going viral,\" internet icon status | Huge — a non-Messi/Ronaldo main character emerged | [Yahoo](https://www.yahoo.com/entertainment/article/erling-haaland-cant-stop-going-viral-these-world-cup-moments-explain-why-133514297.html), [MSN](https://www.msn.com/en-in/news/insight/haalan",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/vice-signal/episode-001-claude-code-package.md": {
+      "path": ".aiwg/marketing/vice-signal/episode-001-claude-code-package.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Vice Signal — Episode 001 Pre-Generation Video Package",
+      "tags": [],
+      "created": "2026-07-04T18:40:09.798Z",
+      "updated": "2026-07-04T23:12:25.948Z",
+      "checksum": "0aa3dbd1d67b2e73",
+      "summary": "| Field | Value | |---|---| | Package ID | VS-EP001-PREGEN | | Persona | Vice Signal | | Beachhead | GTA6 AI-persona gaming, YouTube-first |",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/marketing/vice-signal/episode-001-generation-2026-07-04.md": {
+      "path": ".aiwg/marketing/vice-signal/episode-001-generation-2026-07-04.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Vice Signal — Episode 001 Generation Record",
+      "tags": [],
+      "created": "2026-07-04T22:02:55.527Z",
+      "updated": "2026-07-04T23:12:25.949Z",
+      "checksum": "b95bd1a47cc9cb10",
+      "summary": "| Field | Value | |---|---| | Package | VS-EP001-PREGEN (`episode-001-claude-code-package.md`) | | Approved by | Operator, 2026-07-04 (single batch, no re-rolls) | | Model | Seedance 2.0 (`seedance_2_0`), 9:16, 1080p, generate_audio=false |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-completion-report-2026-07-04.md"
+      ]
+    },
+    ".aiwg/marketing/vice-signal/episode-001-render-review-rubric.md": {
+      "path": ".aiwg/marketing/vice-signal/episode-001-render-review-rubric.md",
+      "type": "document",
+      "phase": "other",
+      "title": "EP001 Render Review Rubric",
+      "tags": [],
+      "created": "2026-07-05T02:19:44.221Z",
+      "updated": "2026-07-05T02:19:44.223Z",
+      "checksum": "f6249839cf3a4742",
+      "summary": "**Date**: 2026-07-05   **Phase**: Controlled Construction   **Status**: rubric ready; final human render review pending   **Applies to**: Vice Signal EP001 private Postiz draft / measured Higgsfield generation batch Capture the first private draft review as structured learning before any public publish decision. This is the local completion of the render-review lane; the actual verdict requires the operator to inspect the final assembled render.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/marketing/vice-signal/episode-002-claude-code-package.md": {
+      "path": ".aiwg/marketing/vice-signal/episode-002-claude-code-package.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Vice Signal - Episode 002 Pre-Generation Video Package",
+      "tags": [],
+      "created": "2026-07-04T21:35:40.368Z",
+      "updated": "2026-07-04T21:35:40.369Z",
+      "checksum": "31baf7adb9f6a941",
+      "summary": "| Field | Value | |---|---| | Package ID | VS-EP002-PREGEN | | Persona | Vice Signal | | Beachhead | GTA6 AI-persona gaming, YouTube-first |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/construction-completion-report-2026-07-04.md"
+      ]
+    },
+    ".aiwg/marketing/viral-factory-spec.md": {
+      "path": ".aiwg/marketing/viral-factory-spec.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Viral Video Content Factory — Spec v1",
+      "tags": [],
+      "created": "2026-07-04T19:50:12.577Z",
+      "updated": "2026-07-04T19:50:12.588Z",
+      "checksum": "f3094d9f8a73f535",
+      "summary": "**Created**: 2026-07-04 · **Company**: Memetics · **Prime directive**: engineered virality — views are the product. **Synthesized from**: REF-004 (creator playbooks), fifa-ig-field-study.md, fifa-tiktok-field-study.md, trend-radar-2026-07-04.md, hook library, Tier-2 event policy (decision memo), operator directives (personas optional; sequential agents; draft→promote; real-world grounding). | Metric | Target | Why | |---|---|---| | **Sends/shares per reach** | ≥2% (3%+ = viral) | Platform-stated",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/planning/claude-code-video-builder-runbook.md": {
+      "path": ".aiwg/planning/claude-code-video-builder-runbook.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Claude Code Video Builder Runbook",
+      "tags": [],
+      "created": "2026-07-04T18:37:33.707Z",
+      "updated": "2026-07-04T18:37:33.711Z",
+      "checksum": "947a7602138b7fad",
+      "summary": "**Created**: 2026-07-04   **Purpose**: Use Claude Code as the video director/builder before any Higgsfield generation or Postiz submission. ```bash claude --model claude-fable-5 --effort high --name gta6-director ```",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/planning/cockpit-aflack-integration.md": {
+      "path": ".aiwg/planning/cockpit-aflack-integration.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Cockpit / Aflack Integration Plan",
+      "tags": [],
+      "created": "2026-07-05T00:40:57.455Z",
+      "updated": "2026-07-05T02:16:38.502Z",
+      "checksum": "51864d70aceb1196",
+      "summary": "**Date**: 2026-07-05   **Phase**: Controlled Construction   **Status**: local contribution manifest and Bridge API contract verified; real executor launch pending AIWG Cockpit is the operator console for Aflack. It observes and directs local sessions, status, actions, telemetry, and approvals. It does not replace Aflack's Postgres source of truth, daemon safety model, Postiz adapter, or AIWG CLI. | Command | Purpose | Status |",
+      "dependencies": [
+        ".aiwg/cockpit/contrib/aflack-control-plane.json",
+        "aiwg/cockpit/bridge/src/server.mjs"
+      ],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/planning/continuous-improvement-architecture.md": {
+      "path": ".aiwg/planning/continuous-improvement-architecture.md",
+      "type": "architecture",
+      "phase": "planning",
+      "title": "Continuous-Improvement Architecture — Aflack Content Pipeline",
+      "tags": [],
+      "created": "2026-07-04T19:51:10.914Z",
+      "updated": "2026-07-04T19:51:10.914Z",
+      "checksum": "e95eb037810fd0cc",
+      "summary": "**Created**: 2026-07-04 **Author role**: candidate-solution agent (SDLC Construction) **Status**: Implemented v1 (learning layer + daemon loop); scanning delegated to agent/Aside We are in **Construction**, Iteration 3 (continuous-improvement engine). Iterations 1-2 delivered the Postiz cloud draft loop, the Claude Code video director, and the first",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/planning/daemon-runtime-architecture.md": {
+      "path": ".aiwg/planning/daemon-runtime-architecture.md",
+      "type": "architecture",
+      "phase": "planning",
+      "title": "Daemon Runtime Architecture",
+      "tags": [],
+      "created": "2026-07-04T22:02:14.153Z",
+      "updated": "2026-07-04T22:15:30.723Z",
+      "checksum": "6a70996a548ce314",
+      "summary": "**Date**: 2026-07-04   **Status**: v1 improvement daemon implemented; full daemon roster deferred The daemon system exists to make the content factory improve without requiring the operator to manually prompt every learning step. It is not an autonomous publishing system. `improvement-daemon` is implemented in `src/aflack/daemon.py` and exposed through: - `aflack improve-cycle`",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/team/onboarding-guide.md",
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ]
+    },
+    ".aiwg/planning/development-process-guide.md": {
+      "path": ".aiwg/planning/development-process-guide.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Development Process Guide — Aflack MVP Construction",
+      "tags": [],
+      "created": "2026-07-04T18:31:45.823Z",
+      "updated": "2026-07-04T21:48:43.196Z",
+      "checksum": "0a782cd760be304f",
+      "summary": "**Date**: 2026-07-04   **Mode**: solo operator, direct commit to `main`   **Phase**: Construction handoff after Elaboration baseline 1. Ship the smallest measurable loop before scaling volume. 2. Human approval remains mandatory for public publishing, paid generation spend, channel/account changes, and DM/comment automation.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/planning/director-routine-spec.md": {
+      "path": ".aiwg/planning/director-routine-spec.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Director Routine Spec — Lean Jarvis-Style Content Loop",
+      "tags": [],
+      "created": "2026-07-04T17:21:01.060Z",
+      "updated": "2026-07-04T21:48:43.195Z",
+      "checksum": "edcddc85f9b5adfd",
+      "summary": "**Created**: 2026-07-04 **Runtime**: Claude Code CLI `claude-fable-5` **Scope**: one director, one operator, two active personas available (Vice Signal + Loadout Lab), persona-free formats allowed Do not create a 9-agent org chart. The director performs the ADR-0005 roles sequentially and writes structured rows to the event store. Humans approve publish/DM/spend/account actions. Only automate proven steps, and follow ADR-0006 when a persona-free format has stronger virality evidence than a perso",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/planning/dual-track-workflow.md": {
+      "path": ".aiwg/planning/dual-track-workflow.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Dual-Track Workflow",
+      "tags": [],
+      "created": "2026-07-04T22:21:35.631Z",
+      "updated": "2026-07-05T00:17:04.690Z",
+      "checksum": "4c0d1097a72f6a82",
+      "summary": "**Date**: 2026-07-05   **Phase**: Controlled Construction   **Mode**: Lightweight solo-operator dual track Construction should keep discovery and delivery separate even though one operator may perform both roles. Discovery prepares the next package or runtime slice; delivery builds and validates the current slice. | Track | Scope | Current focus | Output |",
+      "dependencies": [
+        ".aiwg/reports/status-assessment.md."
+      ],
+      "dependents": [
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md"
+      ]
+    },
+    ".aiwg/planning/frameworkization-roadmap.md": {
+      "path": ".aiwg/planning/frameworkization-roadmap.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Frameworkization Roadmap — Affiliate Content Pipeline",
+      "tags": [],
+      "created": "2026-07-04T04:16:56.696Z",
+      "updated": "2026-07-04T22:15:30.724Z",
+      "checksum": "da2fe5933f826f71",
+      "summary": "**Created**: 2026-07-03 **Status**: Strategic target, not immediate scaffold **Source**: User direction + `scaffold-framework` AIWG guidance + intake artifacts The local affiliate/content pipeline may eventually become its own AIWG framework inside the user's AIWG fork. That framework would package the proven operating system for affiliate/product-content creation: - rules",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md"
+      ]
+    },
+    ".aiwg/planning/iteration-plan-001.md": {
+      "path": ".aiwg/planning/iteration-plan-001.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Iteration Plan 001 — Cloud Postiz Draft Loop + Safety Tests",
+      "tags": [],
+      "created": "2026-07-04T18:31:45.823Z",
+      "updated": "2026-07-04T18:33:52.704Z",
+      "checksum": "7d3602202a164a95",
+      "summary": "**Date**: 2026-07-04   **Phase**: Construction   **Goal**: Make the first safe cloud Postiz draft path reliable without public publishing. 1. Normalize the Postiz adapter for cloud and local self-hosted modes. 2. Verify connected cloud integrations from the CLI.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/construction-completion-report-2026-07-04.md"
+      ]
+    },
+    ".aiwg/planning/iteration-plan-002.md": {
+      "path": ".aiwg/planning/iteration-plan-002.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Iteration Plan 002 — First Content Package + Validation Loop",
+      "tags": [],
+      "created": "2026-07-04T18:31:45.824Z",
+      "updated": "2026-07-04T23:12:25.948Z",
+      "checksum": "c33e2667bdaed352",
+      "summary": "**Date**: 2026-07-04   **Phase**: Construction   **Goal**: Produce the first original GTA6-adjacent content package and validate it before any public publishing. 1. Create one Vice Signal Shorts package and one Loadout Lab affiliate package. 2. Keep visuals original and non-Rockstar-derived.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/team/onboarding-guide.md"
+      ]
+    },
+    ".aiwg/planning/publish-quality-policy-draft.md": {
+      "path": ".aiwg/planning/publish-quality-policy-draft.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Publish Quality Policy Draft",
+      "tags": [],
+      "created": "2026-07-05T00:40:57.456Z",
+      "updated": "2026-07-05T02:15:52.233Z",
+      "checksum": "f4df223fc42ff4dc",
+      "summary": "**Date**: 2026-07-05   **Phase**: Controlled Construction   **Status**: policy data model implemented; first human review pending; not approved for automation Public publishing remains blocked until draft review and analytics evidence produce deterministic publish criteria. This policy is the target schema for learning from the first-100 Postiz drafts. | Criterion | Required before public publish automation |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/planning/publish-quality-policy-schema.md": {
+      "path": ".aiwg/planning/publish-quality-policy-schema.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Publish-Quality Policy Schema",
+      "tags": [],
+      "created": "2026-07-05T02:19:44.274Z",
+      "updated": "2026-07-05T02:19:44.276Z",
+      "checksum": "56e7cfe90ce9cd23",
+      "summary": "**Date**: 2026-07-05 **Phase**: Controlled Construction **Status**: schema definition; policy thresholds in `draft` status (not approved for automation) **Source draft**: `.aiwg/planning/publish-quality-policy-draft.md` **Review data model**: `.aiwg/marketing/vice-signal/episode-001-render-review-rubric.md` (Structured Data Model section)",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/planning/video-analytics-aggregation-plan.md": {
+      "path": ".aiwg/planning/video-analytics-aggregation-plan.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Video Analytics Aggregation Plan",
+      "tags": [],
+      "created": "2026-07-04T23:04:35.845Z",
+      "updated": "2026-07-04T23:04:35.845Z",
+      "checksum": "1b71dde833bcf912",
+      "summary": "**Date**: 2026-07-04   **Phase**: Controlled Construction   **Status**: active construction slice Capture all video/post performance metrics into one local source of truth so the content factory can learn which packages, scripts, hooks, personas, offers, and platforms actually perform. Postgres `analytics_snapshots` is the canonical time-series store. Ingestion sources may include:",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ]
+    },
+    ".aiwg/planning/week-1-mvp-plan.md": {
+      "path": ".aiwg/planning/week-1-mvp-plan.md",
+      "type": "document",
+      "phase": "planning",
+      "title": "Week-1 MVP Execution Plan — Affiliate Content Pipeline",
+      "tags": [],
+      "created": "2026-07-04T04:38:39.265Z",
+      "updated": "2026-07-04T17:22:10.309Z",
+      "checksum": "2f7b78772a2c33a1",
+      "summary": "**Created**: 2026-07-03 **Owner**: Solo operator **Goal**: An end-to-end local pipeline that can research → generate → validate → compliance-gate → publish/test → capture results, producing toward ~20 videos/day, operational within 7 days — and ROI-aware from day one. **Runtime**: Local macOS. Delivery: direct commit to `main`. - Local-first, solo, no cloud dependency for the core loop.",
+      "dependencies": [
+        "chronode.ai"
+      ],
+      "dependents": []
+    },
+    ".aiwg/prompts/claude-code/vice-signal-ep001-builder.md": {
+      "path": ".aiwg/prompts/claude-code/vice-signal-ep001-builder.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T18:37:33.712Z",
+      "updated": "2026-07-04T18:37:33.715Z",
+      "checksum": "9be66ebb1cb29a40",
+      "summary": "You are the Claude Code video director for the `/Users/ace/aflack` project. Task: build a pre-generation video package only. Do not call external services. Do not generate media. Do not submit to Postiz. Do not spend Higgsfield credits. Project constraints: - Beachhead: GTA6 AI-persona gaming, YouTube-first. - Persona: Vice Signal.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/reports/abm-validation-report.md": {
+      "path": ".aiwg/reports/abm-validation-report.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Architecture Baseline Milestone Validation Report",
+      "tags": [],
+      "created": "2026-07-04T18:31:45.823Z",
+      "updated": "2026-07-04T22:06:21.001Z",
+      "checksum": "988b49897c50a6ce",
+      "summary": "**Date**: 2026-07-04   **Transition**: Elaboration → Construction   **Decision**: **PASS WITH MVP-SCOPE CONDITIONS** | Area | Evidence | Status | |---|---|---|",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/reports/accelerate-state.json": {
+      "path": ".aiwg/reports/accelerate-state.json",
+      "type": "document",
+      "phase": "reports",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-05T02:20:04.389Z",
+      "updated": "2026-07-05T02:41:07.859Z",
+      "checksum": "3d2d023d6f887f4e",
+      "summary": "{   \"schema\": \"sdlc.accelerate.state.v1\",   \"project\": \"aflack\",   \"updated_at\": \"2026-07-05T00:16:02Z\",   \"current_phase\": \"controlled-construction\",",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md": {
+      "path": ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Adversarial Construction Readiness Review",
+      "tags": [],
+      "created": "2026-07-05T00:43:07.691Z",
+      "updated": "2026-07-05T02:40:22.113Z",
+      "checksum": "de69f5e504e6fbb1",
+      "summary": "**Date**: 2026-07-05   **Scope**: Aflack SDLC gates, construction lanes, documentation, memory lessons, and IOC readiness   **Reviewer stance**: adversarial / no credit for intentions   **Decision**: YES for continuing Controlled Construction; NO for Construction -> Transition / IOC exit. Aflack is ready for the next Construction step: the Construction-to-IOC hardening lane. It is not ready for Transition, Production, public publishing automation, or broader daemon autonomy.",
+      "dependencies": [
+        "tests/test_cli.py",
+        ".aiwg/marketing/vice-signal/episode-001-render-review-rubric.md",
+        ".aiwg/planning/publish-quality-policy-draft.md",
+        ".aiwg/reports/agentmemory-architecture-gap-review-2026-07-05.md",
+        ".aiwg/reports/traceability-2026-07-05.md",
+        ".aiwg/architecture/software-architecture-document.md",
+        ".aiwg/requirements/mvp-requirements.md",
+        ".aiwg/testing/test-strategy.md",
+        ".aiwg/intake/project-intake.md",
+        ".aiwg/intake/solution-profile.md",
+        ".aiwg/planning/cockpit-aflack-integration.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+        ".aiwg/reports/accelerate-state.json"
+      ],
+      "dependents": []
+    },
+    ".aiwg/reports/agentmemory-architecture-gap-review-2026-07-05.md": {
+      "path": ".aiwg/reports/agentmemory-architecture-gap-review-2026-07-05.md",
+      "type": "architecture",
+      "phase": "reports",
+      "title": "Agentmemory Architecture Gap Review",
+      "tags": [],
+      "created": "2026-07-05T00:40:57.456Z",
+      "updated": "2026-07-05T00:40:57.457Z",
+      "checksum": "30e5ba4bc7a0a263",
+      "summary": "**Date**: 2026-07-05   **Scope**: agentmemory recall, Aflack architecture, construction readiness   **Status**: reviewed Agentmemory returned these high-signal Aflack lessons: | Lesson | Architectural impact |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/architecture-stability-report.md": {
+      "path": ".aiwg/reports/architecture-stability-report.md",
+      "type": "architecture",
+      "phase": "reports",
+      "title": "Architecture Stability Report",
+      "tags": [],
+      "created": "2026-07-04T22:21:35.630Z",
+      "updated": "2026-07-04T23:12:25.951Z",
+      "checksum": "27d23df09db60f50",
+      "summary": "**Date**: 2026-07-04   **Phase**: Elaboration -> Controlled Construction   **Status**: STABLE WITH CONSTRUCTION CONDITIONS The architecture baseline is stable enough for controlled Construction. The current SAD and ADR set define the core system boundaries: Postiz scheduling, Postgres event store, pgGraph/pgvector memory substrate, Claude/Codex director workflow, human-gated orchestration, virality-first content selection, and memory system-of-record policy. | Metric | Target | Current | Status",
+      "dependencies": [
+        ".aiwg/architecture/software-architecture-document.md",
+        ".aiwg/architecture/adr-0001-postiz-posting-scheduler.md",
+        ".aiwg/architecture/adr-0002-own-event-store.md",
+        ".aiwg/architecture/adr-0003-local-postgres-pggraph-pgvector-memory.md",
+        ".aiwg/architecture/adr-0004-claude-fable-director-cli.md",
+        ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md",
+        ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md"
+      ]
+    },
+    ".aiwg/reports/aside-mcp-triage-2026-07-04.md": {
+      "path": ".aiwg/reports/aside-mcp-triage-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Aside MCP Triage — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T20:55:50.271Z",
+      "updated": "2026-07-04T21:00:04.136Z",
+      "checksum": "260b3c441ad2d8c9",
+      "summary": "The Codex-exposed `mcp__aside__repl` tool initially returned `Transport closed`. - `aside --version`: 1.26.626.1517 - `aside account status`: signed in as `tech@chronode.ai` on `u0`, Profile 0 - `aside repl \"console.log(...)\"`: PASS - `aside mcp` process startup: PASS",
+      "dependencies": [
+        "chronode.ai"
+      ],
+      "dependents": []
+    },
+    ".aiwg/reports/claude-code-video-builder-run-2026-07-04.md": {
+      "path": ".aiwg/reports/claude-code-video-builder-run-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Claude Code Video Builder Run — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T18:41:14.283Z",
+      "updated": "2026-07-04T18:41:14.283Z",
+      "checksum": "c174fb53fbaf2fe1",
+      "summary": "**Status**: completed pre-generation package; stopped before generation and publishing. Claude Code was used as the video director/builder for a bounded, text-only planning run. - Runtime: `claude --model claude-fable-5 --effort high` - Prompt: `.aiwg/prompts/claude-code/vice-signal-ep001-builder.md` - Output: `.aiwg/marketing/vice-signal/episode-001-claude-code-package.md`",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/reports/cleanup-audit-2026-07-04.md": {
+      "path": ".aiwg/reports/cleanup-audit-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Cleanup Audit — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T22:08:40.599Z",
+      "updated": "2026-07-04T22:09:32.560Z",
+      "checksum": "7263c9b07101f7e8",
+      "summary": "**Skill**: `cleanup-audit`   **Scope**: `src/`, `tests/`, `db/migrations/`, `scripts/`, `.aiwg/creator-commerce-ops`   **Mode**: dry-run audit; no deletions performed   **Status**: PASS WITH REVIEW ITEMS | Metric | Count | Status |",
+      "dependencies": [
+        "pyproject.toml",
+        ".aiwg/creator-commerce-ops/manifest.json",
+        "src/aflack/memory.py",
+        "src/aflack/economics.py",
+        "src/aflack/compliance.py",
+        "scripts/com.aflack.improve-daemon.plist",
+        ".aiwg/security/decision-memo-event-reference-policy.md"
+      ],
+      "dependents": [
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md"
+      ]
+    },
+    ".aiwg/reports/config-loader-hardening-2026-07-05.md": {
+      "path": ".aiwg/reports/config-loader-hardening-2026-07-05.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Config Loader Hardening",
+      "tags": [],
+      "created": "2026-07-05T02:37:33.089Z",
+      "updated": "2026-07-05T02:41:07.859Z",
+      "checksum": "9c52fe794adcf383",
+      "summary": "**Date**: 2026-07-05   **Phase**: Controlled Construction   **Slice**: I3-004 DB/config loader IOC hardening Closed the DB config loader test gap from the test strategy. The settings loader is now covered for local defaults, environment overrides, Postiz base URL trimming, and empty API-key normalization. - Added `tests/test_config.py`.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/reports/construction-90pct-status-2026-07-04.md": {
+      "path": ".aiwg/reports/construction-90pct-status-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Construction 90 Percent Status",
+      "tags": [],
+      "created": "2026-07-04T23:13:06.587Z",
+      "updated": "2026-07-04T23:27:14.049Z",
+      "checksum": "ebaf8b34341d7761",
+      "summary": "**Date**: 2026-07-04   **Phase**: Construction   **Decision**: 90%+ complete for the human-gated MVP construction scope | Area | Status | Evidence | |---|---|---|",
+      "dependencies": [
+        ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/construction-completion-report-2026-07-04.md": {
+      "path": ".aiwg/reports/construction-completion-report-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Construction Completion Report",
+      "tags": [],
+      "created": "2026-07-04T22:50:55.061Z",
+      "updated": "2026-07-04T23:13:06.588Z",
+      "checksum": "0c52cbc4621efeb2",
+      "summary": "**Date**: 2026-07-04   **Phase**: Controlled Construction   **Status**: CONTROLLED CONSTRUCTION COMPLETE THROUGH DRAFT-RAMP BOUNDARY The previously blocked Construction boundary has been updated by operator approval. The project now has pre-generation content packages, a measured EP001 generation batch, a private Postiz draft, deterministic validation, daemon visibility, memory consolidation, a PSI-style content-factory control plane, analytics aggregation, and expanded unit coverage. Measured g",
+      "dependencies": [
+        ".aiwg/planning/iteration-plan-001.md",
+        ".aiwg/marketing/vice-signal/episode-002-claude-code-package.md",
+        ".aiwg/marketing/vice-signal/episode-001-generation-2026-07-04.md",
+        ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md",
+        ".aiwg/reports/loadout-lab-episode-001-validation-2026-07-04.md",
+        ".aiwg/reports/daemon-status-implementation-2026-07-04.md",
+        "tests/test_compliance.py",
+        "src/aflack/memory.py",
+        "tests/test_memory.py",
+        "tests/test_economics.py",
+        "db/migrations/005_analytics_snapshots.sql",
+        "src/aflack/analytics.py",
+        "tests/test_analytics.py",
+        "tests/test_tracing.py",
+        ".aiwg/loops/content-factory/LOOP.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/construction-readiness-report.md": {
+      "path": ".aiwg/reports/construction-readiness-report.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Construction Readiness Report",
+      "tags": [],
+      "created": "2026-07-04T18:31:45.824Z",
+      "updated": "2026-07-04T22:38:07.547Z",
+      "checksum": "c5f30aa26c93a1c7",
+      "summary": "**Date**: 2026-07-04   **Overall status**: **READY — enter Construction Iteration 1 / 2 handoff** The MVP has passed a compressed Architecture Baseline Milestone for solo-operator construction. The project can now focus on the first reliable loop: > content package → compliance check → Postiz cloud draft → operator review → optional publish → results/economics capture Transcript mining from Codex, Aside/Fugu, and Claude Code has been incorporated into the architecture baseline through ADR-0005,",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/reports/construction-ready-brief.md": {
+      "path": ".aiwg/reports/construction-ready-brief.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Construction Ready Brief",
+      "tags": [],
+      "created": "2026-07-05T02:20:04.392Z",
+      "updated": "2026-07-05T02:40:22.116Z",
+      "checksum": "97e862b55885c395",
+      "summary": "**Date**: 2026-07-04   **Skill**: `sdlc-accelerate`   **Phase**: Controlled Construction   **Decision**: CONDITIONAL GO - continue construction under human gates | Gate | Decision | Evidence |",
+      "dependencies": [
+        ".aiwg/intake/project-intake.md",
+        ".aiwg/reports/elaboration-status.md",
+        ".aiwg/reports/abm-validation-report.md",
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/construction-readiness-report.md",
+        ".aiwg/requirements/mvp-requirements.md",
+        ".aiwg/architecture/software-architecture-document.md",
+        ".aiwg/risks/risk-register.md",
+        ".aiwg/security/threat-model-2026-07-04.md",
+        ".aiwg/testing/test-strategy.md",
+        ".aiwg/reports/test-sync-report-2026-07-04.md",
+        ".aiwg/planning/development-process-guide.md",
+        ".aiwg/planning/iteration-plan-001.md",
+        ".aiwg/planning/iteration-plan-002.md",
+        ".aiwg/planning/dual-track-workflow.md",
+        ".aiwg/team/onboarding-guide.md",
+        ".aiwg/marketing/vice-signal/episode-002-claude-code-package.md",
+        ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md",
+        "tests/test_daemon.py",
+        "tests/test_memory.py",
+        ".aiwg/loops/content-factory/LOOP.md",
+        "db/migrations/005_analytics_snapshots.sql"
+      ],
+      "dependents": [
+        ".aiwg/loops/content-factory/LOOP.md"
+      ]
+    },
+    ".aiwg/reports/daemon-status-implementation-2026-07-04.md": {
+      "path": ".aiwg/reports/daemon-status-implementation-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Daemon Status Implementation Report",
+      "tags": [],
+      "created": "2026-07-04T22:44:34.423Z",
+      "updated": "2026-07-04T22:44:34.423Z",
+      "checksum": "b38f57f04c7f38f4",
+      "summary": "**Date**: 2026-07-04   **Construction item**: `I2-008`   **Status**: Complete Added a read-only daemon status path so the improvement daemon is inspectable before autonomy expands. | File | Change |",
+      "dependencies": [
+        "src/aflack/daemon.py",
+        "src/aflack/cli.py",
+        "tests/test_daemon.py"
+      ],
+      "dependents": [
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/construction-completion-report-2026-07-04.md"
+      ]
+    },
+    ".aiwg/reports/day-1-status.md": {
+      "path": ".aiwg/reports/day-1-status.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Day-1 Status — Local Event Store + Memory Substrate",
+      "tags": [],
+      "created": "2026-07-04T05:24:28.051Z",
+      "updated": "2026-07-04T05:25:56.390Z",
+      "checksum": "c40788a540aedf6e",
+      "summary": "**Date**: 2026-07-04 **Status**: Core database substrate validated - Built custom local Docker image:   - `aflack/pggraph-pgvector:0.1.8-pgvector0.8.4`   - base: `ghcr.io/evokoa/pggraph:0.1.8`",
+      "dependencies": [
+        "chronode.ai"
+      ],
+      "dependents": []
+    },
+    ".aiwg/reports/doc-sync-audit-2026-07-04.md": {
+      "path": ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Doc Sync Audit — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T22:08:40.598Z",
+      "updated": "2026-07-04T22:09:32.559Z",
+      "checksum": "f09ef0008db99948",
+      "summary": "**Skill**: `doc-sync`   **Direction**: code-to-docs   **Scope**: `.aiwg/`, `src/`, `tests/`, `db/migrations/`, `scripts/`   **Status**: PASS WITH MINOR FIXES APPLIED | Category | Count | Status |",
+      "dependencies": [
+        ".aiwg/reports/abm-validation-report.md",
+        ".aiwg/reports/framework-deliverance-handoff-2026-07-04.md",
+        ".aiwg/reports/iteration-0-completion.md",
+        ".aiwg/testing/test-strategy.md",
+        ".aiwg/architecture/software-architecture-document.md"
+      ],
+      "dependents": [
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md"
+      ]
+    },
+    ".aiwg/reports/draft-review-learning-implementation-2026-07-05.md": {
+      "path": ".aiwg/reports/draft-review-learning-implementation-2026-07-05.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Draft Review Learning Implementation",
+      "tags": [],
+      "created": "2026-07-05T02:15:52.233Z",
+      "updated": "2026-07-05T02:41:07.859Z",
+      "checksum": "4397a8cd78e3658f",
+      "summary": "**Date**: 2026-07-05   **Phase**: Controlled Construction   **Slice**: I3-002 draft-review learning hardening Implemented the local data path for first-100 Postiz draft review learning. This turns render/draft review from prose into a testable store and CLI surface without authorizing public publishing. - `db/migrations/007_draft_reviews.sql`: `draft_reviews` table, score checks, verdict checks, queue/creative references, graph rediscovery.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/reports/elaboration-status.md": {
+      "path": ".aiwg/reports/elaboration-status.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Elaboration Status Report",
+      "tags": [],
+      "created": "2026-07-04T06:29:38.997Z",
+      "updated": "2026-07-04T22:02:14.155Z",
+      "checksum": "48cebb554a8c4645",
+      "summary": "**Date**: 2026-07-04   **Status**: Elaboration complete; ready for Construction Iteration 1 / 2 handoff We moved from Intake/Inception through a compressed Elaboration baseline and are now ready for MVP Construction. The validated baseline includes: - architecture baseline: SAD + ADRs,",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md": {
+      "path": ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Elaboration to Construction Transition Report",
+      "tags": [],
+      "created": "2026-07-04T22:21:35.631Z",
+      "updated": "2026-07-04T22:21:35.631Z",
+      "checksum": "51744a7032624641",
+      "summary": "**Date**: 2026-07-04   **Skill**: `flow-elaboration-to-construction`   **Decision**: CONDITIONAL GO   **Target phase**: Controlled Construction The Elaboration -> Construction transition is complete for MVP-scale, solo-operator construction. Architecture, requirements, risk, test, infrastructure, development process, iteration planning, onboarding, dual-track workflow, and construction readiness artifacts are present. The project may continue Construction Iteration 2 under human gates.",
+      "dependencies": [
+        ".aiwg/reports/abm-validation-report.md",
+        ".aiwg/reports/iteration-0-completion.md",
+        ".aiwg/planning/development-process-guide.md",
+        ".aiwg/planning/iteration-plan-001.md",
+        ".aiwg/planning/iteration-plan-002.md",
+        ".aiwg/team/onboarding-guide.md",
+        ".aiwg/reports/architecture-stability-report.md",
+        ".aiwg/reports/construction-readiness-report.md",
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/planning/dual-track-workflow.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/reports/framework-deliverance-handoff-2026-07-04.md": {
+      "path": ".aiwg/reports/framework-deliverance-handoff-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Framework Deliverance Handoff",
+      "tags": [],
+      "created": "2026-07-04T21:48:43.195Z",
+      "updated": "2026-07-04T22:06:21.000Z",
+      "checksum": "c3f6c667584f31c2",
+      "summary": "**Date**: 2026-07-04   **Status**: Delivered for MVP Construction; not yet promoted to a reusable AIWG framework. | Surface | Delivered artifact | |---|---| | Rules | `.aiwg/creator-commerce-ops/rules/compliance-before-publish.md` |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/doc-sync-audit-2026-07-04.md"
+      ]
+    },
+    ".aiwg/reports/framework-independent-verification-2026-07-04.md": {
+      "path": ".aiwg/reports/framework-independent-verification-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Independent Verification — Creator Commerce Ops Framework",
+      "tags": [],
+      "created": "2026-07-04T19:57:43.028Z",
+      "updated": "2026-07-04T19:57:43.030Z",
+      "checksum": "50e0255f5bcb1e65",
+      "summary": "**Date**: 2026-07-04   **SDLC phase**: Construction   **Iteration**: Continuous-improvement / Damon SDLC framework buildout The operator asked for more than one-off video generation. The required system is a reusable content-creation framework that: 1. Uses Claude Code as the video builder/director for pre-generation packages.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md": {
+      "path": ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Higgsfield Prompt Audit",
+      "tags": [],
+      "created": "2026-07-04T23:27:14.048Z",
+      "updated": "2026-07-04T23:27:14.048Z",
+      "checksum": "af0f2d915e906b74",
+      "summary": "**Date**: 2026-07-04   **Scope**: Claude/Fable render prompts, Loadout Lab v1 assets, creator-commerce prompt rules   **Decision**: v1 Loadout Lab prompts were compliant but not generation-worthy for viral Shorts The supplied Loadout Lab prompts were safe but weak: - They described product-adjacent objects instead of a GTA6-native story moment.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-90pct-status-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/iteration-0-completion.md": {
+      "path": ".aiwg/reports/iteration-0-completion.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Iteration 0 Completion Report — Construction Infrastructure",
+      "tags": [],
+      "created": "2026-07-04T18:31:45.823Z",
+      "updated": "2026-07-04T22:06:21.001Z",
+      "checksum": "7f4366ae76a84815",
+      "summary": "**Date**: 2026-07-04   **Status**: **COMPLETE FOR MVP CONSTRUCTION** | Capability | Status | Evidence | |---|---|---| | Repository/workspace | PASS | `/Users/ace/aflack`; AIWG probe reports engaged/ready/healthy. |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md"
+      ]
+    },
+    ".aiwg/reports/loadout-lab-episode-001-validation-2026-07-04.md": {
+      "path": ".aiwg/reports/loadout-lab-episode-001-validation-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Loadout Lab Episode 001 Validation Report",
+      "tags": [],
+      "created": "2026-07-04T22:38:07.546Z",
+      "updated": "2026-07-04T22:38:07.546Z",
+      "checksum": "784a06cf05701922",
+      "summary": "**Date**: 2026-07-04   **Package**: @.aiwg/marketing/loadout-lab/episode-001-affiliate-package.md   **Status**: PASS - pre-generation only   Loadout Lab Episode 001 is ready for operator review as a pre-generation affiliate package. It does not authorize Higgsfield generation, Postiz submission, public publishing, affiliate-link publication, or paid promotion. Command path used: direct call to `aflack.compliance.check_publish_item(...)` with:",
+      "dependencies": [
+        ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/construction-completion-report-2026-07-04.md"
+      ]
+    },
+    ".aiwg/reports/loadout-lab-v2-prompt-pack-regression-2026-07-05.md": {
+      "path": ".aiwg/reports/loadout-lab-v2-prompt-pack-regression-2026-07-05.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Loadout Lab V2 Prompt-Pack Regression",
+      "tags": [],
+      "created": "2026-07-05T02:21:31.344Z",
+      "updated": "2026-07-05T02:41:07.860Z",
+      "checksum": "c00244ec20cbc251",
+      "summary": "**Date**: 2026-07-05   **Phase**: Controlled Construction   **Slice**: I3-003 Loadout Lab prompt-pack quality gate Converted the Loadout Lab v2 prompt-pack review from prose into an executable regression test. The six v2 Higgsfield prompts in `episode-001-affiliate-package.md` are now extracted and checked with `check_short_asset_prompt`. - Added `test_loadout_lab_v2_prompt_pack_passes_quality_gate`.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md": {
+      "path": ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Pre-Construction Orchestration Summary — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T22:08:40.600Z",
+      "updated": "2026-07-04T22:21:55.007Z",
+      "checksum": "ab0ac4fffb067874",
+      "summary": "| Skill | Result | |---|---| | `doc-sync` | Ran code-to-docs pass; fixed stale ADR/test-state documentation. | | `test-sync` | Ran test/source alignment; no orphaned tests; coverage gaps recorded. | | `cleanup-audit` | Ran dry-run hygiene audit; no high-confidence removals; review items recorded. |",
+      "dependencies": [
+        ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        ".aiwg/reports/test-sync-report-2026-07-04.md",
+        ".aiwg/reports/cleanup-audit-2026-07-04.md",
+        ".aiwg/reports/traceability-2026-07-04.md",
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/architecture-stability-report.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/status-assessment.md"
+      ]
+    },
+    ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md": {
+      "path": ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "PSI and Deterministic Agent Lessons",
+      "tags": [],
+      "created": "2026-07-04T22:15:30.721Z",
+      "updated": "2026-07-04T22:15:48.959Z",
+      "checksum": "5df100a303e0c1fd",
+      "summary": "**Date**: 2026-07-04   **Status**: Construction input   **Sources**: Firecrawl scrape of Pocket transcript `Deterministic AI tests for VOD pipeline`; PSI project architecture/runbook docs; AIWG AgentSmith and SkillSmith docs The strongest shared lesson is that agent behavior becomes reliable when prose instructions are backed by deterministic contracts. Skills, rules, workflows, agents, daemon ticks, and content-stage outputs should not rely on markdown guidance alone. Important behavior needs s",
+      "dependencies": [
+        ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+        ".aiwg/planning/daemon-runtime-architecture.md",
+        ".aiwg/planning/frameworkization-roadmap.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/status-assessment.md"
+      ]
+    },
+    ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md": {
+      "path": ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "SDLC Acceleration Plan",
+      "tags": [],
+      "created": "2026-07-05T02:20:04.397Z",
+      "updated": "2026-07-05T02:41:07.860Z",
+      "checksum": "af57d91f4492600d",
+      "summary": "**Date**: 2026-07-05   **Skill**: `sdlc-accelerate`   **Mode**: Construction -> IOC acceleration   **Phase**: Controlled Construction   **Decision**: Accelerate the remaining evidence, integration, and traceability work; do not regenerate completed Inception/Elaboration artifacts.",
+      "dependencies": [
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/construction-90pct-status-2026-07-04.md",
+        ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md",
+        ".aiwg/reports/traceability-2026-07-04.md",
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/loops/content-factory/state.yaml",
+        ".aiwg/planning/video-analytics-aggregation-plan.md",
+        ".aiwg/planning/daemon-runtime-architecture.md",
+        ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md",
+        ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/setup-command-traceability-hardening-2026-07-05.md": {
+      "path": ".aiwg/reports/setup-command-traceability-hardening-2026-07-05.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Setup Command Traceability Hardening",
+      "tags": [],
+      "created": "2026-07-05T02:40:22.112Z",
+      "updated": "2026-07-05T02:40:22.112Z",
+      "checksum": "884f85141562a74b",
+      "summary": "**Date**: 2026-07-05   **Phase**: Controlled Construction   **Slice**: I3-005 beachhead and creator command tests Closed two traceability gaps from the requirements matrix by adding direct CLI coverage for the one-time beachhead command and benchmark creator setup/proof commands. - Added `set-beachhead` CLI test with DB connection mocked.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/reports/status-assessment.md": {
+      "path": ".aiwg/reports/status-assessment.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "SDLC Project Status Assessment",
+      "tags": [],
+      "created": "2026-07-05T02:20:04.397Z",
+      "updated": "2026-07-05T02:41:07.859Z",
+      "checksum": "273747c64bf114bc",
+      "summary": "**Date**: 2026-07-05   **Skill**: `orchestrate-project`   **Phase**: Controlled Construction   **Decision**: Construction remains active and locally healthy through the draft-ramp boundary; do not transition to public release or broader autonomy yet. The project has completed the core Construction framework deliverance for the human-gated MVP: the architecture baseline exists, the content-factory control plane is active, deterministic tests pass, measured generation has run once, a private Posti",
+      "dependencies": [
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/construction-completion-report-2026-07-04.md",
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/loops/content-factory/state.yaml",
+        ".aiwg/reports/construction-90pct-status-2026-07-04.md",
+        ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md",
+        ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md",
+        ".aiwg/planning/daemon-runtime-architecture.md",
+        ".aiwg/planning/video-analytics-aggregation-plan.md",
+        ".aiwg/planning/iteration-plan-002.md",
+        ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md",
+        ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md",
+        ".aiwg/creator-commerce-ops/skills/higgsfield-asset-prompting.md"
+      ],
+      "dependents": [
+        ".aiwg/loops/content-factory/LOOP.md",
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/test-sync-report-2026-07-04.md": {
+      "path": ".aiwg/reports/test-sync-report-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Test Sync Report — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T22:08:40.598Z",
+      "updated": "2026-07-04T23:12:25.950Z",
+      "checksum": "4777997d4f0eb7c1",
+      "summary": "**Skill**: `test-sync`   **Scope**: `src/aflack`, `tests`   **Status**: PASS WITH COVERAGE GAPS | Category | Count | Action | |---|---:|---|",
+      "dependencies": [
+        "tests/test_aside_scan.py",
+        "tests/test_compliance.py",
+        "tests/test_daemon.py",
+        "tests/test_economics.py",
+        "tests/test_learning.py",
+        "tests/test_memory.py",
+        "tests/test_publishing.py",
+        "tests/test_tracing.py",
+        "src/aflack/aside_scan.py",
+        "src/aflack/learning.py",
+        "src/aflack/publishing.py",
+        ".aiwg/testing/test-strategy.md"
+      ],
+      "dependents": [
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md"
+      ]
+    },
+    ".aiwg/reports/traceability-2026-07-04.md": {
+      "path": ".aiwg/reports/traceability-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Traceability Report — 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T22:08:40.599Z",
+      "updated": "2026-07-04T22:09:32.561Z",
+      "checksum": "df2dc667d0505d8a",
+      "summary": "**Skill**: `traceability-check`   **Scope**: `.aiwg/requirements`, `.aiwg/architecture`, `src/aflack`, `tests`   **Status**: CONDITIONAL PASS The project has strong artifact-level traceability for architecture and construction readiness, but requirement-row-to-code/test traceability is still coarse. Requirement IDs are defined in one table in `.aiwg/requirements/mvp-requirements.md`; they are not yet split into individually indexed requirement artifacts or referenced directly in code/tests. | Me",
+      "dependencies": [
+        ".aiwg/requirements/mvp-requirements.md",
+        ".aiwg/architecture/software-architecture-document.md",
+        ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md",
+        "src/aflack/compliance.py",
+        "src/aflack/publishing.py",
+        "src/aflack/daemon.py",
+        "tests/test_publishing.py"
+      ],
+      "dependents": [
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md",
+        ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md",
+        ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/traceability-2026-07-05.md": {
+      "path": ".aiwg/reports/traceability-2026-07-05.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Traceability Report — 2026-07-05",
+      "tags": [],
+      "created": "2026-07-05T00:42:08.051Z",
+      "updated": "2026-07-05T00:42:08.051Z",
+      "checksum": "541f2cbba4ce8917",
+      "summary": "**Skill**: `traceability-check` / `check-traceability`   **Scope**: `.aiwg/requirements`, `.aiwg/architecture`, `src/aflack`, `tests`   **Status**: CONDITIONAL PASS FOR CONTROLLED CONSTRUCTION; NOT IOC PASS Traceability improved since the 2026-07-04 report because direct tests now cover CLI JSON status surfaces and the prompt-quality contract. The project still does not meet a strict IOC traceability bar because requirement IDs are not systematically embedded in code/tests and Layer 2/3 behavior",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/reports/traceability-matrix-2026-07-05.md": {
+      "path": ".aiwg/reports/traceability-matrix-2026-07-05.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Requirements Traceability Matrix — 2026-07-05",
+      "tags": [],
+      "created": "2026-07-05T02:30:12.577Z",
+      "updated": "2026-07-05T02:39:33.955Z",
+      "checksum": "bb943c26e0968e27",
+      "summary": "**Scope**: Functional requirements FR-001 through FR-021 (mvp-requirements.md) **Generated**: 2026-07-05 **Status**: Controlled Construction baseline — closes IOC gap from traceability-2026-07-05.md | Column | Meaning | |---|---|",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/reports/transcript-mining-synthesis-2026-07-04.md": {
+      "path": ".aiwg/reports/transcript-mining-synthesis-2026-07-04.md",
+      "type": "document",
+      "phase": "reports",
+      "title": "Transcript Mining Synthesis — Codex, Fugu/Aside, and Claude Code",
+      "tags": [],
+      "created": "2026-07-04T21:47:46.435Z",
+      "updated": "2026-07-04T21:47:46.435Z",
+      "checksum": "3f65761938d2780f",
+      "summary": "**Date**: 2026-07-04   **Purpose**: Preserve durable session lessons and route them into ADRs, requirements, backlog items, or explicit non-actions. | Source | Location | Use | |---|---|---| | Codex history | `/Users/ace/.codex/history.jsonl` | Operator intent, Postiz decision, Jarvis blueprint, safety gates, data-store ideas. |",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/requirements/mvp-requirements.md": {
+      "path": ".aiwg/requirements/mvp-requirements.md",
+      "type": "document",
+      "phase": "requirements",
+      "title": "MVP Requirements — Affiliate Content Pipeline",
+      "tags": [],
+      "created": "2026-07-04T06:28:08.270Z",
+      "updated": "2026-07-05T00:40:57.453Z",
+      "checksum": "0aeea707022b18d9",
+      "summary": "**Created**: 2026-07-04 **Status**: Elaboration baseline with Controlled Construction updates | ID | Requirement | Status | |---|---|---| | FR-001 | Store all core pipeline entities in the local event store. | Implemented v1 schema |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/traceability-2026-07-04.md",
+        ".aiwg/team/onboarding-guide.md",
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md"
+      ]
+    },
+    ".aiwg/research/affiliate-content-pipeline/downey-jarvis-teardown-learnings.md": {
+      "path": ".aiwg/research/affiliate-content-pipeline/downey-jarvis-teardown-learnings.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Learnings Digest — Downey.ai / Jarvis / Higgsfield MCP Blueprint",
+      "tags": [],
+      "created": "2026-07-04T17:20:01.549Z",
+      "updated": "2026-07-04T17:20:01.549Z",
+      "checksum": "d71c1b04510f6b01",
+      "summary": "**Created**: 2026-07-04 **Source**: User-provided evidence-bounded teardown of @downey.ai, LukeBuildsAI \"Jarvis\", and Higgsfield MCP. **Discipline adopted**: keep OBSERVED vs INFERRED separate (their addendum does this well; we mirror it). Visual spectacle (Higgsfield) → curiosity/business hook → ONE-WORD comment CTA → DM delivers a guide/lead magnet (with affiliate link) → capture audience → iterate. The post's job is to trigger the keyword comment; the DM/lead magnet is the real conversion ass",
+      "dependencies": [
+        "downey.ai"
+      ],
+      "dependents": []
+    },
+    ".aiwg/research/findings/REF-001.md": {
+      "path": ".aiwg/research/findings/REF-001.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Long-Term Memory System — Research & Architecture Direction",
+      "tags": [
+        "memory",
+        "agentmemory",
+        "pggraph",
+        "postgres",
+        "architecture"
+      ],
+      "created": "2026-07-05T02:41:20.600Z",
+      "updated": "2026-07-05T02:41:20.601Z",
+      "checksum": "93e7f947b335462c",
+      "summary": "**Created**: 2026-07-03 **Purpose**: Design a durable \"company memory\" for the content-creation + marketing pipeline: never forgets, de-duplicates, resists context rot, holds episodic + semantic + procedural memory, and injects only relevant memory on demand (not jammed into every context). Starting reference: agentmemory (coding-focused). Research-first; benchmark 2-3 candidates on our own data before committing. > Sources: web research 2026-07-03 (multiple 2026 framework comparisons) + local a",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/research/findings/REF-002.md": {
+      "path": ".aiwg/research/findings/REF-002.md",
+      "type": "document",
+      "phase": "other",
+      "title": "pgGraph Evaluation Note",
+      "tags": [
+        "pggraph",
+        "postgres",
+        "graph-database",
+        "evaluation"
+      ],
+      "created": "2026-07-05T02:41:20.624Z",
+      "updated": "2026-07-05T02:41:20.625Z",
+      "checksum": "a4d6c34636a0dc5a",
+      "summary": "**Created**: 2026-07-03 **Candidate**: <https://github.com/Evokoa/pgGraph> **Purpose**: Evaluate pgGraph as the local graph layer for the affiliate/content pipeline memory/event store. pgGraph is a PostgreSQL extension that adds graph search, traversal, shortest-path, and relationship queries directly over ordinary PostgreSQL tables. The key fit for this project:",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/research/findings/REF-003.md": {
+      "path": ".aiwg/research/findings/REF-003.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Data Sources, Indexers & Benchmarking Layer",
+      "tags": [
+        "data-sources",
+        "benchmarking",
+        "tiktok",
+        "analytics",
+        "indexers"
+      ],
+      "created": "2026-07-05T02:41:20.642Z",
+      "updated": "2026-07-05T02:41:20.642Z",
+      "checksum": "90be22615c5006c0",
+      "summary": "**Created**: 2026-07-03 **Purpose**: Catalog the top APIs, indexers, and aggregators for winning products and winning videos, so the pipeline can continuously benchmark our AI-generated content against the best creators (\"crème de la crème\") and validate before/after publishing. Research-first; verify pricing/access live before committing. > Sources: web research 2026-07-03 (industry comparison articles + official TikTok surfaces). Treat all third-party GMV/sales numbers as estimates, not truth.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/research/findings/REF-004.md": {
+      "path": ".aiwg/research/findings/REF-004.md",
+      "type": "document",
+      "phase": "other",
+      "title": "How $100k+/mo Short-Form Creators Engineer Virality — Operator Playbooks",
+      "tags": [
+        "virality",
+        "short-form-video",
+        "hooks",
+        "retention",
+        "creator-playbooks"
+      ],
+      "created": "2026-07-05T02:41:20.650Z",
+      "updated": "2026-07-05T02:41:20.651Z",
+      "checksum": "9f3aaa8ff22cddd3",
+      "summary": "Full structured agent output preserved in this file's source run (Firecrawl job 019f2e79-74ff-758b-b51c-389a01750d3d). Key findings below, hedged per GRADE. - **Jenny Hoyos** (600M views/yr, avg 10M/video): hook + foreshadowing in ≤3s; first 3s must communicate value **without audio**; 5th-grade readability; power words (\"banned, free, one dollar, secret, cheap\"); target length exactly 34s; retention floor 90% (100%+ via rewatch for <30s). ([marketingexamined](https://www.marketingexamined.com/b",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/research/sources/gta6-official-reference-package-2026-07-04.md": {
+      "path": ".aiwg/research/sources/gta6-official-reference-package-2026-07-04.md",
+      "type": "document",
+      "phase": "other",
+      "title": "GTA6 Official Reference Package - 2026-07-04",
+      "tags": [],
+      "created": "2026-07-04T21:36:44.371Z",
+      "updated": "2026-07-04T21:36:44.371Z",
+      "checksum": "229a0948b6efc4aa",
+      "summary": "Purpose: provide provenance metadata for GTA6-adjacent content planning without downloading, clipping, reuploading, transforming, or same-seed remixing any Rockstar/Take-Two media. Allowed: - cite official URLs as metadata,",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/research/sources/gta6-reference-pack.md": {
+      "path": ".aiwg/research/sources/gta6-reference-pack.md",
+      "type": "document",
+      "phase": "other",
+      "title": "GTA6 Reference Pack (research input, not footage)",
+      "tags": [],
+      "created": "2026-07-04T06:05:01.007Z",
+      "updated": "2026-07-04T06:05:01.007Z",
+      "checksum": "452c76f4d4a8cc4b",
+      "summary": "**Created**: 2026-07-04 **Use**: Reference/commentary inputs for ORIGINAL content we replicate the STYLE/THEMES around. We link + cite these; we do NOT download, clip, remix, or reupload the videos (see `.aiwg/security/compliance-gta6-footage.md`). | Ref | Title | Author | URL | |---|---|---|---| | GTA6-T1 | Grand Theft Auto VI Trailer 1 | Rockstar Games (official) | https://www.youtube.com/watch?v=QdBZY2fkU-0 |",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/research/syntheses/affiliate-content-pipeline-brief.md": {
+      "path": ".aiwg/research/syntheses/affiliate-content-pipeline-brief.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Affiliate Content Pipeline — Research Brief",
+      "tags": [],
+      "created": "2026-07-04T03:54:44.673Z",
+      "updated": "2026-07-04T03:54:44.676Z",
+      "checksum": "fb9fcaa63c9026a4",
+      "summary": "**Created**: 2026-07-03 **Purpose**: Research-first planning brief for an automated content creation pipeline for affiliate marketing, beginning with narrow niche diagnostics and repeatable AI persona/video workflows. Build a repeatable affiliate/content engine that can: 1. Discover product/niche opportunities from social commerce signals. 2. Select a narrow beachhead niche.",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/risks/risk-register.md": {
+      "path": ".aiwg/risks/risk-register.md",
+      "type": "risk",
+      "phase": "risks",
+      "title": "Risk Register — Affiliate Content Pipeline",
+      "tags": [],
+      "created": "2026-07-04T06:28:27.229Z",
+      "updated": "2026-07-04T17:22:41.392Z",
+      "checksum": "cd930b910b0e7f3a",
+      "summary": "**Created**: 2026-07-04 **Status**: Elaboration baseline | ID | Risk | Likelihood | Impact | Mitigation | Owner | |---|---|---:|---:|---|---| | R-001 | Rockstar/Take-Two IP strike from reused/pre-release footage | High | Critical | Block footage/same-seed remix; original visuals only; provenance gate | Compliance |",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/security/compliance-gta6-footage.md": {
+      "path": ".aiwg/security/compliance-gta6-footage.md",
+      "type": "document",
+      "phase": "security",
+      "title": "Compliance Decision — GTA6 Footage Handling",
+      "tags": [],
+      "created": "2026-07-04T06:02:10.255Z",
+      "updated": "2026-07-04T06:02:10.256Z",
+      "checksum": "479539cd511b4a63",
+      "summary": "**Created**: 2026-07-04 **Status**: BLOCKING RULE for the gta6-ai-persona-gaming niche \"Take official GTA6 pre-release video footage, clip it, and remix/regenerate new content from the same seed as the pre-release gameplay.\" Grounds: 1. **Pre-release footage is the hardest red line.** Rockstar/Take-Two policy: postings of in-game footage before official release are removed regardless of how obtained. GTA6 is unreleased (launch 2026-11-19).",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/security/controls-validation-2026-07-04.md": {
+      "path": ".aiwg/security/controls-validation-2026-07-04.md",
+      "type": "document",
+      "phase": "security",
+      "title": "Security Controls Validation",
+      "tags": [],
+      "created": "2026-07-04T06:55:09.285Z",
+      "updated": "2026-07-04T18:32:09.889Z",
+      "checksum": "e76c641b198b2e5c",
+      "summary": "**Date**: 2026-07-04   **Scope**: MVP infrastructure and posting pipeline after cloud Postiz pivot | Control | Status | Evidence / Notes | |---|---|---| | Secrets excluded from git | PASS | `.env` ignored; `.aiwg/working/` ignored; API key redacted from outputs |",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/security/decision-memo-event-reference-policy.md": {
+      "path": ".aiwg/security/decision-memo-event-reference-policy.md",
+      "type": "document",
+      "phase": "security",
+      "title": "Decision Memo — Event-Reference Policy for FIFA/Real-Event Content",
+      "tags": [],
+      "created": "2026-07-04T19:11:12.250Z",
+      "updated": "2026-07-04T20:57:35.574Z",
+      "checksum": "5a9f27fac87040d3",
+      "summary": "**Date**: 2026-07-04 · **Decision owner**: Operator · **Status**: SUPERSEDED — TIER 3 OVERRIDE (operator-directed, 2026-07-04 evening) **Question**: How close may the factory get to real event content (footage seeds, real-player depictions) in pursuit of realism/virality? Own world, archetype characters (plain 7/10 kits), facts/flags/names as text, broadcast-grammar prompting. No third-party pixels, no real faces. - Realism ceiling: medium. Risk: minimal. Virality: proven for world-building cont",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/cleanup-audit-2026-07-04.md"
+      ]
+    },
+    ".aiwg/security/threat-model-2026-07-04.md": {
+      "path": ".aiwg/security/threat-model-2026-07-04.md",
+      "type": "threat-model",
+      "phase": "security",
+      "title": "Threat Model — Local Postiz + Content Pipeline",
+      "tags": [],
+      "created": "2026-07-04T06:54:43.643Z",
+      "updated": "2026-07-04T06:54:43.643Z",
+      "checksum": "f994b65972fcb25b",
+      "summary": "**Date**: 2026-07-04 **Scope**: Local Aflack pipeline, pgGraph DB, Postiz stack, Claude/Higgsfield/Aside/Firecrawl CLIs. **Method**: STRIDE lightweight review. - YouTube/TikTok/Postiz credentials and OAuth tokens. - Postiz admin account and API key.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/sessions.json": {
+      "path": ".aiwg/sessions.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T22:22:56.968Z",
+      "updated": "2026-07-04T22:22:56.968Z",
+      "checksum": "40221d59021b90e2",
+      "summary": "{   \"sessions\": [     {       \"name\": \"aiwg-construction-code-lane-claude-2026-07-04\",       \"created\": \"2026-07-04T22:22:56.966Z\",",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/team/onboarding-guide.md": {
+      "path": ".aiwg/team/onboarding-guide.md",
+      "type": "document",
+      "phase": "other",
+      "title": "Team Onboarding Guide",
+      "tags": [],
+      "created": "2026-07-04T22:21:35.631Z",
+      "updated": "2026-07-04T22:21:35.631Z",
+      "checksum": "8d68c3c7f9553b5a",
+      "summary": "**Date**: 2026-07-04   **Phase**: Controlled Construction   **Mode**: Solo operator now; future collaborators use this as the starter map 1. Read @.aiwg/reports/status-assessment.md. 2. Read @.aiwg/gates/pre-construction-gate-2026-07-04.md.",
+      "dependencies": [
+        ".aiwg/reports/status-assessment.md.",
+        ".aiwg/gates/pre-construction-gate-2026-07-04.md.",
+        ".aiwg/planning/development-process-guide.md.",
+        ".aiwg/planning/iteration-plan-002.md.",
+        ".aiwg/requirements/mvp-requirements.md",
+        ".aiwg/architecture/software-architecture-document.md",
+        ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md",
+        ".aiwg/planning/iteration-plan-002.md",
+        ".aiwg/planning/daemon-runtime-architecture.md",
+        ".aiwg/testing/test-strategy.md",
+        ".aiwg/creator-commerce-ops/rules/compliance-before-publish.md",
+        ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md"
+      ],
+      "dependents": [
+        ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md",
+        ".aiwg/reports/status-assessment.md",
+        ".aiwg/reports/construction-ready-brief.md"
+      ]
+    },
+    ".aiwg/testing/test-strategy.md": {
+      "path": ".aiwg/testing/test-strategy.md",
+      "type": "document",
+      "phase": "testing",
+      "title": "Test Strategy — Affiliate Content Pipeline MVP",
+      "tags": [],
+      "created": "2026-07-05T02:20:04.400Z",
+      "updated": "2026-07-05T02:40:22.114Z",
+      "checksum": "f6a3e941f9a8bc85",
+      "summary": "**Created**: 2026-07-04 **Status**: Elaboration baseline with Controlled Construction updates - `PostizPublisher` URL normalization and payload preview. - Aside scan pure logic: platform normalization, social metric parsing, engagement rate, observation hash stability. - Learning pure logic: insight hash stability and proof-of-real-success creator credibility.",
+      "dependencies": [],
+      "dependents": [
+        ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md",
+        ".aiwg/reports/construction-ready-brief.md",
+        ".aiwg/reports/doc-sync-audit-2026-07-04.md",
+        ".aiwg/reports/test-sync-report-2026-07-04.md",
+        ".aiwg/team/onboarding-guide.md"
+      ]
+    },
+    ".aiwg/working/aside-scans/live-ai-video-automation-money-2026-07-04.json": {
+      "path": ".aiwg/working/aside-scans/live-ai-video-automation-money-2026-07-04.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T21:20:32.723Z",
+      "updated": "2026-07-04T21:20:32.724Z",
+      "checksum": "2ffaa539fa232eb1",
+      "summary": "{   \"source\": \"aside-live\",   \"niche\": \"ai-video-automation-money\",   \"observations\": [     {",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/working/aside-scans/live-ig-tiktok-gta6-2026-07-04.json": {
+      "path": ".aiwg/working/aside-scans/live-ig-tiktok-gta6-2026-07-04.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T20:58:56.260Z",
+      "updated": "2026-07-04T20:58:56.264Z",
+      "checksum": "2077120032222d2b",
+      "summary": "{\"source\":\"aside-live\",\"niche\":\"gta6-ai-persona-gaming\",\"observations\":[{\"platform\":\"instagram\",\"handle\":\"njoygamers\",\"display_name\":\"NJOY Gamers\",\"profile_url\":\"https://www.instagram.com/njoygamers/\",\"followers\":\"\",\"url\":\"https://www.instagram.com/p/DZ2pPnWFvDC/\",\"title\":\"Which are you copping NJOYERS? GTA 6 pricing rumors\",\"hook_text\":\"Which are you copping NJOYERS? New GTA 6 pricing rumors are making the rounds online... Would you pay $109.99 for a Premium Edition of GTA 6?\",\"format\":\"short\",",
+      "dependencies": [
+        "game.central",
+        "seventor.ae"
+      ],
+      "dependents": []
+    },
+    ".aiwg/working/aside-scans/sample-scan.json": {
+      "path": ".aiwg/working/aside-scans/sample-scan.json",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T19:55:49.036Z",
+      "updated": "2026-07-04T19:55:49.039Z",
+      "checksum": "8e8a173b9dfac36b",
+      "summary": "{   \"source\": \"aside-sample\",   \"niche\": \"gta6-ai-persona-gaming\",   \"observations\": [     {",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/working/postiz/docker-compose.yaml": {
+      "path": ".aiwg/working/postiz/docker-compose.yaml",
+      "type": "document",
+      "phase": "other",
+      "title": "Untitled",
+      "tags": [],
+      "created": "2026-07-04T06:18:48.473Z",
+      "updated": "2026-07-04T17:59:37.159Z",
+      "checksum": "8c61cd0cf23d707e",
+      "summary": "services:   postiz:     image: ghcr.io/gitroomhq/postiz-app:latest     container_name: postiz     restart: always",
+      "dependencies": [],
+      "dependents": []
+    },
+    ".aiwg/working/postiz/dynamicconfig/development-sql.yaml": {
+      "path": ".aiwg/working/postiz/dynamicconfig/development-sql.yaml",
+      "type": "document",
+      "phase": "other",
+      "title": "Minimal Temporal dynamic config for local Postiz dev stack.",
+      "tags": [],
+      "created": "2026-07-04T06:35:39.455Z",
+      "updated": "2026-07-04T06:35:39.515Z",
+      "checksum": "54c0e07837830503",
+      "summary": "",
+      "dependencies": [],
+      "dependents": []
+    }
+  }
+}

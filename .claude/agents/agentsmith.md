@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: AgentSmith
 description: Creates agent definitions on-demand and deploys them to platform directories for immediate use
 model: claude-sonnet-4-6

@@ -1,17 +1,19 @@
 # Test Strategy — Affiliate Content Pipeline MVP
 
 **Created**: 2026-07-04
-**Status**: Elaboration baseline
+**Status**: Elaboration baseline with Controlled Construction updates
 
 ## Test levels
 
 ### Unit tests
 
-- DB config loads.
-- `MemoryStore.capture_lesson` / `recent_lessons`.
-- `PostizPublisher.enqueue` writes correct queue rows.
-- Economics ledger helpers (to build).
-- Compliance classifier helpers (to build).
+- `PostizPublisher` URL normalization and payload preview.
+- Aside scan pure logic: platform normalization, social metric parsing, engagement rate, observation hash stability.
+- Learning pure logic: insight hash stability and proof-of-real-success creator credibility.
+- Compliance gate logic: blocked provenance, disclosure, false access, medical claim markers, and AI disclosure warnings.
+- Daemon status, memory consolidation, economics rollup, and trace capture/replay.
+- DB config loading remains a candidate for expansion.
+- CLI runner tests cover JSON status/action surfaces for Cockpit integration.
 
 ### Integration tests
 
@@ -44,6 +46,7 @@
 
 ## Current verification status
 
+- [x] Local unit/integration suite passes: 73 tests.
 - [x] Docker available.
 - [x] pgGraph + pgvector custom image built.
 - [x] DB migrations pass.
@@ -55,7 +58,7 @@
 - [x] YouTube connected in cloud Postiz.
 - [x] TikTok connected in cloud Postiz.
 - [x] `aflack postiz-integrations` verified against cloud Postiz.
-- [ ] Real Postiz draft submit verified.
+- [x] Real Postiz private/draft submit verified for queue `2`.
 - [x] Postiz payload preview verified for queue `2` without submitting.
 - [ ] First generated creative scored by Virality Predictor.
 
@@ -72,3 +75,25 @@ No remote CI required for solo direct-to-main MVP. Use local test commands and c
   - `https://api.postiz.com`,
   - `https://api.postiz.com/public/v1`.
 - [x] Add payload preview/dry-run coverage before cloud draft submission.
+
+## Construction Iteration 2 test additions
+
+- [x] Add direct compliance gate coverage.
+- [x] Add daemon status coverage.
+- [x] Add memory consolidation coverage.
+- [x] Add economics rollup coverage.
+- [x] Add trace capture/replay coverage.
+
+## Construction acceleration test additions
+
+- [x] Add CLI runner coverage for:
+  - `daemon-status --json`,
+  - `loop-status --json`,
+  - `analytics-status --json`,
+  - `publish-queue-status --json`,
+  - `prompt-quality --json`,
+  - `compliance-smoke --json`.
+- [x] Validate that failed prompt-quality JSON exits non-zero while remaining parseable.
+- [x] Add DB config loader tests.
+- [ ] Add live adapter contract tests for Postiz analytics once stable real metrics exist.
+- [ ] Add requirement ID references in high-value tests before IOC gate.

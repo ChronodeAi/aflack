@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Traffic Manager
 description: Routes work assignments, balances workloads, and optimizes creative team productivity
 model: gpt-5.5

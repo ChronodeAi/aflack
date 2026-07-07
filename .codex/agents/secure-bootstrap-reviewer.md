@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Secure Bootstrap Reviewer
 description: Narrow-scope reviewer for chain-of-trust integrity. Traces the boot/bootstrap chain from first byte executed to first secret derived, identifies trust anchors, flags circular trust, and validates signing key custody.
 model: gpt-5.5

@@ -1,0 +1,751 @@
+{
+  "version": 1,
+  "generated": "2026-07-05T02:42:09.340Z",
+  "entries": {
+    ".aiwg/.milestones.json": {
+      "checksum": "9c7271c7e6470d99",
+      "mtime": "2026-07-04T03:45:58.185Z",
+      "size": 49
+    },
+    ".aiwg/AIWG.md": {
+      "checksum": "20b65c9553f34cbc",
+      "mtime": "2026-07-05T02:20:04.361Z",
+      "size": 2840
+    },
+    ".aiwg/architecture/adr-0001-postiz-posting-scheduler.md": {
+      "checksum": "08834cf2ee44f1bc",
+      "mtime": "2026-07-04T05:45:07.056Z",
+      "size": 4128
+    },
+    ".aiwg/architecture/adr-0002-own-event-store.md": {
+      "checksum": "2b9ceca73d11f0d9",
+      "mtime": "2026-07-04T05:55:34.074Z",
+      "size": 1245
+    },
+    ".aiwg/architecture/adr-0003-local-postgres-pggraph-pgvector-memory.md": {
+      "checksum": "d449d61d4f654879",
+      "mtime": "2026-07-04T05:55:48.749Z",
+      "size": 1713
+    },
+    ".aiwg/architecture/adr-0004-claude-fable-director-cli.md": {
+      "checksum": "57a7f9d07efdfd8b",
+      "mtime": "2026-07-04T06:20:20.154Z",
+      "size": 2162
+    },
+    ".aiwg/architecture/adr-0005-human-gated-jarvis-content-agent-orchestration.md": {
+      "checksum": "6eebfdb7929ced8f",
+      "mtime": "2026-07-04T21:47:46.435Z",
+      "size": 4061
+    },
+    ".aiwg/architecture/adr-0006-virality-first-lane-selection-and-persona-optional-form.md": {
+      "checksum": "d5d01202dcb485a4",
+      "mtime": "2026-07-04T21:47:46.435Z",
+      "size": 3289
+    },
+    ".aiwg/architecture/adr-0007-memory-system-of-record-and-bakeoff.md": {
+      "checksum": "8c63ace7132418d6",
+      "mtime": "2026-07-05T02:20:04.364Z",
+      "size": 4737
+    },
+    ".aiwg/architecture/adr-0008-draft-ramp-and-analytics-aggregation.md": {
+      "checksum": "23797c71e808eb01",
+      "mtime": "2026-07-05T02:20:04.365Z",
+      "size": 1969
+    },
+    ".aiwg/architecture/software-architecture-document.md": {
+      "checksum": "f8247184a9569469",
+      "mtime": "2026-07-05T02:36:46.104Z",
+      "size": 8387
+    },
+    ".aiwg/cockpit/contrib/aflack-control-plane.json": {
+      "checksum": "5da87f8c3f9df8d0",
+      "mtime": "2026-07-05T02:19:30.789Z",
+      "size": 8774
+    },
+    ".aiwg/creator-commerce-ops/agents/benchmark-scout.md": {
+      "checksum": "d553ed23401805c3",
+      "mtime": "2026-07-04T19:55:28.101Z",
+      "size": 213
+    },
+    ".aiwg/creator-commerce-ops/agents/compliance-gatekeeper.md": {
+      "checksum": "3af4de67cd6376a2",
+      "mtime": "2026-07-04T19:55:28.120Z",
+      "size": 215
+    },
+    ".aiwg/creator-commerce-ops/agents/insight-curator.md": {
+      "checksum": "08e9919d62fbfa9b",
+      "mtime": "2026-07-04T19:55:28.107Z",
+      "size": 198
+    },
+    ".aiwg/creator-commerce-ops/agents/roi-sentinel.md": {
+      "checksum": "567b8f1b221eda11",
+      "mtime": "2026-07-04T19:55:28.125Z",
+      "size": 177
+    },
+    ".aiwg/creator-commerce-ops/agents/video-director.md": {
+      "checksum": "24bc698f3e8d10e8",
+      "mtime": "2026-07-04T19:55:28.113Z",
+      "size": 164
+    },
+    ".aiwg/creator-commerce-ops/behaviors/scheduled-improvement-daemon.md": {
+      "checksum": "e5a2bc04f1079f93",
+      "mtime": "2026-07-04T19:55:28.135Z",
+      "size": 249
+    },
+    ".aiwg/creator-commerce-ops/manifest.json": {
+      "checksum": "3b18ac8171ed61f3",
+      "mtime": "2026-07-05T02:20:04.368Z",
+      "size": 1108
+    },
+    ".aiwg/creator-commerce-ops/reports/framework-50pct-status.md": {
+      "checksum": "7fc0f922baf35552",
+      "mtime": "2026-07-04T19:55:28.154Z",
+      "size": 827
+    },
+    ".aiwg/creator-commerce-ops/rules/compliance-before-publish.md": {
+      "checksum": "c9e83268f70055d8",
+      "mtime": "2026-07-04T21:33:16.864Z",
+      "size": 831
+    },
+    ".aiwg/creator-commerce-ops/rules/memory-without-rot.md": {
+      "checksum": "a831cf06a8fe3455",
+      "mtime": "2026-07-04T19:55:28.021Z",
+      "size": 357
+    },
+    ".aiwg/creator-commerce-ops/rules/no-safe-boring-generation.md": {
+      "checksum": "5bd01ff3727eb781",
+      "mtime": "2026-07-05T02:20:04.369Z",
+      "size": 869
+    },
+    ".aiwg/creator-commerce-ops/rules/proof-of-real-success.md": {
+      "checksum": "ddda7585a87cb335",
+      "mtime": "2026-07-04T19:55:27.996Z",
+      "size": 493
+    },
+    ".aiwg/creator-commerce-ops/rules/research-before-generation.md": {
+      "checksum": "11658845ad9f48e4",
+      "mtime": "2026-07-04T19:55:28.004Z",
+      "size": 315
+    },
+    ".aiwg/creator-commerce-ops/rules/roi-before-scale.md": {
+      "checksum": "ed31ab7af1b6e5a1",
+      "mtime": "2026-07-04T19:55:28.029Z",
+      "size": 309
+    },
+    ".aiwg/creator-commerce-ops/rules/testable-contracts-over-prose.md": {
+      "checksum": "29e3dae838f82564",
+      "mtime": "2026-07-05T02:20:04.371Z",
+      "size": 1799
+    },
+    ".aiwg/creator-commerce-ops/skills/aside-creator-scan.md": {
+      "checksum": "6eac998eb547f643",
+      "mtime": "2026-07-04T19:55:28.036Z",
+      "size": 622
+    },
+    ".aiwg/creator-commerce-ops/skills/claude-video-builder.md": {
+      "checksum": "6c4dba8a5107851b",
+      "mtime": "2026-07-04T21:33:16.862Z",
+      "size": 1088
+    },
+    ".aiwg/creator-commerce-ops/skills/higgsfield-asset-prompting.md": {
+      "checksum": "8fba65849f192acd",
+      "mtime": "2026-07-05T02:20:04.373Z",
+      "size": 2492
+    },
+    ".aiwg/creator-commerce-ops/skills/hook-authoring.md": {
+      "checksum": "f0bdb9dbe767b63d",
+      "mtime": "2026-07-04T21:33:16.863Z",
+      "size": 1328
+    },
+    ".aiwg/creator-commerce-ops/skills/insight-distillation.md": {
+      "checksum": "a34c7d5c2503e2f0",
+      "mtime": "2026-07-04T19:55:28.048Z",
+      "size": 329
+    },
+    ".aiwg/creator-commerce-ops/skills/performance-digest.md": {
+      "checksum": "5a845c024898c7b3",
+      "mtime": "2026-07-04T19:55:28.066Z",
+      "size": 275
+    },
+    ".aiwg/creator-commerce-ops/skills/virality-review.md": {
+      "checksum": "9604d3874f7b31c6",
+      "mtime": "2026-07-04T21:33:16.864Z",
+      "size": 664
+    },
+    ".aiwg/creator-commerce-ops/templates/aside-scan-prompt.md": {
+      "checksum": "691dae69e1a33924",
+      "mtime": "2026-07-04T19:55:28.149Z",
+      "size": 507
+    },
+    ".aiwg/creator-commerce-ops/templates/aside-scan.schema.json": {
+      "checksum": "f72204655a2af7ce",
+      "mtime": "2026-07-04T19:55:28.141Z",
+      "size": 1427
+    },
+    ".aiwg/creator-commerce-ops/workflows/analytics-to-memory.md": {
+      "checksum": "2da009023af6f948",
+      "mtime": "2026-07-04T19:55:28.093Z",
+      "size": 286
+    },
+    ".aiwg/creator-commerce-ops/workflows/benchmark-to-skill-update.md": {
+      "checksum": "19516ec55abf98dc",
+      "mtime": "2026-07-04T19:55:28.078Z",
+      "size": 305
+    },
+    ".aiwg/creator-commerce-ops/workflows/claude-video-production.md": {
+      "checksum": "0864c6d38f4363fd",
+      "mtime": "2026-07-05T02:20:04.375Z",
+      "size": 460
+    },
+    ".aiwg/creator-commerce-ops/workflows/daemon-sdlc-loop.md": {
+      "checksum": "93c585f411b717e0",
+      "mtime": "2026-07-04T19:55:28.071Z",
+      "size": 340
+    },
+    ".aiwg/deployment/postiz-local-runbook.md": {
+      "checksum": "03b4ee25c6e00b53",
+      "mtime": "2026-07-04T06:55:58.439Z",
+      "size": 2647
+    },
+    ".aiwg/frameworks/forensics-complete/chain-of-custody.md": {
+      "checksum": "a5b333337ae3400f",
+      "mtime": "2026-07-04T03:45:52.545Z",
+      "size": 5548
+    },
+    ".aiwg/frameworks/knowledge-base/index.md": {
+      "checksum": "0a3745f5a0c5c39e",
+      "mtime": "2026-07-04T03:45:52.545Z",
+      "size": 9
+    },
+    ".aiwg/frameworks/registry.json": {
+      "checksum": "c7721d5720dc3cf1",
+      "mtime": "2026-07-04T03:45:52.549Z",
+      "size": 1021
+    },
+    ".aiwg/gates/pre-construction-gate-2026-07-04.md": {
+      "checksum": "eabf962c78788429",
+      "mtime": "2026-07-05T02:20:04.376Z",
+      "size": 2282
+    },
+    ".aiwg/gates/security-gate-2026-07-04.md": {
+      "checksum": "aeb8a231dfcda562",
+      "mtime": "2026-07-04T18:32:09.890Z",
+      "size": 1931
+    },
+    ".aiwg/handoffs/handoff-report-elaboration-to-construction-2026-07-04.md": {
+      "checksum": "8574d321e05d539e",
+      "mtime": "2026-07-05T02:20:04.378Z",
+      "size": 3079
+    },
+    ".aiwg/intake/option-matrix.md": {
+      "checksum": "fc1fee7c3017a850",
+      "mtime": "2026-07-04T05:46:47.963Z",
+      "size": 5522
+    },
+    ".aiwg/intake/project-intake.md": {
+      "checksum": "b3838f695938ed39",
+      "mtime": "2026-07-05T02:20:04.378Z",
+      "size": 9545
+    },
+    ".aiwg/intake/solution-profile.md": {
+      "checksum": "d2df8ad6d02faddf",
+      "mtime": "2026-07-05T02:20:04.379Z",
+      "size": 9428
+    },
+    ".aiwg/loops/content-factory/LOOP.md": {
+      "checksum": "32c45799ca09cd86",
+      "mtime": "2026-07-05T02:20:04.380Z",
+      "size": 2513
+    },
+    ".aiwg/loops/content-factory/budget.yaml": {
+      "checksum": "ef555337def90513",
+      "mtime": "2026-07-05T02:20:04.380Z",
+      "size": 1707
+    },
+    ".aiwg/loops/content-factory/constraints.yaml": {
+      "checksum": "0b64d7dc272b44a4",
+      "mtime": "2026-07-05T02:20:04.381Z",
+      "size": 1901
+    },
+    ".aiwg/loops/content-factory/state.yaml": {
+      "checksum": "f1e37d240ec8809f",
+      "mtime": "2026-07-05T02:41:07.860Z",
+      "size": 3292
+    },
+    ".aiwg/marketing/hooks/README.md": {
+      "checksum": "baa54d368f07e0ff",
+      "mtime": "2026-07-04T06:55:42.686Z",
+      "size": 706
+    },
+    ".aiwg/marketing/hooks/fifa-ig-field-study.md": {
+      "checksum": "36aea3e7503f1f81",
+      "mtime": "2026-07-04T19:48:40.860Z",
+      "size": 19676
+    },
+    ".aiwg/marketing/hooks/fifa-tiktok-field-study.md": {
+      "checksum": "667dba9f367b6fde",
+      "mtime": "2026-07-04T19:48:40.864Z",
+      "size": 16338
+    },
+    ".aiwg/marketing/hooks/hook-batch-001.md": {
+      "checksum": "eb9018624ae5b8a9",
+      "mtime": "2026-07-04T07:04:14.653Z",
+      "size": 11349
+    },
+    ".aiwg/marketing/hooks/instagram-gaming-hooks.md": {
+      "checksum": "c9461c8e065d1896",
+      "mtime": "2026-07-04T06:55:01.260Z",
+      "size": 9318
+    },
+    ".aiwg/marketing/hooks/liked-content-tips.md": {
+      "checksum": "e84a2c8d21c50d01",
+      "mtime": "2026-07-04T06:53:39.182Z",
+      "size": 5392
+    },
+    ".aiwg/marketing/loadout-lab/episode-001-affiliate-package.md": {
+      "checksum": "8bb16cc72261ef23",
+      "mtime": "2026-07-05T02:20:18.398Z",
+      "size": 15137
+    },
+    ".aiwg/marketing/research/ig-tiktok-gta6-live-scan-2026-07-04.md": {
+      "checksum": "c8e1ac63ac2bd0dc",
+      "mtime": "2026-07-04T21:00:04.148Z",
+      "size": 3436
+    },
+    ".aiwg/marketing/strategy/gta6-clip-farming-analysis.md": {
+      "checksum": "e6a628f5fcc9e9a5",
+      "mtime": "2026-07-04T05:31:12.800Z",
+      "size": 5808
+    },
+    ".aiwg/marketing/strategy/gta6-personas.md": {
+      "checksum": "54cffd349f73036f",
+      "mtime": "2026-07-04T06:22:35.443Z",
+      "size": 2724
+    },
+    ".aiwg/marketing/strategy/niche-diagnostic-plan.md": {
+      "checksum": "e1d67d6651cd08d2",
+      "mtime": "2026-07-04T03:54:44.678Z",
+      "size": 2307
+    },
+    ".aiwg/marketing/strategy/posting-automation-plan.md": {
+      "checksum": "d3abc9e16bf372ec",
+      "mtime": "2026-07-04T05:45:37.259Z",
+      "size": 4158
+    },
+    ".aiwg/marketing/strategy/vice-flythrough-b2b.md": {
+      "checksum": "478e7ed28f3b18a2",
+      "mtime": "2026-07-04T18:57:25.083Z",
+      "size": 3933
+    },
+    ".aiwg/marketing/vice-final/episode-01-spec.md": {
+      "checksum": "07ec29791c5f5e5d",
+      "mtime": "2026-07-04T16:19:26.519Z",
+      "size": 5241
+    },
+    ".aiwg/marketing/vice-final/reference-footage/manifest.md": {
+      "checksum": "cdee9963d6136e21",
+      "mtime": "2026-07-04T21:03:07.797Z",
+      "size": 963
+    },
+    ".aiwg/marketing/vice-final/seed-pack.md": {
+      "checksum": "3d7fad98320eea53",
+      "mtime": "2026-07-04T16:53:25.154Z",
+      "size": 4010
+    },
+    ".aiwg/marketing/vice-final/series-spec.md": {
+      "checksum": "699c53ac8b616a2c",
+      "mtime": "2026-07-04T16:18:44.493Z",
+      "size": 4438
+    },
+    ".aiwg/marketing/vice-final/trend-radar-2026-07-04.md": {
+      "checksum": "f7b71fa6f764bcd1",
+      "mtime": "2026-07-04T18:53:41.600Z",
+      "size": 2874
+    },
+    ".aiwg/marketing/vice-signal/episode-001-claude-code-package.md": {
+      "checksum": "0aa3dbd1d67b2e73",
+      "mtime": "2026-07-05T02:20:04.383Z",
+      "size": 9743
+    },
+    ".aiwg/marketing/vice-signal/episode-001-generation-2026-07-04.md": {
+      "checksum": "b95bd1a47cc9cb10",
+      "mtime": "2026-07-05T02:20:04.384Z",
+      "size": 2812
+    },
+    ".aiwg/marketing/vice-signal/episode-001-render-review-rubric.md": {
+      "checksum": "f6249839cf3a4742",
+      "mtime": "2026-07-05T02:19:44.223Z",
+      "size": 11211
+    },
+    ".aiwg/marketing/vice-signal/episode-002-claude-code-package.md": {
+      "checksum": "31baf7adb9f6a941",
+      "mtime": "2026-07-04T21:35:40.369Z",
+      "size": 9886
+    },
+    ".aiwg/marketing/viral-factory-spec.md": {
+      "checksum": "f3094d9f8a73f535",
+      "mtime": "2026-07-04T19:50:12.588Z",
+      "size": 5112
+    },
+    ".aiwg/planning/claude-code-video-builder-runbook.md": {
+      "checksum": "947a7602138b7fad",
+      "mtime": "2026-07-04T18:37:33.711Z",
+      "size": 1774
+    },
+    ".aiwg/planning/cockpit-aflack-integration.md": {
+      "checksum": "51864d70aceb1196",
+      "mtime": "2026-07-05T02:16:38.502Z",
+      "size": 3932
+    },
+    ".aiwg/planning/continuous-improvement-architecture.md": {
+      "checksum": "e95eb037810fd0cc",
+      "mtime": "2026-07-04T19:51:10.914Z",
+      "size": 4323
+    },
+    ".aiwg/planning/daemon-runtime-architecture.md": {
+      "checksum": "6a70996a548ce314",
+      "mtime": "2026-07-05T02:20:04.385Z",
+      "size": 4875
+    },
+    ".aiwg/planning/development-process-guide.md": {
+      "checksum": "0a782cd760be304f",
+      "mtime": "2026-07-05T02:20:04.385Z",
+      "size": 2390
+    },
+    ".aiwg/planning/director-routine-spec.md": {
+      "checksum": "edcddc85f9b5adfd",
+      "mtime": "2026-07-05T02:20:04.386Z",
+      "size": 2185
+    },
+    ".aiwg/planning/dual-track-workflow.md": {
+      "checksum": "4c0d1097a72f6a82",
+      "mtime": "2026-07-05T02:20:04.386Z",
+      "size": 2419
+    },
+    ".aiwg/planning/frameworkization-roadmap.md": {
+      "checksum": "da2fe5933f826f71",
+      "mtime": "2026-07-05T02:20:04.387Z",
+      "size": 8019
+    },
+    ".aiwg/planning/iteration-plan-001.md": {
+      "checksum": "7d3602202a164a95",
+      "mtime": "2026-07-04T18:33:52.704Z",
+      "size": 2568
+    },
+    ".aiwg/planning/iteration-plan-002.md": {
+      "checksum": "c33e2667bdaed352",
+      "mtime": "2026-07-05T02:20:04.388Z",
+      "size": 7507
+    },
+    ".aiwg/planning/publish-quality-policy-draft.md": {
+      "checksum": "f4df223fc42ff4dc",
+      "mtime": "2026-07-05T02:15:52.233Z",
+      "size": 1976
+    },
+    ".aiwg/planning/publish-quality-policy-schema.md": {
+      "checksum": "56e7cfe90ce9cd23",
+      "mtime": "2026-07-05T02:19:44.276Z",
+      "size": 13698
+    },
+    ".aiwg/planning/video-analytics-aggregation-plan.md": {
+      "checksum": "1b71dde833bcf912",
+      "mtime": "2026-07-05T02:20:04.388Z",
+      "size": 1942
+    },
+    ".aiwg/planning/week-1-mvp-plan.md": {
+      "checksum": "2f7b78772a2c33a1",
+      "mtime": "2026-07-04T17:22:10.309Z",
+      "size": 9852
+    },
+    ".aiwg/prompts/claude-code/vice-signal-ep001-builder.md": {
+      "checksum": "9be66ebb1cb29a40",
+      "mtime": "2026-07-04T18:37:33.715Z",
+      "size": 1344
+    },
+    ".aiwg/reports/abm-validation-report.md": {
+      "checksum": "988b49897c50a6ce",
+      "mtime": "2026-07-05T02:20:04.389Z",
+      "size": 3352
+    },
+    ".aiwg/reports/accelerate-state.json": {
+      "checksum": "3d2d023d6f887f4e",
+      "mtime": "2026-07-05T02:41:07.859Z",
+      "size": 5216
+    },
+    ".aiwg/reports/adversarial-construction-readiness-review-2026-07-05.md": {
+      "checksum": "de69f5e504e6fbb1",
+      "mtime": "2026-07-05T02:40:22.113Z",
+      "size": 6240
+    },
+    ".aiwg/reports/agentmemory-architecture-gap-review-2026-07-05.md": {
+      "checksum": "30e5ba4bc7a0a263",
+      "mtime": "2026-07-05T00:40:57.457Z",
+      "size": 2108
+    },
+    ".aiwg/reports/architecture-stability-report.md": {
+      "checksum": "27d23df09db60f50",
+      "mtime": "2026-07-05T02:20:04.390Z",
+      "size": 2561
+    },
+    ".aiwg/reports/aside-mcp-triage-2026-07-04.md": {
+      "checksum": "260b3c441ad2d8c9",
+      "mtime": "2026-07-04T21:00:04.136Z",
+      "size": 1788
+    },
+    ".aiwg/reports/claude-code-video-builder-run-2026-07-04.md": {
+      "checksum": "c174fb53fbaf2fe1",
+      "mtime": "2026-07-04T18:41:14.283Z",
+      "size": 1682
+    },
+    ".aiwg/reports/cleanup-audit-2026-07-04.md": {
+      "checksum": "7263c9b07101f7e8",
+      "mtime": "2026-07-05T02:20:04.390Z",
+      "size": 3071
+    },
+    ".aiwg/reports/config-loader-hardening-2026-07-05.md": {
+      "checksum": "9c52fe794adcf383",
+      "mtime": "2026-07-05T02:41:07.859Z",
+      "size": 919
+    },
+    ".aiwg/reports/construction-90pct-status-2026-07-04.md": {
+      "checksum": "ebaf8b34341d7761",
+      "mtime": "2026-07-05T02:20:04.390Z",
+      "size": 2407
+    },
+    ".aiwg/reports/construction-completion-report-2026-07-04.md": {
+      "checksum": "0c52cbc4621efeb2",
+      "mtime": "2026-07-05T02:20:04.391Z",
+      "size": 4107
+    },
+    ".aiwg/reports/construction-readiness-report.md": {
+      "checksum": "c5f30aa26c93a1c7",
+      "mtime": "2026-07-05T02:20:04.392Z",
+      "size": 3980
+    },
+    ".aiwg/reports/construction-ready-brief.md": {
+      "checksum": "97e862b55885c395",
+      "mtime": "2026-07-05T02:40:22.116Z",
+      "size": 6298
+    },
+    ".aiwg/reports/daemon-status-implementation-2026-07-04.md": {
+      "checksum": "b38f57f04c7f38f4",
+      "mtime": "2026-07-05T02:20:04.392Z",
+      "size": 1575
+    },
+    ".aiwg/reports/day-1-status.md": {
+      "checksum": "c40788a540aedf6e",
+      "mtime": "2026-07-04T05:25:56.390Z",
+      "size": 1997
+    },
+    ".aiwg/reports/doc-sync-audit-2026-07-04.md": {
+      "checksum": "f09ef0008db99948",
+      "mtime": "2026-07-05T02:20:04.393Z",
+      "size": 3382
+    },
+    ".aiwg/reports/draft-review-learning-implementation-2026-07-05.md": {
+      "checksum": "4397a8cd78e3658f",
+      "mtime": "2026-07-05T02:41:07.859Z",
+      "size": 1509
+    },
+    ".aiwg/reports/elaboration-status.md": {
+      "checksum": "48cebb554a8c4645",
+      "mtime": "2026-07-05T02:20:04.393Z",
+      "size": 3303
+    },
+    ".aiwg/reports/elaboration-to-construction-transition-2026-07-04.md": {
+      "checksum": "51744a7032624641",
+      "mtime": "2026-07-05T02:20:04.394Z",
+      "size": 3901
+    },
+    ".aiwg/reports/framework-deliverance-handoff-2026-07-04.md": {
+      "checksum": "c3f6c667584f31c2",
+      "mtime": "2026-07-05T02:20:04.394Z",
+      "size": 2343
+    },
+    ".aiwg/reports/framework-independent-verification-2026-07-04.md": {
+      "checksum": "50e0255f5bcb1e65",
+      "mtime": "2026-07-04T19:57:43.030Z",
+      "size": 4440
+    },
+    ".aiwg/reports/higgsfield-prompt-audit-2026-07-04.md": {
+      "checksum": "af0f2d915e906b74",
+      "mtime": "2026-07-05T02:20:04.395Z",
+      "size": 3733
+    },
+    ".aiwg/reports/iteration-0-completion.md": {
+      "checksum": "7f4366ae76a84815",
+      "mtime": "2026-07-05T02:20:04.395Z",
+      "size": 2282
+    },
+    ".aiwg/reports/loadout-lab-episode-001-validation-2026-07-04.md": {
+      "checksum": "784a06cf05701922",
+      "mtime": "2026-07-05T02:20:04.396Z",
+      "size": 2325
+    },
+    ".aiwg/reports/loadout-lab-v2-prompt-pack-regression-2026-07-05.md": {
+      "checksum": "c00244ec20cbc251",
+      "mtime": "2026-07-05T02:41:07.860Z",
+      "size": 1154
+    },
+    ".aiwg/reports/pre-construction-orchestration-summary-2026-07-04.md": {
+      "checksum": "ab0ac4fffb067874",
+      "mtime": "2026-07-05T02:20:04.396Z",
+      "size": 1887
+    },
+    ".aiwg/reports/psi-and-deterministic-agent-lessons-2026-07-04.md": {
+      "checksum": "5df100a303e0c1fd",
+      "mtime": "2026-07-05T02:20:04.397Z",
+      "size": 3295
+    },
+    ".aiwg/reports/sdlc-acceleration-plan-2026-07-05.md": {
+      "checksum": "af57d91f4492600d",
+      "mtime": "2026-07-05T02:41:07.860Z",
+      "size": 5353
+    },
+    ".aiwg/reports/setup-command-traceability-hardening-2026-07-05.md": {
+      "checksum": "884f85141562a74b",
+      "mtime": "2026-07-05T02:40:22.112Z",
+      "size": 926
+    },
+    ".aiwg/reports/status-assessment.md": {
+      "checksum": "273747c64bf114bc",
+      "mtime": "2026-07-05T02:41:07.859Z",
+      "size": 8710
+    },
+    ".aiwg/reports/test-sync-report-2026-07-04.md": {
+      "checksum": "4777997d4f0eb7c1",
+      "mtime": "2026-07-05T02:20:04.398Z",
+      "size": 3087
+    },
+    ".aiwg/reports/traceability-2026-07-04.md": {
+      "checksum": "df2dc667d0505d8a",
+      "mtime": "2026-07-05T02:20:04.398Z",
+      "size": 4886
+    },
+    ".aiwg/reports/traceability-2026-07-05.md": {
+      "checksum": "541f2cbba4ce8917",
+      "mtime": "2026-07-05T00:42:08.051Z",
+      "size": 2771
+    },
+    ".aiwg/reports/traceability-matrix-2026-07-05.md": {
+      "checksum": "bb943c26e0968e27",
+      "mtime": "2026-07-05T02:39:33.955Z",
+      "size": 9193
+    },
+    ".aiwg/reports/transcript-mining-synthesis-2026-07-04.md": {
+      "checksum": "3f65761938d2780f",
+      "mtime": "2026-07-04T21:47:46.435Z",
+      "size": 5741
+    },
+    ".aiwg/requirements/mvp-requirements.md": {
+      "checksum": "0aeea707022b18d9",
+      "mtime": "2026-07-05T02:20:04.399Z",
+      "size": 6942
+    },
+    ".aiwg/research/affiliate-content-pipeline/downey-jarvis-teardown-learnings.md": {
+      "checksum": "d71c1b04510f6b01",
+      "mtime": "2026-07-04T17:20:01.549Z",
+      "size": 5268
+    },
+    ".aiwg/research/findings/REF-001.md": {
+      "checksum": "93e7f947b335462c",
+      "mtime": "2026-07-05T02:41:20.601Z",
+      "size": 12241
+    },
+    ".aiwg/research/findings/REF-002.md": {
+      "checksum": "a4d6c34636a0dc5a",
+      "mtime": "2026-07-05T02:41:20.625Z",
+      "size": 6366
+    },
+    ".aiwg/research/findings/REF-003.md": {
+      "checksum": "90be22615c5006c0",
+      "mtime": "2026-07-05T02:41:20.642Z",
+      "size": 9529
+    },
+    ".aiwg/research/findings/REF-004.md": {
+      "checksum": "9f3aaa8ff22cddd3",
+      "mtime": "2026-07-05T02:41:20.651Z",
+      "size": 6574
+    },
+    ".aiwg/research/sources/gta6-official-reference-package-2026-07-04.md": {
+      "checksum": "229a0948b6efc4aa",
+      "mtime": "2026-07-04T21:36:44.371Z",
+      "size": 2360
+    },
+    ".aiwg/research/sources/gta6-reference-pack.md": {
+      "checksum": "452c76f4d4a8cc4b",
+      "mtime": "2026-07-04T06:05:01.007Z",
+      "size": 1977
+    },
+    ".aiwg/research/syntheses/affiliate-content-pipeline-brief.md": {
+      "checksum": "fb9fcaa63c9026a4",
+      "mtime": "2026-07-04T03:54:44.676Z",
+      "size": 5164
+    },
+    ".aiwg/risks/risk-register.md": {
+      "checksum": "cd930b910b0e7f3a",
+      "mtime": "2026-07-04T17:22:41.392Z",
+      "size": 2569
+    },
+    ".aiwg/security/compliance-gta6-footage.md": {
+      "checksum": "479539cd511b4a63",
+      "mtime": "2026-07-04T06:02:10.256Z",
+      "size": 2007
+    },
+    ".aiwg/security/controls-validation-2026-07-04.md": {
+      "checksum": "e76c641b198b2e5c",
+      "mtime": "2026-07-04T18:32:09.889Z",
+      "size": 1993
+    },
+    ".aiwg/security/decision-memo-event-reference-policy.md": {
+      "checksum": "5a9f27fac87040d3",
+      "mtime": "2026-07-04T20:57:35.574Z",
+      "size": 3548
+    },
+    ".aiwg/security/threat-model-2026-07-04.md": {
+      "checksum": "f994b65972fcb25b",
+      "mtime": "2026-07-04T06:54:43.643Z",
+      "size": 2575
+    },
+    ".aiwg/sessions.json": {
+      "checksum": "40221d59021b90e2",
+      "mtime": "2026-07-05T02:20:04.399Z",
+      "size": 255
+    },
+    ".aiwg/team/onboarding-guide.md": {
+      "checksum": "8d68c3c7f9553b5a",
+      "mtime": "2026-07-05T02:20:04.400Z",
+      "size": 2030
+    },
+    ".aiwg/testing/test-strategy.md": {
+      "checksum": "f6a3e941f9a8bc85",
+      "mtime": "2026-07-05T02:40:22.114Z",
+      "size": 3710
+    },
+    ".aiwg/working/aside-scans/live-ai-video-automation-money-2026-07-04.json": {
+      "checksum": "2ffaa539fa232eb1",
+      "mtime": "2026-07-04T21:20:32.724Z",
+      "size": 14994
+    },
+    ".aiwg/working/aside-scans/live-ig-tiktok-gta6-2026-07-04.json": {
+      "checksum": "2077120032222d2b",
+      "mtime": "2026-07-04T20:58:56.264Z",
+      "size": 10304
+    },
+    ".aiwg/working/aside-scans/sample-scan.json": {
+      "checksum": "8e8a173b9dfac36b",
+      "mtime": "2026-07-04T19:55:49.039Z",
+      "size": 1018
+    },
+    ".aiwg/working/postiz/docker-compose.yaml": {
+      "checksum": "8c61cd0cf23d707e",
+      "mtime": "2026-07-04T17:59:37.159Z",
+      "size": 7862
+    },
+    ".aiwg/working/postiz/dynamicconfig/development-sql.yaml": {
+      "checksum": "54c0e07837830503",
+      "mtime": "2026-07-04T06:35:39.515Z",
+      "size": 181
+    }
+  }
+}

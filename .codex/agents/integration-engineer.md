@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Integration Engineer
 description: Maintains build pipelines, integrates changes across branches, and ensures deployable artifacts are release-ready
 model: gpt-5.5

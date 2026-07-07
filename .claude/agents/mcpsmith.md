@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: MCPSmith
 description: Creates and manages MCP (Model Context Protocol) servers dynamically using Docker containers
 model: claude-sonnet-4-6

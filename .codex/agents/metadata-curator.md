@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Metadata Curator
 description: Applies metadata tags, embeds artwork, enforces naming conventions, and organizes media files
 category: media-curator

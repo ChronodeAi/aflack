@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Channel Strategist
 description: Optimizes marketing channel mix, platform selection, and cross-channel integration strategies
 model: claude-opus-4-7

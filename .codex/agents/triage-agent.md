@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Triage Agent
 description: Quick triage and volatile data capture agent. Follows RFC 3227 volatility order to capture network state, processes, memory maps, deleted binaries, and kernel modules before any disk operations.
 model: gpt-5.5

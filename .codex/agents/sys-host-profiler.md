@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Sys Host Profiler
 description: SSH to target host, collect hardware/OS/package state, and diff against the documented host-profile.yaml — strictly read-only
 model: gpt-5.5

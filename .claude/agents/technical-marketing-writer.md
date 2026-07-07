@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Technical Marketing Writer
 description: Creates technical content including documentation, API guides, developer tutorials, and product technical content
 model: claude-sonnet-4-6

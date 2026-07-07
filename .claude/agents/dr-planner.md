@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: DR Planner
 description: Build ordered disaster recovery runbooks from service topology, generate recovery sequences with dependency-aware ordering and RTO budgets
 model: claude-opus-4-7

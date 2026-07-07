@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Production Coordinator
 description: Manages creative production workflows, coordinates timelines, and ensures on-time delivery of marketing assets
 model: gpt-5.5

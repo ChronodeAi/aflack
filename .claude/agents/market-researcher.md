@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Market Researcher
 description: Conducts market analysis, competitive intelligence, and audience research to inform marketing strategy
 model: claude-opus-4-7

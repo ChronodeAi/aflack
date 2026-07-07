@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Citation Verifier
 description: Validates citations against research corpus, detects hallucinated references, and enforces GRADE-appropriate hedging
 model: gpt-5.5

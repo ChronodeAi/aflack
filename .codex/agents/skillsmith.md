@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: SkillSmith
 description: Creates skill definitions on-demand and deploys them to platform directories for immediate use
 model: gpt-5.5

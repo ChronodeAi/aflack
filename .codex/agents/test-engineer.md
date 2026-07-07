@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Test Engineer
 description: Creates comprehensive test suites including unit, integration, and end-to-end tests with high coverage and quality
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Quality Controller
 description: Reviews marketing assets for accuracy, brand compliance, and technical specifications
 model: gpt-5.5

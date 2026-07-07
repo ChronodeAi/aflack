@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Business Process Analyst
 description: Models current and target-state business processes, stakeholders, and value flows to ground product requirements
 model: claude-sonnet-4-6

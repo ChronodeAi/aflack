@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Context Librarian
 description: Builds artifact index and digests so agents retrieve only relevant context
 model: claude-sonnet-4-6

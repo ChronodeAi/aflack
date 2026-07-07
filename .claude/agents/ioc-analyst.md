@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: IOC Analyst
 description: IOC extraction, enrichment, and STIX 2.1 formatting agent that identifies indicators of compromise from investigation artifacts and produces an actionable IOC register
 model: claude-sonnet-4-6

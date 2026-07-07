@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Reporting Specialist
 description: Creates comprehensive marketing reports, dashboards, and data visualizations for stakeholders
 model: gpt-5.5

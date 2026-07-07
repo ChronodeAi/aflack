@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Technical Writer
 description: Ensures SDLC documentation clarity, consistency, readability, and professional quality across all artifacts
 model: gpt-5.5

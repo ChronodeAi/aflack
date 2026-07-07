@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Multi-Cloud Strategist
 description: Multi-cloud and hybrid-cloud strategy specialist. Design cloud-agnostic architectures, implement Terraform multi-provider configurations, Pulumi cross-cloud stacks, and Crossplane control planes. Build vendor lock-in mitigation strategies and cost comparison frameworks across AWS, Azure, and GCP. Use proactively for multi-cloud architecture decisions, cloud migration strategy, or hybrid connectivity design
 model: claude-sonnet-4-6

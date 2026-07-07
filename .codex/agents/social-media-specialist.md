@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Social Media Specialist
 description: Creates platform-native social content, manages community engagement, and develops social media strategies
 model: gpt-5.5

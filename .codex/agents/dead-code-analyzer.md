@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Dead Code Analyzer
 description: Identifies and safely removes dead code, unused exports, orphaned files, and stale artifacts
 model: gpt-5.5

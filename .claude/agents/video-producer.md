@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Video Producer
 description: Plans and coordinates video production including pre-production, production logistics, and post-production workflow
 model: claude-sonnet-4-6

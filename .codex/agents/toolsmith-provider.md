@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: toolsmith-provider
 description: Provides platform-aware tool specifications for agent operations in subagent scenarios
 model: gpt-5.5

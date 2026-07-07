@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Ops Runbook Executor
 description: Executes operational runbooks step-by-step with verification at each step, safety gates for destructive operations, and audit trail generation
 model: gpt-5.5

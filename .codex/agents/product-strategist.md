@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Product Strategist
 description: Shapes product vision, positioning, and outcome goals from raw ideas or market opportunities
 model: gpt-5.5

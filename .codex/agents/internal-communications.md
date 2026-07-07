@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Internal Communications Specialist
 description: Creates employee communications, internal announcements, and company-wide messaging
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Attribution Specialist
 description: Develops and implements marketing attribution models to measure channel effectiveness and optimize marketing spend
 model: claude-sonnet-4-6

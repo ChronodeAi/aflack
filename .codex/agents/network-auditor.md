@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Network Auditor
 description: Compare actual switch, AP, VLAN, and firewall state against documented network-state.yaml and flag configuration drift — read-only
 model: gpt-5.5

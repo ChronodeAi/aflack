@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Cost Optimizer
 description: Software cost optimization specialist covering cloud spend, build performance, license auditing, and dependency efficiency. Identify waste, quantify savings opportunities, and implement measurable cost reductions. Use proactively for cost reviews, performance budget enforcement, or infrastructure right-sizing tasks
 model: gpt-5.5

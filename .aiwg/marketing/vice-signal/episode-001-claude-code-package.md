@@ -12,7 +12,7 @@
 | Lead magnet | GTA6 AI Content Workflow |
 | Status | GENERATED — awaiting final-render approval (see episode-001-generation-2026-07-04.md) |
 | Generation performed | YES — 2026-07-04, 7 Seedance 2.0 jobs |
-| Postiz submission | NO |
+| Postiz submission | YES — private YouTube draft, queue_id=2, Postiz post id `cmr6wm4p50eiwnt0ytbyx0pqx` |
 | Higgsfield credits spent | 360 |
 | Date prepared | 2026-07-04 |
 
@@ -103,19 +103,21 @@ Status: candidate text only. Not submitted. Zero credits spent.
 | AI-generated content disclosure | PASS | On-screen at 0:17 and 0:32+, plus description and pinned comment; flag YouTube's "altered/synthetic content" setting at upload. |
 | Affiliate disclosure | PASS | Description and pinned comment include affiliate language. |
 | Not scammy / no income guarantees | PASS | No earnings claims; offer is a free documented workflow. |
-| No generation or external service calls performed in this package | PASS | Higgsfield prompt is text-only; nothing submitted to Postiz. |
+| Generation and draft submission bounded to approved path | PASS | Later approved measured batch: 7 Seedance clips, 360 credits, zero rerolls; private Postiz draft only. |
 | Trademark use is nominative only ("GTA6" named for commentary) | PASS | No GTA6 logo/typography reproduced in visuals or thumbnail. |
 
 ## 12. Economics / Spend Gate
 
-- Spend to date on this episode: **$0.** No Higgsfield credits used, no Postiz submission, no media generated.
-- Estimated generation cost on approval: ~5–7 Higgsfield video/image jobs (7 storyboard beats, some combinable) — budget cap proposal: **one generation batch, no re-roll loops without a second approval.**
-- Hard gates before any spend:
-  1. Human approves this package (question below).
-  2. Human confirms Higgsfield credit budget for the batch.
-  3. Human approves final render before any Postiz scheduling — publishing is a separate approval.
+- Spend to date on this episode: **360 Higgsfield credits** for 7 Seedance 2.0 clips, zero rerolls.
+- Cost ledger: recorded against `creative_id=1` as `cost_ledger_id=2`.
+- Postiz draft: queue `2`, private YouTube draft, Postiz post id `cmr6wm4p50eiwnt0ytbyx0pqx`.
+- Analytics: `analytics_snapshot_id=1`, current metrics zero.
+- Remaining gates:
+  1. Human approves final render before any public publishing.
+  2. Public publishing remains a separate learned-policy gate.
+  3. No re-roll loops without a future measured-generation decision.
 - Kill criteria: if generated visuals drift toward Rockstar likeness or photoreal human impersonation, discard the asset; do not iterate on that seed.
 
 ## 13. Exact Next Human Approval Question
 
-> **Do you approve this Episode 001 package — winning hook ("GTA6 isn't out yet. My AI content channel about it already runs itself."), the 38-second script, the 7-beat original-visual shot list, and the text-only Higgsfield prompt — for a single generation batch within an agreed credit cap, with a separate approval required before any Postiz scheduling or public posting? (yes / revise: <notes>)**
+> **Do you approve the final assembled render for public publishing, or should EP001 remain as a private Postiz draft while we gather review notes?**

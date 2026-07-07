@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Security Auditor
 description: Application security and code review specialist. Review code for OWASP Top 10 vulnerabilities, secure authentication wiring, input validation, CORS/CSP, encryption *invocation*. Delegates cryptographic primitive selection to applied-cryptographer and chain-of-trust integrity to secure-bootstrap-reviewer
 model: gpt-5.5

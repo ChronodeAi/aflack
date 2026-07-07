@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Documentation Agent
 description: Summarize papers using LLM with RAG pattern, extract structured data, grade source quality, and create Zettelkasten-style literature notes
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Progress Tracker
 description: Monitors iterative task progress, detects regression and stalls, implements best output selection per REF-015 Self-Refine
 model: claude-sonnet-4-6

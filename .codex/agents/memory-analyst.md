@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Memory Analyst
 description: Volatility 3 memory forensics specialist for process analysis, rootkit detection, injected code identification, and credential extraction from memory dumps
 model: gpt-5.5

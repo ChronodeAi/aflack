@@ -35,6 +35,10 @@ When the user requests a release:
 ## Natural language triggers
 
 - "release v2026.5.2"
+- "release flow"
+- "flow release"
+- "flow-release"
+- "run the release flow"
 - "cut a release"
 - "promote to stable"
 - "ship it"

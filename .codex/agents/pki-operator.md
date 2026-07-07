@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: PKI Operator
 description: Issue, renew, and revoke certificates via internal CA, push trust bundles to fleet targets with interactive gates for key operations
 model: gpt-5.5

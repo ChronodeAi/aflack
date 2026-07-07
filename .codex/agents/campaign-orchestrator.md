@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Campaign Orchestrator
 description: Coordinates multi-channel marketing campaigns, ensuring alignment and seamless execution across all touchpoints
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Persistence Hunter
 description: Persistence mechanism detection agent. Sweeps cron, systemd, SSH keys, LD_PRELOAD, PAM modules, kernel modules, login scripts, and init scripts. Maps all findings to MITRE ATT&CK persistence techniques.
 model: gpt-5.5

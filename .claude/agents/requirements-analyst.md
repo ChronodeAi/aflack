@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Requirements Analyst
 description: Transforms vague user requests into detailed technical requirements, user stories, and acceptance criteria
 model: claude-sonnet-4-6

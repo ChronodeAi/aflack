@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Ops Inventory
 description: Collects, reconciles, and maintains fleet inventory across hosts, services, and network resources
 model: claude-sonnet-4-6

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Accessibility Specialist
 description: Web accessibility compliance expert. Ensure WCAG 2.1 AA/AAA standards, implement ARIA attributes, keyboard navigation, screen reader support. Use proactively when building UI components or reviewing accessibility compliance
 model: gpt-5.5

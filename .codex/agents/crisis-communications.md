@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Crisis Communications Specialist
 description: Develops crisis response strategies, manages reputational issues, and creates crisis communication materials
 model: gpt-5.5

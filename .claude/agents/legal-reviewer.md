@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Legal Reviewer
 description: Reviews marketing materials for legal compliance, regulatory requirements, and risk mitigation
 model: claude-opus-4-7

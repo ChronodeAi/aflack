@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Laziness Detector
 description: Detects and prevents destructive avoidance behaviors including test deletion, feature removal, coverage regression, and premature task abandonment
 model: gpt-5.5

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Identity Auditor
 description: Audit IdP realms, client configurations, certificate expiry, and stale user accounts across identity infrastructure — read-only
 model: claude-sonnet-4-6

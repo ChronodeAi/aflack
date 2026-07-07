@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Stream Health Monitor
 description: Check transcoder health, stream output status, and service availability for media streaming infrastructure — read-only
 model: claude-sonnet-4-6

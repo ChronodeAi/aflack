@@ -1,4 +1,4 @@
-<!-- aiwg:managed v2026.6.11 bundled -->
+<!-- aiwg:managed v2026.7.10 bundled -->
 # AIWG Behavior: security-sentinel
 
 Provider surface: Claude Code rules

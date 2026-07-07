@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Discography Analyst
 description: Researches artist discographies, identifies creative eras, and recommends catalog structure
 category: media-curator

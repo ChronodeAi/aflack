@@ -1,0 +1,38 @@
+schema: aiwg.loop.constraints.v1
+loop_id: content-factory
+status: active
+updated_at: "2026-07-04T23:30:00Z"
+hard_blocks:
+  - id: no_unbounded_paid_generation
+    description: Paid generation is approved only as measured batches for validated packages; record cost and stop before scale-up.
+  - id: no_public_publish_without_approval
+    description: Do not publish publicly until the first 100 Postiz drafts are reviewed and a learned publish-quality policy is encoded.
+  - id: no_official_or_leaked_gta_media_reuse
+    description: Do not download, clip, reupload, same-seed remix, or recreate Rockstar/Take-Two media.
+  - id: no_false_access_or_affiliation
+    description: Do not claim leaked build access, firsthand gameplay, or Rockstar/Take-Two affiliation.
+  - id: no_account_action_automation
+    description: Do not change account settings or automate comments, DMs, follows, unfollows, or ad spend.
+  - id: no_autonomous_framework_edits
+    description: Daemons may propose changes, not edit skills/rules/workflows without human-approved application.
+approved_actions:
+  - id: postiz_draft_ramp
+    description: First 100 Postiz draft submissions are approved when tied to validated packages and explicit target integrations; drafts only, no public publish.
+  - id: measured_generation_batches
+    description: Generation can proceed for validated packages under adaptive observed credit tracking; no uncontrolled spend or batch scaling.
+required_checks:
+  - compileall
+  - unit_tests
+  - compliance_smoke
+  - daemon_status
+  - proposals_list
+  - analytics_status
+  - aiwg_index_build
+verification_policy:
+  no_self_verification_for_high_risk_actions: true
+  deterministic_checks_required: true
+  record_results_in_reports: true
+analytics_policy:
+  source_of_truth: Postgres analytics_snapshots
+  postiz_role: ingestion_source_not_system_of_record
+  required_before_publish_automation: true

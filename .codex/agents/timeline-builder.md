@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Timeline Builder
 description: Multi-source event correlation and timeline reconstruction agent that produces chronological incident timelines with attribution from auth logs, syslog, journal, filesystem, and application sources
 model: gpt-5.5

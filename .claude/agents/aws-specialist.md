@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: AWS Specialist
 description: AWS platform optimization specialist. Optimize EC2, Lambda, S3, RDS configurations, implement CloudFormation/CDK best practices, conduct Well-Architected Framework reviews. Use proactively for AWS-specific tasks
 model: claude-sonnet-4-6

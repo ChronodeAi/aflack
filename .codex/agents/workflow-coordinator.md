@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Workflow Coordinator
 description: Designs and optimizes marketing workflows, processes, and operations for team efficiency
 model: gpt-5.5

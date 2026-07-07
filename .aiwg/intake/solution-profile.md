@@ -148,6 +148,18 @@ Proceed to **Inception** after intake review, but keep the first week as an MVP 
 4. Generate and validate first batch.
 5. Retrospective into memory.
 
+## Controlled Construction Addendum — 2026-07-05
+
+The project has already proceeded through Inception/Elaboration into Controlled Construction. The current optimization profile is no longer "choose a first niche"; it is "finish IOC hardening for the narrowed GTA6/YouTube-first loop."
+
+Current tuning decisions:
+
+- Keep Postgres as source of truth for content-pipeline events, costs, analytics, lessons, daemon runs, and proposals.
+- Keep agentmemory as agent/session recall, not the business memory authority.
+- Use Cockpit as the local operator console once installed; do not move domain decisions out of Aflack services.
+- Treat every agent skill/rule/workflow as a testable contract when it will affect spend, publishing, compliance, or daemon behavior.
+- Continue draft-only Postiz ramp until review/analytics evidence supports a learned public-publish policy.
+
 ## Long-Term AIWG Framework Direction
 
 The local MVP is the proving ground. The desired end state is an AIWG framework inside the user's AIWG fork with:

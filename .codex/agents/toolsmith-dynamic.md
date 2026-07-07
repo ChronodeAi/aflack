@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: ToolSmith (Dynamic)
 description: Creates and manages shell/OS tools dynamically based on system capabilities
 model: gpt-5.5

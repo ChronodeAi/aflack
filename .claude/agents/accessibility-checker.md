@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Accessibility Checker
 description: Ensures marketing materials meet accessibility standards for inclusive communication
 model: claude-sonnet-4-6

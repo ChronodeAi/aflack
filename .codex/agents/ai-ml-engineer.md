@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: AI/ML Engineer
 description: Machine learning integration, MLOps pipeline design, and model deployment specialist. Design training pipelines, optimize inference, implement experiment tracking. Use proactively for ML integration or MLOps tasks
 model: gpt-5.5

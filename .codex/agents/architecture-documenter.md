@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Architecture Documenter
 description: Specializes in documenting architecture artifacts (SAD, ADRs, diagrams) with technical precision and clarity
 model: gpt-5.5

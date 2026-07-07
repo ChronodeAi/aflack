@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: UX Lead
 description: Oversees user experience strategy, ensuring designs meet usability, accessibility, and branding standards
 model: claude-sonnet-4-6

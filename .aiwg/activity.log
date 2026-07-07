@@ -21,3 +21,91 @@
 2026-07-04T21:00:00Z | Aside live IG/TikTok scan | Triage found Codex MCP wrapper transport closed but Aside CLI + stdio MCP healthy. Used aside exec/repl CLI fallback read-only. Imported 8 live observations from Instagram/TikTok/adjacent benchmarks, 8 creators, 8 videos, 4 verified/plausible. Distilled 5 scan-specific insights and created proposals for claude-video-builder and compliance-before-publish. No account-state-changing actions taken.
 ## [2026-07-04 22:03] create | EP001 generation batch: 7 Seedance 2.0 clips, 360 credits, record in vice-signal/episode-001-generation-2026-07-04.md
 ## [2026-07-04 22:03] update | publish_queue id=2 submitted to cloud Postiz as private YouTube draft (postId cmr6wm4p50eiwnt0ytbyx0pqx)
+## [2026-07-04 22:06] update | aiwg index build
+## [2026-07-04 22:06] update | aiwg index stats --json
+## [2026-07-04 22:06] update | aiwg index query --type adr --json
+## [2026-07-04 22:06] update | aiwg index query --type requirement --json
+## [2026-07-04 22:08] update | aiwg index build
+## [2026-07-04 22:09] update | aiwg index stats --json
+## [2026-07-04 22:09] update | aiwg index build
+## [2026-07-04 22:09] update | aiwg index stats --json
+## [2026-07-04 22:15] update | aiwg index build
+## [2026-07-04 22:16] update | aiwg index stats --json
+## [2026-07-04 22:18] update | aiwg index stats --json
+## [2026-07-04 22:19] update | aiwg index build
+## [2026-07-04 22:19] update | aiwg index stats --json
+## [2026-07-04 22:19] update | aiwg index build
+## [2026-07-04 22:20] deploy | aiwg use all --provider claude
+## [2026-07-04 22:20] update | aiwg index stats --json
+## [2026-07-04 22:20] deploy | aiwg refresh --provider claude
+## [2026-07-04 22:22] update | aiwg index build
+## [2026-07-04 22:22] update | aiwg index stats --json
+## [2026-07-04 22:22] update | LANE CLAIM (claude session): code lane — direct tests for compliance/memory/economics/daemon/tracing + daemon-status/memory-consolidation CLI. NOT touching .aiwg planning/report docs or Loadout Lab content (codex lane, uncommitted edits present).
+## [2026-07-04 22:38] update | aiwg index build
+## [2026-07-04 22:38] update | aiwg index stats --json
+## [2026-07-04 22:44] update | aiwg index build
+## [2026-07-04 22:44] update | aiwg index stats --json
+## [2026-07-04 22:45] update | aiwg index build
+## [2026-07-04 22:45] update | aiwg index stats --json
+## [2026-07-04 22:46] lint | sdlc-accelerate --resume: verified all 6 phases complete, 12/12 evidence files + 7 ADRs present; phase=controlled-construction
+## [2026-07-04 22:49] update | .aiwg/reports/accelerate-state.json — reconciled next_actions: 3 items verified complete (compliance tests, content-factory loop, memory-consolidate)
+## [2026-07-04 22:53] update | aiwg index build
+## [2026-07-04 22:53] update | aiwg index stats --json
+## [2026-07-04 22:53] update | aiwg index build
+## [2026-07-04 22:53] update | aiwg index stats --json
+## [2026-07-04 22:55 ] lint | verified I2-011 slice: 30/30 tests green incl. test_economics.py + test_tracing.py; gate condition 4 (direct module tests) fully closed
+## [2026-07-04 23:05] update | aiwg index build
+## [2026-07-04 23:06] update | aiwg index build
+## [2026-07-04 23:13] update | aiwg index build
+## [2026-07-04 23:13] update | aiwg index build
+## [2026-07-04 23:27] update | aiwg index build
+## [2026-07-04 23:27] update | aiwg index build
+## [2026-07-04 23:30] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-04 23:30] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-04 23:30] deploy | aiwg use all --provider factory
+## [2026-07-04 23:31] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-04 23:31] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-04 23:32] deploy | aiwg refresh --dry-run --all
+## [2026-07-04 23:39] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-04 23:40] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-04 23:45] deploy | aiwg use all --provider claude
+## [2026-07-04 23:45] deploy | aiwg refresh --all
+## [2026-07-04 23:48] update | aiwg index stats --json
+## [2026-07-04 23:52] update | aiwg index stats --json
+## [2026-07-04 23:53] deploy | aiwg use all --provider codex
+## [2026-07-04 23:53] update | aiwg index stats --json
+## [2026-07-04 23:53] deploy | aiwg refresh --provider codex
+## [2026-07-04 23:53] update | aiwg index build
+## [2026-07-05 00:04] deploy | aiwg use cockpit
+## [2026-07-05 00:04] deploy | aiwg use cockpit --provider codex
+## [2026-07-05 00:04] deploy | aiwg use cockpit --provider factory
+## [2026-07-05 00:12] update | aiwg index build
+## [2026-07-05 00:14] update | aiwg index build
+## [2026-07-05 00:17] update | aiwg index build
+## [2026-07-05 00:42] update | aiwg index build
+## [2026-07-05 00:43] update | aiwg index build
+## [2026-07-05 00:43] update | aiwg index build
+## [2026-07-05 01:00] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-05 01:00] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-05 01:03] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-05 01:52] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-05 01:53] deploy | aiwg use all --provider factory
+## [2026-07-05 01:53] update | aiwg index stats --json
+## [2026-07-05 01:53] deploy | aiwg refresh --provider factory
+## [2026-07-05 02:02] update | aiwg index build
+## [2026-07-05 02:03] update | aiwg index build
+## [2026-07-05 02:13] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-05 02:13] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-05 02:13] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-05 02:13] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-05 02:16] update | aiwg index status
+## [2026-07-05 02:17] update | aiwg index build
+## [2026-07-05 02:18] update | aiwg index build
+## [2026-07-05 02:21] update | aiwg index build
+## [2026-07-05 02:22] update | aiwg index build
+## [2026-07-05 02:23] deploy | aiwg use cockpit
+## [2026-07-05 02:37] update | aiwg index build
+## [2026-07-05 02:38] update | aiwg index build
+## [2026-07-05 02:40] update | aiwg index build
+## [2026-07-05 02:41] update | aiwg index build
+## [2026-07-05 02:42] update | aiwg index build

@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: API Designer
 description: Designs and evolves API and data contracts with clear, stable interfaces
 model: claude-sonnet-4-6

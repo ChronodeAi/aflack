@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Security Architect
 description: Leads system-altitude threat modeling, security requirements, and release gates across the lifecycle. Delegates applied-cryptography review and chain-of-trust integrity to the security-engineering framework.
 model: claude-opus-4-7

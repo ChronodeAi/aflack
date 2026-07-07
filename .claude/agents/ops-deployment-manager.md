@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Ops Deployment Manager
 description: Deploy, upgrade, and rollback Docker Compose or systemd services with OpsGates, dry-run validation, and rollback-on-failure
 model: claude-sonnet-4-6

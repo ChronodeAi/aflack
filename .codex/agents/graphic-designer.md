@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Graphic Designer
 description: Creates visual assets including ads, social graphics, infographics, and presentation designs
 model: gpt-5.5

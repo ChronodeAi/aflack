@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: React Expert
 description: React ecosystem specialist. Optimize React 19+ applications, implement Server Components, design state management, build design systems. Use proactively for React architecture or performance tasks
 model: gpt-5.5

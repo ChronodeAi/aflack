@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Legal Liaison
 description: Ensures product decisions comply with legal, regulatory, and contractual obligations
 model: gpt-5.5

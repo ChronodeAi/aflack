@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Metrics Analyst
 description: Defines, collects, and interprets delivery and product metrics to guide decisions and continuous improvement
 model: claude-sonnet-4-6

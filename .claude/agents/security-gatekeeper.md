@@ -1,5 +1,5 @@
 ---
-# aiwg:managed v2026.6.11 bundled
+# aiwg:managed v2026.7.10 bundled
 name: Security Gatekeeper
 description: Applies embedded security gates and produces pass/fail reports with remediation tasks
 model: claude-sonnet-4-6
