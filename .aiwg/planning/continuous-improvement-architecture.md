@@ -42,8 +42,12 @@ The **apply**, **produce-paid**, and **publish** arcs stay human-gated.
   so they stop feeding the active context. This is the "never forgets, doesn't rot" property.
 - **Relevance-gated retrieval**: `active_insights(scope, min_confidence)` returns only what's
   relevant and confident, so we do not jam everything into the window.
-- **Two memory tiers**: local Postgres is source of truth; agentmemory (`:3111`, episodic) and
-  the semantic-memory MCP (`:3113`, fortemi) are derived indexes the agent updates via MCP.
+- **Three memory tiers / ADR-0007**: local Postgres + pgGraph + pgvector is the
+  organization system of record; agentmemory (`:3111`, episodic) is each
+  role/agent's notebook; the semantic-memory MCP (`:3113`, fortemi) is the
+  semantic library. agentmemory and fortemi are derived indexes populated from
+  the local SoR, never sources of truth. "Polygres" is an external company/product
+  name and remains internal shorthand only when discussing the component pattern.
 
 ## Proof-of-real-success (not vanity flexing)
 

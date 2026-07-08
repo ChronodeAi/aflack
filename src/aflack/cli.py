@@ -17,7 +17,7 @@ from .aside_scan import import_aside_scan
 from .compliance import check_publish_item
 from .daemon import get_daemon_status, run_improvement_cycle
 from .db import connect, exec_sql, fetchone_required
-from .economics import current_rollup
+from .economics import current_rollup, scale_gate_decision
 from .learning import (
     active_insights,
     dedupe_open_proposals,
@@ -297,6 +297,29 @@ def economics_status() -> None:
     typer.echo(f"contribution_margin={r.contribution_margin}")
     typer.echo(f"generated_creatives={r.generated_creatives}")
     typer.echo(f"cost_per_generated={r.cost_per_generated}")
+
+
+@app.command()
+def roi_scale_gate(min_conversions: int = 1, min_margin: str = "0") -> None:
+    """Block scale-up unless analytics prove positive contribution margin."""
+
+    try:
+        decision = scale_gate_decision(min_conversions=min_conversions, min_margin=min_margin)
+    except ValueError as exc:
+        typer.echo(f"roi scale gate rejected: {exc}")
+        raise typer.Exit(code=2) from exc
+
+    typer.echo(f"scale_allowed={decision.allowed}")
+    typer.echo(f"reason={decision.reason}")
+    typer.echo(f"snapshots={decision.snapshots}")
+    typer.echo(f"conversions={decision.conversions}")
+    typer.echo(f"revenue={decision.revenue}")
+    typer.echo(f"total_cost={decision.total_cost}")
+    typer.echo(f"contribution_margin={decision.contribution_margin}")
+    typer.echo(f"min_conversions={decision.min_conversions}")
+    typer.echo(f"min_margin={decision.min_margin}")
+    if not decision.allowed:
+        raise typer.Exit(code=1)
 
 
 @app.command()

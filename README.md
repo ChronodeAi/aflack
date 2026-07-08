@@ -81,6 +81,7 @@ Run `aflack --help` for the full list. Key commands:
 | `aflack seed-smoke` | Insert a test Product-Creative-Result graph |
 | `aflack compliance-smoke` | Run deterministic compliance checks |
 | `aflack economics-status` | Show all-time economics rollup |
+| `aflack roi-scale-gate` | Block scale-up unless analytics show positive margin |
 | `aflack analytics-status` | Show aggregate analytics |
 | `aflack daemon-status` | Show improvement daemon status |
 | `aflack insights-list` | List active deduped insights |

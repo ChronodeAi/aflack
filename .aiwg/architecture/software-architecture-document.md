@@ -53,10 +53,44 @@
 - ADR-0004 Claude Code CLI (`claude-fable-5`) as director runtime.
 - ADR-0005 Human-gated Jarvis content-agent orchestration.
 - ADR-0006 Virality-first lane selection and persona-optional form.
+- ADR-0007 Local Postgres/pgGraph/pgvector as organization system of record; agentmemory and fortemi as derived per-role/semantic indexes; "Polygres" remains internal shorthand only.
 
 ## 5. Data architecture
 
-Core entities: niches, products, personas, hooks, scripts, creatives, creative_variants, channels, disclosures, claims, results, lessons, cost_ledger, publish_queue, platform_credentials. The Jarvis/content-factory data products are hook library, source/reference library, asset library, funnel map, performance log, compliance/provenance record, and memory lessons. Graph derived via `graph.auto_discover`. Embeddings on hooks/scripts/lessons (`vector(384)`).
+Core entities: niches, products, personas, hooks, scripts, creatives, creative_variants, channels, disclosures, claims, results, lessons, cost_ledger, publish_queue, platform_credentials, analytics_snapshots, benchmark_creators, benchmark_videos, insights, improvement_proposals, pipeline_events, and daemon_runs. The Jarvis/content-factory data products are hook library, source/reference library, asset library, funnel map, performance log, compliance/provenance record, and memory lessons. Graph derived via `graph.auto_discover`. Embeddings on hooks/scripts/lessons (`vector(384)`).
+
+### Organizational memory model
+
+Per ADR-0007, the organization system of record is the local combined
+Postgres + pgGraph + pgvector substrate:
+
+- Postgres: authoritative facts and operating ledger.
+- pgGraph: relationship traversal over the same tables.
+- pgvector: semantic similarity over the same source data.
+
+agentmemory and fortemi are **derived indexes**, not sources of truth:
+
+- agentmemory stores per-agent/session episodic continuity.
+- fortemi provides semantic/capability recall.
+- business facts, costs, results, approvals, and provenance land in Polygres
+  first, then may be projected into those derived systems.
+
+Role mapping for the future agentic org:
+
+| Role | Primary Polygres responsibility |
+|---|---|
+| CEO | Read cross-functional truth: outcomes, costs, gates, blockers |
+| CFO/economics | Own cost/revenue/margin and ROI scale gates |
+| CMO/marketing | Traverse campaign → creative → funnel → result relationships |
+| Content agents | Write packages, creative provenance, publish intents |
+| Research agents | Write benchmarks, insights, and proposals |
+| Compliance/legal | Record claims, disclosures, provenance, gate decisions |
+| Ops/daemon | Append traces, daemon runs, and proposal events |
+
+Naming boundary: **Polygres is an external company's brand/product name for a
+cloud-facing version of this component pattern.** In this repository, use
+"Polygres" only as internal shorthand when discussing the pattern; do not use it
+as our external product or marketing name.
 
 ## 6. Runtime flows
 
@@ -77,7 +111,7 @@ The director loop is human-gated: Trend Scout → Source/Reference → Hook Auth
 - Security: secrets in `.env`/Postiz config, never git; DB bound to localhost.
 - Compliance: pre-publish blocking gate; provenance recorded.
 - Cost control: every generation/publish writes `cost_ledger`; daily caps.
-- Observability: agentmemory for build; event store for pipeline; Postiz for posting status.
+- Observability: local Postgres/pgGraph/pgvector event store for pipeline truth; agentmemory for build/session continuity; fortemi for semantic recall; Postiz for posting status.
 - Resilience: adapters swappable; Aside fallback when APIs break.
 
 ## 8. Deployment (local)

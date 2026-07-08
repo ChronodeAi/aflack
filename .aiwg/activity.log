@@ -21,3 +21,21 @@
 2026-07-04T21:00:00Z | Aside live IG/TikTok scan | Triage found Codex MCP wrapper transport closed but Aside CLI + stdio MCP healthy. Used aside exec/repl CLI fallback read-only. Imported 8 live observations from Instagram/TikTok/adjacent benchmarks, 8 creators, 8 videos, 4 verified/plausible. Distilled 5 scan-specific insights and created proposals for claude-video-builder and compliance-before-publish. No account-state-changing actions taken.
 ## [2026-07-04 22:03] create | EP001 generation batch: 7 Seedance 2.0 clips, 360 credits, record in vice-signal/episode-001-generation-2026-07-04.md
 ## [2026-07-04 22:03] update | publish_queue id=2 submitted to cloud Postiz as private YouTube draft (postId cmr6wm4p50eiwnt0ytbyx0pqx)
+## [2026-07-07 21:45] decision | ADR-0007 accepted: Polygres is organization system of record; agentmemory is per-role episodic notebook; fortemi is semantic recall library; both are derived indexes. SAD, Polygres positioning, continuous-improvement architecture, and creator-commerce manifest updated.
+## [2026-07-07 23:27] update | aiwg index build
+## [2026-07-07 23:27] update | aiwg index sync
+## [2026-07-07 21:55] update | ADR-0007 naming boundary corrected: Polygres is external company/product name; in Aflack it is internal shorthand only for the local Postgres+pgGraph+pgvector pattern. SAD, internal positioning note, continuous-improvement architecture, and creator-commerce manifest updated.
+## [2026-07-07 23:33] update | aiwg index build
+## [2026-07-07 23:33] update | aiwg index sync
+## [2026-07-07 23:39] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-07 23:39] deploy | aiwg refresh --dry-run --quiet
+## [2026-07-07 23:55] fix | Deep sweep found parallel-session overwrite dropped D3-005 ROI scale gate (scale_gate_decision, roi-scale-gate CLI, tests) while docs claimed it existed. Restored economics.py gate, CLI command, README row, and 4 economics tests. Full suite green: 189 passed.
+## [2026-07-07 23:47] update | aiwg index build
+## [2026-07-07 23:47] update | aiwg index sync
+2026-07-07T23:59:30Z | planning | Iteration 004 specced as Construction close-loop plan. Validation rerun passed: ruff, format, mypy, compile, pytest 189 passed / 82.85% coverage. Operational smoke confirmed local pggraph on 127.0.0.1:55432, analytics snapshots=0, and roi-scale-gate correctly blocks scale while ROI is unmeasured.
+## [2026-07-08 00:08] update | aiwg index build
+## [2026-07-08 00:08] update | aiwg index sync
+## [2026-07-08 00:09] update | aiwg index build
+## [2026-07-08 00:09] update | aiwg index sync
+## [2026-07-08 00:09] update | aiwg index build
+## [2026-07-08 00:09] update | aiwg index sync

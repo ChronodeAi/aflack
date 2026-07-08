@@ -9,7 +9,7 @@
     "no public publish without operator approval",
     "no Rockstar/GTA source media reuse",
     "proof-of-real-success required before learning from a creator",
-    "agentmemory/semantic memory are indexes; Postgres is source of truth"
+    "ADR-0007: local Postgres+pgGraph+pgvector is system of record; agentmemory/fortemi are derived indexes; Polygres name is internal shorthand only"
   ],
   "implemented_components": {
     "rules": 5,
