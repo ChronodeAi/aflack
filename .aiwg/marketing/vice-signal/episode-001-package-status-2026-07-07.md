@@ -16,9 +16,9 @@
 | Local generated media | Present outside git | `media/vice-signal/ep001/S1-S7.mp4` path family is gitignored |
 | Initial QC | Pass with note | S1/S3/S7 spot-check passed; S7 continuity flag is non-blocking |
 | Postiz private draft | Complete | `publish_queue id=2`, Postiz post ID `cmr6wm4p50eiwnt0ytbyx0pqx` |
-| Final assembled render | Open | VO/captions/music/grade/disclosure assembly still needs explicit status |
-| Final render compliance/QC | Open | Must be run on the assembled render/package |
-| Operator final-render approval | Open | Required before scheduling/publish escalation |
+| Final assembled render | Conditional | Candidate v2 assembled locally: `media/vice-signal/ep001/final/final-render-candidate-v2.mp4`; spoken VO/audio-bed still need operator decision |
+| Final render compliance/QC | Conditional pass | `.aiwg/marketing/vice-signal/qa/episode-001-final-render-qc-2026-07-07.md` |
+| Operator final-render approval | Pending | `.aiwg/marketing/approvals/pending/APR-VS-EP001-FINAL-RENDER-2026-07-07.md` |
 | Public publish | Blocked | Requires separate explicit operator approval |
 
 ## Remaining gates
