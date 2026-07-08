@@ -3,7 +3,7 @@
 **Date**: 2026-07-07  
 **Package**: VS-EP001-PREGEN  
 **Phase**: Construction  
-**Status**: generated and privately drafted; not publicly published
+**Status**: generated and privately drafted; final render candidate rejected for script relevance; script reset in progress
 
 ## Current state
 
@@ -16,9 +16,9 @@
 | Local generated media | Present outside git | `media/vice-signal/ep001/S1-S7.mp4` path family is gitignored |
 | Initial QC | Pass with note | S1/S3/S7 spot-check passed; S7 continuity flag is non-blocking |
 | Postiz private draft | Complete | `publish_queue id=2`, Postiz post ID `cmr6wm4p50eiwnt0ytbyx0pqx` |
-| Final assembled render | Conditional | Candidate v2 assembled locally: `media/vice-signal/ep001/final/final-render-candidate-v2.mp4`; spoken VO/audio-bed still need operator decision |
+| Final assembled render | Rejected for relevance | Candidate v2 exists locally, but operator feedback says original renders were not relevant enough to the script ask |
 | Final render compliance/QC | Conditional pass | `.aiwg/marketing/vice-signal/qa/episode-001-final-render-qc-2026-07-07.md` |
-| Operator final-render approval | Pending | `.aiwg/marketing/approvals/pending/APR-VS-EP001-FINAL-RENDER-2026-07-07.md` |
+| Operator final-render approval | Superseded | Approval paused; see script reset `.aiwg/marketing/vice-signal/script-room/episode-001-script-relevance-reset-2026-07-08.md` |
 | Public publish | Blocked | Requires separate explicit operator approval |
 
 ## Remaining gates
@@ -43,3 +43,8 @@
 - No public publishing without explicit approval.
 - No comment/DM/follow automation.
 - No scale-up until analytics/results ingestion and ROI sentinel gates exist.
+
+
+## Script reset — 2026-07-08
+
+Operator feedback: no more asset building until script relevance improves. Candidate v2 is treated as a rejected-for-relevance review cut, not a publish candidate. Next step is script-first approval via `.aiwg/marketing/vice-signal/script-room/episode-001-script-relevance-reset-2026-07-08.md`.

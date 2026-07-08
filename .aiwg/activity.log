@@ -42,3 +42,6 @@
 2026-07-07T19:38:00-05:00 | execution | Execute steps 1-7: downloaded generated EP001 clips, assembled local final-render candidate v2, wrote QC/approval/analytics-status artifacts, reran analytics/economics/ROI gate, and reran IOC as NO-GO for Transition pending operator approval and analytics evidence.
 ## [2026-07-08 00:40] update | aiwg index build
 ## [2026-07-08 00:40] update | aiwg index sync
+2026-07-08T00:00:00-05:00 | decision | Operator stopped asset-building lane: original EP001 renders were not relevant enough to original script ask. Froze generation/render work, marked v2 as rejected-for-script-relevance review cut, and created script-room reset artifact with proof-led workflow script v2 and visual receipt contract.
+## [2026-07-08 12:52] update | aiwg index build
+## [2026-07-08 12:52] update | aiwg index sync
