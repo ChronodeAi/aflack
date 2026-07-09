@@ -56,3 +56,9 @@ jobs:
           if grep -rnE 'TODO|FIXME' src/ --include='*.py' | grep -vE 'TODO\([A-Z]+-[0-9]+\)|FIXME\([A-Z]+-[0-9]+\)' | head -1; then
             echo "::warning::Found TODO/FIXME without issue reference"
           fi
+
+      - name: Build performance tracking
+        run: uv run python scripts/track_build_performance.py --skip-tests
+
+      - name: Dead feature flag detection
+        run: uv run python scripts/detect_dead_flags.py || true

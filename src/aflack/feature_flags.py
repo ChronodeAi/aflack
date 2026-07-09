@@ -3,6 +3,17 @@
 Simple file-based feature flags stored in the database. Supports percentage-based
 rollouts and per-creator overrides. Agents can ship changes behind toggles,
 reducing risk of agent-authored code affecting all users immediately.
+
+Flag Lifecycle:
+    1. Create: set_flag("my_flag", enabled=False, rollout_percentage=0)
+    2. Roll out: Gradually increase rollout_percentage (0 to 100)
+    3. Monitor: Check analytics and error tracking during rollout
+    4. Clean up: Once at 100% and stable, remove code references and delete
+    5. Detect: scripts/detect_dead_flags.py runs in CI to catch stale flags
+
+Dead flag detection is automated via scripts/detect_dead_flags.py which
+scans source code for is_enabled/get_flag/set_flag references and compares
+against database definitions.
 """
 
 from __future__ import annotations

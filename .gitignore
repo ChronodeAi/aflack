@@ -22,6 +22,7 @@ __pycache__/
 venv/
 .mypy_cache/
 .pytest_cache/
+.coverage
 
 # Node
 node_modules/
@@ -31,6 +32,7 @@ npm-debug.log*
 .DS_Store
 
 # AIWG scratch
+.aiwg/.index/
 .aiwg/working/
 
 # Reference footage (large, re-downloadable; keep manifest only)

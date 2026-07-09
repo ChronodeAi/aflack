@@ -5,7 +5,7 @@ from contextlib import contextmanager
 from decimal import Decimal
 from unittest.mock import patch
 
-from aflack.economics import current_rollup
+from aflack.economics import current_rollup, scale_gate_decision
 
 
 class FakeCursor:
@@ -70,6 +70,61 @@ class EconomicsRollupTests(unittest.TestCase):
 
         self.assertEqual(rollup.contribution_margin, Decimal("-12.50"))
         self.assertIsNone(rollup.cost_per_generated)
+
+    def test_scale_gate_blocks_when_analytics_unmeasured(self):
+        responses = [
+            (Decimal("10.00"),),
+            (0, Decimal("0"), 0),
+        ]
+
+        @contextmanager
+        def fake_connect():
+            yield FakeConnection(responses)
+
+        with patch("aflack.economics.connect", fake_connect):
+            decision = scale_gate_decision()
+
+        self.assertFalse(decision.allowed)
+        self.assertIn("unmeasured", decision.reason)
+        self.assertEqual(decision.snapshots, 0)
+
+    def test_scale_gate_blocks_negative_or_zero_margin(self):
+        responses = [
+            (Decimal("10.00"),),
+            (2, Decimal("10.00"), 3),
+        ]
+
+        @contextmanager
+        def fake_connect():
+            yield FakeConnection(responses)
+
+        with patch("aflack.economics.connect", fake_connect):
+            decision = scale_gate_decision()
+
+        self.assertFalse(decision.allowed)
+        self.assertIn("contribution margin", decision.reason)
+        self.assertEqual(decision.contribution_margin, Decimal("0.00"))
+
+    def test_scale_gate_allows_positive_measured_margin(self):
+        responses = [
+            (Decimal("10.00"),),
+            (2, Decimal("25.00"), 3),
+        ]
+
+        @contextmanager
+        def fake_connect():
+            yield FakeConnection(responses)
+
+        with patch("aflack.economics.connect", fake_connect):
+            decision = scale_gate_decision(min_conversions=1)
+
+        self.assertTrue(decision.allowed)
+        self.assertEqual(decision.contribution_margin, Decimal("15.00"))
+        self.assertEqual(decision.conversions, 3)
+
+    def test_scale_gate_validates_min_conversions(self):
+        with self.assertRaises(ValueError):
+            scale_gate_decision(min_conversions=-1)
 
 
 if __name__ == "__main__":
